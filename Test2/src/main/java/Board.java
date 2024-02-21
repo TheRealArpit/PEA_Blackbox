@@ -5,12 +5,12 @@ public class Board {
     public static ArrayList<Hexagon> hexagonArrayList;
 
     public  static void main(String[] args) {
-         hexagonArrayList = createBoard();
-        Hexagon hexx = findHex(1,0);
-        System.out.println(hexx);
+        // hexagonArrayList = createBoard();
+        //Hexagon hexx = findHex(1,0);
+        //System.out.println(hexx);
     }
 
-
+/*
     public static ArrayList<Hexagon> createBoard(){
         int[][][] a = new int[9][9][2];
         ArrayList<Hexagon> arr = new ArrayList<>();
@@ -36,6 +36,8 @@ public class Board {
         System.out.println(arr.toString());
         return arr;
     }
+
+ */
 
     public static Hexagon findHex(int x, int y){
         for(Hexagon a: hexagonArrayList){
