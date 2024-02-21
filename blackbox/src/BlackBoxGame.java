@@ -15,10 +15,9 @@ public class BlackBoxGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         Pane root = new Pane();
         double radius = 50;
-            
-
         int[] rows = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
 
         for (int row = 0; row < rows.length; row++) {
@@ -32,7 +31,6 @@ public class BlackBoxGame extends Application {
                     double y = radius * Math.sin(angle); // Calculate the y-coordinate
                     hexagon.getPoints().addAll(x, y);
                 }
-
 
                 double offsetX = getOffsetX(rows, row, radius);
 
