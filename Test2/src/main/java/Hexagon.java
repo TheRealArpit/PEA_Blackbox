@@ -1,6 +1,6 @@
 import javafx.scene.shape.Polygon;
 
-public class Hexagon {
+public class Hexagon extends Polygon{
     public int x;
     public int y;
     public type typeOfHexagon;
