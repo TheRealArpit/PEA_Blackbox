@@ -10,21 +10,20 @@ public class Hexagon extends Polygon {
     private static int atomCount = 0;   //static for the class, not for every instance
     private boolean hasAtom = false;
     private Atom atom;
-    private static final int MAX_ATOMS = 5;
+
     private static final ArrayList<Atom> atomList = new ArrayList<>();
 
     public Hexagon() {
         super(); // Call the Polygon constructor
 
         setOnMouseEntered(event -> setStroke(Color.RED));
-        setOnMouseExited(event -> setStroke(Color.YELLOW));
+        setOnMouseExited(event -> setStroke(ConstantValues.HEXAGON_STROKE));
 
         setOnMouseClicked(event -> {
-            if (!hasAtom && atomCount < MAX_ATOMS) {
+            if (!hasAtom && atomCount < ConstantValues.MAX_ATOMS) {
                 createAtom();
             } else if (hasAtom) {
                 removeAtom();
-                System.out.println(toString());
             } else {
                 System.out.println("Can't add more atoms. Maximum limit reached.");
             }
@@ -44,13 +43,17 @@ public class Hexagon extends Polygon {
         this.y = y;
     }
 
-    public void createHex(double radius) {
+    public void createHex()
+    {
         for (int i = 0; i < 6; i++) {
             double angle = 2 * Math.PI * (i + 0.5) / 6;
-            double z = radius * Math.cos(angle);
-            double a = radius * Math.sin(angle);
+            double z = ConstantValues.HEXAGON_RADIUS * Math.cos(angle);
+            double a = ConstantValues.HEXAGON_RADIUS * Math.sin(angle);
             getPoints().addAll(z, a);
         }
+        setStrokeWidth(ConstantValues.HEXAGON_STROKE_WIDTH);
+        setStroke(ConstantValues.HEXAGON_STROKE); // set the outline color to yellow
+        setFill(ConstantValues.HEXAGON_COLOR);
     }
 
     private void createAtom() {

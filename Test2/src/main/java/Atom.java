@@ -1,13 +1,11 @@
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-import java.util.ArrayList;
 
 public class Atom {
     private double x;
     private double y;
     private Circle circle;
-
 
     public Atom(double x, double y) {
         this.x = x;
@@ -17,8 +15,8 @@ public class Atom {
 
     public void createCircle() {
         circle = new Circle();
-        circle.setRadius(10);
-        circle.setFill(Color.RED);
+        circle.setRadius(ConstantValues.ATOM_RADIUS);
+        circle.setFill(ConstantValues.ATOM_COLOR);
         circle.setCenterX(x);
         circle.setCenterY(y);
     }
