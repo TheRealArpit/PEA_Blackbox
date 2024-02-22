@@ -1,50 +1,92 @@
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
-public class Hexagon extends Polygon{
-    public double x;
-    public double y;
-    public type typeOfHexagon;
-    public enum type{
-        ATOM,
-        COF,
-        EMPTY
-    };
+import java.util.ArrayList;
 
-    public Hexagon(){
-        // Define mouse hover event
+public class Hexagon extends Polygon {
+    private double x; //coordinates
+    private double y;
+    private static int atomCount = 0;   //static for the class, not for every instance
+    private boolean hasAtom = false;
+    private Atom atom;
+    private static final int MAX_ATOMS = 5;
+    private static final ArrayList<Atom> atomList = new ArrayList<>();
+
+    public Hexagon() {
         super(); // Call the Polygon constructor
 
-        setOnMouseEntered(event -> {
-            //set
-            setStroke(Color.RED); // Change stroke color when mouse enters
-        });
+        setOnMouseEntered(event -> setStroke(Color.RED));
+        setOnMouseExited(event -> setStroke(Color.YELLOW));
 
-        // Define mouse exit event
-        setOnMouseExited(event -> {
-            setStroke(Color.YELLOW); // Revert stroke color when mouse exits
+        setOnMouseClicked(event -> {
+            if (!hasAtom && atomCount < MAX_ATOMS) {
+                createAtom();
+            } else if (hasAtom) {
+                removeAtom();
+                System.out.println(toString());
+            } else {
+                System.out.println("Can't add more atoms. Maximum limit reached.");
+            }
         });
 
     }
-    public void setPosXY(double x, double y){
+
+    public static void main(String[] args) {
+        //trying to check if AtomList is working correctly
+        for(Atom at: atomList){
+            System.out.println(at.toString());
+        }
+    }
+
+    public void setPosXY(double x, double y) {
         this.x = x;
         this.y = y;
-
-
     }
 
-    public  void CreateHex(double radius){
+    public void createHex(double radius) {
         for (int i = 0; i < 6; i++) {
-            double angle = 2 * Math.PI * (i + 0.5) / 6; // Calculate the angle for each vertex
-            double z = radius * Math.cos(angle); // Calculate the x-coordinate
-            double a = radius * Math.sin(angle); // Calculate the y-coordinate
+            double angle = 2 * Math.PI * (i + 0.5) / 6;
+            double z = radius * Math.cos(angle);
+            double a = radius * Math.sin(angle);
             getPoints().addAll(z, a);
         }
     }
 
-    @Override
-    public String toString() {
-        return "(" + x+ ", " + y + ")";
+    private void createAtom() {
+        Atom atom = new Atom(x, y);
+        atom.createCircle();
+        Pane parentPane = (Pane) getParent();
+        parentPane.getChildren().add(atom.getCircle());
+        atomList.add(atom);
+        this.atom = atom;
+        atomCount++;
+        hasAtom = true;
     }
 
+    private void removeAtom() {
+        Pane parentPane = (Pane) getParent();
+        parentPane.getChildren().remove(atom.getCircle());
+        atomList.remove(atom);
+        atomCount--;
+        hasAtom = false;
+        this.atom = null;
+    }
+
+    public String toString() {
+        if (!hasAtom) {
+            return "There is no Atom here";
+        } else if (atom != null) {
+            return atom.toString();
+        } else {
+            return "(" + x + ", " + y + ")";
+        }
+    }
 }
+
+
+
+
+
+
+
