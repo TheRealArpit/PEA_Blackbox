@@ -61,6 +61,7 @@ public class Hexagon extends Polygon {
         atom.createCircle();
         Pane parentPane = (Pane) getParent();
         parentPane.getChildren().add(atom.getCircle());
+        parentPane.getChildren().add(atom.getCOI());
         atomList.add(atom);
         this.atom = atom;
         atomCount++;

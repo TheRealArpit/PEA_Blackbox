@@ -17,10 +17,9 @@ public class DisplayBoard extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //CreateWelcome(primaryStage);
+        CreateWelcome(primaryStage);
 
 
-        CreateBoard(primaryStage);
 
     }
 
@@ -43,7 +42,7 @@ public class DisplayBoard extends Application {
             }
             System.out.println();
         }
-        primaryStage.setScene(new Scene(hexBoard, 800, 800));
+        primaryStage.setScene(new Scene(hexBoard, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH));
         primaryStage.show();
     }
 
@@ -68,10 +67,12 @@ public class DisplayBoard extends Application {
         return difference * hexagonWidth / 2;
     }
 
-    public void CreateWelcome(Stage primaryStage) throws Exception {
+    public void CreateWelcome(Stage primaryStage) throws Exception { //ELVIS  DO THIS
         // Creating a Pane for the welcome screen
         Pane welcomeScreen = new Pane();
 
+        // -- eLVIS you can delete the stuff u don't need. keep the button but change the size and all.
+        // -- change background and stuff like that. make it look nice
         // Creating text to display on the welcome screen
         Text welcomeText = new Text("Welcome to My Application");
         welcomeText.setX(50); // Set the x-coordinate of the text
@@ -86,31 +87,31 @@ public class DisplayBoard extends Application {
         nextButton.setLayoutX(250); // Set the x-coordinate of the button
         nextButton.setLayoutY(150); // Set the y-coordinate of the button
 
-        // Handling button click event
-        nextButton.setOnAction(event -> {
-            // Create the new scene
-            Pane newScreen = new Pane();
-            Text newText = new Text("This is the new scene!");
-            newText.setX(50);
-            newText.setY(100);
-            newText.setStyle("-fx-font-size: 24px;");
-            newScreen.getChildren().add(newText);
-
-            // Set the new scene on the primary stage
-            primaryStage.setScene(new Scene(newScreen, 600, 400));
-        });
-
         // Adding the button to the welcome screen pane
         welcomeScreen.getChildren().add(nextButton);
 
         // Creating the Scene with the welcome screen Pane
-        Scene scene = new Scene(welcomeScreen, 600, 400);
+        Scene scene = new Scene(welcomeScreen, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH);
 
         // Setting the scene to the primary stage
         primaryStage.setScene(scene);
 
         // Displaying the primary stage
         primaryStage.show();
+        // Handling button click event
+        nextButton.setOnAction(event -> {
+            // Create the new scene
+            try {
+                CreateBoard(primaryStage);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+            // Set the new scene on the primary stage
+            //primaryStage.setScene(new Scene(newScreen, 600, 400));
+        });
+
+
     }
 
 
