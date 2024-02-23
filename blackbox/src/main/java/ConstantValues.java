@@ -10,7 +10,7 @@ public class ConstantValues {
     public static final Color ATOM_COLOR = Color.RED;
     public static final double ATOM_RADIUS = 10.0;
 
-    public static final double PADDING = 100.0;  // Padding around the grid
+    public static final double PADDING = 85;  // Padding around the grid
 
     public static final double SCALING_FACTOR = 1.85;
 

@@ -32,7 +32,6 @@ public class Atom extends Polygon {
         circle.setCenterY(y);
         circle.setMouseTransparent(true); // Make the circle transparent to mouse events
 
-
         // Create a new circle for the border
         COI = new Circle();
         COI.setRadius(ConstantValues.COI_RADIUS); // Same radius as the main circle
@@ -44,8 +43,6 @@ public class Atom extends Polygon {
         COI.setMouseTransparent(true); // Make the circle transparent to mouse events
         COI.setCenterX(x);
         COI.setCenterY(y);
-
-
 
     }
 

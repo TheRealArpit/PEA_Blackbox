@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,9 +12,13 @@ import javafx.stage.Stage;
 public class DisplayBoard extends Application {
     private Pane hexBoard;
 
+
+
     public static void main(String[] args) {
-        launch(args);
-    }
+            launch(args);
+        }
+
+
     //hello , it is not pushing
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -43,8 +46,6 @@ public class DisplayBoard extends Application {
             System.out.println();
         }
 
-
-
         Button HideAtomsButton = new Button("Hide Atoms");
         Button ShowAtomsButton = new Button("Show Atoms");
 
@@ -54,13 +55,14 @@ public class DisplayBoard extends Application {
         ShowAtomsButton.setPrefWidth(200); // Set the width of the button
         ShowAtomsButton.setPrefHeight(50);
 
-        ShowAtomsButton.setLayoutX(100);
-        ShowAtomsButton.setLayoutY(100);
+        ShowAtomsButton.setLayoutX(600);
+        ShowAtomsButton.setLayoutY(0);
 
-        ShowAtomsButton.setLayoutX(300);
-        ShowAtomsButton.setLayoutY(300);
-
-        hexBoard.getChildren().addAll(ShowAtomsButton, HideAtomsButton); // Add the StackPane to the hexBoard
+        HideAtomsButton.setLayoutX(0);
+        HideAtomsButton.setLayoutY(0);
+        hexBoard.getChildren().add(ShowAtomsButton);
+        hexBoard.getChildren().add(HideAtomsButton);
+        //hexBoard.getChildren().addAll(ShowAtomsButton, HideAtomsButton); // Add the StackPane to the hexBoard
 
         primaryStage.setScene(new Scene(hexBoard, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH, Color.RED));
         primaryStage.show();
