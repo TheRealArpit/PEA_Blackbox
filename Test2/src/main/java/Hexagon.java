@@ -80,7 +80,6 @@ public class Hexagon extends Polygon {
     }
 
 
-
     public String toString() {
         if (!hasAtom) {
             return "There is no Atom here";

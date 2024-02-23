@@ -12,7 +12,7 @@ public class ConstantValues {
 
     public static final double PADDING = 100.0;  // Padding around the grid
 
-    public static final double SCALING_FACTOR = 1.75;
+    public static final double SCALING_FACTOR = 1.85;
 
     //display lenghth width
     public static final double LEN_WIDTH = 800;

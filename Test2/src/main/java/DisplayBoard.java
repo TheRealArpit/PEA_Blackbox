@@ -24,6 +24,7 @@ public class DisplayBoard extends Application {
 
     public void CreateBoard(Stage primaryStage) throws Exception{
          hexBoard = new Pane();
+            hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to red
 
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
 
@@ -42,39 +43,38 @@ public class DisplayBoard extends Application {
             System.out.println();
         }
 
-        // Create a StackPane to hold the button and text
-        StackPane stackPane = new StackPane();
 
-        Button nextButton = new Button("Next");
-        nextButton.setPrefWidth(200); // Set the width of the button
-        nextButton.setPrefHeight(50); // Set the height of the button
-        nextButton.setStyle("-fx-font-size: 16px;"); // Set the font size of the button text
 
-        Text textAboveButton = new Text("Are you finishing inputting the atoms?");
-        textAboveButton.setStyle("-fx-font-size: 18px;"); // Set the font size of the text
+        Button HideAtomsButton = new Button("Hide Atoms");
+        Button ShowAtomsButton = new Button("Show Atoms");
 
-        // Add the button and text to the StackPane
-        stackPane.getChildren().addAll(nextButton, textAboveButton);
+        HideAtomsButton.setPrefWidth(200); // Set the width of the button
+        HideAtomsButton.setPrefHeight(50);
 
-        // Position the StackPane
-        stackPane.setLayoutX(500); // Set the x-coordinate of the StackPane
-        stackPane.setLayoutY(400); // Set the y-coordinate of the StackPane
+        ShowAtomsButton.setPrefWidth(200); // Set the width of the button
+        ShowAtomsButton.setPrefHeight(50);
 
-        hexBoard.getChildren().add(stackPane); // Add the StackPane to the hexBoard
+        ShowAtomsButton.setLayoutX(100);
+        ShowAtomsButton.setLayoutY(100);
 
-        primaryStage.setScene(new Scene(hexBoard, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH));
+        ShowAtomsButton.setLayoutX(300);
+        ShowAtomsButton.setLayoutY(300);
+
+        hexBoard.getChildren().addAll(ShowAtomsButton, HideAtomsButton); // Add the StackPane to the hexBoard
+
+        primaryStage.setScene(new Scene(hexBoard, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH, Color.RED));
         primaryStage.show();
-        nextButton.setOnAction(event -> {
+        HideAtomsButton.setOnAction(event -> {
             hideAtomsOnBoard();
         });
-
+        ShowAtomsButton.setOnAction(event -> {
+            ShowAtomsOnBoard();
+        });
     }
 
     private static double getPosition(int col, double offsetX) {
         double hexagonWidth = 2 * ConstantValues.HEXAGON_RADIUS * Math.cos(Math.PI / 3); // Horizontal distance between the centers of two adjacent hexagons
         double basePosition = col * hexagonWidth; // Base x-coordinate for the hexagon in its row
-
-        double scalingFactor = 1.75; // Factor to spread out the hexagons
         double position = (basePosition + offsetX + ConstantValues.PADDING) * ConstantValues.SCALING_FACTOR; // Calculate the final x-coordinate
         return position;
     }
@@ -144,8 +144,17 @@ public class DisplayBoard extends Application {
             if (hexagon instanceof Hexagon) {
                 Hexagon hex = (Hexagon) hexagon;
                 if(hex.hasAtom){
-                    //Atom atom = (Atom) atomNode;
                     hex.atom.hideAtom();
+                }
+            }
+        }
+    }
+    public void ShowAtomsOnBoard() {
+        for (Node hexagon : hexBoard.getChildren()) {
+            if (hexagon instanceof Hexagon) {
+                Hexagon hex = (Hexagon) hexagon;
+                if(hex.hasAtom){
+                    hex.atom.showAtom();
                 }
             }
         }

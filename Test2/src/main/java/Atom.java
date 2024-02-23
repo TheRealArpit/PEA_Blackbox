@@ -60,6 +60,10 @@ public class Atom extends Polygon {
         getCircle().setVisible(false);
         getCOI().setVisible(false);
     }
+    public  void showAtom(){
+        getCircle().setVisible(true);
+        getCOI().setVisible(true);
+    }
 
     @Override
     public String toString() {
