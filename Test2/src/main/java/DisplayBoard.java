@@ -16,7 +16,7 @@ public class DisplayBoard extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    //hello
+    //hello , it is not pushing
     @Override
     public void start(Stage primaryStage) throws Exception {
         CreateWelcome(primaryStage);
