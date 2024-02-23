@@ -16,7 +16,7 @@ public class DisplayBoard extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    //hello f
+    //hello
     @Override
     public void start(Stage primaryStage) throws Exception {
         CreateWelcome(primaryStage);
