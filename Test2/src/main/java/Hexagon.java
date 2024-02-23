@@ -8,10 +8,10 @@ public class Hexagon extends Polygon {
     private double x; //coordinates
     private double y;
     private static int atomCount = 0;   //static for the class, not for every instance
-    private boolean hasAtom = false;
-    private Atom atom;
+    public boolean hasAtom = false;
+    public Atom atom;
 
-    private static final ArrayList<Atom> atomList = new ArrayList<>();
+    public static final ArrayList<Atom> atomList = new ArrayList<>();
 
     public Hexagon() {
         super(); // Call the Polygon constructor
@@ -60,22 +60,26 @@ public class Hexagon extends Polygon {
         Atom atom = new Atom(x, y);
         atom.createCircle();
         Pane parentPane = (Pane) getParent();
-        parentPane.getChildren().add(atom.getCircle());
         parentPane.getChildren().add(atom.getCOI());
+        parentPane.getChildren().add(atom.getCircle());
+
         atomList.add(atom);
         this.atom = atom;
         atomCount++;
         hasAtom = true;
     }
 
-    private void removeAtom() {
+    public void removeAtom() {
         Pane parentPane = (Pane) getParent();
         parentPane.getChildren().remove(atom.getCircle());
+        parentPane.getChildren().remove(atom.getCOI());
         atomList.remove(atom);
         atomCount--;
         hasAtom = false;
         this.atom = null;
     }
+
+
 
     public String toString() {
         if (!hasAtom) {

@@ -16,7 +16,7 @@ public class ConstantValues {
 
     //display lenghth width
     public static final double LEN_WIDTH = 800;
-    public static final double COI_RADIUS = 75;
+    public static final double COI_RADIUS = 70;
 
 
 }

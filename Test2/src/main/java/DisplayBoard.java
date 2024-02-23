@@ -1,14 +1,17 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class DisplayBoard extends Application {
+    private Pane hexBoard;
 
     public static void main(String[] args) {
         launch(args);
@@ -16,15 +19,11 @@ public class DisplayBoard extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         CreateWelcome(primaryStage);
-
-
-
     }
 
     public void CreateBoard(Stage primaryStage) throws Exception{
-        Pane hexBoard = new Pane();
+         hexBoard = new Pane();
 
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
 
@@ -42,8 +41,33 @@ public class DisplayBoard extends Application {
             }
             System.out.println();
         }
+
+        // Create a StackPane to hold the button and text
+        StackPane stackPane = new StackPane();
+
+        Button nextButton = new Button("Next");
+        nextButton.setPrefWidth(200); // Set the width of the button
+        nextButton.setPrefHeight(50); // Set the height of the button
+        nextButton.setStyle("-fx-font-size: 16px;"); // Set the font size of the button text
+
+        Text textAboveButton = new Text("Are you finishing inputting the atoms?");
+        textAboveButton.setStyle("-fx-font-size: 18px;"); // Set the font size of the text
+
+        // Add the button and text to the StackPane
+        stackPane.getChildren().addAll(nextButton, textAboveButton);
+
+        // Position the StackPane
+        stackPane.setLayoutX(500); // Set the x-coordinate of the StackPane
+        stackPane.setLayoutY(400); // Set the y-coordinate of the StackPane
+
+        hexBoard.getChildren().add(stackPane); // Add the StackPane to the hexBoard
+
         primaryStage.setScene(new Scene(hexBoard, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH));
         primaryStage.show();
+        nextButton.setOnAction(event -> {
+            hideAtomsOnBoard();
+        });
+
     }
 
     private static double getPosition(int col, double offsetX) {
@@ -67,7 +91,8 @@ public class DisplayBoard extends Application {
         return difference * hexagonWidth / 2;
     }
 
-    public void CreateWelcome(Stage primaryStage) throws Exception { //ELVIS  DO THIS
+    public void CreateWelcome(Stage primaryStage) throws Exception {
+        //ELVIS  DO THIS
         // Creating a Pane for the welcome screen
         Pane welcomeScreen = new Pane();
 
@@ -113,6 +138,19 @@ public class DisplayBoard extends Application {
 
 
     }
+
+    public void hideAtomsOnBoard() {
+        for (Node hexagon : hexBoard.getChildren()) {
+            if (hexagon instanceof Hexagon) {
+                Hexagon hex = (Hexagon) hexagon;
+                if(hex.hasAtom){
+                    //Atom atom = (Atom) atomNode;
+                    hex.atom.hideAtom();
+                }
+            }
+        }
+    }
+
 
 
 
