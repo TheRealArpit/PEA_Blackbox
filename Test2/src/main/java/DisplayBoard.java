@@ -72,12 +72,13 @@ public class DisplayBoard extends Application {
         });
     }
 
+
     private static double getPosition(int col, double offsetX) {
-        double hexagonWidth = 2 * ConstantValues.HEXAGON_RADIUS * Math.cos(Math.PI / 3); // Horizontal distance between the centers of two adjacent hexagons
+        double hexagonWidth = ConstantValues.HEXAGON_RADIUS; // Horizontal distance between the centers of two adjacent hexagons
         double basePosition = col * hexagonWidth; // Base x-coordinate for the hexagon in its row
-        double position = (basePosition + offsetX + ConstantValues.PADDING) * ConstantValues.SCALING_FACTOR; // Calculate the final x-coordinate
+        double position = ConstantValues.SCALING_FACTOR * (basePosition + offsetX + ConstantValues.PADDING);// Calculate the final x-coordinate
         return position;
-    }
+}
 
     private static double getOffsetX(int[] rows, int row) {
         int maxHexagons = rows.length; //Maximum number of hexagons in a row
