@@ -18,7 +18,6 @@ public class Hexagon extends Polygon {
 
         setOnMouseEntered(event -> setStroke(Color.RED));
         setOnMouseExited(event -> setStroke(ConstantValues.HEXAGON_STROKE));
-
         setOnMouseClicked(event -> {
             if (!hasAtom && atomCount < ConstantValues.MAX_ATOMS) {
                 createAtom();

@@ -1,14 +1,19 @@
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.*;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.util.Set;
 
 public class DisplayBoard extends Application {
     private Pane hexBoard;
@@ -18,26 +23,24 @@ public class DisplayBoard extends Application {
     }
 
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         CreateWelcome(primaryStage);
+        primaryStage.setFullScreen(true);
     }
 
     public void CreateBoard(Stage primaryStage) throws Exception{
          hexBoard = new Pane();
-            hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to red
+         hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to red
 
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
-
         for(int y = 0; y < 9; y++){
             for(int x = 0; x <rowss[y]; x++){
                 Hexagon hex = new Hexagon();
                 hex.createHex();
                 double offsetX = getOffsetX(rowss, y) ;
-                double positionX = getPosition( x, offsetX) -50 ;
-                double positionY = y * 1.5 * ConstantValues.HEXAGON_RADIUS + 100;
+                double positionX = getPosition( x, offsetX) + ConstantValues.BOARD_X_STARTAT ;
+                double positionY = y * ConstantValues.SCALING_FACTOR_Y * ConstantValues.HEXAGON_RADIUS + ConstantValues.BOARD_Y_STARTAT;
                 hex.setLayoutX(positionX);
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
@@ -47,28 +50,81 @@ public class DisplayBoard extends Application {
         }
 
 
+        Text Round1 = new Text("ROUND 1");
+        Round1.setUnderline(true);
+        Round1.setLayoutX(100);
+        Round1.setLayoutY(150);
+        Round1.setFont(Font.font("Impact", FontWeight.BOLD, 70));
+        Round1.setFill(Color.BLUE);
+        hexBoard.getChildren().add(Round1);
 
-        Button HideAtomsButton = new Button("Hide Atoms");
+        //Instructions Pane, can move all the boxes at once if needed
+        Pane SetterInstructions = new Pane();
+        Text welcomeText = new Text("SETTER");
+        welcomeText.setUnderline(true);
+
+        welcomeText.setFont(Font.font("Impact", FontWeight.BOLD, 70)); //Set the font, font size and colour
+        welcomeText.setFill(Color.BLUE);
+
+        SetterInstructions.getChildren().add(welcomeText);
+        Button instructionText = new Button("""
+                Setter Instructions:
+                
+                set up atoms by clicking a hexagon
+                
+                remove atom by clicking the same hexagon again
+                
+                choose 5 atoms
+                
+                Click Next when all atoms are chosen
+                """);
+
+        instructionText.setLayoutY(15);
+
+        instructionText.setFont(Font.font("Impact", FontWeight.BOLD, 12));
+        instructionText.setAlignment(Pos.CENTER);
+        instructionText.setStyle("-fx-background-color: linear-gradient(#001B4F, #000000 );"
+                +  "-fx-text-fill: white; " +  "-fx-background-radius: 20;"
+                +  "-fx-background-insets: 0;" +  "-fx-min-width: 200px;" +  "-fx-min-height: 100px;");
+        SetterInstructions.getChildren().add(instructionText);
+
+        SetterInstructions.setLayoutX(1200);
+        SetterInstructions.setLayoutY(150);
+        hexBoard.getChildren().add(SetterInstructions);
+
+
+        Button NextButton = new Button("Next");
+        //Changing style of Button
+        NextButton.setStyle("-fx-background-color: linear-gradient(#4ECCFC, #09729A );"
+                +  "-fx-background-radius: 10;"
+                +  "-fx-background-insets: 0;"
+                +  "-fx-text-fill: white;"
+                +  "-fx-min-width: 200px;"
+                +  "-fx-min-height: 100px;");
+        NextButton.setFont(Font.font("Impact", FontWeight.BOLD, 36));
+        NextButton.setPrefWidth(100); // Set the width and Height of the button
+        NextButton.setPrefHeight(50);
+        NextButton.setLayoutX(1200); //positions
+        NextButton.setLayoutY(500);
+
         Button ShowAtomsButton = new Button("Show Atoms");
+        hexBoard.getChildren().add(ShowAtomsButton);
+        hexBoard.getChildren().add(NextButton);
 
-        HideAtomsButton.setPrefWidth(200); // Set the width of the button
-        HideAtomsButton.setPrefHeight(50);
-
-        ShowAtomsButton.setPrefWidth(200); // Set the width of the button
-        ShowAtomsButton.setPrefHeight(50);
-
-        ShowAtomsButton.setLayoutX(0);
-        ShowAtomsButton.setLayoutY(50);
-
-        hexBoard.getChildren().addAll(ShowAtomsButton, HideAtomsButton); // Add the StackPane to the hexBoard
-
-        primaryStage.setScene(new Scene(hexBoard, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH, Color.RED));
+        primaryStage.setScene(new Scene(hexBoard, Color.RED));
+        primaryStage.setFullScreen(true);
         primaryStage.show();
-        HideAtomsButton.setOnAction(event -> {
+
+        NextButton.setOnAction(event -> {
             hideAtomsOnBoard();
         });
         ShowAtomsButton.setOnAction(event -> {
             ShowAtomsOnBoard();
+        });
+        primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
+            if (KeyCode.ESCAPE == key.getCode()) {
+                primaryStage.close();
+            }
         });
     }
 
@@ -76,7 +132,7 @@ public class DisplayBoard extends Application {
     private static double getPosition(int col, double offsetX) {
         double hexagonWidth = ConstantValues.HEXAGON_RADIUS; // Horizontal distance between the centers of two adjacent hexagons
         double basePosition = col * hexagonWidth; // Base x-coordinate for the hexagon in its row
-        double position = ConstantValues.SCALING_FACTOR * (basePosition + offsetX + ConstantValues.PADDING);// Calculate the final x-coordinate
+        double position = ConstantValues.SCALING_FACTOR_X * (basePosition + offsetX + ConstantValues.PADDING);// Calculate the final x-coordinate
         return position;
 }
 
@@ -97,7 +153,7 @@ public class DisplayBoard extends Application {
 
         // Creating Welcome text to display on the welcome screen
         Text welcomeText = new Text("Welcome to BlackBox");
-        welcomeText.setX(90); // Set the x-coordinate of the text
+        welcomeText.setX(90 + ConstantValues.WELCOMEBOARD_X_STARTAT); // Set the x-coordinate of the text
         welcomeText.setY(160); // Set the y-coordinate of the text
         welcomeText.setUnderline(true);
 
@@ -111,7 +167,7 @@ public class DisplayBoard extends Application {
 
         //Creating production text for welcome screen
         Text prodText = new Text("A unique game experience created by APE Productions");
-        prodText.setX(90);
+        prodText.setX(90+ConstantValues.WELCOMEBOARD_X_STARTAT);
         prodText.setY(190);
         prodText.setTextAlignment(TextAlignment.CENTER);
         prodText.setFont(Font.font("Impact", FontWeight.LIGHT, 14));
@@ -131,7 +187,7 @@ public class DisplayBoard extends Application {
 
                 The player with the highest total score wins.""");
 
-        instructionText.setLayoutX(130);
+        instructionText.setLayoutX(130+ConstantValues.WELCOMEBOARD_X_STARTAT);
         instructionText.setLayoutY(600);
         instructionText.setFont(Font.font("Impact", FontWeight.BOLD, 12));
         instructionText.setAlignment(Pos.CENTER);
@@ -146,7 +202,7 @@ public class DisplayBoard extends Application {
 
         // Creating a Start button
         Button nextButton = new Button("Start Game");
-        nextButton.setLayoutX(300); // Set the x-coordinate of the button
+        nextButton.setLayoutX(300+ConstantValues.WELCOMEBOARD_X_STARTAT); // Set the x-coordinate of the button
         nextButton.setLayoutY(300); // Set the y-coordinate of the button
         nextButton.setAlignment(Pos.CENTER);
 
@@ -166,7 +222,7 @@ public class DisplayBoard extends Application {
 
         // Creating an Exit button
         Button exitButton = new Button("Exit Game");
-        exitButton.setLayoutX(300); // Set the x-coordinate of the button
+        exitButton.setLayoutX(300+ConstantValues.WELCOMEBOARD_X_STARTAT); // Set the x-coordinate of the button
         exitButton.setLayoutY(450); // Set the y-coordinate of the button
         exitButton.setAlignment(Pos.CENTER);
 
@@ -184,8 +240,6 @@ public class DisplayBoard extends Application {
         // Adding the button to the welcome screen pane
         welcomeScreen.getChildren().add(exitButton);
 
-
-
         // Creating the Scene with the welcome screen Pane
         Scene scene = new Scene(welcomeScreen, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH);
 
@@ -194,7 +248,6 @@ public class DisplayBoard extends Application {
 
         // Displaying the primary stage
         primaryStage.show();
-        // Handling button click event
         nextButton.setOnAction(event -> {
             // Create the new scene
             try {
@@ -204,9 +257,12 @@ public class DisplayBoard extends Application {
             }
 
             // Set the new scene on the primary stage
-            //primaryStage.setScene(new Scene(newScreen, 600, 400));
         });
-
+        primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
+            if (KeyCode.ESCAPE == key.getCode()) {
+                primaryStage.close();
+            }
+        });
 
     }
 
