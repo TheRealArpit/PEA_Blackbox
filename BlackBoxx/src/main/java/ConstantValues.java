@@ -16,7 +16,7 @@ public class ConstantValues {
 
     public static final int MAX_ATOMS = 5;
     public static final Color ATOM_COLOR = Color.RED;
-    public static final double ATOM_RADIUS = 10.0;
+    public static final double ATOM_RADIUS = 12.0;
 
     public static final double PADDING = 85;  // Padding around the grid
 
@@ -24,8 +24,8 @@ public class ConstantValues {
     public static final double SCALING_FACTOR_Y = 1.65;
 
     public static final double LEN_WIDTH = 900;
-    public static final double COI_RADIUS = 70;
-
+    public static final double COI_RADIUS = 73;
+    //do not change or the way border atoms are calculated is messed up
     public static double getScreenWidth() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 //        return primaryScreenBounds.getWidth();

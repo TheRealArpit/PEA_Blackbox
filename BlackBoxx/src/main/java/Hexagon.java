@@ -8,6 +8,7 @@ public class Hexagon extends Polygon {
     private double x; //coordinates
     private double y;
     private static int atomCount = 0;   //static for the class, not for every instance
+    public int BorderingAtoms = 0;
     public boolean hasAtom = false;
     public Atom atom;
 
@@ -15,7 +16,6 @@ public class Hexagon extends Polygon {
 
     public Hexagon() {
         super(); // Call the Polygon constructor
-
         setOnMouseEntered(event -> setStroke(Color.RED));
         setOnMouseExited(event -> setStroke(ConstantValues.HEXAGON_STROKE));
         setOnMouseClicked(event -> {
@@ -29,7 +29,6 @@ public class Hexagon extends Polygon {
         });
 
     }
-
 
     public void setPosXY(double x, double y) {
         this.x = x;
@@ -72,8 +71,8 @@ public class Hexagon extends Polygon {
         this.atom = null;
     }
 
-
     public String toString() {
+        /*
         if (!hasAtom) {
             return "There is no Atom here";
         } else if (atom != null) {
@@ -81,7 +80,18 @@ public class Hexagon extends Polygon {
         } else {
             return "(" + x + ", " + y + ")";
         }
+         */
+        return "(" + x + ", " + y + ") "+ BorderingAtoms +")\n";
     }
+    public void addBorderingAtoms(){
+        BorderingAtoms++;
+    }
+
+    public void removeBorderingAtoms(){
+        BorderingAtoms--;
+    }
+
+
 }
 
 

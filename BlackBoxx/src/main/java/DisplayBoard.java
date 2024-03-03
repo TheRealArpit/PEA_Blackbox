@@ -1,19 +1,15 @@
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.Set;
 
 public class DisplayBoard extends Application {
     private Pane hexBoard;
@@ -25,9 +21,12 @@ public class DisplayBoard extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         CreateWelcome(primaryStage);
         primaryStage.setFullScreen(true);
+
     }
+
 
     public void CreateBoard(Stage primaryStage) throws Exception{
          hexBoard = new Pane();
@@ -117,10 +116,10 @@ public class DisplayBoard extends Application {
 
         NextButton.setOnAction(event -> {
             hideAtomsOnBoard();
+            initializeHexagonsNearAtom();
         });
-        ShowAtomsButton.setOnAction(event -> {
-            ShowAtomsOnBoard();
-        });
+        ShowAtomsButton.setOnAction(event -> ShowAtomsOnBoard());
+
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
                 primaryStage.close();
@@ -287,6 +286,28 @@ public class DisplayBoard extends Application {
         }
     }
 
+    public void initializeHexagonsNearAtom() {
+        for (Node hexagon : hexBoard.getChildren()) {
+            if (hexagon instanceof Hexagon) {
+                Hexagon hex = (Hexagon) hexagon;
+                if (hex.hasAtom && hex.atom != null && hex.atom.getCOI() != null) { //valid hexagon
+                    Circle coi = hex.atom.getCOI();
+                    for (Node node : hexBoard.getChildren()) {
+                        if (node instanceof Hexagon) {
+                            Hexagon otherHex = (Hexagon) node;
+                            if (coi.getBoundsInParent().intersects(otherHex.getBoundsInParent()) && otherHex != hex) {
+                                if(!otherHex.hasAtom){
+                                    otherHex.addBorderingAtoms();
+                                    otherHex.setFill(Color.PINK);
+                                    System.out.println(otherHex.toString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
 
