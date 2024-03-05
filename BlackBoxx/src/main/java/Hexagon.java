@@ -1,6 +1,7 @@
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 
 import java.util.ArrayList;
@@ -138,12 +139,27 @@ public class Hexagon extends Polygon {
     }
 
     public void createArrow(double midZ, double midA){
-        //Pane parentPane = (Pane) getParent();
+        /*//Pane parentPane = (Pane) getParent();
         Circle dot = new Circle(midZ, midA, 10);
         dot.setLayoutX(x);
         dot.setLayoutY(y);
         dot.setFill(Color.PINK); // Ensure a visible color
-        parentpane.getChildren().add(dot);
+        parentpane.getChildren().add(dot);*/
+
+        double arrowLength = 10; // Length of the arrow lines
+
+        // Create the lines of the arrow
+        Line line1 = new Line(x - arrowLength, y - arrowLength, x, y);
+        Line line2 = new Line(x + arrowLength, y - arrowLength, x, y);
+
+        // Set the properties of the lines
+        line1.setStrokeWidth(2); // Set the thickness of the line
+        line2.setStrokeWidth(2);
+        line1.setStroke(Color.PINK); // Set the color of the line
+        line2.setStroke(Color.PINK);
+
+        // Add the lines to the parent pane
+        parentpane.getChildren().addAll(line1, line2);
 
     }
 }
