@@ -53,23 +53,28 @@ public class Hexagon extends Polygon {
             double nextA = ConstantValues.HEXAGON_RADIUS * Math.sin(nextAngle);
 
             // Calculate the midpoint
-     
-            if ((i == 3 || i == 4 || i == 2) && column == 0 && row == 0 ||
-                    (i == 0 || i == 1 || i == 2) && column == 0 && row == 8 ||
+
+            if ( ((i == 3 || i == 4 || i == 2) && column == 0 && row == 0 ||
+                    (i == 0 || i == 1 || i == 2) && column == 0 && row == 8) ||
                     (i == 3 || i == 4 || i == 5) && column == 4 && row == 0 ||
                     (i == 5 || i == 0 || i == 1) && column == 4 && row == 8 ||
                     (i == 1 || i == 2 || i == 3) && column == 0 && row == 4 ||
                     (i == 4 || i == 5 || i == 0) && column == 8 && row == 4 ||
-                    (i == 3 || i == 4) && row == 0 ||
-                    (i == 1 || i == 0) && row == 8 ||
-                    (i == 2 || i == 3) && (row == 1 || row == 2 || row == 3) && column == 0 ||
-                    (i == 1 || i == 2) && (row == 5 || row == 6 || row == 7) && column == 0 ||
-                    (i == 5 || i == 0) && (row == 5 || row == 6 || row == 7) && column >4  ||
-                    (i == 4 || i == 5) && (row == 1 || row == 2 || row == 3) && column > 4) {
+                    (i == 3 || i == 4) && column >0 && column<4 && row == 0 ||
+                    (i == 0 || i == 1) && column >0 && column<4 && row == 8 ||
+                    (i == 3 || i == 2) && row >0 && row<4 && column == 0||
+                    (i == 1 || i == 2) && row >=4 && row<=8 && column == 0  ||
+                    (i == 4 ||i==5 ) && row == 2 && column == 6 ||
+                    (i == 4 ||i==5 ) && row == 1 && column == 5||
+                    (i == 4 ||i==5 ) && row == 3 && column == 7||
+                    (i == 0 ||i==5 ) && row == 5 && column == 7 ||
+                    (i == 0 ||i==5 ) && row == 7 && column == 5||
+                    (i == 0 ||i==5 ) && row == 6 && column == 6)
+            {
                 double midZ = (z + nextZ) / 2;
                 double midA = (a + nextA) / 2;
                 createArrow(midZ, midA);
-            }
+}
 
             getPoints().addAll(z, a);
         }
