@@ -33,21 +33,22 @@ public class DisplayBoard extends Application {
          hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to red
 
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
+
         for(int y = 0; y < 9; y++){
             for(int x = 0; x <rowss[y]; x++){
                 Hexagon hex = new Hexagon();
-                hex.createHex();
+                hex.setPane(hexBoard);
                 double offsetX = getOffsetX(rowss, y) ;
                 double positionX = getPosition( x, offsetX) + ConstantValues.BOARD_X_STARTAT ;
                 double positionY = y * ConstantValues.SCALING_FACTOR_Y * ConstantValues.HEXAGON_RADIUS + ConstantValues.BOARD_Y_STARTAT;
                 hex.setLayoutX(positionX);
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
+                hex.createHex();
                 hexBoard.getChildren().add(hex);
             }
             System.out.println();
         }
-
 
         Text Round1 = new Text("ROUND 1");
         Round1.setUnderline(true);
@@ -119,7 +120,6 @@ public class DisplayBoard extends Application {
             initializeHexagonsNearAtom();
         });
         ShowAtomsButton.setOnAction(event -> ShowAtomsOnBoard());
-
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
                 primaryStage.close();
@@ -288,7 +288,7 @@ public class DisplayBoard extends Application {
 
     public void initializeHexagonsNearAtom() {
         for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon) {
+            if (hexagon instanceof Hexagon ) {
                 Hexagon hex = (Hexagon) hexagon;
                 if (hex.hasAtom && hex.atom != null && hex.atom.getCOI() != null) { //valid hexagon
                     Circle coi = hex.atom.getCOI();

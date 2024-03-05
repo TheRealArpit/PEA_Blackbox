@@ -1,5 +1,6 @@
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Hexagon extends Polygon {
     public int BorderingAtoms = 0;
     public boolean hasAtom = false;
     public Atom atom;
+    public static Pane parentpane;
 
     public static final ArrayList<Atom> atomList = new ArrayList<>();
 
@@ -30,6 +32,9 @@ public class Hexagon extends Polygon {
 
     }
 
+    public void setPane(Pane pane){
+        parentpane = pane;
+    }
     public void setPosXY(double x, double y) {
         this.x = x;
         this.y = y;
@@ -41,8 +46,16 @@ public class Hexagon extends Polygon {
             double angle = 2 * Math.PI * (i + 0.5) / 6;
             double z = ConstantValues.HEXAGON_RADIUS * Math.cos(angle);
             double a = ConstantValues.HEXAGON_RADIUS * Math.sin(angle);
+            // Check if it's the first or last hexagon in the row
+            if(i==0){
+                double midZ = (z + ConstantValues.HEXAGON_RADIUS * Math.cos(2 * Math.PI * (0.5) / 6)) / 2;
+                double midA = (a + ConstantValues.HEXAGON_RADIUS * Math.sin(2 * Math.PI * (0.5) / 6)) / 2;
+                createArrow(midZ,midA);
+            }
             getPoints().addAll(z, a);
         }
+        System.out.println(toString());
+
         setStrokeWidth(ConstantValues.HEXAGON_STROKE_WIDTH);
         setStroke(ConstantValues.HEXAGON_STROKE); // set the outline color to yellow
         setFill(ConstantValues.HEXAGON_COLOR);
@@ -72,15 +85,6 @@ public class Hexagon extends Polygon {
     }
 
     public String toString() {
-        /*
-        if (!hasAtom) {
-            return "There is no Atom here";
-        } else if (atom != null) {
-            return atom.toString();
-        } else {
-            return "(" + x + ", " + y + ")";
-        }
-         */
         return "(" + x + ", " + y + ") "+ BorderingAtoms +")\n";
     }
     public void addBorderingAtoms(){
@@ -91,7 +95,15 @@ public class Hexagon extends Polygon {
         BorderingAtoms--;
     }
 
+    public void createArrow(double midZ, double midA){
+        //Pane parentPane = (Pane) getParent();
+        Circle dot = new Circle(midZ, midA, 10);
+        dot.setLayoutX(x );
+        dot.setLayoutY(y );
+        dot.setFill(Color.PINK); // Ensure a visible color
+        parentpane.getChildren().add(dot);
 
+    }
 }
 
 
