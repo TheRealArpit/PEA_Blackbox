@@ -74,6 +74,7 @@ public class Hexagon extends Polygon {
             {
                 double midXArrowLocation = (point1x + point2x) / 2 + x;
                 double midYArrowLocation = (point1y + point2y) / 2 + y;
+
                 Arrow arrow = new Arrow(midXArrowLocation, midYArrowLocation);
                 parentpane.getChildren().add(arrow.dot);
                 parentpane.getChildren().add(arrow.text);
@@ -120,32 +121,6 @@ public class Hexagon extends Polygon {
     public void removeBorderingAtoms(){
         BorderingAtoms--;
     }
-/*
-    public void createArrow(double midZ, double midA){
-        //Pane parentPane = (Pane) getParent();
-        Circle dot = new Circle(midZ, midA, 10);
-        dot.setLayoutX(x);
-        dot.setLayoutY(y);
-        dot.setFill(Color.PINK); // Ensure a visible color
-        parentpane.getChildren().add(dot);
-    }*/
-
-    /*private void createArrow(double midZ, double midA) {
-        // Create the circle
-        Circle dot = new Circle(midZ+x, midA+y, 5);
-
-        dot.setFill(Color.PINK); // Ensure a visible color
-        parentpane.getChildren().add(dot);
-
-        Text text = new Text(String.valueOf(count));
-        text.setFont(Font.font("Arial", FontWeight.BOLD, 15));
-        text.setFill(Color.RED);
-
-        text.setLayoutX(x+midZ);
-        text.setLayoutY(y+midA);
-        parentpane.getChildren().add(text);
-    }
-*/
 }
 
 

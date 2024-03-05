@@ -8,6 +8,7 @@ public class Arrow {
     public static int count = 0;
     public Circle dot;
     public int number;
+    public Text text;
 
     public Arrow(double xLoc, double yloc) {
         //making circle
@@ -16,7 +17,7 @@ public class Arrow {
 
         number = count;
         //making the text
-        Text text = new Text(String.valueOf(count));
+        text = new Text(String.valueOf(count));
         text.setFont(Font.font("Arial", FontWeight.BOLD, 15));
         text.setFill(Color.RED);
         text.setLayoutX(xLoc);
