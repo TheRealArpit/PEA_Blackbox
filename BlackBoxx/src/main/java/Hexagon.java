@@ -40,18 +40,37 @@ public class Hexagon extends Polygon {
         this.y = y;
     }
 
-    public void createHex()
-    {
+    public void createHex(int row, int column, int[] columns) {
         for (int i = 0; i < 6; i++) {
             double angle = 2 * Math.PI * (i + 0.5) / 6;
             double z = ConstantValues.HEXAGON_RADIUS * Math.cos(angle);
             double a = ConstantValues.HEXAGON_RADIUS * Math.sin(angle);
-            // Check if it's the first or last hexagon in the row
-            if(i==0){
-                double midZ = (z + ConstantValues.HEXAGON_RADIUS * Math.cos(2 * Math.PI * (0.5) / 6)) / 2;
-                double midA = (a + ConstantValues.HEXAGON_RADIUS * Math.sin(2 * Math.PI * (0.5) / 6)) / 2;
-                createArrow(midZ,midA);
+
+            // Calculate the next point to create the circle at the midpoint
+            int nextIndex = (i + 1) % 6;
+            double nextAngle = 2 * Math.PI * (nextIndex + 0.5) / 6;
+            double nextZ = ConstantValues.HEXAGON_RADIUS * Math.cos(nextAngle);
+            double nextA = ConstantValues.HEXAGON_RADIUS * Math.sin(nextAngle);
+
+            // Calculate the midpoint
+     
+            if ((i == 3 || i == 4 || i == 2) && column == 0 && row == 0 ||
+                    (i == 0 || i == 1 || i == 2) && column == 0 && row == 8 ||
+                    (i == 3 || i == 4 || i == 5) && column == 4 && row == 0 ||
+                    (i == 5 || i == 0 || i == 1) && column == 4 && row == 8 ||
+                    (i == 1 || i == 2 || i == 3) && column == 0 && row == 4 ||
+                    (i == 4 || i == 5 || i == 0) && column == 8 && row == 4 ||
+                    (i == 3 || i == 4) && row == 0 ||
+                    (i == 1 || i == 0) && row == 8 ||
+                    (i == 2 || i == 3) && (row == 1 || row == 2 || row == 3) && column == 0 ||
+                    (i == 1 || i == 2) && (row == 5 || row == 6 || row == 7) && column == 0 ||
+                    (i == 5 || i == 0) && (row == 5 || row == 6 || row == 7) && column >4  ||
+                    (i == 4 || i == 5) && (row == 1 || row == 2 || row == 3) && column > 4) {
+                double midZ = (z + nextZ) / 2;
+                double midA = (a + nextA) / 2;
+                createArrow(midZ, midA);
             }
+
             getPoints().addAll(z, a);
         }
         System.out.println(toString());
@@ -98,12 +117,12 @@ public class Hexagon extends Polygon {
     public void createArrow(double midZ, double midA){
         //Pane parentPane = (Pane) getParent();
         Circle dot = new Circle(midZ, midA, 10);
-        dot.setLayoutX(x );
-        dot.setLayoutY(y );
+        dot.setLayoutX(x);
+        dot.setLayoutY(y);
         dot.setFill(Color.PINK); // Ensure a visible color
         parentpane.getChildren().add(dot);
 
-    }
+}
 }
 
 

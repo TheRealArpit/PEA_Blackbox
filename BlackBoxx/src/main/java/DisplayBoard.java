@@ -44,11 +44,11 @@ public class DisplayBoard extends Application {
                 hex.setLayoutX(positionX);
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
-                hex.createHex();
+                hex.createHex(y,x,rowss);
                 hexBoard.getChildren().add(hex);
             }
             System.out.println();
-        }
+}
 
         Text Round1 = new Text("ROUND 1");
         Round1.setUnderline(true);
