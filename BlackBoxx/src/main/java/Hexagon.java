@@ -16,7 +16,6 @@ public class Hexagon extends Polygon {
     public int BorderingAtoms = 0;
     public boolean hasAtom = false;
     public Atom atom;
-    //public static int count=0;
     public static Pane parentpane;
 
     public static final ArrayList<Atom> atomList = new ArrayList<>();
@@ -95,6 +94,7 @@ public class Hexagon extends Polygon {
         Pane parentPane = (Pane) getParent();
         parentPane.getChildren().add(atom.getCOI());
         parentPane.getChildren().add(atom.getCircle());
+
         atomList.add(atom);
         this.atom = atom;
         atomCount++;

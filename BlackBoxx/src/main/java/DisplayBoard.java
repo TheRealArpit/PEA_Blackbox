@@ -48,7 +48,7 @@ public class DisplayBoard extends Application {
                 hexBoard.getChildren().add(hex);
             }
             System.out.println();
-        }
+}
 
         Text Round1 = new Text("ROUND 1");
         Round1.setUnderline(true);
