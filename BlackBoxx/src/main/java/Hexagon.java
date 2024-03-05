@@ -40,16 +40,26 @@ public class Hexagon extends Polygon {
         this.y = y;
     }
 
-    public void createHex()
+    public void createHex(int row, int column, int[] columns)
     {
         for (int i = 0; i < 6; i++) {
             double angle = 2 * Math.PI * (i + 0.5) / 6;
             double z = ConstantValues.HEXAGON_RADIUS * Math.cos(angle);
             double a = ConstantValues.HEXAGON_RADIUS * Math.sin(angle);
+
+            // Calculate the next point to create the circle at the midpoint
+            int nextIndex = (i + 1) % 6;
+            double nextAngle = 2 * Math.PI * (nextIndex + 0.5) / 6;
+            double nextZ = ConstantValues.HEXAGON_RADIUS * Math.cos(nextAngle);
+            double nextA = ConstantValues.HEXAGON_RADIUS * Math.sin(nextAngle);
+
+            // Calculate the midpoint
+
+
             // Check if it's the first or last hexagon in the row
-            if(i==0){
-                double midZ = (z + ConstantValues.HEXAGON_RADIUS * Math.cos(2 * Math.PI * (0.5) / 6)) / 2;
-                double midA = (a + ConstantValues.HEXAGON_RADIUS * Math.sin(2 * Math.PI * (0.5) / 6)) / 2;
+            if((i==3|| i==4 ||i==2) && column == 0 && row == 0){
+                double midZ = (z + nextZ) / 2;
+                double midA = (a + nextA) / 2;
                 createArrow(midZ,midA);
             }
             getPoints().addAll(z, a);
@@ -61,6 +71,38 @@ public class Hexagon extends Polygon {
         setFill(ConstantValues.HEXAGON_COLOR);
     }
 
+
+    /*public void createHex()
+    {
+        for (int i = 0; i < 6; i++) {
+            double angle = 2 * Math.PI * (i + 0.5) / 6;
+            double z = ConstantValues.HEXAGON_RADIUS * Math.cos(angle);
+            double a = ConstantValues.HEXAGON_RADIUS * Math.sin(angle);
+
+            // Calculate the next point to create the circle at the midpoint
+            int nextIndex = (i + 1) % 6;
+            double nextAngle = 2 * Math.PI * (nextIndex + 0.5) / 6;
+            double nextZ = ConstantValues.HEXAGON_RADIUS * Math.cos(nextAngle);
+            double nextA = ConstantValues.HEXAGON_RADIUS * Math.sin(nextAngle);
+
+            // Calculate the midpoint
+
+
+            // Check if it's the first or last hexagon in the row
+            if(i==0){
+                double midZ = (z + nextZ) / 2;
+                double midA = (a + nextA) / 2;
+                createArrow(midZ,midA);
+            }
+            getPoints().addAll(z, a);
+        }
+        System.out.println(toString());
+
+        setStrokeWidth(ConstantValues.HEXAGON_STROKE_WIDTH);
+        setStroke(ConstantValues.HEXAGON_STROKE); // set the outline color to yellow
+        setFill(ConstantValues.HEXAGON_COLOR);
+    }
+*/
     private void createAtom() {
         Atom atom = new Atom(x, y);
         atom.createCircle();
@@ -98,8 +140,8 @@ public class Hexagon extends Polygon {
     public void createArrow(double midZ, double midA){
         //Pane parentPane = (Pane) getParent();
         Circle dot = new Circle(midZ, midA, 10);
-        dot.setLayoutX(x );
-        dot.setLayoutY(y );
+        dot.setLayoutX(x);
+        dot.setLayoutY(y);
         dot.setFill(Color.PINK); // Ensure a visible color
         parentpane.getChildren().add(dot);
 
