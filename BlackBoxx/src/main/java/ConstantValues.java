@@ -2,7 +2,13 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConstantValues {
+
+    public static List<List<Hexagon>> hexList = new ArrayList<>();
+
     //controls where the first hexagon is going to be made, which shifts all the hexagons
     public static final double BOARD_X_STARTAT = 300;
     public static final double BOARD_Y_STARTAT = 150;

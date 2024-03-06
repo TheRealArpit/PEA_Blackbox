@@ -37,9 +37,9 @@ public class Arrow extends Polygon{
         }else if (i==4){ //4 is going diagonally down left
             goingto = ConstantValues.direction.S_WEST;
         }else if (i==5){ //5 is going to the left
-            goingto = ConstantValues.direction.S_WEST;
-        }else if (i==0){ //0 is going diagonally up left
             goingto = ConstantValues.direction.WEST;
+        }else if (i==0){ //0 is going diagonally up left
+            goingto = ConstantValues.direction.N_WEST;
         }else if (i==1) { //1 is going diagonally up right
             goingto = ConstantValues.direction.N_EAST;
         } else {

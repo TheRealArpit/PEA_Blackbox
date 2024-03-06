@@ -10,9 +10,13 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DisplayBoard extends Application {
     private Pane hexBoard;
+    //List<List<Hexagon>> hexList = new ArrayList<>();
 
     public static void main(String[] args) {
             launch(args);
@@ -35,6 +39,7 @@ public class DisplayBoard extends Application {
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
 
         for(int y = 0; y < 9; y++){
+            ConstantValues.hexList.add((new ArrayList<>()));
             for(int x = 0; x <rowss[y]; x++){
                 Hexagon hex = new Hexagon();
                 hex.setPane(hexBoard);
@@ -46,8 +51,17 @@ public class DisplayBoard extends Application {
                 hex.setPosXY(positionX,positionY);
 //                System.out.println( hex.toString());
                 hex.createHex(y,x,rowss);
+                ConstantValues.hexList.get(y).add(hex);
                 hexBoard.getChildren().add(hex);
             }
+
+            for(int f=0;f<ConstantValues.hexList.size();f++){
+                for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
+                    System.out.print("("+f+","+l+")");
+                }
+                System.out.println();
+            }
+
             System.out.println();
 }
 

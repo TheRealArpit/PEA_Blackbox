@@ -51,6 +51,7 @@ public class Hexagon extends Polygon {
             double z = ConstantValues.HEXAGON_RADIUS * Math.cos(angle) ;
             double a = ConstantValues.HEXAGON_RADIUS * Math.sin(angle) ;
 
+            //----------------------
             double point1x = 60 * Math.cos(angle) ;
             double point1y = 60 * Math.sin(angle) ;
 
@@ -80,6 +81,7 @@ public class Hexagon extends Polygon {
                 parentpane.getChildren().add(arrow.text);
                 arrow.addCount();
             }
+            //----------
             getPoints().addAll(z, a);
         }
 //        System.out.println(toString());

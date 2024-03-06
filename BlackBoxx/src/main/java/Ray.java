@@ -18,6 +18,7 @@ public class Ray {
         this.y = y;
         calculateEndPoint();
         createLine();
+        check();
         parentpane.getChildren().add(line);
     }
 
@@ -26,11 +27,16 @@ public class Ray {
         switch (cameFrom) {
             case EAST:
                 System.out.println(x + " , "+y);
-                endX = x + 76*6; // Adjust according to your needs
-                //endY = y + 66; // Adjust according to your needs
+                endX = x + 76; // Adjust according to your needs
                 break;
+            case WEST:
+                System.out.println(x + " , "+y);
+                endX = x - 76; // Adjust according to your needs
+            break;
             // Add cases for other directions as needed
             default:
+                endX=x;
+                endY=y;
                 // Handle default case or other directions
                 break;
         }
@@ -45,5 +51,8 @@ public class Ray {
 
     public Line getLine() {
         return line;
+    }
+    public void  check(){
+        //for()
     }
 }
