@@ -1,8 +1,3 @@
-import javafx.scene.shape.Polygon;
-
-import javax.swing.plaf.PanelUI;
-import java.lang.reflect.Constructor;
-
 public class Ray {
     public ConstantValues.direction cameFrom;
     double x;
