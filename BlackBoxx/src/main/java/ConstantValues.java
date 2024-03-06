@@ -25,6 +25,16 @@ public class ConstantValues {
 
     public static final double LEN_WIDTH = 900;
     public static final double COI_RADIUS = 73;
+
+    public enum direction{
+        N_EAST,
+        EAST,
+        S_EAST,
+        S_WEST,
+        WEST,
+        N_WEST
+    }
+
     //do not change or the way border atoms are calculated is messed up
     public static double getScreenWidth() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();

@@ -1,20 +1,17 @@
 import javafx.scene.shape.Polygon;
 
 import javax.swing.plaf.PanelUI;
+import java.lang.reflect.Constructor;
 
 public class Ray {
-    public direction cameFrom;
-    int x;
-    int y;
+    public ConstantValues.direction cameFrom;
+    double x;
+    double y;
 
-    public enum direction{
-        N_EAST,
-        EAST,
-        S_EAST,
-        S_WEST,
-        WEST,
-        N_WEST
+
+    public Ray(ConstantValues.direction cameFrom, double x, double y) {
+        this.cameFrom = cameFrom;
+        this.x = x;
+        this.y = y;
     }
-
-
 }
