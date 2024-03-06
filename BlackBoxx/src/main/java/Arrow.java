@@ -1,3 +1,4 @@
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -10,10 +11,13 @@ public class Arrow extends Polygon{
     public Circle dot;
     public int number;
     public Text text;
+    public Ray ray;
+    public Pane parentpane;
 
 
-    public Arrow(double xLoc, double yloc, int i) {
+    public Arrow(double xLoc, double yloc, int i, Pane pane) {
         super();
+        parentpane = pane;
         //making circle
         dot = new Circle(xLoc, yloc, 10);
         dot.setFill(Color.PINK);
@@ -35,7 +39,7 @@ public class Arrow extends Polygon{
         }else if (i==5){ //5 is going to the left
             goingto = ConstantValues.direction.S_WEST;
         }else if (i==0){ //0 is going diagonally up left
-            goingto = ConstantValues.direction.N_WEST;
+            goingto = ConstantValues.direction.WEST;
         }else if (i==1) { //1 is going diagonally up right
             goingto = ConstantValues.direction.N_EAST;
         } else {
@@ -45,7 +49,7 @@ public class Arrow extends Polygon{
         dot.setOnMouseExited(event -> dot.setFill(Color.PINK));
         dot.setOnMouseClicked(event -> {
             dot.setFill(Color.BLUE);
-            Ray ray = new Ray(goingto, xLoc, yloc);
+            ray = new Ray(goingto, xLoc, yloc, parentpane);
         });
 
     }

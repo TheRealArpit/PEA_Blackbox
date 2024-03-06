@@ -44,6 +44,7 @@ public class DisplayBoard extends Application {
                 hex.setLayoutX(positionX);
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
+//                System.out.println( hex.toString());
                 hex.createHex(y,x,rowss);
                 hexBoard.getChildren().add(hex);
             }
@@ -308,6 +309,7 @@ public class DisplayBoard extends Application {
             }
         }
     }
+
 
 
 

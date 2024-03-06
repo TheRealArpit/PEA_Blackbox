@@ -74,15 +74,15 @@ public class Hexagon extends Polygon {
                 double midXArrowLocation = (point1x + point2x) / 2 + x;
                 double midYArrowLocation = (point1y + point2y) / 2 + y;
 
-                Arrow arrow = new Arrow(midXArrowLocation, midYArrowLocation,i);
+                Arrow arrow = new Arrow(midXArrowLocation, midYArrowLocation,i, parentpane);
+                //parentpane.getChildren().add(arrow.ray.line);
                 parentpane.getChildren().add(arrow.dot);
                 parentpane.getChildren().add(arrow.text);
                 arrow.addCount();
             }
             getPoints().addAll(z, a);
         }
-        System.out.println(toString());
-
+//        System.out.println(toString());
         setStrokeWidth(ConstantValues.HEXAGON_STROKE_WIDTH);
         setStroke(ConstantValues.HEXAGON_STROKE); // set the outline color to yellow
         setFill(ConstantValues.HEXAGON_COLOR);
