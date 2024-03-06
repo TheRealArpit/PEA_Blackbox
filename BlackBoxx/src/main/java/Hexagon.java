@@ -74,7 +74,7 @@ public class Hexagon extends Polygon {
                 double midXArrowLocation = (point1x + point2x) / 2 + x;
                 double midYArrowLocation = (point1y + point2y) / 2 + y;
 
-                Arrow arrow = new Arrow(midXArrowLocation, midYArrowLocation);
+                Arrow arrow = new Arrow(midXArrowLocation, midYArrowLocation,i);
                 parentpane.getChildren().add(arrow.dot);
                 parentpane.getChildren().add(arrow.text);
                 arrow.addCount();

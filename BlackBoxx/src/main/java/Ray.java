@@ -4,6 +4,8 @@ import javax.swing.plaf.PanelUI;
 
 public class Ray {
     public direction cameFrom;
+    int x;
+    int y;
 
     public enum direction{
         N_EAST,
