@@ -15,12 +15,13 @@ public class Arrow extends Polygon{
     public Arrow(double xLoc, double yloc, int i) {
         super();
         //making circle
-        dot = new Circle(xLoc, yloc, 5);
+        dot = new Circle(xLoc, yloc, 10);
         dot.setFill(Color.PINK);
         number = count;
         //making the text
         text = new Text(String.valueOf(count));
-        //text.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+        text.setMouseTransparent(true);
+        text.setFont(Font.font("Arial", FontWeight.BOLD, 15));
         text.setFill(Color.RED);
         text.setLayoutX(xLoc);
         text.setLayoutY(yloc);
@@ -40,7 +41,10 @@ public class Arrow extends Polygon{
         } else {
             goingto = null;
         }
-        setOnMouseClicked(event -> {
+        dot.setOnMouseEntered(event -> dot.setFill(Color.BLUE));
+        dot.setOnMouseExited(event -> dot.setFill(Color.PINK));
+        dot.setOnMouseClicked(event -> {
+            dot.setFill(Color.BLUE);
             Ray ray = new Ray(goingto, xLoc, yloc);
         });
 
