@@ -6,7 +6,7 @@ import javafx.scene.shape.Line;
 import java.util.List;
 
 public class Ray {
-    public ConstantValues.direction cameFrom;//Direction whcih array came from
+    public ConstantValues.direction goingTo;//Direction whcih array came from
     double x;
     double y;
     int rowIndex;
@@ -15,9 +15,9 @@ public class Ray {
     Pane parentpane;
 
 
-    public Ray(ConstantValues.direction cameFrom, double x, double y, Pane pane){//constrctor for the ray
+    public Ray(ConstantValues.direction goingTo, double x, double y, Pane pane){//constrctor for the ray
         parentpane = pane;
-        this.cameFrom = cameFrom;
+        this.goingTo = goingTo;
         this.x = x;
         this.y = y;
 
@@ -33,13 +33,29 @@ public class Ray {
             if(isThereNextHex()){
                 Hexagon hextocheck = ConstantValues.hexList.get(rowIndex).get(colIndex);
                 //Add if statements for the coi reflections
-                if(hextocheck.hasAtom){
-                    System.out.println("Hit");
-                    break;
-                }else{
-
+                if(hextocheck.hasBorderingAtom) {
+                    if (hextocheck.atomPlacement == ConstantValues.atomPlacement.UPRIGHT) {
+                        if (goingTo == ConstantValues.direction.S_WEST) {
+                            createLine();
+                            System.out.println("hit");
+                            break;
+                        }
+                        else if (goingTo == ConstantValues.direction.S_EAST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.EAST;
+                            createRay();
+                        }
+                        else if (goingTo == ConstantValues.direction.WEST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.N_WEST;
+                            createRay();
+                        }
+                    }
+                    else{
+                    }
                 }
-            }else{
+
+                }else{
                 return;
             }
         }
@@ -78,7 +94,7 @@ public class Ray {
         // Calculate the endpoint based on the direction of the ray
         //System.out.println(rowIndex + "    " + colIndex);
         //cases for different directions
-        switch (cameFrom) {
+        switch (goingTo) {
             case EAST:
                 colIndex += 1;
                 break;
