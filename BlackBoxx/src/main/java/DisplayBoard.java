@@ -10,6 +10,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 
 public class DisplayBoard extends Application {
     private Pane hexBoard;
@@ -29,27 +31,42 @@ public class DisplayBoard extends Application {
 
 
     public void CreateBoard(Stage primaryStage) throws Exception{
-         hexBoard = new Pane();
-         hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to red
+         hexBoard = new Pane();//pane to hold the board
+         hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to black
 
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
 
-        for(int y = 0; y < 9; y++){
-            for(int x = 0; x <rowss[y]; x++){
-                Hexagon hex = new Hexagon();
-                hex.setPane(hexBoard);
-                double offsetX = getOffsetX(rowss, y) ;
+        for(int y = 0; y < 9; y++){//iterate over each row
+            ConstantValues.hexList.add((new ArrayList<>()));//make a new arraylist for the hexagons in the current row
+            for(int x = 0; x <rowss[y]; x++){//iterate over the hexagons in the current row
+                Hexagon hex = new Hexagon();//create a new hexagon
+                hex.setPane(hexBoard);//set the pane of the hexagon to the board
+                double offsetX = getOffsetX(rowss, y) ;//calculate offset and position of the hexagon
                 double positionX = getPosition( x, offsetX) + ConstantValues.BOARD_X_STARTAT ;
                 double positionY = y * ConstantValues.SCALING_FACTOR_Y * ConstantValues.HEXAGON_RADIUS + ConstantValues.BOARD_Y_STARTAT;
-                hex.setLayoutX(positionX);
+                hex.setLayoutX(positionX);//set the layout position
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
-                hex.createHex(y,x,rowss);
-                hexBoard.getChildren().add(hex);
-            }
-            System.out.println();
-}
+                hex.createHex(y,x,rowss);//create the visual representation fo the hexagon
+                hexBoard.getChildren().add(hex);//add it to the game board
+                Atom arr = new Atom(hex.centreX, hex.centreY);//create an atom for the hexagon and add it to hte board
+                arr.setPane(hexBoard);
+                arr.createCentre(hex);
+                ConstantValues.hexList.get(y).add(hex);
 
+            }
+/*
+//print coordinates fo hexagons in the current row
+            for(int f=0;f<ConstantValues.hexList.size();f++){
+                for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
+                    System.out.print("("+f+","+l+")");
+                }
+                System.out.println();
+            }*/
+
+            System.out.println();
+        }
+//create a text element for displaying round info
         Text Round1 = new Text("ROUND 1");
         Round1.setUnderline(true);
         Round1.setLayoutX(100);
@@ -67,6 +84,7 @@ public class DisplayBoard extends Application {
         welcomeText.setFill(Color.BLUE);
 
         SetterInstructions.getChildren().add(welcomeText);
+        //create a button for setter instructions
         Button instructionText = new Button("""
                 Setter Instructions:
                 
@@ -92,7 +110,7 @@ public class DisplayBoard extends Application {
         SetterInstructions.setLayoutY(150);
         hexBoard.getChildren().add(SetterInstructions);
 
-
+//button for advancing to next step
         Button NextButton = new Button("Next");
         //Changing style of Button
         NextButton.setStyle("-fx-background-color: linear-gradient(#4ECCFC, #09729A );"
@@ -106,20 +124,21 @@ public class DisplayBoard extends Application {
         NextButton.setPrefHeight(50);
         NextButton.setLayoutX(1200); //positions
         NextButton.setLayoutY(500);
-
+//button for showing atoms on the board
         Button ShowAtomsButton = new Button("Show Atoms");
         hexBoard.getChildren().add(ShowAtomsButton);
         hexBoard.getChildren().add(NextButton);
-
+//setting up the primary stage
         primaryStage.setScene(new Scene(hexBoard, Color.RED));
         primaryStage.setFullScreen(true);
         primaryStage.show();
-
+//event handler for next button
         NextButton.setOnAction(event -> {
             hideAtomsOnBoard();
             initializeHexagonsNearAtom();
         });
         ShowAtomsButton.setOnAction(event -> ShowAtomsOnBoard());
+        // event handler for closing the application with esc key
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
                 primaryStage.close();
@@ -236,26 +255,26 @@ public class DisplayBoard extends Application {
                 +  "-fx-min-width: 210px;"
                 +  "-fx-min-height: 100px;");
 
-        // Adding the button to the welcome screen pane
+        //Adding the button to the welcome screen pane
         welcomeScreen.getChildren().add(exitButton);
 
-        // Creating the Scene with the welcome screen Pane
+        //Creating the Scene with the welcome screen Pane
         Scene scene = new Scene(welcomeScreen, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH);
 
-        // Setting the scene to the primary stage
+        //Setting the scene to the primary stage
         primaryStage.setScene(scene);
 
-        // Displaying the primary stage
+        //Displaying the primary stage
         primaryStage.show();
         nextButton.setOnAction(event -> {
-            // Create the new scene
+            //Create the new scene
             try {
                 CreateBoard(primaryStage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
-            // Set the new scene on the primary stage
+            //Set the new scene on the primary stage
         });
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
@@ -265,38 +284,38 @@ public class DisplayBoard extends Application {
 
     }
 
-    public void hideAtomsOnBoard() {
-        for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon) {
-                Hexagon hex = (Hexagon) hexagon;
-                if(hex.hasAtom){
-                    hex.atom.hideAtom();
+    public void hideAtomsOnBoard() {//method to hide atoms
+        for (Node hexagon : hexBoard.getChildren()) {//Iterate through each node
+            if (hexagon instanceof Hexagon) {//check if node is an instance of the hexagon class
+                Hexagon hex = (Hexagon) hexagon;//cast the node
+                if(hex.hasAtom){//check if the hexagon has an associated atom
+                    hex.atom.hideAtom();//call the hideAtom method on a the atom
                 }
             }
         }
     }
-    public void ShowAtomsOnBoard() {
-        for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon) {
-                Hexagon hex = (Hexagon) hexagon;
-                if(hex.hasAtom){
-                    hex.atom.showAtom();
+    public void ShowAtomsOnBoard() {//method to show atoms on the game board
+        for (Node hexagon : hexBoard.getChildren()) {//iterate through each node in the game boards children
+            if (hexagon instanceof Hexagon) {//check if the node is an instance of the hexagon class
+                Hexagon hex = (Hexagon) hexagon;//case the node
+                if(hex.hasAtom){//check if the hexagon has an associated atom
+                    hex.atom.showAtom();//call the show atom emthod
                 }
             }
         }
     }
 
-    public void initializeHexagonsNearAtom() {
-        for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon ) {
-                Hexagon hex = (Hexagon) hexagon;
+    public void initializeHexagonsNearAtom() {//method to intitialize hexagons near the atoms coi
+        for (Node hexagon : hexBoard.getChildren()) {//iterate through each node
+            if (hexagon instanceof Hexagon ) {//check if the node is an instance of the hexagon class
+                Hexagon hex = (Hexagon) hexagon;//cast the node
                 if (hex.hasAtom && hex.atom != null && hex.atom.getCOI() != null) { //valid hexagon
-                    Circle coi = hex.atom.getCOI();
-                    for (Node node : hexBoard.getChildren()) {
-                        if (node instanceof Hexagon) {
-                            Hexagon otherHex = (Hexagon) node;
-                            if (coi.getBoundsInParent().intersects(otherHex.getBoundsInParent()) && otherHex != hex) {
-                                if(!otherHex.hasAtom){
+                    Circle coi = hex.atom.getCOI();//get the coi of the atom
+                    for (Node node : hexBoard.getChildren()) {//iterate through each node
+                        if (node instanceof Hexagon) {//check if the node is an instance of the hexagon class
+                            Hexagon otherHex = (Hexagon) node;//cast the node
+                            if (coi.getBoundsInParent().intersects(otherHex.getBoundsInParent()) && otherHex != hex) {//make sure otherhex is not the same as the current hexagon
+                                if(!otherHex.hasAtom){//check if other hex doesnt have an atom
                                     otherHex.addBorderingAtoms();
                                     otherHex.setFill(Color.PINK);
                                     System.out.println(otherHex.toString());
