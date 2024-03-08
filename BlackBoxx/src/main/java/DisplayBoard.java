@@ -131,7 +131,7 @@ public class DisplayBoard extends Application {
             hideAtomsOnBoard();
             initializeHexagonsNearAtom();
         });
-        ShowAtomsButton.setOnAction(event -> ShowAtomsOnBoard());
+        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
         // event handler for closing the application with esc key
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
@@ -139,7 +139,6 @@ public class DisplayBoard extends Application {
             }
         });
     }
-
     private static double getPosition(int col, double offsetX) {
         double hexagonWidth = ConstantValues.HEXAGON_RADIUS; // Horizontal distance between the centers of two adjacent hexagons
         double basePosition = col * hexagonWidth; // Base x-coordinate for the hexagon in its row
@@ -286,7 +285,16 @@ public class DisplayBoard extends Application {
             }
         }
     }
-
+    public void showAtomsOnBoard(){ //better way to hide atoms
+        for(int f=0;f<ConstantValues.hexList.size();f++){
+            for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
+                Hexagon hexToHide = ConstantValues.hexList.get(f).get(l);
+                if(hexToHide.hasAtom){
+                    hexToHide.atom.showAtom();
+                }
+            }
+        }
+    }
 
 
     public void ShowAtomsOnBoard() {//method to show atoms on the game board
