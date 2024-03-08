@@ -39,6 +39,15 @@ public class ConstantValues {
         N_WEST
     }
 
+    public enum atomPlacement{
+        LEFT,
+        RIGHT,
+        UPRIGHT,
+        UPLEFT,
+        DOWNRIGHT,
+        DOWNLEFT
+    }
+
     //do not change or the way border atoms are calculated is messed up
     public static double getScreenWidth() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();

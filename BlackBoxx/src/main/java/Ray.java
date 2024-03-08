@@ -32,6 +32,7 @@ public class Ray {
             calculateEndPoint();
             if(isThereNextHex()){
                 Hexagon hextocheck = ConstantValues.hexList.get(rowIndex).get(colIndex);
+                //Add if statements for the coi reflections
                 if(hextocheck.hasAtom){
                     System.out.println("Hit");
                     break;

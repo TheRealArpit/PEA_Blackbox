@@ -319,6 +319,8 @@ public class DisplayBoard extends Application {
         }
     }
 
+    //Elvis make a better initializeHexagonNearAtom() using the atomPlacement enum
+
 
 
 }
