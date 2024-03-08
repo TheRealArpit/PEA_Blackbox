@@ -19,8 +19,6 @@ public class DisplayBoard extends Application {
     public static void main(String[] args) {
             launch(args);
     }
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -28,8 +26,6 @@ public class DisplayBoard extends Application {
         primaryStage.setFullScreen(true);
 
     }
-
-
     public void CreateBoard(Stage primaryStage) throws Exception{
          hexBoard = new Pane();//pane to hold the board
          hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to black
@@ -47,26 +43,24 @@ public class DisplayBoard extends Application {
                 hex.setLayoutX(positionX);//set the layout position
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
-                hex.createHex(y,x,rowss);//create the visual representation fo the hexagon
+                hex.createHex(y,x);//create the visual representation fo the hexagon
                 hexBoard.getChildren().add(hex);//add it to the game board
                 Atom arr = new Atom(hex.centreX, hex.centreY);//create an atom for the hexagon and add it to hte board
                 arr.setPane(hexBoard);
                 arr.createCentre(hex);
                 ConstantValues.hexList.get(y).add(hex);
-
             }
-/*
-//print coordinates fo hexagons in the current row
+            /*
+            //print coordinates fo hexagons in the current row
             for(int f=0;f<ConstantValues.hexList.size();f++){
                 for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
                     System.out.print("("+f+","+l+")");
                 }
                 System.out.println();
-            }*/
-
-            System.out.println();
+            }
+           */
         }
-//create a text element for displaying round info
+        //create a text element for displaying round info
         Text Round1 = new Text("ROUND 1");
         Round1.setUnderline(true);
         Round1.setLayoutX(100);
@@ -110,7 +104,7 @@ public class DisplayBoard extends Application {
         SetterInstructions.setLayoutY(150);
         hexBoard.getChildren().add(SetterInstructions);
 
-//button for advancing to next step
+        //button for advancing to next step
         Button NextButton = new Button("Next");
         //Changing style of Button
         NextButton.setStyle("-fx-background-color: linear-gradient(#4ECCFC, #09729A );"
@@ -124,15 +118,15 @@ public class DisplayBoard extends Application {
         NextButton.setPrefHeight(50);
         NextButton.setLayoutX(1200); //positions
         NextButton.setLayoutY(500);
-//button for showing atoms on the board
+        //button for showing atoms on the board
         Button ShowAtomsButton = new Button("Show Atoms");
         hexBoard.getChildren().add(ShowAtomsButton);
         hexBoard.getChildren().add(NextButton);
-//setting up the primary stage
+        //setting up the primary stage
         primaryStage.setScene(new Scene(hexBoard, Color.RED));
         primaryStage.setFullScreen(true);
         primaryStage.show();
-//event handler for next button
+        //event handler for next button
         NextButton.setOnAction(event -> {
             hideAtomsOnBoard();
             initializeHexagonsNearAtom();
@@ -146,14 +140,12 @@ public class DisplayBoard extends Application {
         });
     }
 
-
     private static double getPosition(int col, double offsetX) {
         double hexagonWidth = ConstantValues.HEXAGON_RADIUS; // Horizontal distance between the centers of two adjacent hexagons
         double basePosition = col * hexagonWidth; // Base x-coordinate for the hexagon in its row
         double position = ConstantValues.SCALING_FACTOR_X * (basePosition + offsetX + ConstantValues.PADDING);// Calculate the final x-coordinate
         return position;
 }
-
     private static double getOffsetX(int[] rows, int row) {
         int maxHexagons = rows.length; //Maximum number of hexagons in a row
         int currentHexagons = rows[row]; //Number of hexagons in the current row
@@ -161,7 +153,6 @@ public class DisplayBoard extends Application {
         int difference = maxHexagons - currentHexagons; //Difference between the maximum number of hexagons and the number in the current row
         return difference * hexagonWidth / 2;
     }
-
     public void CreateWelcome(Stage primaryStage) throws Exception {
 
         // Creating a Pane for the welcome screen
@@ -284,16 +275,20 @@ public class DisplayBoard extends Application {
 
     }
 
-    public void hideAtomsOnBoard() {//method to hide atoms
-        for (Node hexagon : hexBoard.getChildren()) {//Iterate through each node
-            if (hexagon instanceof Hexagon) {//check if node is an instance of the hexagon class
-                Hexagon hex = (Hexagon) hexagon;//cast the node
-                if(hex.hasAtom){//check if the hexagon has an associated atom
-                    hex.atom.hideAtom();//call the hideAtom method on a the atom
+
+    public void hideAtomsOnBoard(){ //better way to hide atoms
+        for(int f=0;f<ConstantValues.hexList.size();f++){
+            for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
+                Hexagon hexToHide = ConstantValues.hexList.get(f).get(l);
+                if(hexToHide.hasAtom){
+                 hexToHide.atom.hideAtom();
                 }
             }
         }
     }
+
+
+
     public void ShowAtomsOnBoard() {//method to show atoms on the game board
         for (Node hexagon : hexBoard.getChildren()) {//iterate through each node in the game boards children
             if (hexagon instanceof Hexagon) {//check if the node is an instance of the hexagon class

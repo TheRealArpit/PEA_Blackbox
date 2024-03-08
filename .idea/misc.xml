@@ -5,9 +5,9 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/BlackBox/pom.xml" />
+        <option value="$PROJECT_DIR$/BlackBoxx/pom.xml" />
       </list>
     </option>
-    <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

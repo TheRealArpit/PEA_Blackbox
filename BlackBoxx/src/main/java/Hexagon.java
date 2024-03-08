@@ -43,7 +43,7 @@ public class Hexagon extends Polygon {
         this.y = y;
     }
 
-    public void createHex(int row, int column, int[] columns)//method to create hexagon
+    public void createHex(int row, int column)//method to create hexagon
     {
         centreX=0;
         centreY =0;
