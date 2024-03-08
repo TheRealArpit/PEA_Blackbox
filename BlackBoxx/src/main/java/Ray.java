@@ -48,92 +48,89 @@ public class Ray {
                             goingTo = ConstantValues.direction.N_WEST;
                             createRay();
                         }
-
-                    }
-                }else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.UPLEFT) {
-                    if (goingTo == ConstantValues.direction.S_EAST) {
-                        createLine();
-                        System.out.println("hit");
-                        break;
-                    }
-                    else if (goingTo == ConstantValues.direction.EAST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.N_EAST;
-                        createRay();
-                    }
-                    else if (goingTo == ConstantValues.direction.S_WEST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.WEST;
-                        createRay();
-                    }
-                } else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.LEFT) {
-                    if (goingTo == ConstantValues.direction.EAST) {
-                        createLine();
-                        System.out.println("hit");
-                        break;
-                    }
-                    else if (goingTo == ConstantValues.direction.N_EAST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.N_WEST;
-                        createRay();
-                    }
-                    else if (goingTo == ConstantValues.direction.S_EAST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.S_WEST;
-                        createRay();
-                    }
-                }else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.DOWNLEFT) {
-                    if (goingTo == ConstantValues.direction.N_EAST) {
-                        createLine();
-                        System.out.println("hit");
-                        break;
-                    }
-                    else if (goingTo == ConstantValues.direction.EAST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.S_EAST;
-                        createRay();
-                    }
-                    else if (goingTo == ConstantValues.direction.N_WEST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.WEST;
-                        createRay();
-                    }
-                } else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.DOWNRIGHT) {
-                    if (goingTo == ConstantValues.direction.N_WEST) {
-                        createLine();
-                        System.out.println("hit");
-                        break;
-                    }
-                    else if (goingTo == ConstantValues.direction.WEST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.S_WEST;
-                        createRay();
-                    }
-                    else if (goingTo == ConstantValues.direction.N_EAST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.EAST;
-                        createRay();
-                    }
-                }else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.RIGHT) {
-                    if (goingTo == ConstantValues.direction.WEST) {
-                        createLine();
-                        System.out.println("hit");
-                        break;
-                    }
-                    else if (goingTo == ConstantValues.direction.S_WEST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.S_EAST;
-                        createRay();
-                    }
-                    else if (goingTo == ConstantValues.direction.N_WEST) {
-                        createLine();
-                        goingTo = ConstantValues.direction.N_EAST;
-                        createRay();
+                    }else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.UPLEFT) {
+                        if (goingTo == ConstantValues.direction.S_EAST) {
+                            createLine();
+                            System.out.println("hit");
+                            break;
+                        }
+                        else if (goingTo == ConstantValues.direction.EAST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.N_EAST;
+                            createRay();
+                        }
+                        else if (goingTo == ConstantValues.direction.S_WEST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.WEST;
+                            createRay();
+                        }
+                    } else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.LEFT) {
+                        if (goingTo == ConstantValues.direction.EAST) {
+                            createLine();
+                            System.out.println("hit");
+                            break;
+                        }
+                        else if (goingTo == ConstantValues.direction.N_EAST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.N_WEST;
+                            createRay();
+                        }
+                        else if (goingTo == ConstantValues.direction.S_EAST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.S_WEST;
+                            createRay();
+                        }
+                    }else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.DOWNLEFT) {
+                        if (goingTo == ConstantValues.direction.N_EAST) {
+                            createLine();
+                            System.out.println("hit");
+                            break;
+                        }
+                        else if (goingTo == ConstantValues.direction.EAST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.S_EAST;
+                            createRay();
+                        }
+                        else if (goingTo == ConstantValues.direction.N_WEST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.WEST;
+                            createRay();
+                        }
+                    } else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.DOWNRIGHT) {
+                        if (goingTo == ConstantValues.direction.N_WEST) {
+                            createLine();
+                            System.out.println("hit");
+                            break;
+                        }
+                        else if (goingTo == ConstantValues.direction.WEST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.S_WEST;
+                            createRay();
+                        }
+                        else if (goingTo == ConstantValues.direction.N_EAST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.EAST;
+                            createRay();
+                        }
+                    }else if (hextocheck.atomPlacement == ConstantValues.atomPlacement.RIGHT) {
+                        if (goingTo == ConstantValues.direction.WEST) {
+                            createLine();
+                            System.out.println("hit");
+                            break;
+                        }
+                        else if (goingTo == ConstantValues.direction.S_WEST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.S_EAST;
+                            createRay();
+                        }
+                        else if (goingTo == ConstantValues.direction.N_WEST) {
+                            createLine();
+                            goingTo = ConstantValues.direction.N_EAST;
+                            createRay();
+                        }
                     }
                 }
-
-
-
+                
                 }else{
                 return;
             }
