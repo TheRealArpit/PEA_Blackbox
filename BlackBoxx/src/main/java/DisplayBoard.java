@@ -297,26 +297,104 @@ public class DisplayBoard extends Application {
     }
 
 
-    public void initializeHexagonsNearAtom() {//method to intitialize hexagons near the atoms coi
-        for (Node hexagon : hexBoard.getChildren()) {//iterate through each node
-            if (hexagon instanceof Hexagon ) {//check if the node is an instance of the hexagon class
-                Hexagon hex = (Hexagon) hexagon;//cast the node
-                if (hex.hasAtom && hex.atom != null && hex.atom.getCOI() != null) { //valid hexagon
-                    Circle coi = hex.atom.getCOI();//get the coi of the atom
-                    for (Node node : hexBoard.getChildren()) {//iterate through each node
-                        if (node instanceof Hexagon) {//check if the node is an instance of the hexagon class
-                            Hexagon otherHex = (Hexagon) node;//cast the node
-                            if (coi.getBoundsInParent().intersects(otherHex.getBoundsInParent()) && otherHex != hex) {//make sure otherhex is not the same as the current hexagon
-                                if(!otherHex.hasAtom){//check if other hex doesnt have an atom
-                                    otherHex.addBorderingAtoms();
-                                    otherHex.setFill(Color.PINK);
-                                }
-                            }
-                        }
+    public void initializeHexagonsNearAtom() {
+        for(int row = 0; row < ConstantValues.hexList.size(); row++) {
+            for (int col = 0; col < ConstantValues.hexList.get(row).size(); col++) {
+                Hexagon hexagon = ConstantValues.hexList.get(row).get(col);
+                if (hexagon.hasAtom) {
+                    int newRow;
+                    int newCol;
+
+                    //RightHexagon
+                    newRow = row;
+                    newCol = col + 1;
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexRight = ConstantValues.hexList.get(row).get(col + 1);
+                        hexRight.setFill(Color.RED);
+                        hexRight.atomPlacement = ConstantValues.atomPlacement.RIGHT;
+                        hexRight.hasBorderingAtom = true;
+                        hexRight.BorderingAtoms++;
+                    }
+                    //LeftHexagon
+                    newRow = row;
+                    newCol = col - 1;
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexLeft = ConstantValues.hexList.get(row).get(col - 1);
+                        hexLeft.setFill(Color.PURPLE);
+                        hexLeft.atomPlacement = ConstantValues.atomPlacement.LEFT;
+                        hexLeft.hasBorderingAtom = true;
+                        hexLeft.BorderingAtoms++;;
+                    }
+
+                    //bottomRight
+                    if(row>=4) {
+                        newRow = row+1;
+                        newCol = col;
+                    }else{
+                        newRow = row+1;
+                        newCol = col+1;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexdownRight = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexdownRight.setFill(Color.PURPLE);
+                        hexdownRight.atomPlacement = ConstantValues.atomPlacement.DOWNRIGHT;
+                        hexdownRight.hasBorderingAtom = true;
+                        hexdownRight.BorderingAtoms++;
+                    }
+                    //bottomLeft
+                    if(row>=4) {
+                        newRow = row+1;
+                        newCol = col-1;
+                    }else{
+                        newRow = row+1;
+                        newCol = col;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexDownLeft = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexDownLeft.setFill(Color.PURPLE);
+                        hexDownLeft.atomPlacement = ConstantValues.atomPlacement.DOWNLEFT;
+                        hexDownLeft.hasBorderingAtom = true;
+                        hexDownLeft.BorderingAtoms++;
+                    }
+                    //upRight
+                    if(row <= 4) {
+                        newRow= row -1;
+                        newCol = col;
+                    }else{
+                        newRow = row -1;
+                        newCol = col +1;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexUpRight = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexUpRight.setFill(Color.PURPLE);
+                        hexUpRight.atomPlacement = ConstantValues.atomPlacement.UPRIGHT;
+                        hexUpRight.hasBorderingAtom = true;
+                        hexUpRight.BorderingAtoms++;
+                    }
+
+                    //upLeft
+                    if(row<=4) {
+                        newRow = row - 1;
+                        newCol = col - 1;
+                    }else{
+                        newRow = row - 1;
+                        newCol = col;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexUpLeft = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexUpLeft.setFill(Color.PURPLE);
+                        hexUpLeft.atomPlacement = ConstantValues.atomPlacement.UPLEFT;
+                        hexUpLeft.hasBorderingAtom = true;
+                        hexUpLeft.BorderingAtoms++;
                     }
                 }
             }
         }
+    }
+
+    public boolean isHexThere(int newRow, int newCol){
+        return newRow >= 0 && newRow < ConstantValues.hexList.size() &&
+                newCol >= 0 && newCol < ConstantValues.hexList.get(newRow).size();
     }
 
     //Elvis make a better initializeHexagonNearAtom() using the atomPlacement enum

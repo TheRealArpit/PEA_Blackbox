@@ -16,6 +16,9 @@ public class Hexagon extends Polygon {
     public Atom atom;
     public static Pane parentpane;
 
+    ConstantValues.atomPlacement atomPlacement;
+    public boolean hasBorderingAtom = false;
+
     public static final ArrayList<Atom> atomList = new ArrayList<>();//list to keep track of all atoms in hexagons
 
     public Hexagon() {
