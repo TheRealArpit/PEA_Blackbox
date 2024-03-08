@@ -297,17 +297,6 @@ public class DisplayBoard extends Application {
     }
 
 
-    public void ShowAtomsOnBoard() {//method to show atoms on the game board
-        for (Node hexagon : hexBoard.getChildren()) {//iterate through each node in the game boards children
-            if (hexagon instanceof Hexagon) {//check if the node is an instance of the hexagon class
-                Hexagon hex = (Hexagon) hexagon;//case the node
-                if(hex.hasAtom){//check if the hexagon has an associated atom
-                    hex.atom.showAtom();//call the show atom emthod
-                }
-            }
-        }
-    }
-
     public void initializeHexagonsNearAtom() {//method to intitialize hexagons near the atoms coi
         for (Node hexagon : hexBoard.getChildren()) {//iterate through each node
             if (hexagon instanceof Hexagon ) {//check if the node is an instance of the hexagon class
@@ -321,7 +310,6 @@ public class DisplayBoard extends Application {
                                 if(!otherHex.hasAtom){//check if other hex doesnt have an atom
                                     otherHex.addBorderingAtoms();
                                     otherHex.setFill(Color.PINK);
-                                    System.out.println(otherHex.toString());
                                 }
                             }
                         }

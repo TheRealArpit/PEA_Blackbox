@@ -9,8 +9,6 @@ public class Ray {
     public ConstantValues.direction cameFrom;//Direction whcih array came from
     double x;
     double y;
-    double endX=0;
-    double endY=0;
     int rowIndex;
     int colIndex;
     Line line;
@@ -25,17 +23,33 @@ public class Ray {
 
         Point2D targetPoint = new Point2D(x, y); // Example coordinates
         Hexagon hex = findNearestHexagon(targetPoint);//find the nearest hexagon to the target point
-        while(isThereNextHex()){
-            createLine();//create line to the next hexagon
-            calculateEndPoint();//calculate the new end point based on the direction
-        }
-
+        createRay();
     }
-//method to find the nearest hexagon to a given point
+
+    public void createRay(){
+        while(isThereNextHex()){
+            createLine();
+            calculateEndPoint();
+            if(isThereNextHex()){
+                Hexagon hextocheck = ConstantValues.hexList.get(rowIndex).get(colIndex);
+                if(hextocheck.hasAtom){
+                    System.out.println("Hit");
+                    break;
+                }else{
+
+                }
+            }else{
+                return;
+            }
+        }
+    }
+
+
+
+    //method to find the nearest hexagon from the circle/arrow
     public Hexagon findNearestHexagon(Point2D point) {
         Hexagon nearestHexagon = null;
         double minDistance = Double.MAX_VALUE;
-
         for(int row = 0; row < ConstantValues.hexList.size(); row++) {
             for (int col = 0; col < ConstantValues.hexList.get(row).size(); col++) {
                 Hexagon hexagon = ConstantValues.hexList.get(row).get(col);
@@ -51,6 +65,7 @@ public class Ray {
         nearestHexagon.setFill(Color.RED);//set the color of the nearest hexagon to red
         return nearestHexagon;
     } //works
+
     //Method to calculate the Euclidean distance between two points
     private double calculateDistance(Point2D point, double x, double y) {
         double dx = point.getX() - x;
@@ -60,7 +75,7 @@ public class Ray {
     // Method to calculate the next endpoint based on the direction of the ray
     private void calculateEndPoint() {
         // Calculate the endpoint based on the direction of the ray
-        System.out.println(rowIndex + "    " + colIndex);
+        //System.out.println(rowIndex + "    " + colIndex);
         //cases for different directions
         switch (cameFrom) {
             case EAST:
@@ -78,7 +93,7 @@ public class Ray {
                 }
                 break;
             case N_EAST: // done
-                System.out.println("here");
+               //System.out.println("here");
                 if(rowIndex<=4) {
                     rowIndex -= 1;
                 }else{
@@ -123,12 +138,12 @@ public class Ray {
 //method to check if there is a hexagon in the rays path
     private boolean isThereNextHex() {
         if (rowIndex < 0 || rowIndex >= ConstantValues.hexList.size()) {
-            System.out.println("Out of bounds: row index");
+            System.out.println("Left the hexagonalboard");
             return false;
         }
         List<Hexagon> row = ConstantValues.hexList.get(rowIndex);
         if (colIndex < 0 || colIndex >= row.size()) {
-            System.out.println("Out of bounds: column index");
+            System.out.println("Left the hexagonalboard");
             return false;
         }
         return true;
