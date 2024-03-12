@@ -1,9 +1,8 @@
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeType;
-
-import java.util.ArrayList;
 //private static ArrayList<Atom> atomList = new ArrayList<Atom>();
 
 
@@ -14,6 +13,7 @@ public class Atom extends Polygon {
     private Circle circle;
     private Circle COI;
     public  boolean visibility = true;
+    Pane parentpane;
 
     public Atom(double x, double y) {
         this.x = x;
@@ -21,6 +21,10 @@ public class Atom extends Polygon {
         createCircle();
         //atomList.add(this);
     }
+    public void setPane(Pane pane) {
+        parentpane = pane;
+    }
+
 
     public void createCircle() {
         // Add the border circle to the same position as the main circle
@@ -48,16 +52,16 @@ public class Atom extends Polygon {
 
     public Circle getCircle() {
         return circle;
-    }
+    }//get main circle of the atom
     public Circle getCOI() {
         return COI;
-    }
+    }//return the cirle of influence associatied with the atom
 
-    public  void hideAtom(){
+    public  void hideAtom(){//hides the atom by setting the visibility of both the main circle and the the coi to fals
         getCircle().setVisible(false);
         getCOI().setVisible(false);
     }
-    public  void showAtom(){
+    public  void showAtom(){//showes the atom by settign the visibility of both the main circle and the coi to true
         getCircle().setVisible(true);
         getCOI().setVisible(true);
     }
@@ -65,5 +69,19 @@ public class Atom extends Polygon {
     @Override
     public String toString() {
         return "(" + x + ", " + y + ")";
+    }//atom coordinates
+
+    public void createCentre(Hexagon hex) {
+        // Add the border circle to the same position as the main circle
+
+        circle = new Circle();
+        circle.setRadius(5);//radius of the center circle
+        circle.setFill(Color.RED);//color fo the center circle
+        circle.setCenterX(hex.centreX);
+        circle.setCenterY(hex.centreY);
+        parentpane.getChildren().add(circle);
+
     }
+
+
 }

@@ -52,6 +52,8 @@ public class Arrow extends Polygon{
             ray = new Ray(goingto, xLoc, yloc, parentpane);
         });
 
+
+
     }
 
     public void addCount(){

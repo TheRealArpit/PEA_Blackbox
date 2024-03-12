@@ -11,18 +11,14 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class DisplayBoard extends Application {
     private Pane hexBoard;
-    //List<List<Hexagon>> hexList = new ArrayList<>();
 
     public static void main(String[] args) {
             launch(args);
     }
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -30,41 +26,41 @@ public class DisplayBoard extends Application {
         primaryStage.setFullScreen(true);
 
     }
-
-
     public void CreateBoard(Stage primaryStage) throws Exception{
-         hexBoard = new Pane();
-         hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to red
+         hexBoard = new Pane();//pane to hold the board
+         hexBoard.setStyle("-fx-background-color: black;"); // Set the background color to black
 
         int[] rowss = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
 
-        for(int y = 0; y < 9; y++){
-            ConstantValues.hexList.add((new ArrayList<>()));
-            for(int x = 0; x <rowss[y]; x++){
-                Hexagon hex = new Hexagon();
-                hex.setPane(hexBoard);
-                double offsetX = getOffsetX(rowss, y) ;
+        for(int y = 0; y < 9; y++){//iterate over each row
+            ConstantValues.hexList.add((new ArrayList<>()));//make a new arraylist for the hexagons in the current row
+            for(int x = 0; x <rowss[y]; x++){//iterate over the hexagons in the current row
+                Hexagon hex = new Hexagon();//create a new hexagon
+                hex.setPane(hexBoard);//set the pane of the hexagon to the board
+                double offsetX = getOffsetX(rowss, y) ;//calculate offset and position of the hexagon
                 double positionX = getPosition( x, offsetX) + ConstantValues.BOARD_X_STARTAT ;
                 double positionY = y * ConstantValues.SCALING_FACTOR_Y * ConstantValues.HEXAGON_RADIUS + ConstantValues.BOARD_Y_STARTAT;
-                hex.setLayoutX(positionX);
+                hex.setLayoutX(positionX);//set the layout position
                 hex.setLayoutY(positionY);
                 hex.setPosXY(positionX,positionY);
-//                System.out.println( hex.toString());
-                hex.createHex(y,x,rowss);
+                hex.createHex(y,x);//create the visual representation fo the hexagon
+                hexBoard.getChildren().add(hex);//add it to the game board
+                Atom arr = new Atom(hex.centreX, hex.centreY);//create an atom for the hexagon and add it to hte board
+                arr.setPane(hexBoard);
+                arr.createCentre(hex);
                 ConstantValues.hexList.get(y).add(hex);
-                hexBoard.getChildren().add(hex);
             }
-
+            /*
+            //print coordinates fo hexagons in the current row
             for(int f=0;f<ConstantValues.hexList.size();f++){
                 for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
                     System.out.print("("+f+","+l+")");
                 }
                 System.out.println();
             }
-
-            System.out.println();
-}
-
+           */
+        }
+        //create a text element for displaying round info
         Text Round1 = new Text("ROUND 1");
         Round1.setUnderline(true);
         Round1.setLayoutX(100);
@@ -82,6 +78,7 @@ public class DisplayBoard extends Application {
         welcomeText.setFill(Color.BLUE);
 
         SetterInstructions.getChildren().add(welcomeText);
+        //create a button for setter instructions
         Button instructionText = new Button("""
                 Setter Instructions:
                 
@@ -107,7 +104,7 @@ public class DisplayBoard extends Application {
         SetterInstructions.setLayoutY(150);
         hexBoard.getChildren().add(SetterInstructions);
 
-
+        //button for advancing to next step
         Button NextButton = new Button("Next");
         //Changing style of Button
         NextButton.setStyle("-fx-background-color: linear-gradient(#4ECCFC, #09729A );"
@@ -121,35 +118,33 @@ public class DisplayBoard extends Application {
         NextButton.setPrefHeight(50);
         NextButton.setLayoutX(1200); //positions
         NextButton.setLayoutY(500);
-
+        //button for showing atoms on the board
         Button ShowAtomsButton = new Button("Show Atoms");
         hexBoard.getChildren().add(ShowAtomsButton);
         hexBoard.getChildren().add(NextButton);
-
+        //setting up the primary stage
         primaryStage.setScene(new Scene(hexBoard, Color.RED));
         primaryStage.setFullScreen(true);
         primaryStage.show();
-
+        //event handler for next button
         NextButton.setOnAction(event -> {
             hideAtomsOnBoard();
             initializeHexagonsNearAtom();
         });
-        ShowAtomsButton.setOnAction(event -> ShowAtomsOnBoard());
+        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
+        // event handler for closing the application with esc key
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
                 primaryStage.close();
             }
         });
     }
-
-
     private static double getPosition(int col, double offsetX) {
         double hexagonWidth = ConstantValues.HEXAGON_RADIUS; // Horizontal distance between the centers of two adjacent hexagons
         double basePosition = col * hexagonWidth; // Base x-coordinate for the hexagon in its row
         double position = ConstantValues.SCALING_FACTOR_X * (basePosition + offsetX + ConstantValues.PADDING);// Calculate the final x-coordinate
         return position;
 }
-
     private static double getOffsetX(int[] rows, int row) {
         int maxHexagons = rows.length; //Maximum number of hexagons in a row
         int currentHexagons = rows[row]; //Number of hexagons in the current row
@@ -157,7 +152,6 @@ public class DisplayBoard extends Application {
         int difference = maxHexagons - currentHexagons; //Difference between the maximum number of hexagons and the number in the current row
         return difference * hexagonWidth / 2;
     }
-
     public void CreateWelcome(Stage primaryStage) throws Exception {
 
         // Creating a Pane for the welcome screen
@@ -251,26 +245,26 @@ public class DisplayBoard extends Application {
                 +  "-fx-min-width: 210px;"
                 +  "-fx-min-height: 100px;");
 
-        // Adding the button to the welcome screen pane
+        //Adding the button to the welcome screen pane
         welcomeScreen.getChildren().add(exitButton);
 
-        // Creating the Scene with the welcome screen Pane
+        //Creating the Scene with the welcome screen Pane
         Scene scene = new Scene(welcomeScreen, ConstantValues.LEN_WIDTH, ConstantValues.LEN_WIDTH);
 
-        // Setting the scene to the primary stage
+        //Setting the scene to the primary stage
         primaryStage.setScene(scene);
 
-        // Displaying the primary stage
+        //Displaying the primary stage
         primaryStage.show();
         nextButton.setOnAction(event -> {
-            // Create the new scene
+            //Create the new scene
             try {
                 CreateBoard(primaryStage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
-            // Set the new scene on the primary stage
+            //Set the new scene on the primary stage
         });
         primaryStage.addEventHandler(javafx.scene.input.KeyEvent.KEY_RELEASED, (key) -> {
             if (KeyCode.ESCAPE == key.getCode()) {
@@ -280,50 +274,130 @@ public class DisplayBoard extends Application {
 
     }
 
-    public void hideAtomsOnBoard() {
-        for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon) {
-                Hexagon hex = (Hexagon) hexagon;
-                if(hex.hasAtom){
-                    hex.atom.hideAtom();
+
+    public void hideAtomsOnBoard(){ //better way to hide atoms
+        for(int f=0;f<ConstantValues.hexList.size();f++){
+            for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
+                Hexagon hexToHide = ConstantValues.hexList.get(f).get(l);
+                if(hexToHide.hasAtom){
+                 hexToHide.atom.hideAtom();
                 }
             }
         }
     }
-    public void ShowAtomsOnBoard() {
-        for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon) {
-                Hexagon hex = (Hexagon) hexagon;
-                if(hex.hasAtom){
-                    hex.atom.showAtom();
+    public void showAtomsOnBoard(){ //better way to hide atoms
+        for(int f=0;f<ConstantValues.hexList.size();f++){
+            for (int l = 0;l< ConstantValues.hexList.get(f).size(); l++){
+                Hexagon hexToHide = ConstantValues.hexList.get(f).get(l);
+                if(hexToHide.hasAtom){
+                    hexToHide.atom.showAtom();
                 }
             }
         }
     }
 
+
     public void initializeHexagonsNearAtom() {
-        for (Node hexagon : hexBoard.getChildren()) {
-            if (hexagon instanceof Hexagon ) {
-                Hexagon hex = (Hexagon) hexagon;
-                if (hex.hasAtom && hex.atom != null && hex.atom.getCOI() != null) { //valid hexagon
-                    Circle coi = hex.atom.getCOI();
-                    for (Node node : hexBoard.getChildren()) {
-                        if (node instanceof Hexagon) {
-                            Hexagon otherHex = (Hexagon) node;
-                            if (coi.getBoundsInParent().intersects(otherHex.getBoundsInParent()) && otherHex != hex) {
-                                if(!otherHex.hasAtom){
-                                    otherHex.addBorderingAtoms();
-                                    otherHex.setFill(Color.PINK);
-                                    System.out.println(otherHex.toString());
-                                }
-                            }
-                        }
+        for(int row = 0; row < ConstantValues.hexList.size(); row++) {
+            for (int col = 0; col < ConstantValues.hexList.get(row).size(); col++) {
+                Hexagon hexagon = ConstantValues.hexList.get(row).get(col);
+                if (hexagon.hasAtom) {
+                    int newRow;
+                    int newCol;
+
+                    //RightHexagon
+                    newRow = row;
+                    newCol = col + 1;
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexRight = ConstantValues.hexList.get(row).get(col + 1);
+                        hexRight.setFill(Color.RED);
+                        hexRight.atomPlacement = ConstantValues.atomPlacement.RIGHT;
+                        hexRight.hasBorderingAtom = true;
+                        hexRight.BorderingAtoms++;
+                    }
+                    //LeftHexagon
+                    newRow = row;
+                    newCol = col - 1;
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexLeft = ConstantValues.hexList.get(row).get(col - 1);
+                        hexLeft.setFill(Color.PURPLE);
+                        hexLeft.atomPlacement = ConstantValues.atomPlacement.LEFT;
+                        hexLeft.hasBorderingAtom = true;
+                        hexLeft.BorderingAtoms++;;
+                    }
+
+                    //bottomRight
+                    if(row>=4) {
+                        newRow = row+1;
+                        newCol = col;
+                    }else{
+                        newRow = row+1;
+                        newCol = col+1;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexdownRight = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexdownRight.setFill(Color.PURPLE);
+                        hexdownRight.atomPlacement = ConstantValues.atomPlacement.DOWNRIGHT;
+                        hexdownRight.hasBorderingAtom = true;
+                        hexdownRight.BorderingAtoms++;
+                    }
+                    //bottomLeft
+                    if(row>=4) {
+                        newRow = row+1;
+                        newCol = col-1;
+                    }else{
+                        newRow = row+1;
+                        newCol = col;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexDownLeft = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexDownLeft.setFill(Color.PURPLE);
+                        hexDownLeft.atomPlacement = ConstantValues.atomPlacement.DOWNLEFT;
+                        hexDownLeft.hasBorderingAtom = true;
+                        hexDownLeft.BorderingAtoms++;
+                    }
+                    //upRight
+                    if(row <= 4) {
+                        newRow= row -1;
+                        newCol = col;
+                    }else{
+                        newRow = row -1;
+                        newCol = col +1;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexUpRight = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexUpRight.setFill(Color.PURPLE);
+                        hexUpRight.atomPlacement = ConstantValues.atomPlacement.UPRIGHT;
+                        hexUpRight.hasBorderingAtom = true;
+                        hexUpRight.BorderingAtoms++;
+                    }
+
+                    //upLeft
+                    if(row<=4) {
+                        newRow = row - 1;
+                        newCol = col - 1;
+                    }else{
+                        newRow = row - 1;
+                        newCol = col;
+                    }
+                    if(isHexThere(newRow,newCol) && !ConstantValues.hexList.get(newRow).get(newCol).hasAtom){
+                        Hexagon hexUpLeft = ConstantValues.hexList.get(newRow).get(newCol);
+                        hexUpLeft.setFill(Color.PURPLE);
+                        hexUpLeft.atomPlacement = ConstantValues.atomPlacement.UPLEFT;
+                        hexUpLeft.hasBorderingAtom = true;
+                        hexUpLeft.BorderingAtoms++;
                     }
                 }
             }
         }
     }
 
+    public boolean isHexThere(int newRow, int newCol){
+        return newRow >= 0 && newRow < ConstantValues.hexList.size() &&
+                newCol >= 0 && newCol < ConstantValues.hexList.get(newRow).size();
+    }
+
+    //Elvis make a better initializeHexagonNearAtom() using the atomPlacement enum
 
 
 
