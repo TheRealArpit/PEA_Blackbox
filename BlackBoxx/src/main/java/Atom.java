@@ -3,6 +3,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeType;
+
+import java.util.ArrayList;
 //private static ArrayList<Atom> atomList = new ArrayList<Atom>();
 
 

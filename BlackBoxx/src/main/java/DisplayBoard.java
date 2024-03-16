@@ -11,6 +11,7 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DisplayBoard extends Application {
@@ -21,10 +22,8 @@ public class DisplayBoard extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         CreateWelcome(primaryStage);
         primaryStage.setFullScreen(true);
-
     }
     public void CreateBoard(Stage primaryStage) throws Exception{
          hexBoard = new Pane();//pane to hold the board

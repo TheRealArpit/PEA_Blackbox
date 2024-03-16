@@ -2,6 +2,9 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.geometry.Point2D;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -130,7 +133,6 @@ public class Ray {
                         }
                     }
                 }
-                
                 }else{
                 return;
             }
@@ -241,5 +243,4 @@ public class Ray {
         }
         return true;
     }
-
 }

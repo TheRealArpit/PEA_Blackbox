@@ -56,6 +56,7 @@ public class Arrow extends Polygon{
 
     }
 
+
     public void addCount(){
         count++;
     }
