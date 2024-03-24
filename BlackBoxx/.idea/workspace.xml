@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a16eb86d-f93e-4eea-9ba7-b1c704c9887b" name="Changes" comment="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TheRealArpit&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5ff8addf-e5f4-4dc3-8059-6dd1b1356f81" />
+        <option name="url" value="https://github.com/TheRealArpit/soloBlackbox.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2dRUuhAd9YSUqZ4ouR1zXrzqq7W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/SoloBlackbox&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.scopes&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\SoloBlackbox\src" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="Constants" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
+      <module name="main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a16eb86d-f93e-4eea-9ba7-b1c704c9887b" name="Changes" comment="" />
+      <created>1709970492082</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709970492082</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Created Project&#10;Made Display Class&#10;Made HexBoard Class">
+      <option name="closed" value="true" />
+      <created>1709977106120</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977106120</updated>
+    </task>
+    <task id="LOCAL-00002" summary="stageSettings()">
+      <option name="closed" value="true" />
+      <created>1709981160860</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709981160860</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Constant, Hexagon Class">
+      <option name="closed" value="true" />
+      <created>1709981553154</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709981553154</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Made into packages. Views and constants.&#10;Views includes the display and hexboard class and another package called shapes">
+      <option name="closed" value="true" />
+      <created>1709989465259</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709989465259</updated>
+    </task>
+    <task id="LOCAL-00005" summary="using packages, split up into model, view, controller">
+      <option name="closed" value="true" />
+      <created>1709990950545</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709990950545</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added welcome page. nothing in model yet. Still figuring that out. going to work on how to change displays after button on welcome page is clicked">
+      <option name="closed" value="true" />
+      <created>1710066699742</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710066699742</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Made a welcome page where once you press next. it changes to the next screen where the hexagonal board will be.">
+      <option name="closed" value="true" />
+      <created>1710278346028</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710278346028</updated>
+    </task>
+    <task id="LOCAL-00008" summary="created the hexagonal board.">
+      <option name="closed" value="true" />
+      <created>1710573754532</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710573754532</updated>
+    </task>
+    <task id="LOCAL-00009" summary="able to add an atom to the hexagon by clicking on it and deleting it by clicking on it again">
+      <option name="closed" value="true" />
+      <created>1710582112682</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710582112682</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Made it look better and added buttons">
+      <option name="closed" value="true" />
+      <created>1710582677880</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710582677880</updated>
+    </task>
+    <task id="LOCAL-00011" summary="created arrows that will go all around the hexagon. not finished">
+      <option name="closed" value="true" />
+      <created>1710666063017</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710666063017</updated>
+    </task>
+    <task id="LOCAL-00012" summary="the Arrows are oriented in the right direction">
+      <option name="closed" value="true" />
+      <created>1710671496233</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710671496233</updated>
+    </task>
+    <task id="LOCAL-00013" summary="initializeHexagonsNearAtom(). when next is pressed. the hexagons around the atom know there is a hexagon around them">
+      <option name="closed" value="true" />
+      <created>1710674856870</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710674856871</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Moved things arround in arrow class. Made the Ray Class. Made ray able to shoot lines that interact with the COI of the atoms. They bounce of eachother until either they hit the atom directly or until it leaves the board">
+      <option name="closed" value="true" />
+      <created>1710695599985</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1710695599985</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better">
+      <option name="closed" value="true" />
+      <created>1711281998466</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1711281998466</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better">
+      <option name="closed" value="true" />
+      <created>1711283566784</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711283566784</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="Created Project&#10;Made Display Class&#10;Made HexBoard Class" />
+    <MESSAGE value="stageSettings()" />
+    <MESSAGE value="Constant, Hexagon Class" />
+    <MESSAGE value="Made into packages. Views and constants.&#10;Views includes the display and hexboard class and another package called shapes" />
+    <MESSAGE value="using packages, split up into model, view, controller" />
+    <MESSAGE value="Added welcome page. nothing in model yet. Still figuring that out. going to work on how to change displays after button on welcome page is clicked" />
+    <MESSAGE value="Made a welcome page where once you press next. it changes to the next screen where the hexagonal board will be." />
+    <MESSAGE value="created the hexagonal board." />
+    <MESSAGE value="able to add an atom to the hexagon by clicking on it and deleting it by clicking on it again" />
+    <MESSAGE value="Made it look better and added buttons" />
+    <MESSAGE value="created arrows that will go all around the hexagon. not finished" />
+    <MESSAGE value="the Arrows are oriented in the right direction" />
+    <MESSAGE value="initializeHexagonsNearAtom(). when next is pressed. the hexagons around the atom know there is a hexagon around them" />
+    <MESSAGE value="Moved things arround in arrow class. Made the Ray Class. Made ray able to shoot lines that interact with the COI of the atoms. They bounce of eachother until either they hit the atom directly or until it leaves the board" />
+    <MESSAGE value="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better" />
+    <option name="LAST_COMMIT_MESSAGE" value="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better" />
+  </component>
+</project>
