@@ -139,6 +139,10 @@ public class Arrow {
     public Text getText() {
         return text;
     }
+    public direction getDirection() {
+        return goingTo;
+    }
+
 
 
 }

@@ -5,6 +5,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.List;
 import static Blackbox.Constant.Constants.*;
 
@@ -31,8 +32,8 @@ public class Ray {
         if (isThereNextHex()) {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
             line.setStrokeWidth(1);
-            line.setStroke(Color.YELLOW); // Set the color to blue
-            parentpane.getChildren().add(line);//Add line to the parent pane
+            line.setStroke(Color.YELLOW);
+            parentpane.getChildren().add(line);
             xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
             yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
         }else{
@@ -42,25 +43,60 @@ public class Ray {
 
     public void createRay() {
         boolean continueRay = true;
+        Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
 
         while (continueRay && isThereNextHex()) {
-            Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
-
-            //continueRay  = checks(goingTo); // Check for reflections or stops, and update direction
 
             if (! (continueRay = checks(goingTo) )) {
                 System.out.println("Here");
                 return;
                 //break; // If checks indicate to stop, we exit the loop
             }else{
+                 currentHex = hexList.get(rowIndex).get(colIndex);
                 createLine(); // Draw the line to the current hexagon
                 calculateEndPoint(); // Calculate the next hexagon based on the current direction
             }
         }
-
+        //System.out.println(currentHex.getRowList() + ", " + currentHex.getColList());
         // After exiting the loop, extend the line
+        drawFinalLine(currentHex);
     }
 
+    private void drawFinalLine(Hexagon currentHex) {
+        direction endArrowDir = opposite();
+        int i=0;
+        for (Arrow a: currentHex.getArrowList()){
+            if(a.getDirection() == endArrowDir){
+                //System.out.println("End arrow Dir is" + endArrowDir.toString());
+                Line line = new Line(xLox, yLoc, currentHex.getArrowList().get(i).getCentreX(), currentHex.getArrowList().get(i).getCentreY());
+                line.setStrokeWidth(1);
+                line.setStroke(Color.YELLOW);
+                parentpane.getChildren().add(line);
+            }else{
+                i++;
+            }
+        }
+
+
+    }
+    private direction opposite() {
+        switch (goingTo) {
+            case EAST:
+                return direction.WEST;
+            case WEST:
+                return direction.EAST;
+            case S_EAST:
+                return direction.N_WEST;
+            case N_EAST:
+                return direction.S_WEST;
+            case N_WEST:
+                return direction.S_EAST;
+            case S_WEST:
+                return direction.N_EAST;
+            default:
+                return null;
+        }
+    }
 
 
     private void calculateEndPoint() {
