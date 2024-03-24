@@ -46,7 +46,7 @@ public class Ray {
         while (continueRay && isThereNextHex()) {
             Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
 
-            //continueRay = checks(goingTo); // Check for reflections or stops, and update direction
+            //continueRay  = checks(goingTo); // Check for reflections or stops, and update direction
 
             if (! (continueRay = checks(goingTo) )) {
                 System.out.println("Here");
