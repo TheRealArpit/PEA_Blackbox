@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2e8r5ZN5MB6eHLZEMVNw4ra2V0R" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,10 +38,46 @@
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/javafx-sdk-21.0.2/lib",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="APP" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
+      <module name="PEA_Blackbox" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml &#10;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BlackBoxx" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
+      <module name="Main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml  " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.APP" />
+      <item itemvalue="Application.Main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

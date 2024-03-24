@@ -30,6 +30,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
     private boolean isFullScreen = true; // Track full-screen state
     private void stageSettings(Stage stage) {
         stage.setFullScreen(true);
