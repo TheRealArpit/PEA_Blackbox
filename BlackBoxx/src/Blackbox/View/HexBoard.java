@@ -32,12 +32,12 @@ public class HexBoard {
         hexboard.setStyle("-fx-background-color: black;"); // Set the background color to black
         createHexagonalBoard();
         createText();
-        Label messageLabel = new Label();
-        messageLabel.setLayoutX(10); // Adjust the position as needed
-        messageLabel.setLayoutY(10); // Adjust the position as needed
-        Platform.runLater(() -> messageLabel.setText("Hit at ")); // Update label
+        //Label messageLabel = new Label();
+        //messageLabel.setLayoutX(10); // Adjust the position as needed
+        //messageLabel.setLayoutY(10); // Adjust the position as needed
+        //Platform.runLater(() -> messageLabel.setText("Hit at ")); // Update label
 
-        hexboard.getChildren().add(messageLabel);
+        //hexboard.getChildren().add(messageLabel);
 
     }
     public void createHexagonalBoard(){
@@ -61,7 +61,13 @@ public class HexBoard {
                 hexList.get(row).add(hex);
             }
             //System.out.println();
-
+           /* for(int i=0; i<hexList.size(); i++){
+                List<Hexagon> curr = hexList.get(i);
+                for(int j=0; j<curr.size() ; j++){
+                    System.out.print("(" + i + ", "+ j+ ")\t");
+                }
+                System.out.println("");
+            }*/
         }
     }
 
@@ -275,6 +281,19 @@ public class HexBoard {
     public boolean isHexThere(int newRow, int newCol){
         return newRow >= 0 && newRow < hexList.size() &&
                 newCol >= 0 && newCol < hexList.get(newRow).size();
+    }
+
+    public void createAtomAthexagon(int x, int y){
+        Atom atom = new Atom(5,5,hexboard);
+        getHexagon(x,y).setAtom(atom);
+        System.out.println( getHexagon(x,y).hasAtom());
+
+    }
+
+    public Hexagon getHexagon(int x, int y){
+        Hexagon hex = hexList.get(x).get(y);
+        return hex;
+
     }
 
 }

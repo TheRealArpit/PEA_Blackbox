@@ -156,5 +156,10 @@ public class Hexagon {
     public boolean hasBorderingATom() {return hasBorderingAtom;}
     public Arrow getArrow(){return arrow;}
     public ArrayList<Arrow> getArrowList(){return arrows;}
+    //for Test purposes
+    public void setAtom(Atom atom11){atom = atom11;
+    hasAtom = true;}
+
+
 
 }
