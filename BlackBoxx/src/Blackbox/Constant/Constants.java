@@ -77,6 +77,15 @@ public class Constants {
         DOWNLEFT
     }
 
+    public enum RayType{
+        HIT,
+        REFLECTED,
+        NO_ATOM,
+        TOTAL_REFLECTION
+    }
+
+
+
 
 
 }

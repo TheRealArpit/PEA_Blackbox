@@ -1,4 +1,5 @@
 package Blackbox.View.Shapes;
+import Blackbox.Constant.Constants;
 import Blackbox.Model.GameModel;
 import Blackbox.View.HexBoard;
 import javafx.scene.Node;
@@ -28,7 +29,9 @@ public class Ray {
     private int getIdRayExited;
 
     private Arrow enteredArrow;
-    private Arrow leftArrow;
+    private Arrow leftArrow = null;
+
+    private RayType rayType;
 
 
 
@@ -43,18 +46,7 @@ public class Ray {
         createRay();
     }
 
-    public void displayEntryExitPoints() {
-        String points = "Entered at: " + enteredArrow.getIdArrow() +"\nLeft at: "+ leftArrow.getIdArrow();
-        hexBoard.getHistory().add(points);
 
-        Text entryExitPoints = new Text("Entered at: " + enteredArrow.getIdArrow() + "\tLeft at: "+ leftArrow.getIdArrow());
-
-        entryExitPoints.setFill(Color.WHITE);
-        entryExitPoints.setFont(Font.font(18));
-
-        hexBoard.setNumberStackXY(100,170);
-        hexBoard.updateNumberStack(entryExitPoints);
-    }
 
     private void createLine() {
         if (isThereNextHex()) {
@@ -77,7 +69,6 @@ public class Ray {
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
                 System.out.println("Ray absorbed.");
-                //break; // If checks indicate to stop, we exit the loop
                 return;
             } else {
                 currentHex = hexList.get(rowIndex).get(colIndex);
@@ -89,8 +80,6 @@ public class Ray {
         String exitText = exitArrow.getText().getText();
         // After exiting the loop, extend the line
         drawFinalLine(currentHex);
-        displayEntryExitPoints();
-
     }
 
     private void drawFinalLine(Hexagon currentHex) {
@@ -204,55 +193,73 @@ public class Ray {
                     if (goingTo == direction.S_WEST) {
                         createLine();
                         System.out.println("hit");
+                        rayType = RayType.HIT;
                         return false;
                     } else if (goingTo == direction.S_EAST) {
                         createLine();
+                        rayType = RayType.REFLECTED;
                         goingTo = direction.EAST;
                     } else if (goingTo == direction.WEST) {
                         createLine();
+                        rayType = RayType.REFLECTED;
                         goingTo = direction.N_WEST;
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     if (goingTo == direction.S_EAST) {
                         createLine();
                         System.out.println("hit");
+                        rayType = RayType.HIT;
                         return false;
                     }
                     else if (goingTo == direction.EAST) {
                         createLine();
                         goingTo = direction.N_EAST;
+                        rayType = RayType.REFLECTED;
                     }
                     else if (goingTo == direction.S_WEST) {
                         createLine();
                         goingTo = direction.WEST;
+                        rayType = RayType.REFLECTED;
+
                     }
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
                     if (goingTo == direction.EAST) {
                         createLine();
                         System.out.println("hit");
+                        rayType = RayType.HIT;
                         return false;
                     }
                     else if (goingTo == direction.N_EAST) {
                         createLine();
                         goingTo = direction.N_WEST;
+                        rayType = RayType.REFLECTED;
+
                     }
                     else if (goingTo == direction.S_EAST) {
                         createLine();
                         goingTo = direction.S_WEST;
+                        rayType = RayType.REFLECTED;
+
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
                     if (goingTo == direction.N_EAST) {
                         createLine();
                         System.out.println("hit");
+                        rayType = RayType.HIT;
+
                         return false;
                     }
                     else if (goingTo == direction.EAST) {
                         createLine();
                         goingTo = direction.S_EAST;
+                        rayType = RayType.REFLECTED;
+
                     }
                     else if (goingTo == direction.N_WEST) {
                         createLine();
                         goingTo = direction.WEST;
+                        rayType = RayType.REFLECTED;
+
                     }
                     else{
 
@@ -261,29 +268,38 @@ public class Ray {
                     if (goingTo == direction.N_WEST) {
                         createLine();
                         System.out.println("hit");
+                        rayType = RayType.HIT;
                         return false;
                     }
                     else if (goingTo == direction.WEST) {
                         createLine();
                         goingTo = direction.S_WEST;
+                        rayType = RayType.REFLECTED;
+
                     }
                     else if (goingTo == direction.N_EAST) {
                         createLine();
                         goingTo = direction.EAST;
+                        rayType = RayType.REFLECTED;
+
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT)) {
                     if (goingTo == direction.WEST) {
                         createLine();
                         System.out.println("hit");
+                        rayType = RayType.HIT;
                         return false;
                     }
                     else if (goingTo == direction.S_WEST) {
                         createLine();
                         goingTo = direction.S_EAST;
+                        rayType = RayType.REFLECTED;
+
                     }
                     else if (goingTo == direction.N_WEST) {
                         createLine();
                         goingTo = direction.N_EAST;
+                        rayType = RayType.REFLECTED;
                     }
                 }
 
@@ -292,16 +308,22 @@ public class Ray {
                 //Equal Distant apart:
                 if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.N_EAST;
+                    rayType = RayType.TOTAL_REFLECTION;
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     goingTo = direction.N_WEST;
+                    rayType = RayType.TOTAL_REFLECTION;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
                     goingTo = direction.EAST;
+                    rayType = RayType.TOTAL_REFLECTION;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.WEST;
+                    rayType = RayType.TOTAL_REFLECTION;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
                     goingTo = direction.S_WEST;
+                    rayType = RayType.TOTAL_REFLECTION;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
                     goingTo = direction.S_EAST;
+                    rayType = RayType.TOTAL_REFLECTION;
                 }
                 //Everything else
                 if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
@@ -310,18 +332,21 @@ public class Ray {
                         } else if (goingTo==direction.WEST) {
                             goingTo = direction.N_EAST;
                         }
-                    } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
+                        rayType = RayType.REFLECTED;
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
                         if(goingTo == direction.N_WEST){
                             goingTo = direction.EAST;
                         } else if (goingTo==direction.WEST) {
                             goingTo = direction.S_EAST;
                         }
+                        rayType = RayType.REFLECTED;
                     }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)){
                         if(goingTo == direction.EAST){
                             goingTo = direction.S_WEST;
                         } else if (goingTo==direction.N_EAST) {
                             goingTo = direction.WEST;
                         }
+                        rayType = RayType.REFLECTED;
                     }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
                         if(goingTo == direction.S_EAST){
                             goingTo = direction.WEST;
@@ -334,19 +359,21 @@ public class Ray {
                         } else if (goingTo==direction.S_WEST) {
                             goingTo = direction.N_WEST;
                         }
+                        rayType = RayType.REFLECTED;
                     }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){
                         if(goingTo == direction.N_EAST){
                             goingTo = direction.S_EAST;
                         } else if (goingTo==direction.N_WEST) {
                             goingTo = direction.S_WEST;
                         }
-                    }
+                        rayType = RayType.REFLECTED;
 
+                }
                     //
 
-
-
-
+            }
+            else{
+                rayType = RayType.NO_ATOM;
             }
 
         }else{
@@ -400,7 +427,7 @@ public class Ray {
             System.out.println("fal");
             return false;
         }
-        System.out.println("passed checks");
+        //System.out.println("passed checks");
 
         return false;
     }

@@ -304,4 +304,13 @@ public class HexBoard {
     public void addNumberStacktoPane(){
         hexboard.getChildren().add(numberStack);
     }
+    public void checkNumberStack() {
+        // Check if the historyStack has more than 10 children
+        if (numberStack.getChildren().size() > 10) {
+            // Clear the VBox if it has more than 10 children
+            numberStack.getChildren().clear();
+        }
+    }
+
+
 }

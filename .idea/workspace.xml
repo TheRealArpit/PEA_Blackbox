@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Puts on display the entered and exited locations (the numbers)">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="The entry and exit points on the display update everytime an arrow is clicked now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Model/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Constant/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Arrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711981418611</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="The entry and exit points on the display update everytime an arrow is clicked now">
+      <option name="closed" value="true" />
+      <created>1711988754673</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711988754673</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +181,7 @@
     <MESSAGE value="Internal Reflection at the edges of the board done." />
     <MESSAGE value="Working on Fixing printing out to diplay" />
     <MESSAGE value="Puts on display the entered and exited locations (the numbers)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Puts on display the entered and exited locations (the numbers)" />
+    <MESSAGE value="The entry and exit points on the display update everytime an arrow is clicked now" />
+    <option name="LAST_COMMIT_MESSAGE" value="The entry and exit points on the display update everytime an arrow is clicked now" />
   </component>
 </project>
