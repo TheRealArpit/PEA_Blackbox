@@ -4,6 +4,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 
 import javax.swing.plaf.IconUIResource;
 import java.util.List;
@@ -19,6 +20,9 @@ public class Ray {
     private double xLox;
     private double yLoc;
 
+
+
+
     public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex){//constrctor for the ray
         parentpane = pane;
         this.goingTo = goingTo;
@@ -28,6 +32,20 @@ public class Ray {
         createRay();
 
     }
+    public void displayEntryExitPoints(int entryRow, int entryCol, int exitRow, int exitCol, String entryText, String exitText) {
+        // entry point
+        Text entryPointText = new Text("Entry Point: (" + entryRow + ", " + entryCol + ") - Number: " + entryText);
+        entryPointText.setLayoutX(100);
+        entryPointText.setLayoutY(500);
+        parentpane.getChildren().add(entryPointText);
+
+        //exit point
+        Text exitPointText = new Text("Exit Point: (" + exitRow + ", " + exitCol + ") - Number: " + exitText);
+        exitPointText.setLayoutX(100);
+        exitPointText.setLayoutY(500);
+        parentpane.getChildren().add(exitPointText);
+    }
+
     private void createLine() {
         if (isThereNextHex()) {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
@@ -41,22 +59,33 @@ public class Ray {
         }
     }
 
-    public void createRay() {
+    public void createRay()
+    {
         boolean continueRay = true;
         Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
+        Arrow entryArrow = currentHex.getArrow();
+        String entryNumber = entryArrow.getText().getText();
+        displayEntryExitPoints(rowIndex, colIndex, rowIndex, colIndex, entryNumber, null);
+
+        String entryText = entryArrow.getText().getText();
+        System.out.println("Entry Point: (" + currentHex.getRowList() + ", " + currentHex.getColList() + ") - Number: " + entryText);
 
         while (continueRay && isThereNextHex()) {
-
-            if (! (continueRay = checks(goingTo) )) {
-                System.out.println("Here");
-                return;
+            if (!(continueRay = checks(goingTo))) {
+                System.out.println("Ray absorbed.");
                 //break; // If checks indicate to stop, we exit the loop
-            }else{
-                 currentHex = hexList.get(rowIndex).get(colIndex);
+                return;
+            } else {
+                currentHex = hexList.get(rowIndex).get(colIndex);
                 createLine(); // Draw the line to the current hexagon
                 calculateEndPoint(); // Calculate the next hexagon based on the current direction
             }
         }
+        Arrow exitArrow = currentHex.getArrow();
+        String exitText = exitArrow.getText().getText();
+        displayEntryExitPoints(rowIndex, colIndex, rowIndex, colIndex, null, exitText);
+
+        System.out.println("Exit Point: (" + currentHex.getRowList() + ", " + currentHex.getColList() + ") - Number: " + exitText);
         //System.out.println(currentHex.getRowList() + ", " + currentHex.getColList());
         // After exiting the loop, extend the line
         drawFinalLine(currentHex);
@@ -157,6 +186,7 @@ public class Ray {
         }
         return true;
     }
+
     private void setRowColofHex(Hexagon hex){
         rowIndex = hex.getRowList();
         colIndex = hex.getColList();

@@ -39,6 +39,7 @@ public class HexBoard {
 
         //hexboard.getChildren().add(messageLabel);
 
+
     }
     public void createHexagonalBoard(){
         int[] rowLength = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
