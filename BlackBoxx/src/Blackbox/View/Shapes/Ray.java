@@ -40,6 +40,18 @@ public class Ray {
             return;
         }
     }
+    private void createLine(Color color) {
+        if (isThereNextHex()) {
+            Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
+            line.setStrokeWidth(5);
+            line.setStroke(color);
+            parentpane.getChildren().add(line);
+            xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
+            yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
+        }else{
+            return;
+        }
+    }
 
     public void createRay() {
         boolean continueRay = true;
@@ -166,7 +178,9 @@ public class Ray {
             Hexagon hextocheck = hexList.get(rowIndex).get(colIndex);
             //Add if statements for the coi reflections
             if(hextocheck.getAtomPlacements().size()==1) {
-                if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
+                if(InsideAtomReflect(goingto, hextocheck)){
+
+                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     if (goingTo == direction.S_WEST) {
                         createLine();
                         System.out.println("hit");
@@ -256,70 +270,113 @@ public class Ray {
             }
             else if (hextocheck.getAtomPlacements().size() >= 2) {
                 //Equal Distant apart:
-                if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
+                if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.N_EAST;
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     goingTo = direction.N_WEST;
-                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
                     goingTo = direction.EAST;
-                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.WEST;
-                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
                     goingTo = direction.S_WEST;
-                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
                     goingTo = direction.S_EAST;
                 }
                 //Everything else
-                if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
-                        if(goingTo == direction.S_WEST){
-                            goingTo = direction.EAST;
-                        } else if (goingTo==direction.WEST) {
-                            goingTo = direction.N_EAST;
-                        }
-                    } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
-                        if(goingTo == direction.N_WEST){
-                            goingTo = direction.EAST;
-                        } else if (goingTo==direction.WEST) {
-                            goingTo = direction.S_EAST;
-                        }
-                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)){
-                        if(goingTo == direction.EAST){
-                            goingTo = direction.S_WEST;
-                        } else if (goingTo==direction.N_EAST) {
-                            goingTo = direction.WEST;
-                        }
-                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
-                        if(goingTo == direction.S_EAST){
-                            goingTo = direction.WEST;
-                        } else if (goingTo==direction.EAST) {
-                            goingTo = direction.N_WEST;
-                        }
-                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
-                        if(goingTo == direction.S_EAST){
-                            goingTo = direction.N_EAST;
-                        } else if (goingTo==direction.S_WEST) {
-                            goingTo = direction.N_WEST;
-                        }
-                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){
-                        if(goingTo == direction.N_EAST){
-                            goingTo = direction.S_EAST;
-                        } else if (goingTo==direction.N_WEST) {
-                            goingTo = direction.S_WEST;
-                        }
+                if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
+                    if (goingTo == direction.S_WEST) {
+                        goingTo = direction.EAST;
+                    } else if (goingTo == direction.WEST) {
+                        goingTo = direction.N_EAST;
                     }
-
-                    //
-
-
-
-
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
+                    if (goingTo == direction.N_WEST) {
+                        goingTo = direction.EAST;
+                    } else if (goingTo == direction.WEST) {
+                        goingTo = direction.S_EAST;
+                    }
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
+                    if (goingTo == direction.EAST) {
+                        goingTo = direction.S_WEST;
+                    } else if (goingTo == direction.N_EAST) {
+                        goingTo = direction.WEST;
+                    }
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
+                    if (goingTo == direction.S_EAST) {
+                        goingTo = direction.WEST;
+                    } else if (goingTo == direction.EAST) {
+                        goingTo = direction.N_WEST;
+                    }
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
+                    if (goingTo == direction.S_EAST) {
+                        goingTo = direction.N_EAST;
+                    } else if (goingTo == direction.S_WEST) {
+                        goingTo = direction.N_WEST;
+                    }
+                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
+                    if (goingTo == direction.N_EAST) {
+                        goingTo = direction.S_EAST;
+                    } else if (goingTo == direction.N_WEST) {
+                        goingTo = direction.S_WEST;
+                    }
+                }
             }
-
         }else{
 
 
         }
         return true;
     }
-    
+
+    private boolean InsideAtomReflect(direction goingto, Hexagon hextocheck) {
+        //bottom Hexagon
+        if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
+            if(goingto == direction.N_WEST||goingto == direction.S_WEST){
+                createLine(Color.WHITE);   //checking if it works by making line thicker and white
+                goingTo = opposite();
+                return true;
+            }
+        } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT)){
+            if(goingto == direction.N_EAST || goingto == direction.S_EAST){
+                createLine(Color.WHITE);
+                goingTo = opposite();
+                return true;
+            }
+        }
+        else if(hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){        //            \ hexagon
+            if(goingto == direction.EAST ||goingto == direction.S_WEST){
+                createLine(Color.WHITE);
+                goingTo = opposite();
+                return true;
+            }
+        }else if(hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
+            if(goingto == direction.N_EAST || goingto == direction.WEST){
+                createLine(Color.WHITE);
+                goingTo = opposite();
+                return true;
+            }
+        }else if(hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
+            if(goingto == direction.N_WEST ||goingto == direction.EAST){
+                createLine(Color.WHITE);
+                goingTo = opposite();
+                return true;
+            }
+        }else if(hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
+            if (goingto == direction.WEST||goingto == direction.S_EAST) {
+                createLine(Color.WHITE);
+                goingTo = opposite();
+                return true;
+            }
+        }
+        else{
+            System.out.println("fal");
+            return false;
+        }
+        System.out.println("passed checks");
+
+        return false;
+    }
+
+
 }

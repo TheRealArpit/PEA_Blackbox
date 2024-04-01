@@ -60,8 +60,6 @@ public class HexBoard {
                 }
                 hexList.get(row).add(hex);
             }
-            //System.out.println();
-
         }
     }
 
