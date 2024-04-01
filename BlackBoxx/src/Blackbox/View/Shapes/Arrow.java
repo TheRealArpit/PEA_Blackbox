@@ -19,18 +19,7 @@ public class Arrow {
     private double rotation;
     private Path arrow;
     private Text text;
-
-    public static int[][][] array = {
-            { {2, 1, 54}, {53,52},{51,50},{49,48},{47,46,45}},// Top row
-            {{4 ,3}, {-1},{-1},{-1},{-1},{44,43}},// Second row
-            {{6 ,5}, {-1},{-1},{-1},{-1},{-1},{42,41}},// Third row
-            {{8 ,7}, {-1},{-1},{-1},{-1},{-1},{-1},{40,39}},// Fourth row
-            {{11 ,10,9}, {-1},{-1},{-1},{-1},{-1},{-1},{-1},{36,38,37}},// Fourth row
-            {{13 ,12}, {-1},{-1},{-1},{-1},{-1},{-1},{34,35}},// fifth row
-            {{15 ,14}, {-1},{-1},{-1},{-1},{-1},{32,33}},// sixth row
-            {{17 ,16}, {-1},{-1},{-1},{-1},{30,31}},// Second row
-            {{20, 19, 18}, {22,21},{24,23},{26,25},{28,27,29}}// Top row
-    };
+    private int idArrowEntered;
 
 
     public Arrow(Hexagon hexagon, double cX, double cY, Pane parantPane, int i){
@@ -39,6 +28,7 @@ public class Arrow {
         centreY = cY;
         this.parentPane = parantPane;
         stuff(i);
+
     }
 
     public Path createArrow() {
@@ -127,6 +117,7 @@ public class Arrow {
 
     public void createText(int row, int col, int k, double midx, double midy) {
         text = new Text(array[row][col][k] + "");
+        idArrowEntered = array[row][col][k];
         text.setFill(Color.WHITE);
         text.setFont(new Font("Arial", 14));
         text.setLayoutX(midx);
@@ -143,6 +134,22 @@ public class Arrow {
         return goingTo;
     }
 
+    public int getIdArrowEntered(){
+        return idArrowEntered;
+    }
+    public void setIdArrowEntered(int x){
+        idArrowEntered = x;
+    }
 
-
+    public static int[][][] array = {
+            { {2, 1, 54}, {53,52},{51,50},{49,48},{47,46,45}},// Top row
+            {{4 ,3}, {-1},{-1},{-1},{-1},{44,43}},// Second row
+            {{6 ,5}, {-1},{-1},{-1},{-1},{-1},{42,41}},// Third row
+            {{8 ,7}, {-1},{-1},{-1},{-1},{-1},{-1},{40,39}},// Fourth row
+            {{11 ,10,9}, {-1},{-1},{-1},{-1},{-1},{-1},{-1},{36,38,37}},// Fourth row
+            {{13 ,12}, {-1},{-1},{-1},{-1},{-1},{-1},{34,35}},// fifth row
+            {{15 ,14}, {-1},{-1},{-1},{-1},{-1},{32,33}},// sixth row
+            {{17 ,16}, {-1},{-1},{-1},{-1},{30,31}},// Second row
+            {{20, 19, 18}, {22,21},{24,23},{26,25},{28,27,29}}// Top row
+    };
 }

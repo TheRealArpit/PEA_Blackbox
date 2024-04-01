@@ -20,7 +20,8 @@ public class Ray {
     private double xLox;
     private double yLoc;
 
-
+    private int idRayEntered;
+    private int getIdRayExited;
 
 
     public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex){//constrctor for the ray
@@ -35,14 +36,19 @@ public class Ray {
     public void displayEntryExitPoints(int entryRow, int entryCol, int exitRow, int exitCol, String entryText, String exitText) {
         // entry point
         Text entryPointText = new Text("Entry Point: (" + entryRow + ", " + entryCol + ") - Number: " + entryText);
+        System.out.println("Entry Point: (" + entryRow + ", " + entryCol + ") - Number: " + entryText);
         entryPointText.setLayoutX(100);
         entryPointText.setLayoutY(500);
         parentpane.getChildren().add(entryPointText);
 
         //exit point
+        entryPointText.setFill(Color.WHITE);
+
         Text exitPointText = new Text("Exit Point: (" + exitRow + ", " + exitCol + ") - Number: " + exitText);
+        exitPointText.setFill(Color.WHITE);
+
         exitPointText.setLayoutX(100);
-        exitPointText.setLayoutY(500);
+        exitPointText.setLayoutY(600);
         parentpane.getChildren().add(exitPointText);
     }
 
