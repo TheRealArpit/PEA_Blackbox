@@ -8,8 +8,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
-import java.util.Arrays;
-
 public class Arrow {
     private Pane parentPane;
     private Hexagon hex;
@@ -19,7 +17,7 @@ public class Arrow {
     private double rotation;
     private Path arrow;
     private Text text;
-    private int idArrowEntered;
+    private int idArrow;
 
 
     public Arrow(Hexagon hexagon, double cX, double cY, Pane parantPane, int i){
@@ -70,7 +68,7 @@ public class Arrow {
             arrow.setStroke(Color.RED);
         });
         arrow.setOnMouseClicked(event -> {
-            Ray ray = new Ray(goingTo,centreX,centreY,parentPane, hex);
+            Ray ray = new Ray(goingTo,centreX,centreY,parentPane, hex, this);
         });
         return arrow;
 
@@ -117,7 +115,7 @@ public class Arrow {
 
     public void createText(int row, int col, int k, double midx, double midy) {
         text = new Text(array[row][col][k] + "");
-        idArrowEntered = array[row][col][k];
+        idArrow = array[row][col][k];
         text.setFill(Color.WHITE);
         text.setFont(new Font("Arial", 14));
         text.setLayoutX(midx);
@@ -134,12 +132,10 @@ public class Arrow {
         return goingTo;
     }
 
-    public int getIdArrowEntered(){
-        return idArrowEntered;
+    public int getIdArrow(){
+        return idArrow;
     }
-    public void setIdArrowEntered(int x){
-        idArrowEntered = x;
-    }
+
 
     public static int[][][] array = {
             { {2, 1, 54}, {53,52},{51,50},{49,48},{47,46,45}},// Top row

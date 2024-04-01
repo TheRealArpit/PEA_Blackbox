@@ -1,12 +1,9 @@
 package Blackbox.View.Shapes;
-import Blackbox.Constant.Constants.*;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
-import javax.swing.plaf.IconUIResource;
 import java.util.List;
 import static Blackbox.Constant.Constants.*;
 
@@ -23,33 +20,26 @@ public class Ray {
     private int idRayEntered;
     private int getIdRayExited;
 
+    private Arrow enteredArrow;
+    private Arrow leftArrow;
 
-    public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex){//constrctor for the ray
+
+    public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow){//constrctor for the ray
         parentpane = pane;
         this.goingTo = goingTo;
         xLox = x;
         yLoc = y;
         setRowColofHex(initialHex);
+        enteredArrow = initialArrow;
         createRay();
 
     }
-    public void displayEntryExitPoints(int entryRow, int entryCol, int exitRow, int exitCol, String entryText, String exitText) {
-        // entry point
-        Text entryPointText = new Text("Entry Point: (" + entryRow + ", " + entryCol + ") - Number: " + entryText);
-        System.out.println("Entry Point: (" + entryRow + ", " + entryCol + ") - Number: " + entryText);
-        entryPointText.setLayoutX(100);
-        entryPointText.setLayoutY(500);
-        parentpane.getChildren().add(entryPointText);
-
-        //exit point
-        entryPointText.setFill(Color.WHITE);
-
-        Text exitPointText = new Text("Exit Point: (" + exitRow + ", " + exitCol + ") - Number: " + exitText);
-        exitPointText.setFill(Color.WHITE);
-
-        exitPointText.setLayoutX(100);
-        exitPointText.setLayoutY(600);
-        parentpane.getChildren().add(exitPointText);
+    public void displayEntryExitPoints() {
+        Text entryExitPoints = new Text("Entered at: " + enteredArrow.getIdArrow() +"\nLeft at: "+ leftArrow.getIdArrow());
+        entryExitPoints.setFill(Color.WHITE);
+        entryExitPoints.setLayoutX(100);
+        entryExitPoints.setLayoutY(600);
+        parentpane.getChildren().add(entryExitPoints);
     }
 
     private void createLine() {
@@ -69,12 +59,6 @@ public class Ray {
     {
         boolean continueRay = true;
         Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
-        Arrow entryArrow = currentHex.getArrow();
-        String entryNumber = entryArrow.getText().getText();
-        displayEntryExitPoints(rowIndex, colIndex, rowIndex, colIndex, entryNumber, null);
-
-        String entryText = entryArrow.getText().getText();
-        System.out.println("Entry Point: (" + currentHex.getRowList() + ", " + currentHex.getColList() + ") - Number: " + entryText);
 
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
@@ -89,12 +73,10 @@ public class Ray {
         }
         Arrow exitArrow = currentHex.getArrow();
         String exitText = exitArrow.getText().getText();
-        displayEntryExitPoints(rowIndex, colIndex, rowIndex, colIndex, null, exitText);
-
-        System.out.println("Exit Point: (" + currentHex.getRowList() + ", " + currentHex.getColList() + ") - Number: " + exitText);
-        //System.out.println(currentHex.getRowList() + ", " + currentHex.getColList());
         // After exiting the loop, extend the line
         drawFinalLine(currentHex);
+        displayEntryExitPoints();
+
     }
 
     private void drawFinalLine(Hexagon currentHex) {
@@ -102,6 +84,7 @@ public class Ray {
         int i=0;
         for (Arrow a: currentHex.getArrowList()){
             if(a.getDirection() == endArrowDir){
+                leftArrow = a;
                 //System.out.println("End arrow Dir is" + endArrowDir.toString());
                 Line line = new Line(xLox, yLoc, currentHex.getArrowList().get(i).getCentreX(), currentHex.getArrowList().get(i).getCentreY());
                 line.setStrokeWidth(1);
