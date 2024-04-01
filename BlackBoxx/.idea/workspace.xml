@@ -52,8 +52,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/PEA_Blackbox",
-    "project.structure.last.edited": "Artifacts",
+    "last_opened_file_path": "C:/Users/elvis/OneDrive/Desktop/Project_____",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.scopes"
@@ -61,6 +61,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\elvis\OneDrive\Desktop\Project_____\BlackBoxx\src\Blackbox\Model" />
       <recent name="C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\SoloBlackbox\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -72,7 +73,7 @@
     <configuration name="App" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
       <module name="Main" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\elvis\JavaFX\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -258,7 +259,7 @@
     <MESSAGE value="initializeHexagonsNearAtom(). when next is pressed. the hexagons around the atom know there is a hexagon around them" />
     <MESSAGE value="Moved things arround in arrow class. Made the Ray Class. Made ray able to shoot lines that interact with the COI of the atoms. They bounce of eachother until either they hit the atom directly or until it leaves the board" />
     <MESSAGE value="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better" />
-    <option name="LAST_COMMIT_MESSAGE" value="Was doing project in different folder.&#10;Changes:&#10;Rays can go 120 degrees&#10;&#10;Rays can reflect 180 degrees when there is 2 atoms 1 radius apart. &#10;Can reflect 180 degrees 2 or more atoms.&#10;&#10;Fixed error: When ray reflected then hit atom. originally ray would keep going till it left the board. now it stops at the cof&#10;&#10;Added numbers to the hexagonBoard. Put the arrows in an arrowList&#10;&#10;Fixed the orientation of the arrows. Also changed the arrows so they look better" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BlackBoxx$App.ic" NAME="App Coverage Results" MODIFIED="1711298951785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

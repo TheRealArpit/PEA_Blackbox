@@ -4,6 +4,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 
 import javax.swing.plaf.IconUIResource;
 import java.util.List;
@@ -19,6 +20,9 @@ public class Ray {
     private double xLox;
     private double yLoc;
 
+
+
+
     public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex){//constrctor for the ray
         parentpane = pane;
         this.goingTo = goingTo;
@@ -28,6 +32,20 @@ public class Ray {
         createRay();
 
     }
+    public void displayEntryExitPoints(int entryRow, int entryCol, int exitRow, int exitCol, String entryText, String exitText) {
+        // entry point
+        Text entryPointText = new Text("Entry Point: (" + entryRow + ", " + entryCol + ") - Number: " + entryText);
+        entryPointText.setLayoutX(100);
+        entryPointText.setLayoutY(500);
+        parentpane.getChildren().add(entryPointText);
+
+        //exit point
+        Text exitPointText = new Text("Exit Point: (" + exitRow + ", " + exitCol + ") - Number: " + exitText);
+        exitPointText.setLayoutX(100);
+        exitPointText.setLayoutY(500);
+        parentpane.getChildren().add(exitPointText);
+    }
+
     private void createLine() {
         if (isThereNextHex()) {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
@@ -40,35 +58,34 @@ public class Ray {
             return;
         }
     }
-    private void createLine(Color color) {
-        if (isThereNextHex()) {
-            Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
-            line.setStrokeWidth(5);
-            line.setStroke(color);
-            parentpane.getChildren().add(line);
-            xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
-            yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
-        }else{
-            return;
-        }
-    }
 
-    public void createRay() {
+    public void createRay()
+    {
         boolean continueRay = true;
         Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
+        Arrow entryArrow = currentHex.getArrow();
+        String entryNumber = entryArrow.getText().getText();
+        displayEntryExitPoints(rowIndex, colIndex, rowIndex, colIndex, entryNumber, null);
+
+        String entryText = entryArrow.getText().getText();
+        System.out.println("Entry Point: (" + currentHex.getRowList() + ", " + currentHex.getColList() + ") - Number: " + entryText);
 
         while (continueRay && isThereNextHex()) {
-
-            if (! (continueRay = checks(goingTo) )) {
-                System.out.println("Here");
-                return;
+            if (!(continueRay = checks(goingTo))) {
+                System.out.println("Ray absorbed.");
                 //break; // If checks indicate to stop, we exit the loop
-            }else{
-                 currentHex = hexList.get(rowIndex).get(colIndex);
+                return;
+            } else {
+                currentHex = hexList.get(rowIndex).get(colIndex);
                 createLine(); // Draw the line to the current hexagon
                 calculateEndPoint(); // Calculate the next hexagon based on the current direction
             }
         }
+        Arrow exitArrow = currentHex.getArrow();
+        String exitText = exitArrow.getText().getText();
+        displayEntryExitPoints(rowIndex, colIndex, rowIndex, colIndex, null, exitText);
+
+        System.out.println("Exit Point: (" + currentHex.getRowList() + ", " + currentHex.getColList() + ") - Number: " + exitText);
         //System.out.println(currentHex.getRowList() + ", " + currentHex.getColList());
         // After exiting the loop, extend the line
         drawFinalLine(currentHex);
@@ -169,6 +186,7 @@ public class Ray {
         }
         return true;
     }
+
     private void setRowColofHex(Hexagon hex){
         rowIndex = hex.getRowList();
         colIndex = hex.getColList();
@@ -178,9 +196,9 @@ public class Ray {
             Hexagon hextocheck = hexList.get(rowIndex).get(colIndex);
             //Add if statements for the coi reflections
             if(hextocheck.getAtomPlacements().size()==1) {
-                if(InsideAtomReflect(goingto, hextocheck)){
+                if (InsideAtomReflect(goingto,hextocheck)){}
 
-                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
+                else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     if (goingTo == direction.S_WEST) {
                         createLine();
                         System.out.println("hit");
@@ -270,58 +288,65 @@ public class Ray {
             }
             else if (hextocheck.getAtomPlacements().size() >= 2) {
                 //Equal Distant apart:
-                if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
+                if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.N_EAST;
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     goingTo = direction.N_WEST;
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
+                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
                     goingTo = direction.EAST;
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
+                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.WEST;
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
+                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
                     goingTo = direction.S_WEST;
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
+                }else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
                     goingTo = direction.S_EAST;
                 }
                 //Everything else
-                if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
-                    if (goingTo == direction.S_WEST) {
-                        goingTo = direction.EAST;
-                    } else if (goingTo == direction.WEST) {
-                        goingTo = direction.N_EAST;
+                if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
+                        if(goingTo == direction.S_WEST){
+                            goingTo = direction.EAST;
+                        } else if (goingTo==direction.WEST) {
+                            goingTo = direction.N_EAST;
+                        }
+                    } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
+                        if(goingTo == direction.N_WEST){
+                            goingTo = direction.EAST;
+                        } else if (goingTo==direction.WEST) {
+                            goingTo = direction.S_EAST;
+                        }
+                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)){
+                        if(goingTo == direction.EAST){
+                            goingTo = direction.S_WEST;
+                        } else if (goingTo==direction.N_EAST) {
+                            goingTo = direction.WEST;
+                        }
+                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
+                        if(goingTo == direction.S_EAST){
+                            goingTo = direction.WEST;
+                        } else if (goingTo==direction.EAST) {
+                            goingTo = direction.N_WEST;
+                        }
+                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
+                        if(goingTo == direction.S_EAST){
+                            goingTo = direction.N_EAST;
+                        } else if (goingTo==direction.S_WEST) {
+                            goingTo = direction.N_WEST;
+                        }
+                    }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){
+                        if(goingTo == direction.N_EAST){
+                            goingTo = direction.S_EAST;
+                        } else if (goingTo==direction.N_WEST) {
+                            goingTo = direction.S_WEST;
+                        }
                     }
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
-                    if (goingTo == direction.N_WEST) {
-                        goingTo = direction.EAST;
-                    } else if (goingTo == direction.WEST) {
-                        goingTo = direction.S_EAST;
-                    }
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
-                    if (goingTo == direction.EAST) {
-                        goingTo = direction.S_WEST;
-                    } else if (goingTo == direction.N_EAST) {
-                        goingTo = direction.WEST;
-                    }
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
-                    if (goingTo == direction.S_EAST) {
-                        goingTo = direction.WEST;
-                    } else if (goingTo == direction.EAST) {
-                        goingTo = direction.N_WEST;
-                    }
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
-                    if (goingTo == direction.S_EAST) {
-                        goingTo = direction.N_EAST;
-                    } else if (goingTo == direction.S_WEST) {
-                        goingTo = direction.N_WEST;
-                    }
-                } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
-                    if (goingTo == direction.N_EAST) {
-                        goingTo = direction.S_EAST;
-                    } else if (goingTo == direction.N_WEST) {
-                        goingTo = direction.S_WEST;
-                    }
-                }
+
+                    //
+
+
+
+
             }
+
         }else{
 
 
@@ -378,5 +403,17 @@ public class Ray {
         return false;
     }
 
-
+    private void createLine(Color color) {
+        if (isThereNextHex()) {
+            Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
+            line.setStrokeWidth(5);
+            line.setStroke(color);
+            parentpane.getChildren().add(line);
+            xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
+            yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
+        }else{
+            return;
+        }
+    }
+    
 }
