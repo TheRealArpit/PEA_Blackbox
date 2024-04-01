@@ -17,6 +17,8 @@ public class GameView {
     public void startGame(){
         display.getChildren().clear();
         HexBoard hexBoard = new HexBoard(display);
+        hexBoard.createText();
+        //hexBoard.;
     }
 
 

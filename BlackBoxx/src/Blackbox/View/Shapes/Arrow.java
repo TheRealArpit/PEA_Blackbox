@@ -1,6 +1,7 @@
 package Blackbox.View.Shapes;
 
 import Blackbox.Constant.Constants.*;
+import Blackbox.View.HexBoard;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -10,6 +11,8 @@ import javafx.scene.transform.Rotate;
 
 public class Arrow {
     private Pane parentPane;
+    private HexBoard hexBoard;
+
     private Hexagon hex;
     private double centreX;
     private double centreY;
@@ -20,7 +23,8 @@ public class Arrow {
     private int idArrow;
 
 
-    public Arrow(Hexagon hexagon, double cX, double cY, Pane parantPane, int i){
+    public Arrow(Hexagon hexagon, double cX, double cY, Pane parantPane, int i, HexBoard hexBoard){
+        this.hexBoard = hexBoard;
         hex = hexagon;
         centreX = cX;
         centreY = cY;
@@ -68,7 +72,7 @@ public class Arrow {
             arrow.setStroke(Color.RED);
         });
         arrow.setOnMouseClicked(event -> {
-            Ray ray = new Ray(goingTo,centreX,centreY,parentPane, hex, this);
+            Ray ray = new Ray(goingTo,centreX,centreY,parentPane, hex, this, hexBoard);
         });
         return arrow;
 

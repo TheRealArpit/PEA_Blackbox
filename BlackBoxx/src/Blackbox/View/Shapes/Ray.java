@@ -1,15 +1,22 @@
 package Blackbox.View.Shapes;
+import Blackbox.Model.GameModel;
+import Blackbox.View.HexBoard;
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import static Blackbox.Constant.Constants.*;
 
 
 public class Ray {
     private Pane parentpane;
+    private HexBoard hexBoard;
     private direction goingTo;
     private int rowIndex;
     private int colIndex;
@@ -24,22 +31,29 @@ public class Ray {
     private Arrow leftArrow;
 
 
-    public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow){//constrctor for the ray
+
+    public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow, HexBoard hexBoard){//constrctor for the ray
         parentpane = pane;
+        this.hexBoard = hexBoard;
         this.goingTo = goingTo;
         xLox = x;
         yLoc = y;
         setRowColofHex(initialHex);
         enteredArrow = initialArrow;
         createRay();
-
     }
+
     public void displayEntryExitPoints() {
-        Text entryExitPoints = new Text("Entered at: " + enteredArrow.getIdArrow() +"\nLeft at: "+ leftArrow.getIdArrow());
+        String points = "Entered at: " + enteredArrow.getIdArrow() +"\nLeft at: "+ leftArrow.getIdArrow();
+        hexBoard.getHistory().add(points);
+
+        Text entryExitPoints = new Text("Entered at: " + enteredArrow.getIdArrow() + "\tLeft at: "+ leftArrow.getIdArrow());
+
         entryExitPoints.setFill(Color.WHITE);
-        entryExitPoints.setLayoutX(100);
-        entryExitPoints.setLayoutY(600);
-        parentpane.getChildren().add(entryExitPoints);
+        entryExitPoints.setFont(Font.font(18));
+
+        hexBoard.setNumberStackXY(100,170);
+        hexBoard.updateNumberStack(entryExitPoints);
     }
 
     private void createLine() {
@@ -115,7 +129,6 @@ public class Ray {
                 return null;
         }
     }
-
 
     private void calculateEndPoint() {
         switch (goingTo) {

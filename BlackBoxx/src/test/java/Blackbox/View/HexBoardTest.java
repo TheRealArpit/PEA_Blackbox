@@ -21,7 +21,6 @@ public class HexBoardTest {
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard(display);
 
-        //check coordinates
         for(int i=0; i<hexList.size(); i++){
             List<Hexagon> curr = hexList.get(i);
             for(int j=0; j<curr.size() ; j++){

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import Blackbox.View.Shapes.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -17,6 +18,7 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static Blackbox.Constant.Constants.*;
 
@@ -26,27 +28,31 @@ public class HexBoard {
     private Pane hexboard;
     //private  List<List<Hexagon>> hexList = new ArrayList<>();
     private static  List<Atom> atomLIst = new ArrayList<>();
+    private ArrayList<String> history;
+    public  VBox numberStack = new VBox(5); // VBox to stack numbers, with spacing of 5
+
+    public VBox getNumberStack() {
+        return numberStack;
+    }
+    public void setNumberStack(Node o){
+        numberStack.getChildren().add(o);
+    }
+
+
 
     public HexBoard(Pane display) {
+        history = new ArrayList<>();
         hexboard = display;
         hexboard.setStyle("-fx-background-color: black;"); // Set the background color to black
+        addNumberStacktoPane();
         createHexagonalBoard();
-        createText();
-        //Label messageLabel = new Label();
-        //messageLabel.setLayoutX(10); // Adjust the position as needed
-        //messageLabel.setLayoutY(10); // Adjust the position as needed
-        //Platform.runLater(() -> messageLabel.setText("Hit at ")); // Update label
-
-        //hexboard.getChildren().add(messageLabel);
-
-
     }
     public void createHexagonalBoard(){
         int[] rowLength = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
         for (int row = 0; row < 9; row++) {
             hexList.add(new ArrayList<>()); //each row of is a list
             for(int col = 0; col < rowLength[row]; col++) {
-                Hexagon hex = new Hexagon(hexboard);
+                Hexagon hex = new Hexagon(hexboard, this);
                 double offsetX = getOffsetX(rowLength, row) ;//calculate offset and position of the hexagon
                 double positionX = getPosition( col, offsetX) + BOARD_X_STARTAT ;
                 double positionY = row * SCALING_FACTOR_Y * HEXAGON_RADIUS + BOARD_Y_STARTAT;
@@ -61,14 +67,6 @@ public class HexBoard {
                 }
                 hexList.get(row).add(hex);
             }
-            //System.out.println();
-           /* for(int i=0; i<hexList.size(); i++){
-                List<Hexagon> curr = hexList.get(i);
-                for(int j=0; j<curr.size() ; j++){
-                    System.out.print("(" + i + ", "+ j+ ")\t");
-                }
-                System.out.println("");
-            }*/
         }
     }
 
@@ -166,12 +164,10 @@ public class HexBoard {
     }
 }
     public void showAtomsOnBoard(){
-    for(Atom x: Hexagon.atomList){
+        for(Atom x: Hexagon.atomList){
         x.showAtom();
     }
 }
-
-    public Pane getHexboard() {return hexboard;}
     private static double getPosition(int col, double offsetX) {
     double basePosition = col * HEXAGON_RADIUS; // Base x-coordinate for the hexagon in its row
     double position = SCALING_FACTOR_X * (basePosition + offsetX + PADDING);// Calculate the final x-coordinate
@@ -294,7 +290,18 @@ public class HexBoard {
     public Hexagon getHexagon(int x, int y){
         Hexagon hex = hexList.get(x).get(y);
         return hex;
-
     }
 
+    public Pane getHexboard() {return hexboard;}
+    public ArrayList<String> getHistory() {return history;}
+
+    public void updateNumberStack(Node oo){
+        numberStack.getChildren().add(oo);
+    }public void setNumberStackXY(int x, int y) {
+        numberStack.setLayoutX(x);
+        numberStack.setLayoutY(y);
+    }
+    public void addNumberStacktoPane(){
+        hexboard.getChildren().add(numberStack);
+    }
 }

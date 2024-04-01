@@ -1,6 +1,7 @@
 package Blackbox.View.Shapes;
 import static Blackbox.Constant.Constants.*;
 
+import Blackbox.View.HexBoard;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Path;
@@ -12,6 +13,8 @@ import java.util.Arrays;
 
 public class Hexagon {
     private Pane parentPane;
+    private HexBoard hexBoard;
+
     public  static ArrayList<Atom> atomList = new ArrayList<>();
     public static int atomCount = 0;
     private boolean hasAtom = false;
@@ -33,8 +36,9 @@ public class Hexagon {
     private ArrayList<atomPlacement> atomPlacements = new ArrayList<>();
 
 
-    public Hexagon(Pane parent) {
+    public Hexagon(Pane parent, HexBoard hexBoard) {
         parentPane = parent;
+        this.hexBoard = hexBoard;
         hexagon = new Polygon();
 
         hexagon.setOnMouseEntered(event -> hexagon.setStroke(Color.RED));
@@ -94,7 +98,7 @@ public class Hexagon {
         double midYTextLocation = (text1y + text2y) / 2 + yy;
 
         if (arrowValidCheck(i,row,col)){
-            arrow = new Arrow (this, midXArrowLocation,midYArrowLocation,parentPane, i);
+            arrow = new Arrow (this, midXArrowLocation,midYArrowLocation,parentPane, i, this.hexBoard);
             arrow.createArrow();
             arrow.createText(row,col, arrowCounter, midXTextLocation, midYTextLocation);
             arrowCounter++;
