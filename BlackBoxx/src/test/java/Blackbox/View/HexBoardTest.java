@@ -60,6 +60,7 @@ public class HexBoardTest {
         assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
 
     }
+    @Test
     public void SixtyDegreeReflection() {
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
@@ -92,5 +93,30 @@ public class HexBoardTest {
         assertEquals("4,3:Hit",hexBoard.sendRayat(10));
         assertEquals("8,3",hexBoard.sendRayat(12));
 }
+    @Test
+    public void OneTwentyDegreeReflection() {
+        Pane display = new Pane();
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        hexBoard.createAtomAthexagon(4, 4);
+        hexBoard.createAtomAthexagon(4, 5);
+        hexBoard.createAtomAthexagon(4, 3);
+        hexBoard.createAtomAthexagon(4, 2);
+
+        hexBoard.initializeHexagonsNearAtom();
+
+        //testing all the possibilities ray hits between two atoms (causing a 120 degree reflection)
+        assertEquals("8,1", hexBoard.sendRayat(28));
+        assertEquals("8,0", hexBoard.sendRayat(26));
+        assertEquals("7,0", hexBoard.sendRayat(24));
+
+
+        assertEquals("0,4", hexBoard.sendRayat(53));
+        assertEquals("0,3", hexBoard.sendRayat(1));
+        assertEquals("1,0", hexBoard.sendRayat(50));
+
+    }
+
+
 }
 

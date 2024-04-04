@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made functions for tests">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="CreateatomsOnBoard test created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
     </list>
@@ -88,7 +88,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.HexBoardTest.EquallyDistantReflection">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
       <module name="Main" />
@@ -99,6 +99,38 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HexBoardTest.EquallyDistantReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="EquallyDistantReflection" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HexBoardTest.OneTwentyDegreeReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="OneTwentyDegreeReflection" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,52 +167,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.createatomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Blackbox.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Blackbox.View" />
-      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="createatomsOnBoard" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HexBoardTest.deleteatomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Blackbox.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Blackbox.View" />
-      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="deleteatomsOnBoard" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
+      <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
       <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
       <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
-      <item itemvalue="JUnit.HexBoardTest.createatomsOnBoard" />
-      <item itemvalue="JUnit.HexBoardTest.deleteatomsOnBoard" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
-        <item itemvalue="JUnit.HexBoardTest.deleteatomsOnBoard" />
-        <item itemvalue="JUnit.HexBoardTest.createatomsOnBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +266,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712264979768</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="CreateHexagonalBoard test created">
+      <option name="closed" value="true" />
+      <created>1712266410741</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712266410741</updated>
+    </task>
+    <task id="LOCAL-00010" summary="CreateatomsOnBoard test created">
+      <option name="closed" value="true" />
+      <created>1712266459457</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712266459457</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +309,8 @@
     <MESSAGE value="Added internal Reflection to the displaying on the board" />
     <MESSAGE value="Made 1 test to check if atom is placed properly. changed other classes to make this possible" />
     <MESSAGE value="Made functions for tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made functions for tests" />
+    <MESSAGE value="CreateHexagonalBoard test created" />
+    <MESSAGE value="CreateatomsOnBoard test created" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreateatomsOnBoard test created" />
   </component>
 </project>
