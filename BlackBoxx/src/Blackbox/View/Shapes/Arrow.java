@@ -9,7 +9,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Arrow {
+    public List<List<Hexagon>> hexList = new ArrayList<>();
     private Pane parentPane;
     private HexBoard hexBoard;
 
@@ -71,7 +75,7 @@ public class Arrow {
             arrow.setStroke(Color.RED);
         });
         arrow.setOnMouseClicked(event -> {
-            Ray ray = new Ray(goingTo,centreX,centreY,parentPane, hex, this, hexBoard);
+            Ray ray = new Ray(goingTo,centreX,centreY,parentPane, hex, this, hexBoard,hexList);
         });
         return arrow;
 
@@ -139,6 +143,7 @@ public class Arrow {
         return idArrow;
     }
 
+    public void setHexList(List<List<Hexagon>> hexL){hexList = hexL;}
 
     public static int[][][] array = {
             { {2, 1, 54}, {53,52},{51,50},{49,48},{47,46,45}},// Top row

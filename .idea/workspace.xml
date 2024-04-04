@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Main:jar" />
+      <artifact name="PEA_Blackbox:jar" />
+      <artifact name="PEA_Blackbox:jar2" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made functions for tests">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Main_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/.idea/artifacts/Main_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/lib/junit-4.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/out/artifacts/Main_jar/Main.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Constant/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Arrow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" afterDir="false" />
@@ -67,8 +88,9 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/PEA_Blackbox",
+    "last_opened_file_path": "C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/javafx-sdk-21.0.2/lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,7 +114,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.HexBoardTest.complexAtoms">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
       <module name="Main" />
@@ -123,6 +145,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HexBoardTest.complexAtoms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="complexAtoms" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HexBoardTest.createHexagonalBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
@@ -139,7 +177,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.createatomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.onetwentyDegreeReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -149,23 +187,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="Blackbox.View" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="createatomsOnBoard" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HexBoardTest.deleteatomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Blackbox.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Blackbox.View" />
-      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="deleteatomsOnBoard" />
+      <option name="METHOD_NAME" value="onetwentyDegreeReflection" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -173,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.complexAtoms" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.HexBoardTest.onetwentyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
-        <item itemvalue="JUnit.HexBoardTest.deleteatomsOnBoard" />
-        <item itemvalue="JUnit.HexBoardTest.createatomsOnBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -263,11 +285,30 @@
       <option name="project" value="LOCAL" />
       <updated>1712264979768</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Made functions for tests">
+      <option name="closed" value="true" />
+      <created>1712265029649</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712265029649</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -280,5 +321,16 @@
     <MESSAGE value="Made 1 test to check if atom is placed properly. changed other classes to make this possible" />
     <MESSAGE value="Made functions for tests" />
     <option name="LAST_COMMIT_MESSAGE" value="Made functions for tests" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

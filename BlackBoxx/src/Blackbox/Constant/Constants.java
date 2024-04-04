@@ -10,7 +10,7 @@ import javafx.geometry.Rectangle2D;
 
 
 public class Constants {
-    public static List<List<Hexagon>> hexList = new ArrayList<>();
+    public  List<List<Hexagon>> hexList = new ArrayList<>();
 
     //---------------------Welcome
     public static final double WELCOMEBOARD_X_STARTAT = 450;

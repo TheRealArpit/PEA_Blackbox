@@ -1,16 +1,11 @@
 package Blackbox.View.Shapes;
-import Blackbox.Constant.Constants;
-import Blackbox.Model.GameModel;
 import Blackbox.View.HexBoard;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.util.ArrayList;
 import java.util.List;
 import static Blackbox.Constant.Constants.*;
 
@@ -18,6 +13,8 @@ import static Blackbox.Constant.Constants.*;
 public class Ray {
     private Pane parentpane;
     private HexBoard hexBoard;
+    public List<List<Hexagon>> hexList;
+
     private direction goingTo;
     private int rowIndex;
     private int colIndex;
@@ -33,7 +30,8 @@ public class Ray {
 
     private RayType rayType = RayType.NO_ATOM;
 
-    public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow, HexBoard hexBoard){//constrctor for the ray
+    public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow, HexBoard hexBoard, List<List<Hexagon>> hexList){//constrctor for the ray
+        this.hexList = this.hexList;
         parentpane = pane;
         this.hexBoard = hexBoard;
         this.goingTo = goingTo;
@@ -43,8 +41,10 @@ public class Ray {
         enteredArrow = initialArrow;
         createRay();
     }
-    public Ray(){}
-    public String sendRay(int k){
+    public Ray(List<List<Hexagon>> hexLit){
+        hexList = hexLit;
+    }
+    public String sendRay(int k,List<List<Hexagon>> hexList){
         //find hexagon
         Hexagon startingHex = null;
         for(int i=0; i<hexList.size(); i++){
@@ -58,6 +58,7 @@ public class Ray {
                 }
             }
         }
+
         if(startingHex.getHexagon()== null){
             System.out.println("Number not on HexBoard");
              return null;
@@ -517,5 +518,6 @@ public class Ray {
             return;
         }
     }
+    public void setHexList(List<List<Hexagon>> hexL){hexList = hexL;}
     
 }

@@ -10,11 +10,12 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Hexagon {
     private Pane parentPane;
     private HexBoard hexBoard;
-
+    public List<List<Hexagon>> hexList;
     public  static ArrayList<Atom> atomList = new ArrayList<>();
     public static int atomCount = 0;
     private boolean hasAtom = false;
@@ -100,6 +101,7 @@ public class Hexagon {
 
         if (arrowValidCheck(i,row,col)){
             arrow = new Arrow (this, midXArrowLocation,midYArrowLocation,parentPane, i, this.hexBoard);
+            arrow.setHexList(hexList);
             arrow.createArrow();
             arrow.createText(row,col, arrowCounter, midXTextLocation, midYTextLocation);
             arrowCounter++;
@@ -165,7 +167,9 @@ public class Hexagon {
 
         public void deleteAtom(){
         atom = null;
-
     }
+    public void setHexList(List<List<Hexagon>> hexL){hexList = hexL;}
+
+
 
 }

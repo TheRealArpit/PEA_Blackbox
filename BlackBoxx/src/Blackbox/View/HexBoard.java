@@ -1,24 +1,18 @@
 package Blackbox.View;
 
-import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import Blackbox.View.Shapes.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import static Blackbox.Constant.Constants.*;
 
@@ -28,9 +22,11 @@ public class HexBoard {
     private ArrayList<String> history;
 
     private   VBox numberStack = new VBox(5); // VBox to stack numbers, with spacing of 5
+    public List<List<Hexagon>> hexList = new ArrayList<>();
 
     public HexBoard(){
         history = new ArrayList<>();
+        hexList = new ArrayList<>();
     }
     public void setHexboardPane(Pane display){
         hexboard = display;
@@ -43,6 +39,7 @@ public class HexBoard {
             hexList.add(new ArrayList<>()); //each row of is a list
             for(int col = 0; col < rowLength[row]; col++) {
                 Hexagon hex = new Hexagon(hexboard, this);
+                hex.setHexList(hexList);
                 double offsetX = getOffsetX(rowLength, row) ;//calculate offset and position of the hexagon
                 double positionX = getPosition( col, offsetX) + BOARD_X_STARTAT ;
                 double positionY = row * SCALING_FACTOR_Y * HEXAGON_RADIUS + BOARD_Y_STARTAT;
@@ -315,10 +312,10 @@ public class HexBoard {
 
         ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
     }
-    public Pane getHexboard() {return hexboard;}
+    public List<List<Hexagon>> getHexList() {return hexList;}
     public String sendRayat(int rayNum){
-        Ray ray = new Ray();
-        return ray.sendRay(rayNum);
+        Ray ray = new Ray(hexList);
+        return ray.sendRay(rayNum,hexList);
     }
 
 
