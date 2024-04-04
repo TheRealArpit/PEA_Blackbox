@@ -60,5 +60,37 @@ public class HexBoardTest {
         assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
 
     }
+    public void SixtyDegreeReflection() {
+        Pane display = new Pane();
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        hexBoard.createAtomAthexagon(4,4);
+        hexBoard.initializeHexagonsNearAtom();
+
+        //testing all the posibilites ray hits the middle atom on the board
+        assertEquals("1,0",hexBoard.sendRayat(17));
+        assertEquals("5,3:Hit",hexBoard.sendRayat(19));        //19 is direct hit. Hits the hexagon on the circle of influence. buttom left of 4,4
+        assertEquals("5,7",hexBoard.sendRayat(21));
+
+        assertEquals("5,4:Hit",hexBoard.sendRayat(28));
+        assertEquals("5,0",hexBoard.sendRayat(26));
+        assertEquals("1,5",hexBoard.sendRayat(30));
+
+        assertEquals("3,0",hexBoard.sendRayat(48));
+        assertEquals("3,4:Hit",hexBoard.sendRayat(46));
+        assertEquals("7,5",hexBoard.sendRayat(44));
+
+        assertEquals("7,0",hexBoard.sendRayat(3));
+        assertEquals("3,3:Hit",hexBoard.sendRayat(1));
+        assertEquals("3,7",hexBoard.sendRayat(53));
+
+        assertEquals("0,1",hexBoard.sendRayat(39));
+        assertEquals("4,5:Hit",hexBoard.sendRayat(37));
+        assertEquals("8,1",hexBoard.sendRayat(35));
+
+        assertEquals("0,3",hexBoard.sendRayat(8));
+        assertEquals("4,3:Hit",hexBoard.sendRayat(10));
+        assertEquals("8,3",hexBoard.sendRayat(12));
+}
 }
 
