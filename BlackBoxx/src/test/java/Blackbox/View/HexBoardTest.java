@@ -116,6 +116,33 @@ public class HexBoardTest {
         assertEquals("1,0", hexBoard.sendRayat(50));
 
     }
+    @Test
+    public void EquallyDistantReflection() {
+        Pane display = new Pane();
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        hexBoard.createAtomAthexagon(2, 1);
+        hexBoard.createAtomAthexagon(4, 2);
+        hexBoard.createAtomAthexagon(6, 1);
+        hexBoard.createAtomAthexagon(7, 2);
+        hexBoard.createAtomAthexagon(7, 3);
+        hexBoard.createAtomAthexagon(6, 5);
+
+
+        hexBoard.initializeHexagonsNearAtom();
+
+        //testing all the possibilities ray hits equally distant atoms (causing a 180 degree reflection)
+        assertEquals("3,0", hexBoard.sendRayat(8));
+        assertEquals("3,7", hexBoard.sendRayat(39));
+
+        assertEquals("5,0", hexBoard.sendRayat(12));
+
+        assertEquals("8,0", hexBoard.sendRayat(19));
+        assertEquals("0,4", hexBoard.sendRayat(46));
+
+        assertEquals("8,4", hexBoard.sendRayat(28));
+
+    }
 
 
 }
