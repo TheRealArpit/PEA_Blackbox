@@ -46,7 +46,23 @@ public class Ray {
         createRay();
     }
 
-
+    public void displayEntryExitPoints() {
+        hexBoard.checkNumberStack();
+        hexBoard.setNumberStackXY(50,170);
+        Text message = new Text();
+        message.setFill(Color.WHITE);
+        message.setFont(Font.font(18));
+        if(leftArrow == null){
+            String msg = "Entered at: " + enteredArrow.getIdArrow() + "\tType:" + rayType.toString();
+            message.setText(msg);
+            hexBoard.updateNumberStack(message);
+        }else{
+            String msg = "Entered at: " + enteredArrow.getIdArrow() +"\tLeft at: "+ leftArrow.getIdArrow() + "\tType:" + rayType.toString();
+            hexBoard.getHistory().add(msg);
+            message.setText(msg);
+            hexBoard.updateNumberStack(message);
+}
+}
 
     private void createLine() {
         if (isThereNextHex()) {
@@ -69,6 +85,7 @@ public class Ray {
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
                 System.out.println("Ray absorbed.");
+                displayEntryExitPoints();
                 return;
             } else {
                 currentHex = hexList.get(rowIndex).get(colIndex);
@@ -80,7 +97,8 @@ public class Ray {
         String exitText = exitArrow.getText().getText();
         // After exiting the loop, extend the line
         drawFinalLine(currentHex);
-    }
+        displayEntryExitPoints();
+}
 
     private void drawFinalLine(Hexagon currentHex) {
         direction endArrowDir = opposite();
