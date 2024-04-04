@@ -37,8 +37,6 @@ public class HexBoard {
         hexboard.setStyle("-fx-background-color: black;"); // Set the background color to black
         hexboard.getChildren().add(numberStack);
     }
-
-
     public void createHexagonalBoard(){
         int[] rowLength = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
         for (int row = 0; row < 9; row++) {
@@ -67,8 +65,6 @@ public class HexBoard {
             System.out.println("");
         }
     }
-
-
 
     public void hideAtomsOnBoard(){
     for(Atom x: Hexagon.atomList){
@@ -194,11 +190,13 @@ public class HexBoard {
     }
     //test
     public void createAtomAthexagon(int x, int y){
-        Atom atom = new Atom(5,5,hexboard);
+        Atom atom = new Atom(0,0,hexboard);
         getHexagon(x,y).setAtom(atom);
-        System.out.println( getHexagon(x,y).hasAtom());
-
     }
+    public void deleteAtomAthexagon(int x, int y){
+        getHexagon(x,y).unsetAtom();
+    }
+
     public Hexagon getHexagon(int x, int y){
         Hexagon hex = hexList.get(x).get(y);
         return hex;
@@ -318,6 +316,10 @@ public class HexBoard {
         ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
     }
     public Pane getHexboard() {return hexboard;}
+    public String sendRayat(int rayNum){
+        Ray ray = new Ray();
+        return ray.sendRay(rayNum);
+    }
 
 
 }

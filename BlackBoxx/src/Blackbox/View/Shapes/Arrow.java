@@ -30,7 +30,6 @@ public class Arrow {
         centreY = cY;
         this.parentPane = parantPane;
         stuff(i);
-
     }
 
     public Path createArrow() {

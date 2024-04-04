@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made 1 test to check if atom is placed properly. changed other classes to make this possible">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Atom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Arrow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
@@ -108,7 +107,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.atomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.SixtyDegreeReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -118,7 +117,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="Blackbox.View" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="atomsOnBoard" />
+      <option name="METHOD_NAME" value="SixtyDegreeReflection" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,11 +139,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HexBoardTest.createatomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="createatomsOnBoard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HexBoardTest.deleteatomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="deleteatomsOnBoard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.HexBoardTest.atomsOnBoard" />
+        <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
+        <item itemvalue="JUnit.HexBoardTest.deleteatomsOnBoard" />
+        <item itemvalue="JUnit.HexBoardTest.createatomsOnBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712247052720</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made 1 test to check if atom is placed properly. changed other classes to make this possible">
+      <option name="closed" value="true" />
+      <created>1712252259964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712252259964</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -107,9 +107,7 @@ public class Hexagon {
         }
     }
 
-
-
-    private void createAtom() {//method to create atom
+    public  void createAtom() {//method to create atom
         atom = new Atom(centreX,centreY,parentPane);
         atom.addCirCoiPane();
         atomList.add(atom);
@@ -117,7 +115,7 @@ public class Hexagon {
         atomCount++;
     }
 
-    private void removeAtom() {//method to create atom
+    public void removeAtom() {//method to create atom
         atom.removeAtom();
         atomList.remove(atom);
         hasAtom = false;
@@ -151,20 +149,23 @@ public class Hexagon {
     public ArrayList getAtomPlacements() {return atomPlacements;}
     public void setAtomPlacement(atomPlacement at) {atomPlacements.add(at);}
     public void setHasBorderingAtom(boolean hasBorderingAtom) {this.hasBorderingAtom = hasBorderingAtom;}
-    public void addBorderingAtoms() {
-        borderingAtoms++;}
 
+    public void addBorderingAtoms() {borderingAtoms++;}
+    public int getColList() {return colList;}
     public int getRowList() {return rowList;}
     public int getBorderingAtoms() {return borderingAtoms;}
 
-    public int getColList() {return colList;}
     public boolean hasBorderingATom() {return hasBorderingAtom;}
     public Arrow getArrow(){return arrow;}
     public ArrayList<Arrow> getArrowList(){return arrows;}
+
     //for Test purposes
-    public void setAtom(Atom atom11){atom = atom11;
-    hasAtom = true;}
+    public void setAtom(Atom atom11){atom = atom11;    hasAtom = true;}
+    public void unsetAtom(){atom = null; hasAtom = false;}
 
+        public void deleteAtom(){
+        atom = null;
 
+    }
 
 }
