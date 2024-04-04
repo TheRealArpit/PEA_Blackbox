@@ -54,13 +54,14 @@ public class Ray {
         message.setFont(Font.font(18));
         if(leftArrow == null){
             String msg = "Entered at: "+ enteredArrow.getIdArrow() + "\tType:" + rayType.toString();
+            hexBoard.getHistory().add(msg);
             message.setText(msg);
             hexBoard.updateNumberStack(message);
         }else{
-            System.out.println("here");
             String msg = "Entered at: " + enteredArrow.getIdArrow() +"\tLeft at: "+ leftArrow.getIdArrow() + "\nType:  " + rayType.toString();
             hexBoard.getHistory().add(msg);
             message.setText(msg);
+            hexBoard.getHistory().add(msg);
             hexBoard.updateNumberStack(message);
         }
 }
@@ -186,12 +187,12 @@ public class Ray {
     }
     private boolean isThereNextHex() {
         if (rowIndex < 0 || rowIndex >= hexList.size()) {
-            System.out.println("Left the hexagonalboard");
+            //System.out.println("Left the hexagonalboard");
             return false;
         }
         List<Hexagon> row = hexList.get(rowIndex);
         if (colIndex < 0 || colIndex >= row.size()) {
-            System.out.println("Left the hexagonalboard");
+            //System.out.println("Left the hexagonalboard");
             return false;
         }
         return true;
@@ -213,7 +214,6 @@ public class Ray {
                 else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     if (goingTo == direction.S_WEST) {
                         createLine();
-                        System.out.println("hit");
                         rayType = RayType.HIT;
                         return false;
                     } else if (goingTo == direction.S_EAST) {
@@ -228,7 +228,6 @@ public class Ray {
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     if (goingTo == direction.S_EAST) {
                         createLine();
-                        System.out.println("hit");
                         rayType = RayType.HIT;
                         return false;
                     }
@@ -246,7 +245,6 @@ public class Ray {
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
                     if (goingTo == direction.EAST) {
                         createLine();
-                        System.out.println("hit");
                         rayType = RayType.HIT;
                         return false;
                     }
@@ -265,7 +263,6 @@ public class Ray {
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
                     if (goingTo == direction.N_EAST) {
                         createLine();
-                        System.out.println("hit");
                         rayType = RayType.HIT;
 
                         return false;
@@ -288,7 +285,6 @@ public class Ray {
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
                     if (goingTo == direction.N_WEST) {
                         createLine();
-                        System.out.println("hit");
                         rayType = RayType.HIT;
                         return false;
                     }
@@ -307,7 +303,6 @@ public class Ray {
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT)) {
                     if (goingTo == direction.WEST) {
                         createLine();
-                        System.out.println("hit");
                         rayType = RayType.HIT;
                         return false;
                     }

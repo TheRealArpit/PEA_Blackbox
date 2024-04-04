@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="The entry and exit points on the display update everytime an arrow is clicked now">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made 1 test to check if atom is placed properly. changed other classes to make this possible">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Atom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +93,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
       <module name="Main" />
@@ -104,9 +108,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HexBoardTest.atomsOnBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="atomsOnBoard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HexBoardTest.createHexagonalBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Blackbox.View" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="METHOD_NAME" value="createHexagonalBoard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.HexBoardTest.atomsOnBoard" />
+        <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711988754673</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added internal Reflection to the displaying on the board">
+      <option name="closed" value="true" />
+      <created>1712247052720</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712247052720</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +227,8 @@
     <MESSAGE value="Working on Fixing printing out to diplay" />
     <MESSAGE value="Puts on display the entered and exited locations (the numbers)" />
     <MESSAGE value="The entry and exit points on the display update everytime an arrow is clicked now" />
-    <option name="LAST_COMMIT_MESSAGE" value="The entry and exit points on the display update everytime an arrow is clicked now" />
+    <MESSAGE value="Added internal Reflection to the displaying on the board" />
+    <MESSAGE value="Made 1 test to check if atom is placed properly. changed other classes to make this possible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made 1 test to check if atom is placed properly. changed other classes to make this possible" />
   </component>
 </project>

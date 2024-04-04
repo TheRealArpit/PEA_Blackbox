@@ -36,6 +36,8 @@ public class Atom {
         COI.setMouseTransparent(true); // Make the circle transparent to mouse events
         COI.setCenterX(x);
         COI.setCenterY(y);
+    }
+    public void addCirCoiPane(){
         parantPane.getChildren().addAll(circle,COI);
     }
     public void removeAtom(){parantPane.getChildren().removeAll(circle,COI);}

@@ -16,7 +16,10 @@ public class GameView {
     }
     public void startGame(){
         display.getChildren().clear();
-        HexBoard hexBoard = new HexBoard(display);
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.setHexboardPane(display);
+        hexBoard.createHexagonalBoard();
+        hexBoard.addHexArrboardtoPane();
         hexBoard.createText();
         //hexBoard.;
     }

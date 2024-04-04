@@ -69,6 +69,7 @@ public class Hexagon {
             ytotal+=y;
             getHexagon().getPoints().addAll(x,y);
             createArr(i,angle, xx, yy, row, col,k);
+
         }
         centreX = xtotal/6 + xx;
         centreY = ytotal/6 + yy;
@@ -110,10 +111,10 @@ public class Hexagon {
 
     private void createAtom() {//method to create atom
         atom = new Atom(centreX,centreY,parentPane);
+        atom.addCirCoiPane();
         atomList.add(atom);
         hasAtom = true;
         atomCount++;
-
     }
 
     private void removeAtom() {//method to create atom
