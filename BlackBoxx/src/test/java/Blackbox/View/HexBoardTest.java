@@ -47,5 +47,18 @@ public class HexBoardTest {
         assertEquals(coor, add.toString());
 
     }
+    @Test
+    public void createatomsOnBoard() {
+        Pane display = new Pane();
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        hexBoard.createAtomAthexagon(0,0);
+        hexBoard.createAtomAthexagon(3,4);
+        hexBoard.createAtomAthexagon(4,8);
+        assertEquals(true, hexBoard.getHexagon(0,0).hasAtom());
+        assertEquals(true, hexBoard.getHexagon(3,4).hasAtom());
+        assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
+
+    }
 }
 
