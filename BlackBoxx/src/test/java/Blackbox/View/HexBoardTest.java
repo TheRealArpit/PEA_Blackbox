@@ -34,8 +34,8 @@ public class HexBoardTest {
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
-        for (int i = 0; i < hexList.size(); i++) {
-            List<Hexagon> curr = hexList.get(i);
+        for (int i = 0; i < hexBoard.getHexList().size(); i++) {
+            List<Hexagon> curr = hexBoard.getHexList().get(i);
             for (int j = 0; j < curr.size(); j++) {
                 add.append("(" + i + ", " + j + ")\t");
             }
@@ -158,4 +158,5 @@ public class HexBoardTest {
         assertEquals("8,4", hexBoard.sendRayat(28));
 
     }
+
 }
