@@ -7,6 +7,7 @@ import  static Blackbox.Constant.Constants.*;
 import static org.junit.Assert.assertEquals;
 
 import Blackbox.View.Shapes.Arrow;
+import Blackbox.View.Shapes.Atom;
 import Blackbox.View.Shapes.Hexagon;
 import javafx.scene.layout.Pane;
 import org.junit.Assert;
@@ -16,7 +17,6 @@ import java.util.List;
 
 
 public class HexBoardTest {
-
     @Test
     public void createHexagonalBoard() {
         String coor =
@@ -34,10 +34,10 @@ public class HexBoardTest {
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
-        for(int i=0; i<hexBoard.getHexList().size(); i++){
-            List<Hexagon> curr = hexBoard.getHexList().get(i);
-            for(int j=0; j<curr.size() ; j++){
-                add.append("(" + i + ", "+ j+ ")\t");
+        for (int i = 0; i < hexList.size(); i++) {
+            List<Hexagon> curr = hexList.get(i);
+            for (int j = 0; j < curr.size(); j++) {
+                add.append("(" + i + ", " + j + ")\t");
             }
             add.append("\n");
             System.out.println();
@@ -55,6 +55,9 @@ public class HexBoardTest {
         hexBoard.createAtomAthexagon(3,4);
         hexBoard.createAtomAthexagon(4,8);
         assertEquals(true, hexBoard.getHexagon(0,0).hasAtom());
+        assertEquals(true, hexBoard.getHexagon(3,4).hasAtom());
+        assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
+
         assertEquals(true, hexBoard.getHexagon(3,4).hasAtom());
         assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
 
@@ -104,62 +107,55 @@ public class HexBoardTest {
         assertEquals("0,3",hexBoard.sendRayat(8));
         assertEquals("4,3:Hit",hexBoard.sendRayat(10));
         assertEquals("8,3",hexBoard.sendRayat(12));
-    }
-
+}
     @Test
-    public void onetwentyDegreeReflection() {
+    public void OneTwentyDegreeReflection() {
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
         hexBoard.createAtomAthexagon(4, 4);
-        hexBoard.createAtomAthexagon(3, 3);
+        hexBoard.createAtomAthexagon(4, 5);
+        hexBoard.createAtomAthexagon(4, 3);
+        hexBoard.createAtomAthexagon(4, 2);
+
         hexBoard.initializeHexagonsNearAtom();
 
-        //testing all the posibilites ray hits the middle atom on the board
-        assertEquals("7,0", hexBoard.sendRayat(10));
-        assertEquals("0,4", hexBoard.sendRayat(39));        //19 is direct hit. Hits the hexagon on the circle of influence. buttom left of 4,4
-    }
+        //testing all the possibilities ray hits between two atoms (causing a 120 degree reflection)
+        assertEquals("8,1", hexBoard.sendRayat(28));
+        assertEquals("8,0", hexBoard.sendRayat(26));
+        assertEquals("7,0", hexBoard.sendRayat(24));
 
+
+        assertEquals("0,4", hexBoard.sendRayat(53));
+        assertEquals("0,3", hexBoard.sendRayat(1));
+        assertEquals("1,0", hexBoard.sendRayat(50));
+
+    }
     @Test
-    public void complexAtoms() {
+    public void EquallyDistantReflection() {
+        Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
-
-        hexBoard.createAtomAthexagon(3, 1);
-        hexBoard.createAtomAthexagon(6, 2);
+        hexBoard.createAtomAthexagon(2, 1);
+        hexBoard.createAtomAthexagon(4, 2);
+        hexBoard.createAtomAthexagon(6, 1);
+        hexBoard.createAtomAthexagon(7, 2);
+        hexBoard.createAtomAthexagon(7, 3);
         hexBoard.createAtomAthexagon(6, 5);
-        hexBoard.createAtomAthexagon(3, 7);
+
+
         hexBoard.initializeHexagonsNearAtom();
 
-        assertEquals("0,3", hexBoard.sendRayat(50));
+        //testing all the possibilities ray hits equally distant atoms (causing a 180 degree reflection)
+        assertEquals("3,0", hexBoard.sendRayat(8));
+        assertEquals("3,7", hexBoard.sendRayat(39));
 
-        HexBoard HexBoard1 = new HexBoard();
-        HexBoard1.createHexagonalBoard();
-        HexBoard1.createAtomAthexagon(1, 3);
-        HexBoard1.createAtomAthexagon(4, 6);
-        HexBoard1.createAtomAthexagon(5, 5);
-        HexBoard1.initializeHexagonsNearAtom();
+        assertEquals("5,0", hexBoard.sendRayat(12));
 
-        assertEquals("4,0", HexBoard1.sendRayat(6));
-        System.out.println("\n\n");
+        assertEquals("8,0", hexBoard.sendRayat(19));
+        assertEquals("0,4", hexBoard.sendRayat(46));
 
-        HexBoard HexBoard_ = new HexBoard();
-        HexBoard_.createHexagonalBoard();
-        HexBoard_.initializeHexagonsNearAtom();
+        assertEquals("8,4", hexBoard.sendRayat(28));
 
-        HexBoard_.createAtomAthexagon(7, 0);
-        HexBoard_.createAtomAthexagon(5, 4);
-        HexBoard_.createAtomAthexagon(4, 2);
-        HexBoard_.createAtomAthexagon(2, 4);
-        HexBoard_.initializeHexagonsNearAtom();
-        assertEquals("0,1", HexBoard_.sendRayat(22));
-    }
-
-    @Test
-    public void showAtomsOnBoard() {
-    }
-
-    @Test
-    public void initializeHexagonsNearAtom() {
     }
 }
