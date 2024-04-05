@@ -248,6 +248,10 @@ public class Ray {
         if(isThereNextHex()){
             Hexagon hextocheck = hexList.get(rowIndex).get(colIndex);
             //Add if statements for the coi reflections
+            if (hextocheck.hasAtom()) {
+                rayType = RayType.HIT;
+                return false;
+            }
             if(hextocheck.getAtomPlacements().size()==1) {
                 if (InsideAtomReflect(goingto,hextocheck)){
                     rayType = RayType.TOTAL_REFLECTION;
@@ -459,40 +463,41 @@ public class Ray {
 
     private boolean InsideAtomReflect(direction goingto, Hexagon hextocheck) {
         //bottom Hexagon
-        if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
+
+         if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
             if(goingto == direction.N_WEST||goingto == direction.S_WEST){
-                createLine(Color.WHITE);   //checking if it works by making line thicker and white
+
                 goingTo = opposite();
                 return true;
             }
         } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT)){
             if(goingto == direction.N_EAST || goingto == direction.S_EAST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }
         else if(hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){        //            \ hexagon
             if(goingto == direction.EAST ||goingto == direction.S_WEST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }else if(hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
             if(goingto == direction.N_EAST || goingto == direction.WEST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }else if(hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
             if(goingto == direction.N_WEST ||goingto == direction.EAST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }else if(hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
             if (goingto == direction.WEST||goingto == direction.S_EAST) {
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }

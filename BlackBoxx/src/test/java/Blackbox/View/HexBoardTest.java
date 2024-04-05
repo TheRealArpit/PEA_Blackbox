@@ -155,5 +155,52 @@ public class HexBoardTest {
         assertEquals("8,4", hexBoard.sendRayat(28));
 
     }
+    @Test
+    public void complexPath() {
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+
+        hexBoard.createAtomAthexagon(3, 1);
+        hexBoard.createAtomAthexagon(6, 2);
+        hexBoard.createAtomAthexagon(6, 5);
+        hexBoard.createAtomAthexagon(3, 7);
+        hexBoard.initializeHexagonsNearAtom();
+
+        assertEquals("0,3", hexBoard.sendRayat(50));
+
+        HexBoard HexBoard1 = new HexBoard();
+        HexBoard1.createHexagonalBoard();
+        HexBoard1.createAtomAthexagon(1, 3);
+        HexBoard1.createAtomAthexagon(4, 6);
+        HexBoard1.createAtomAthexagon(5, 5);
+        HexBoard1.initializeHexagonsNearAtom();
+
+        assertEquals("4,0", HexBoard1.sendRayat(6));
+        System.out.println("\n\n");
+
+        HexBoard HexBoard_ = new HexBoard();
+        HexBoard_.createHexagonalBoard();
+        HexBoard_.initializeHexagonsNearAtom();
+
+        HexBoard_.createAtomAthexagon(7, 0);
+        HexBoard_.createAtomAthexagon(5, 4);
+        HexBoard_.createAtomAthexagon(4, 2);
+        HexBoard_.createAtomAthexagon(2, 4);
+        HexBoard_.initializeHexagonsNearAtom();
+        assertEquals("0,1", HexBoard_.sendRayat(22));
+}
+@Test
+    public void internalReflection()
+{
+    HexBoard HexBoard = new HexBoard();
+    HexBoard.createHexagonalBoard();
+    HexBoard.createAtomAthexagon(4, 8);
+    HexBoard.createAtomAthexagon(7, 5);
+    HexBoard.createAtomAthexagon(8, 1);
+    HexBoard.initializeHexagonsNearAtom();
+    assertEquals("3,7", HexBoard.sendRayat(39));
+    assertEquals("8,4", HexBoard.sendRayat(29));
+    assertEquals("8,2", HexBoard.sendRayat(23));
+}
 
 }

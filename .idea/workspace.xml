@@ -98,6 +98,36 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GUI.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.HexBoardTest.complexPath.executor": "Run",
+    "JUnit.HexBoardTest.executor": "Run",
+    "JUnit.HexBoardTest.internalReflection.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/PEA_Blackbox",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -111,7 +141,17 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
+      <module name="Main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\phili\Downloads\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
       <module name="Main" />
@@ -158,7 +198,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.SixtyDegreeReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.complexPath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -168,13 +208,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="Blackbox.View" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="SixtyDegreeReflection" />
+      <option name="METHOD_NAME" value="complexPath" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.createHexagonalBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.internalReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -184,21 +224,24 @@
       </extension>
       <option name="PACKAGE_NAME" value="Blackbox.View" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="createHexagonalBoard" />
+      <option name="METHOD_NAME" value="internalReflection" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.GUI" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.HexBoardTest.internalReflection" />
+      <item itemvalue="JUnit.HexBoardTest.complexPath" />
       <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
       <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
-      <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
-      <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.internalReflection" />
+        <item itemvalue="JUnit.HexBoardTest.complexPath" />
         <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
@@ -224,6 +267,7 @@
       <updated>1711296863831</updated>
       <workItem from="1711810756095" duration="170000" />
       <workItem from="1711811461556" duration="11963000" />
+      <workItem from="1712322104416" duration="7317000" />
     </task>
     <task id="LOCAL-00001" summary="Problems with intellij and Git. Fixed now">
       <option name="closed" value="true" />
