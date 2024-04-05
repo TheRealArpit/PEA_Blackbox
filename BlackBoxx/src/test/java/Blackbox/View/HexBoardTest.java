@@ -40,9 +40,7 @@ public class HexBoardTest {
                 add.append("(" + i + ", " + j + ")\t");
             }
             add.append("\n");
-            System.out.println();
         }
-
         assertEquals(coor, add.toString());
 
     }
@@ -73,7 +71,6 @@ public class HexBoardTest {
         hexBoard.createAtomAthexagon(1,5);
         hexBoard.deleteAtomAthexagon(1,5);
         assertEquals(false, hexBoard.getHexagon(1,5).hasAtom());
-
     }
     @Test
     public void SixtyDegreeReflection() {

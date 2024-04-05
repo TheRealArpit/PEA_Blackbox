@@ -31,7 +31,7 @@ public class Ray {
     private RayType rayType = RayType.NO_ATOM;
 
     public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow, HexBoard hexBoard, List<List<Hexagon>> hexList){//constrctor for the ray
-        this.hexList = this.hexList;
+        this.hexList = hexList;
         parentpane = pane;
         this.hexBoard = hexBoard;
         this.goingTo = goingTo;

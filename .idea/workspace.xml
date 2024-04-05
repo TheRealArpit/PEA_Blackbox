@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PEA_Blackbox:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="CreateatomsOnBoard test created">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made hexlist local instead of static in constant class">
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/lib/hamcrest-core-1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/lib/junit-4.13.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/out/artifacts/Main_jar2/Main.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src/GUIStarter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-4.13.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Main_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/.idea/artifacts/Main_jar2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/junit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/.idea/artifacts/Main_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/out/artifacts/Main_jar/Main.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/out/artifacts/Main_jar/Main.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,35 +71,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.HexBoardTest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/PEA_Blackbox&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.HexBoardTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mirdh/Desktop/Year2/Sem2/Software Engineering/PEA_Blackbox",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\elvis\OneDrive\Desktop\Project_____\BlackBoxx\src\Blackbox\View\Shapes" />
@@ -281,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712266459457</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Made hexlist local instead of static in constant class">
+      <option name="closed" value="true" />
+      <created>1712273921250</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712273921250</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +342,7 @@
     <MESSAGE value="Made functions for tests" />
     <MESSAGE value="CreateHexagonalBoard test created" />
     <MESSAGE value="CreateatomsOnBoard test created" />
-    <option name="LAST_COMMIT_MESSAGE" value="CreateatomsOnBoard test created" />
+    <MESSAGE value="Made hexlist local instead of static in constant class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made hexlist local instead of static in constant class" />
   </component>
 </project>

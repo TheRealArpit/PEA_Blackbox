@@ -59,7 +59,6 @@ public class HexBoard {
                     hexboard.getChildren().add(arrow.getText());
                 }
             }
-            System.out.println("");
         }
     }
 
