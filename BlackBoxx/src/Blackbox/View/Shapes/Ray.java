@@ -466,38 +466,38 @@ public class Ray {
 
          if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
             if(goingto == direction.N_WEST||goingto == direction.S_WEST){
-                createLine(Color.WHITE);   //checking if it works by making line thicker and white
+
                 goingTo = opposite();
                 return true;
             }
         } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT)){
             if(goingto == direction.N_EAST || goingto == direction.S_EAST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }
         else if(hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){        //            \ hexagon
             if(goingto == direction.EAST ||goingto == direction.S_WEST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }else if(hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
             if(goingto == direction.N_EAST || goingto == direction.WEST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }else if(hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
             if(goingto == direction.N_WEST ||goingto == direction.EAST){
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }
         }else if(hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
             if (goingto == direction.WEST||goingto == direction.S_EAST) {
-                createLine(Color.WHITE);
+
                 goingTo = opposite();
                 return true;
             }

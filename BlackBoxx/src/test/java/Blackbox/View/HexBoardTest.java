@@ -195,14 +195,12 @@ public class HexBoardTest {
 @Test
     public void internalReflection()
 {
-    Pane display = new Pane();
     HexBoard HexBoard = new HexBoard();
     HexBoard.createHexagonalBoard();
     HexBoard.createAtomAthexagon(4, 8);
     HexBoard.createAtomAthexagon(7, 5);
     HexBoard.createAtomAthexagon(8, 1);
     HexBoard.initializeHexagonsNearAtom();
-
     assertEquals("3,7", HexBoard.sendRayat(39));
     assertEquals("8,4", HexBoard.sendRayat(29));
     assertEquals("8,2", HexBoard.sendRayat(23));
