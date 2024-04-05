@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint.">
-      <change afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-    </list>
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
