@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="before pulling">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint.">
       <change afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
@@ -307,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712346742297</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint.">
+      <option name="closed" value="true" />
+      <created>1712350429365</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712350429365</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,6 +347,7 @@
     <MESSAGE value="CreateatomsOnBoard test created" />
     <MESSAGE value="Made hexlist local instead of static in constant class" />
     <MESSAGE value="before pulling" />
-    <option name="LAST_COMMIT_MESSAGE" value="before pulling" />
+    <MESSAGE value="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint." />
+    <option name="LAST_COMMIT_MESSAGE" value="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint." />
   </component>
 </project>
