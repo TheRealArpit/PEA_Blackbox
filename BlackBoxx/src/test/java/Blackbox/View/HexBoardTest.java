@@ -176,7 +176,6 @@ public class HexBoardTest {
         HexBoard1.initializeHexagonsNearAtom();
 
         assertEquals("4,0", HexBoard1.sendRayat(6));
-        System.out.println("\n\n");
 
         HexBoard HexBoard_ = new HexBoard();
         HexBoard_.createHexagonalBoard();

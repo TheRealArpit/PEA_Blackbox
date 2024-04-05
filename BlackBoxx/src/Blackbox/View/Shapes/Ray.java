@@ -37,53 +37,57 @@ public class Ray {
         this.goingTo = goingTo;
         xLox = x;
         yLoc = y;
-        setRowColofHex(initialHex);
+        rowIndex = initialHex.getRowList();
+        colIndex = initialHex.getColList();
         enteredArrow = initialArrow;
+        idRayEntered = initialArrow.getIdArrow();
         createRay();
     }
     public Ray(List<List<Hexagon>> hexLit){
         hexList = hexLit;
     }
-    public String sendRay(int k,List<List<Hexagon>> hexList){
-        //find hexagon
+    public String sendRay(int arrowId,List<List<Hexagon>> hexList){
+        idRayEntered = arrowId;
         Hexagon startingHex = null;
-        for(int i=0; i<hexList.size(); i++){
-            List<Hexagon> curr = hexList.get(i);
-            for(int j=0; j<curr.size() ; j++){
-                for(Arrow arr: hexList.get(i).get(j).getArrowList()){
-                    if(arr.getIdArrow() == k){
-                        startingHex = hexList.get(i).get(j);
-                        goingTo = arr.getDirection();
+        goingTo = null;
+        searchLoop:
+        for (List<Hexagon> hexRow : hexList) {
+            for (Hexagon hex : hexRow) {
+                for (Arrow arrow : hex.getArrowList()) {
+                    if (arrow.getIdArrow() == arrowId) {
+                        startingHex = hex;
+                        goingTo = arrow.getDirection();
+                        break searchLoop; // Exit all loops once the starting hexagon is found
                     }
                 }
             }
         }
 
-        if(startingHex.getHexagon()== null){
-            System.out.println("Number not on HexBoard");
-             return null;
-        }
-
         boolean continueRay = true;
         Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
-
-
         colIndex = startingHex.getColList();
         rowIndex = startingHex.getRowList();
-        System.out.println(rowIndex + "," + colIndex);
-
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
-                System.out.println("Ray absorbed.");
+                //System.out.println("Ray absorbed.");
                 currentHex = hexList.get(rowIndex).get(colIndex);
-                //System.out.println(rowIndex + "," + colIndex);
                 return currentHex.getRowList() + "," + currentHex.getColList()+":Hit";
             } else {
                 currentHex = hexList.get(rowIndex).get(colIndex);
-                System.out.println(rowIndex + "," + colIndex);
                 calculateEndPoint(); // Calculate the next hexagon based on the current direction
             }
         }
+        direction endArrowDir = opposite();
+        int i=0;
+
+        for (Arrow a: currentHex.getArrowList()){
+            if(a.getDirection() == endArrowDir){
+                leftArrow = a;
+                getIdRayExited = leftArrow.getIdArrow();
+            }
+        }
+
+        //return idRayEntered + "->" + getIdRayExited;
         return currentHex.getRowList() + "," + currentHex.getColList();
     }
 
@@ -127,7 +131,7 @@ public class Ray {
 
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
-                System.out.println("Ray absorbed.");
+                //System.out.println("Ray absorbed.");
                 createLine();
                 displayEntryExitPoints();
                 return;
@@ -137,13 +141,13 @@ public class Ray {
                 calculateEndPoint(); // Calculate the next hexagon based on the current direction
             }
         }
-        Arrow exitArrow = currentHex.getArrow();
-        String exitText = exitArrow.getText().getText();
-        // After exiting the loop, extend the line
         drawFinalLine(currentHex);
         displayEntryExitPoints();
 }
 
+private void setExitpoints(){
+
+}
     private void drawFinalLine(Hexagon currentHex) {
         direction endArrowDir = opposite();
         int i=0;
@@ -240,10 +244,7 @@ public class Ray {
         return true;
     }
 
-    private void setRowColofHex(Hexagon hex){
-        rowIndex = hex.getRowList();
-        colIndex = hex.getColList();
-    }
+
     private boolean checks(direction goingto){
         if(isThereNextHex()){
             Hexagon hextocheck = hexList.get(rowIndex).get(colIndex);
