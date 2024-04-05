@@ -31,7 +31,7 @@ public class Ray {
     private RayType rayType = RayType.NO_ATOM;
 
     public Ray(direction goingTo, double x, double y, Pane pane, Hexagon initialHex, Arrow initialArrow, HexBoard hexBoard, List<List<Hexagon>> hexList){//constrctor for the ray
-        this.hexList = this.hexList;
+        this.hexList = hexList;
         parentpane = pane;
         this.hexBoard = hexBoard;
         this.goingTo = goingTo;
@@ -248,6 +248,10 @@ public class Ray {
         if(isThereNextHex()){
             Hexagon hextocheck = hexList.get(rowIndex).get(colIndex);
             //Add if statements for the coi reflections
+            if (hextocheck.hasAtom()) {
+                rayType = RayType.HIT;
+                return false;
+            }
             if(hextocheck.getAtomPlacements().size()==1) {
                 if (InsideAtomReflect(goingto,hextocheck)){
                     rayType = RayType.TOTAL_REFLECTION;
@@ -459,7 +463,8 @@ public class Ray {
 
     private boolean InsideAtomReflect(direction goingto, Hexagon hextocheck) {
         //bottom Hexagon
-        if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
+
+         if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
             if(goingto == direction.N_WEST||goingto == direction.S_WEST){
                 createLine(Color.WHITE);   //checking if it works by making line thicker and white
                 goingTo = opposite();
