@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="CreateatomsOnBoard test created">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +88,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.HexBoardTest.complexPath">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Blackbox.Main" />
       <module name="Main" />
@@ -150,7 +151,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.createHexagonalBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.complexPath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -160,7 +161,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="Blackbox.View" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="createHexagonalBoard" />
+      <option name="METHOD_NAME" value="complexPath" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -168,18 +169,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.HexBoardTest.complexPath" />
       <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
       <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
       <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
-      <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.complexPath" />
         <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
-        <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
       </list>
     </recent_temporary>
   </component>
