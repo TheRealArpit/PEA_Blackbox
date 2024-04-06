@@ -1,60 +1,59 @@
-package Blackbox.View.Shapes;
-import static Blackbox.Constant.Constants.*;
+package Blackbox.Model;
 
-import Blackbox.View.HexBoard;
+import static Blackbox.Constant.Constants.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Path;
 import javafx.scene.shape.Polygon;
-import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 
 public class Hexagon {
     private Pane parentPane;
     private HexBoard hexBoard;
-    public List<List<Hexagon>> hexList;
-    public  static ArrayList<Atom> atomList = new ArrayList<>();
-    public static int atomCount = 0;
+    private ArrayList<ArrayList<Hexagon>> hexList;
+    private ArrayList<atomPlacement> atomPlacements = new ArrayList<>();
+
     private boolean hasAtom = false;
-    //private atomPlacement atomPlacement;
     private boolean hasBorderingAtom = false;
+    private int totalAtomsBoard = 0;
     private int borderingAtoms = 0;
+
+    private ArrayList<Arrow> arrowList;
+    private ArrayList<Ray> rays;
 
     private Polygon hexagon;
     private Atom atom;
-    private Arrow arrow;
     private double centreX;
     private double centreY;
     private int rowList;
     private int colList;
 
-    private ArrayList<Arrow> arrows;
-    private int arrowCounter = 0; // Add this counter
-
-    private ArrayList<atomPlacement> atomPlacements = new ArrayList<>();
-
-    public Hexagon(Pane parent, HexBoard hexBoard) {
-        parentPane = parent;
-        this.hexBoard = hexBoard;
+    public Hexagon(HexBoard hexboard){
         hexagon = new Polygon();
-
-        hexagon.setOnMouseEntered(event -> hexagon.setStroke(Color.RED));
-        hexagon.setOnMouseExited(event -> hexagon.setStroke(HEXAGON_STROKE));
-        hexagon.setOnMouseClicked(event -> {
-            if (!hasAtom && atomCount < MAX_ATOMS) {
-                createAtom();
-            } else if (hasAtom) {
-                removeAtom();
-            } else {
-                System.out.println("Can't add more atoms. Maximum limit reached.");
-            }
-        });
+        atomPlacements = new ArrayList<>();
+        this.hexBoard = hexboard;
+        arrowList = new ArrayList<Arrow>();
+        rays = new ArrayList<Ray>();
+        hexList = this.hexBoard.gethexList();
+        if(!TESTING){
+            parentPane = hexboard.getParantPane();
+            hexagon.setOnMouseEntered(event -> hexagon.setStroke(Color.RED));
+            hexagon.setOnMouseExited(event -> hexagon.setStroke(HEXAGON_STROKE));
+            hexagon.setOnMouseClicked(event -> {
+                if (!hasAtom && hexboard.getAtomList().size() < MAX_ATOMS) {
+                    createAtom(rowList,colList);
+                } else if (hasAtom) {
+                    removeAtom(rowList,colList);
+                } else {
+                    System.out.println("Can't add more atoms. Maximum limit reached.");
+                }
+            });
+        }
     }
+
     public void createHexagon(double xx, double yy, int row, int col) {
-        arrows = new ArrayList<>(); // Initialize the list here
         rowList = row;
         colList = col;
         double xtotal=0;
@@ -67,17 +66,20 @@ public class Hexagon {
             double y = HEXAGON_RADIUS * Math.sin(angle);
             xtotal+=x;
             ytotal+=y;
-            getHexagon().getPoints().addAll(x,y);
+            if(!TESTING){
+                hexagon.getPoints().addAll(x,y);
+            }
             createArr(i,angle, xx, yy, row, col,k);
-
         }
         centreX = xtotal/6 + xx;
         centreY = ytotal/6 + yy;
-        hexagon.setStrokeWidth(HEXAGON_STROKE_WIDTH);
-        hexagon.setStroke(HEXAGON_STROKE);
-        hexagon.setFill(HEXAGON_COLOR);
+        if(!TESTING) {
+            hexagon.setStrokeWidth(HEXAGON_STROKE_WIDTH);
+            hexagon.setStroke(HEXAGON_STROKE);
+            hexagon.setFill(HEXAGON_COLOR);
+        }
     }
-
+    private int arrowCounter = 0;
     private void createArr(int i, double angle, double xx, double yy, int row, int col, int k){
         double point1x = ARROW_DIS_FROM_CENTREHEX * Math.cos(angle) ;
         double point1y = ARROW_DIS_FROM_CENTREHEX * Math.sin(angle) ;
@@ -97,33 +99,15 @@ public class Hexagon {
         double midYTextLocation = (text1y + text2y) / 2 + yy;
 
         if (arrowValidCheck(i,row,col)){
-            arrow = new Arrow (this, midXArrowLocation,midYArrowLocation,parentPane, i, this.hexBoard);
-            arrow.setHexList(hexList);
-            arrow.createArrow();
-            arrow.createText(row,col, arrowCounter, midXTextLocation, midYTextLocation);
+            Arrow arrow = new Arrow(this, hexBoard, midXArrowLocation,midYArrowLocation,i);
+            if(!TESTING){
+                arrow.createArrow();
+            }
+            arrow.setArrowId(row,col,arrowCounter,midXTextLocation,midYTextLocation);
             arrowCounter++;
-            arrows.add((arrow));
+            arrowList.add((arrow));
         }
     }
-
-    public  void createAtom() {//method to create atom
-        atom = new Atom(centreX,centreY,parentPane);
-        atom.addCirCoiPane();
-        atomList.add(atom);
-        hasAtom = true;
-        atomCount++;
-    }
-
-    public void removeAtom() {//method to create atom
-        atom.removeAtom();
-        atomList.remove(atom);
-        hasAtom = false;
-        atomCount--;
-        atom = null;
-    }
-
-
-    public ArrayList<Atom> getAtomList() {return atomList;}
     public boolean arrowValidCheck(int i, int row, int column){
         return(  ((i == 3 || i == 4 || i == 2) && column == 0 && row == 0 )||( (i == 0 || i == 1 || i == 2 )&& column == 0 && row == 8) ||
                 ((i == 3 || i == 4 || i == 5 && column == 4 )&& row == 0 )||( (i == 5 || i == 0 || i == 1) && column == 4 && row == 8) ||
@@ -135,37 +119,50 @@ public class Hexagon {
                 ( (i == 0 ||i==5 ) && row == 7 && column == 5)||( (i == 0 ||i==5 ) && row == 6 && column == 6 );
     }
 
-    public void setPosXY(double x, double y) {//set x and y coordinates for the hexagon
-        hexagon.setLayoutX(x);
-        hexagon.setLayoutY(y);
+    public  void createAtom(int row, int col) {//method to create atom
+        if(!TESTING){
+            atom = new Atom(hexBoard, row,col); //adds to parent pane here
+            hexBoard.getAtomList().add(atom);
+            hasAtom = true;
+        }else{
+            hasAtom = true;
+            atom = new Atom(row, col);
+            //intialize atoms
+        }
+
     }
+
+    public void removeAtom(int row,int col) {//method to create atom
+        if(!TESTING){
+            atom.removeAtom();
+            hexBoard.getAtomList().remove(atom);
+        }
+        hasAtom = false;
+        atom = null;
+
+    }
+
+    public boolean hasAtom() {return hasAtom;}
+    public ArrayList<atomPlacement> getAtomPlacements() {return atomPlacements;}
+    public void setAtomPlacement(atomPlacement at) {atomPlacements.add(at);}
+    public void setHasBorderingAtom(boolean hasBorderingAtom) {this.hasBorderingAtom = hasBorderingAtom;}
+    public int getBorderingAtoms() {return borderingAtoms;}
+    public boolean hasBorderingATom() {return hasBorderingAtom;}
+
+    public void setPosXY(double x, double y) {//set x and y coordinates for the hexagon
+         hexagon.setLayoutX(x);
+         hexagon.setLayoutY(y);
+    }
+
+    public void addBorderingAtoms() {borderingAtoms++;}
+
+    public int getColList() {return colList;}
+    public int getRowList() {return rowList;}
     public double getCentreX() {return centreX;}
     public double getCentreY() {return centreY;}
     public Polygon getHexagon() {return hexagon;}
-    public String toString() {return "(" + centreX + ", " + centreY + ")\n";}
 
-    public boolean hasAtom() {return hasAtom;}
-    public ArrayList getAtomPlacements() {return atomPlacements;}
-    public void setAtomPlacement(atomPlacement at) {atomPlacements.add(at);}
-    public void setHasBorderingAtom(boolean hasBorderingAtom) {this.hasBorderingAtom = hasBorderingAtom;}
-
-    public void addBorderingAtoms() {borderingAtoms++;}
-    public int getColList() {return colList;}
-    public int getRowList() {return rowList;}
-    public int getBorderingAtoms() {return borderingAtoms;}
-    public boolean hasBorderingATom() {return hasBorderingAtom;}
-    public Arrow getArrow(){return arrow;}
-    public ArrayList<Arrow> getArrowList(){return arrows;}
-
-    //for Test purposes
-    public void setAtom(Atom atom11){atom = atom11;    hasAtom = true;}
-    public void unsetAtom(){atom = null; hasAtom = false;}
-
-        public void deleteAtom(){
-        atom = null;
-    }
-    public void setHexList(List<List<Hexagon>> hexL){hexList = hexL;}
-
+    public ArrayList<Arrow> getArrowList() {return arrowList;}
 
 
 }

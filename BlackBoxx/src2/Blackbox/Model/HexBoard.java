@@ -1,10 +1,11 @@
-package Blackbox.View;
+package Blackbox.Model;
+
+import static Blackbox.Constant.Constants.*;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import Blackbox.View.Shapes.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,65 +15,52 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Blackbox.Constant.Constants.*;
-
 
 public class HexBoard {
-    private Pane hexboard;
+    private Pane parantPane;
     private ArrayList<String> history;
 
-    private   VBox numberStack = new VBox(5); // VBox to stack numbers, with spacing of 5
-    public List<List<Hexagon>> hexList = new ArrayList<>();
+    private ArrayList<ArrayList<Hexagon>> hexList;
+    private ArrayList<Atom> atomsOnBoard;
+    private ArrayList<Ray> raysOnBoard;
+    private VBox numberStack = new VBox(5);
 
     public HexBoard(){
-        history = new ArrayList<>();
-        hexList = new ArrayList<>();
+        history = new ArrayList<String>();
+        hexList = new ArrayList<ArrayList<Hexagon>>();
+        atomsOnBoard = new ArrayList<Atom>();
+        raysOnBoard = new ArrayList<Ray>();
     }
     public void setHexboardPane(Pane display){
-        hexboard = display;
-        hexboard.setStyle("-fx-background-color: black;"); // Set the background color to black
-        hexboard.getChildren().add(numberStack);
+        parantPane = display;
+        parantPane.setStyle("-fx-background-color: black;"); // Set the background color to black
+        parantPane.getChildren().add(numberStack);
+        if(!TESTING){
+            createText();
+        }
     }
+
     public void createHexagonalBoard(){
         int[] rowLength = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
         for (int row = 0; row < 9; row++) {
             hexList.add(new ArrayList<>()); //each row of is a list
             for(int col = 0; col < rowLength[row]; col++) {
-                Hexagon hex = new Hexagon(hexboard, this);
-                hex.setHexList(hexList);
+                Hexagon hex = new Hexagon(this);
                 double offsetX = getOffsetX(rowLength, row) ;//calculate offset and position of the hexagon
                 double positionX = getPosition( col, offsetX) + BOARD_X_STARTAT ;
                 double positionY = row * SCALING_FACTOR_Y * HEXAGON_RADIUS + BOARD_Y_STARTAT;
                 hex.setPosXY(positionX,positionY);
                 hex.createHexagon(positionX,positionY, row, col);
                 hexList.get(row).add(hex);
-            }
-        }
-    }
-    public void addHexArrboardtoPane(){
-        for(int i=0; i<hexList.size(); i++){
-            List<Hexagon> curr = hexList.get(i);
-            for(int j=0; j<curr.size() ; j++){
-                hexboard.getChildren().add(hexList.get(i).get(j).getHexagon()); // Add the Text component of the arrow
-                for (Arrow arrow : hexList.get(i).get(j).getArrowList()) {
-                    hexboard.getChildren().add(arrow.getArrow());
-                    hexboard.getChildren().add(arrow.getText());
+                if(!TESTING){
+                    parantPane.getChildren().add(hex.getHexagon());
+                    for(Arrow arr: hex.getArrowList()){
+                        parantPane.getChildren().add(arr.getArrow());
+                    }
                 }
             }
         }
     }
-
-    public void hideAtomsOnBoard(){
-    for(Atom x: Hexagon.atomList){
-        x.hideAtom();
-    }
-}
-    public void showAtomsOnBoard(){
-        for(Atom x: Hexagon.atomList){
-        x.showAtom();
-    }
-}
-
     private static double getPosition(int col, double offsetX) {
         double basePosition = col * HEXAGON_RADIUS; // Base x-coordinate for the hexagon in its row
         double position = SCALING_FACTOR_X * (basePosition + offsetX + PADDING);// Calculate the final x-coordinate
@@ -124,7 +112,7 @@ public class HexBoard {
                     }
                     if(isHexThere(newRow,newCol) && !hexList.get(newRow).get(newCol).hasAtom()){
                         Hexagon hexdownRight = hexList.get(newRow).get(newCol);
-                       // hexdownRight.getHexagon().setFill(Color.PURPLE);
+                        // hexdownRight.getHexagon().setFill(Color.PURPLE);
                         hexdownRight.setAtomPlacement(atomPlacement.DOWNRIGHT);
                         hexdownRight.setHasBorderingAtom(true);
                         hexdownRight.addBorderingAtoms();
@@ -183,43 +171,9 @@ public class HexBoard {
         return newRow >= 0 && newRow < hexList.size() &&
                 newCol >= 0 && newCol < hexList.get(newRow).size();
     }
-    //test
-    public void createAtomAthexagon(int x, int y){
-        Atom atom = new Atom(0,0,hexboard);
-        getHexagon(x,y).setAtom(atom);
-    }
-    public void deleteAtomAthexagon(int x, int y){
-        getHexagon(x,y).unsetAtom();
-    }
-
-    public Hexagon getHexagon(int x, int y){
-        Hexagon hex = hexList.get(x).get(y);
-        return hex;
-    }
-
-    public ArrayList<String> getHistory() {return history;}
-
-    public void updateNumberStack(Node oo){
-        numberStack.getChildren().add(oo);
-    }
-    public void setNumberStackXY(int x, int y) {
-        numberStack.setLayoutX(x);
-        numberStack.setLayoutY(y);
-    }
-    public void checkNumberStack() {
-        // Check if the historyStack has more than 10 children
-        if (numberStack.getChildren().size() > 10) {
-            // Clear the VBox if it has more than 10 children
-            numberStack.getChildren().clear();
-        }
-    }
-    public VBox getNumberStack() {
-        return numberStack;
-    }
-    public void setNumberStack(Node o){
-        numberStack.getChildren().add(o);
-    }
-
+    public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
+    public Pane getParantPane(){return parantPane;}
+    public ArrayList<Atom> getAtomList(){return atomsOnBoard;}
     public void createText(){
         Text Round1 = new Text("Round 1");
         Round1.setUnderline(true);
@@ -227,7 +181,7 @@ public class HexBoard {
         Round1.setLayoutY(150);
         Round1.setFont(Font.font("Impact", FontWeight.BOLD, 70));
         Round1.setFill(Color.BLUE);
-        hexboard.getChildren().add(Round1);
+        parantPane.getChildren().add(Round1);
 
         //Instructions Pane, can move all the boxes at once if needed
         Pane SetterInstructions = new Pane();
@@ -262,7 +216,7 @@ public class HexBoard {
 
         SetterInstructions.setLayoutX(1200);
         SetterInstructions.setLayoutY(150);
-        hexboard.getChildren().add(SetterInstructions);
+        parantPane.getChildren().add(SetterInstructions);
 
         //button for advancing to next step
         Button ToggleR1R2 = new Button("Next");
@@ -280,8 +234,8 @@ public class HexBoard {
         ToggleR1R2.setLayoutY(500);
         //button for showing atoms on the board
         Button ShowAtomsButton = new Button("Show Atoms");
-        hexboard.getChildren().add(ShowAtomsButton);
-        hexboard.getChildren().add(ToggleR1R2);
+        parantPane.getChildren().add(ShowAtomsButton);
+        parantPane.getChildren().add(ToggleR1R2);
         ToggleR1R2.setOnAction(event -> {
             if (ToggleR1R2.getText() == "Next"){
                 Round1.setText("Round 2");
@@ -310,10 +264,35 @@ public class HexBoard {
 
         ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
     }
-    public List<List<Hexagon>> getHexList() {return hexList;}
-    public String sendRayat(int rayNum){
-        Ray ray = new Ray(hexList);
-        return ray.sendRay(rayNum,hexList);
+    public void hideAtomsOnBoard(){
+        for(Atom x: atomsOnBoard){
+            x.hideAtom();
+        }
+    }
+    public void showAtomsOnBoard(){
+        for(Atom x: atomsOnBoard){
+            x.showAtom();
+        }
+    }
+    public void checkNumberStack() {
+        // Check if the historyStack has more than 10 children
+        if (numberStack.getChildren().size() > 10) {
+            // Clear the VBox if it has more than 10 children
+            numberStack.getChildren().clear();
+        }
+    }
+    public ArrayList<String> getHistory() {
+        return history;
+    }
+    public void setNumberStack(Node o){
+        numberStack.getChildren().add(o);
+    }
+    public void updateNumberStack(Node oo){
+        numberStack.getChildren().add(oo);
+    }
+    public void setNumberStackXY(int x, int y) {
+        numberStack.setLayoutX(x);
+        numberStack.setLayoutY(y);
     }
 
 

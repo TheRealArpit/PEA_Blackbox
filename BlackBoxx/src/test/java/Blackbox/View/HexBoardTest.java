@@ -189,8 +189,7 @@ public class HexBoardTest {
         assertEquals("0,1", HexBoard_.sendRayat(22));
 }
 @Test
-    public void internalReflection()
-{
+    public void internalReflection() {
     HexBoard HexBoard = new HexBoard();
     HexBoard.createHexagonalBoard();
     HexBoard.createAtomAthexagon(4, 8);

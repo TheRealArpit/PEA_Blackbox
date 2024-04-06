@@ -9,7 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint." />
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint.">
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Constant/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Arrow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Atom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/WelcomeScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/HexBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Hexagon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/Blackbox/View/Shapes/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src/test/java/Blackbox/View/HexBoardTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,12 +90,13 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "inlay.hints",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\PEA_Blackbox\BlackBoxx\src2\Blackbox\View" />
       <recent name="C:\Users\elvis\OneDrive\Desktop\Project_____\BlackBoxx\src\Blackbox\View\Shapes" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -91,9 +106,9 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Launcher">
-    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Blackbox.Launcher" />
+  <component name="RunManager" selected="Application.ViewBlackbox">
+    <configuration name="ViewBlackbox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.ViewBlackbox" />
       <module name="Main" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
@@ -171,7 +186,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Launcher" />
+      <item itemvalue="Application.ViewBlackbox" />
       <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
       <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
       <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
@@ -179,7 +194,7 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Launcher" />
+        <item itemvalue="Application.ViewBlackbox" />
         <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
         <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
