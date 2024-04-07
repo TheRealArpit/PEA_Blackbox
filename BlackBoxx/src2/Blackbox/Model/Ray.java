@@ -61,10 +61,10 @@ public class Ray {
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
                 currentHex = hexList.get(rowIndex).get(colIndex);
-                if(!TESTING){
+                if(!TESTING) {
                     createLine();
-                    displayEntryExitPoints();
                 }
+                displayEntryExitPoints();
                 return "Absorbed";
             } else {
                 createLine();
@@ -73,10 +73,7 @@ public class Ray {
             }
         }
         drawLastLine(currentHex);
-        if(!TESTING){
-            displayEntryExitPoints();
-            //displayArrowType();
-        }
+        displayEntryExitPoints();
 
 
         return idRayEntered + "->" + getIdRayExited;
@@ -407,68 +404,45 @@ public class Ray {
             }
         }
     }
-   /* public void displayEntryExitPoints() {
-        hexBoard.checkNumberStack();
-        hexBoard.setNumberStackXY(10,170);
-        Text message = new Text();
-        message.setFill(Color.WHITE);
-        message.setFont(Font.font(18));
-        if(leftArrow == null){
-            String msg = "Entered at: "+ idRayEntered + "\tType:" + rayType.toString();
-            hexBoard.getHistory().add(msg);
-            message.setText(msg);
-            hexBoard.updateNumberStack(message);
-        }else{
-            String msg = "Entered at: " + idRayEntered +"\tLeft at: "+ getIdRayExited + "\nType:  " + rayType.toString();
-            hexBoard.getHistory().add(msg);
-            message.setText(msg);
-            hexBoard.getHistory().add(msg);
-            hexBoard.updateNumberStack(message);
-        }
-    }
-    public void displayArrowType(){
-        if(leftArrow == null){
-
-        }else{
-
-        }
-    }*/
    public void displayEntryExitPoints() {
-       hexBoard.checkNumberStack();
-       hexBoard.setNumberStackXY(10,170);
-       Text message = new Text();
-       message.setFill(Color.WHITE);
-       message.setFont(Font.font(18));
 
-       // Determine the message and color based on rayType
-       Color markerColor = Color.BLACK; // Default color, should be overridden
+       Text message = new Text();
+       if(!TESTING){
+            hexBoard.checkNumberStack();
+            hexBoard.setNumberStackXY(10,170);
+            message.setFill(Color.WHITE);
+            message.setFont(Font.font(18));
+            hexBoard.setNumberStackXY(10,170);
+            message = new Text();
+            message.setFill(Color.WHITE);
+            message.setFont(Font.font(18));
+        }
        String msg = "Entered at: " + idRayEntered;
-       if (rayType == RayType.REFLECTED) {
-           markerColor = Color.RED; // Reflection marker color
-           msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
-       } else if (rayType == RayType.HIT) {
-           markerColor = Color.ORANGE; // Hit marker color
+
+       if(rayType == RayType.HIT){
+           clickedArrow.setMarkerColor(Color.GREEN);
            msg += "\tType:" + rayType.toString();
+       } else if (rayType == RayType.REFLECTED) {
+           msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
+           if(!TESTING){
+               clickedArrow.setMarkerColor(Color.WHITE);
+               leftArrow.setMarkerColor(Color.WHITE);
+           }
+
+       }else if (rayType == RayType.NO_ATOM) {
+           msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
+           if(!TESTING){
+               clickedArrow.setMarkerColor(Color.RED);
+               leftArrow.setMarkerColor(Color.RED);
+           }
        }
+
        message.setText(msg);
        hexBoard.getHistory().add(msg);
        hexBoard.updateNumberStack(message);
 
-       // Add visual markers for entry and exit points
-       addMarker(clickedArrow.getCentreX(), clickedArrow.getCentreY(), markerColor); // Entry marker
-       if (leftArrow != null) {
-           addMarker(leftArrow.getCentreX(), leftArrow.getCentreY(), markerColor); // Exit marker (only if exists)
-       }
    }
 
-    private void addMarker(double x, double y, Color color) {
-        // Method to add a marker at given coordinates
-        if (!TESTING) {
-            Circle marker = new Circle(x, y, 5); // Create a small circle as a marker
-            marker.setFill(color);
-            parentpane.getChildren().add(marker);
-        }
-    }
 
 
 

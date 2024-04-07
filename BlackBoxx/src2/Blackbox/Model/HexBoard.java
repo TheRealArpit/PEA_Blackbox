@@ -56,6 +56,7 @@ public class HexBoard {
                     parantPane.getChildren().add(hex.getHexagon());
                     for(Arrow arr: hex.getArrowList()){
                         parantPane.getChildren().add(arr.getArrow());
+                        parantPane.getChildren().add(arr.getMarker());
                     }
                 }
             }
@@ -259,6 +260,7 @@ public class HexBoard {
                 for(String str:  history){
                     System.out.println(str);
                 }
+                createHexagonalBoard();
             }
         });
 

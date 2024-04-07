@@ -3,13 +3,10 @@ package Blackbox.Model;
 import static Blackbox.Constant.Constants.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
+import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +17,10 @@ public class Arrow {
     private HexBoard hexBoard;
 
     private Hexagon hex;
+    private  double markerCentreX;
+    private double markerCentreY;
+    private Circle marker;
+    private Color markerColor;
 
     private double centreX;
     private double centreY;
@@ -44,26 +45,40 @@ public class Arrow {
             case 1:
                 rotation = 35; // North-East
                 goingTo = direction.N_EAST;
+                markerCentreX = centreX - 20;
+                markerCentreY = centreY + 15;
                 break;
             case 2:
                 rotation = 90; // East
                 goingTo = direction.EAST;
+                markerCentreX = centreX - 25;
+                markerCentreY = centreY + 10;
+
                 break;
             case 3:
                 rotation = 150; // South_East
                 goingTo = direction.S_EAST;
+                markerCentreX = centreX -20;
+                markerCentreY = centreY - 15;
                 break;
             case 4:
                 rotation = -150; // South-West
                 goingTo = direction.S_WEST;
+                markerCentreX = centreX + 20;
+                markerCentreY = centreY - 15;
                 break;
             case 5:
                 rotation = -90; // West
                 goingTo = direction.WEST;
+                markerCentreX = centreX + 25;
+                markerCentreY = centreY + 10;
+
                 break;
             case 0:
                 rotation = -30; // North-West
                 goingTo = direction.N_WEST;
+                markerCentreX = centreX +5;
+                markerCentreY = centreY + 25;
                 break;
             default:
                 break;
@@ -111,6 +126,7 @@ public class Arrow {
         arrow.setOnMouseClicked(event -> {
             Ray ray = new Ray(hexBoard, this);
         });
+        addMarker();
     }
 
     public void setArrowId(int row, int col, int k, double midx, double midy) {
@@ -122,7 +138,14 @@ public class Arrow {
             text.setLayoutX(midx);
             text.setLayoutY(midy);
             hexBoard.getParantPane().getChildren().add(text);
-
+        }
+    }
+    private void addMarker() {
+        markerColor = Color.BLUE;
+        // Method to add a marker at given coordinates
+        if (!TESTING) {
+            marker = new Circle(markerCentreX, markerCentreY, 5); // Create a small circle as a marker
+            marker.setFill(Color.TRANSPARENT);
         }
     }
 
@@ -162,6 +185,12 @@ public class Arrow {
     }
     public Path getArrow(){
         return arrow;
+    }
+    public Circle getMarker() {
+        return marker;
+    }
+    public void setMarkerColor(Color color) {
+        marker.setFill(color);
     }
 
 }

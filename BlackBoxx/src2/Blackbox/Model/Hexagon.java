@@ -27,6 +27,7 @@ public class Hexagon {
     private Atom atom;
     private double centreX;
     private double centreY;
+
     private int rowList;
     private int colList;
 
