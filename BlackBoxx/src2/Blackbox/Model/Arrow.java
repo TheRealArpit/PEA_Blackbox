@@ -137,7 +137,9 @@ public class Arrow {
             text.setFont(new Font("Arial", 14));
             text.setLayoutX(midx);
             text.setLayoutY(midy);
-            hexBoard.getParantPane().getChildren().add(text);
+            if (!TESTING){
+                hexBoard.getParantPane().getChildren().add(text);
+            }
         }
     }
     private void addMarker() {

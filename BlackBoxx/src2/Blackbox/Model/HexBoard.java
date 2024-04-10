@@ -21,6 +21,7 @@ public class HexBoard {
     private ArrayList<String> history;
 
     private ArrayList<ArrayList<Hexagon>> hexList;
+    private ArrayList<Arrow> arrowList;
     private ArrayList<Atom> atomsOnBoard;
     private ArrayList<Ray> raysOnBoard;
     private VBox numberStack = new VBox(5);
@@ -30,6 +31,7 @@ public class HexBoard {
         hexList = new ArrayList<ArrayList<Hexagon>>();
         atomsOnBoard = new ArrayList<Atom>();
         raysOnBoard = new ArrayList<Ray>();
+        arrowList = new ArrayList<>();
     }
     public void setHexboardPane(Pane display){
         parantPane = display;
@@ -54,7 +56,10 @@ public class HexBoard {
                 hexList.get(row).add(hex);
                 if(!TESTING){
                     parantPane.getChildren().add(hex.getHexagon());
-                    for(Arrow arr: hex.getArrowList()){
+                }
+                for(Arrow arr: hex.getArrowList()){
+                    arrowList.add(arr);
+                    if(!TESTING){
                         parantPane.getChildren().add(arr.getArrow());
                         parantPane.getChildren().add(arr.getMarker());
                     }
@@ -296,6 +301,34 @@ public class HexBoard {
         numberStack.setLayoutX(x);
         numberStack.setLayoutY(y);
     }
+    public ArrayList<ArrayList<Hexagon>> getHexList() {
+        return hexList;
+    }
+    public void createAtomAthexagon(int x, int y){
+        Atom atom = new Atom(this,0,0);
+        getHexagon(x,y).setAtom(atom);
+    }
+    public Hexagon getHexagon(int x, int y){
+        Hexagon hex = hexList.get(x).get(y);
+        return hex;
+    }
 
+    public void deleteAtomAthexagon(int x, int y){
+        getHexagon(x,y).unsetAtom();
+    }
+    public String sendRayat(int rayNum){
+        Arrow arrowClicked = getArrowClickedfromint(rayNum);
+        Ray ray = new Ray(this,arrowClicked);
+        return ray.createRay(arrowClicked);
+    }
+
+    private Arrow getArrowClickedfromint(int rayNum) {
+    for(Arrow arrr: arrowList){
+        if(arrr.getIdArrow() == rayNum){
+            return arrr;
+        }
+    }
+    throw new NullPointerException("Arrow Id not in hexboard   (1-54)");
+    }
 
 }

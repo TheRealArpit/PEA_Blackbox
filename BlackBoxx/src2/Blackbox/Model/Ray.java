@@ -35,39 +35,40 @@ public class Ray {
     public Ray(HexBoard hexBoard, Arrow clickedArrow){
         this.hexBoard = hexBoard;
         hexList = hexBoard.gethexList();
-        goingTo = clickedArrow.getGoingTo();
-        xLox = clickedArrow.getCentreX();
-        yLoc = clickedArrow.getCentreY();
-        rowIndex = clickedArrow.getHex().getRowList();
-        colIndex = clickedArrow.getHex().getColList();
-        idRayEntered = clickedArrow.getIdArrow();
+        if(!TESTING){
+            xLox = clickedArrow.getCentreX();
+            yLoc = clickedArrow.getCentreY();
+        }
         this.clickedArrow = clickedArrow;
         if(!TESTING){
             parentpane = hexBoard.getParantPane();
         }
-        createRay(idRayEntered);
+        createRay(clickedArrow);
     }
 
-    public String createRay(int arrowId){
+    public String createRay(Arrow arrowclicked){
         hexBoard.checkNumberStack();
-        idRayEntered = arrowId;
+        idRayEntered = arrowclicked.getIdArrow();
         Hexagon startingHex = clickedArrow.getHex();
-
         boolean continueRay = true;
+        rowIndex = clickedArrow.getHex().getRowList();
+        colIndex = clickedArrow.getHex().getColList();
+        goingTo = arrowclicked.getGoingTo();
         Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
-        colIndex = startingHex.getColList();
-        rowIndex = startingHex.getRowList();
 
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
                 currentHex = hexList.get(rowIndex).get(colIndex);
                 if(!TESTING) {
                     createLine();
+                    displayEntryExitPoints();
                 }
-                displayEntryExitPoints();
-                return "Absorbed";
+                return idRayEntered + "->"+ "Hit";
             } else {
-                createLine();
+
+                if(!TESTING) {
+                    createLine();
+                }
                 currentHex = hexList.get(rowIndex).get(colIndex);
                 calculateEndPoint(); // Calculate the next hexagon based on the current direction
             }
@@ -101,7 +102,7 @@ public class Ray {
             }
             if(hextocheck.getAtomPlacements().size()==1) {
                 if (InsideAtomReflect(goingto,hextocheck)){
-                    rayType = RayType.TOTAL_REFLECTION;
+                    rayType = RayType.REFLECTED;
                 }
                 else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     if (goingTo == direction.S_WEST) {
@@ -190,24 +191,25 @@ public class Ray {
                 //Equal Distant apart:
                 if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.N_EAST;
-                    rayType = RayType.TOTAL_REFLECTION;
+                    rayType = RayType.REFLECTED;
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)) {
                     goingTo = direction.N_WEST;
-                    rayType = RayType.TOTAL_REFLECTION;
+                    rayType = RayType.REFLECTED;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
-                    goingTo = direction.EAST;
-                    rayType = RayType.TOTAL_REFLECTION;
+                    //goingTo = direction.EAST;
+                    goingTo = opposite();
+                    rayType = RayType.REFLECTED;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)) {
                     goingTo = direction.WEST;
-                    rayType = RayType.TOTAL_REFLECTION;
+                    rayType = RayType.REFLECTED;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
                     goingTo = direction.S_WEST;
-                    rayType = RayType.TOTAL_REFLECTION;
+                    rayType = RayType.REFLECTED;
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)) {
                     goingTo = direction.S_EAST;
-                    rayType = RayType.TOTAL_REFLECTION;
+                    rayType = RayType.REFLECTED;
                 }
-                rayType = RayType.TOTAL_REFLECTION;
+                rayType = RayType.REFLECTED;
                 //Everything else
                 if(hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
                     if(goingTo == direction.S_WEST){
@@ -217,7 +219,7 @@ public class Ray {
                     }
                     rayType = RayType.REFLECTED;
                     if(hextocheck.getBorderingAtoms() >2){
-                        rayType = RayType.TOTAL_REFLECTION;
+                        rayType = RayType.REFLECTED;
                     }
                 } else if (hextocheck.getAtomPlacements().contains(atomPlacement.RIGHT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)) {
                     if(goingTo == direction.N_WEST){
@@ -227,7 +229,7 @@ public class Ray {
                     }
                     rayType = RayType.REFLECTED;
                     if(hextocheck.getBorderingAtoms() >2){
-                        rayType = RayType.TOTAL_REFLECTION;
+                        rayType = RayType.REFLECTED;
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT)){
                     if(goingTo == direction.EAST){
@@ -237,7 +239,7 @@ public class Ray {
                     }
                     rayType = RayType.REFLECTED;
                     if(hextocheck.getBorderingAtoms() >2){
-                        rayType = RayType.TOTAL_REFLECTION;
+                        rayType = RayType.REFLECTED;
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT)){
                     if(goingTo == direction.S_EAST){
@@ -246,7 +248,7 @@ public class Ray {
                         goingTo = direction.N_WEST;
                     }
                     if(hextocheck.getBorderingAtoms() >2){
-                        rayType = RayType.TOTAL_REFLECTION;
+                        rayType = RayType.REFLECTED;
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.UPLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.UPRIGHT)){
                     if(goingTo == direction.S_EAST){
@@ -256,7 +258,7 @@ public class Ray {
                     }
                     rayType = RayType.REFLECTED;
                     if(hextocheck.getBorderingAtoms() >2){
-                        rayType = RayType.TOTAL_REFLECTION;
+                        rayType = RayType.REFLECTED;
                     }
                 }else if (hextocheck.getAtomPlacements().contains(atomPlacement.DOWNLEFT) && hextocheck.getAtomPlacements().contains(atomPlacement.DOWNRIGHT)){
                     if(goingTo == direction.N_EAST){
@@ -266,7 +268,7 @@ public class Ray {
                     }
                     rayType = RayType.REFLECTED;
                     if(hextocheck.getBorderingAtoms() >2){
-                        rayType = RayType.TOTAL_REFLECTION;
+                        rayType = RayType.REFLECTED;
                     }
                 }
             }

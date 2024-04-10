@@ -164,6 +164,8 @@ public class Hexagon {
     public Polygon getHexagon() {return hexagon;}
 
     public ArrayList<Arrow> getArrowList() {return arrowList;}
+    public void setAtom(Atom atom11){atom = atom11;    hasAtom = true;}
+    public void unsetAtom(){atom = null; hasAtom = false;}
 
 
 }

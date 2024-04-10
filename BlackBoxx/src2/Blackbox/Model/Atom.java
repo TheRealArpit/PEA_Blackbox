@@ -25,7 +25,11 @@ public class Atom {
     }
     public Atom(HexBoard hexb, int row, int col){
         hexBoard = hexb;
-        createAtom(hexb.gethexList().get(row).get(col).getCentreX(),hexb.gethexList().get(row).get(col).getCentreY() );
+        if(!TESTING) {
+            createAtom(hexb.gethexList().get(row).get(col).getCentreX(), hexb.gethexList().get(row).get(col).getCentreY());
+        }else{
+
+        }
     }
 
     public void createAtom(double x, double y){
