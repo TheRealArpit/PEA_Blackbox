@@ -1,6 +1,5 @@
 package Blackbox.Model;
 
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
@@ -13,24 +12,45 @@ public class Atom {
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;
 
+    public Hexagon getHexOfAtom() {
+        return hexOfAtom;
+    }
+
+    private Hexagon hexOfAtom;
+
     private Circle circle;
     private Circle COI;
+
+    public int getRowList() {
+        return rowList;
+    }
+
+    public int getColList() {
+        return colList;
+    }
 
     private int rowList;
     private int colList;
 
-    public Atom(int row, int col){
+    public Atom(int row, int col, Hexagon hex){
         rowList = row;
         colList = col;
+        hexOfAtom = hex;
     }
-    public Atom(HexBoard hexb, int row, int col){
+
+
+    public Atom(HexBoard hexb, int row, int col, Boolean Finished){
         hexBoard = hexb;
+        rowList = row;
+        colList = col;
         if(!TESTING) {
             createAtom(hexb.gethexList().get(row).get(col).getCentreX(), hexb.gethexList().get(row).get(col).getCentreY());
         }else{
-
+            this.rowList =row;
+            this.colList = col;
         }
     }
+
 
     public void createAtom(double x, double y){
         circle = new Circle();
@@ -62,5 +82,17 @@ public class Atom {
     public  void showAtom(){//showes the atom by settign the visibility of both the main circle and the coi to true
         circle.setVisible(true);
         COI.setVisible(true);
+    }
+    @Override
+    public boolean equals(Object o){
+        if (this == o) {
+            return true;
+        }
+        if (o == null)return false;
+        if(o instanceof Atom){
+            Atom atom = (Atom) o;
+            return colList == atom.getColList() && rowList == atom.getRowList();
+        }
+        return false;
     }
 }

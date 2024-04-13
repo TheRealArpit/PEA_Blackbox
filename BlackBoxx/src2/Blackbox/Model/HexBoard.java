@@ -8,15 +8,24 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Path;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class HexBoard {
+    public Button getToggleR1R2() {
+        return ToggleR1R2;
+    }
+
+    private Button ToggleR1R2;
+
     private Pane parantPane;
     private ArrayList<String> history;
 
@@ -24,6 +33,15 @@ public class HexBoard {
     private ArrayList<Arrow> arrowList;
     private ArrayList<Atom> atomsOnBoard;
     private ArrayList<Ray> raysOnBoard;
+
+
+    public ArrayList<Atom> getGuessedAtomlist() {
+        return guessedAtomlist;
+    }
+
+    private ArrayList<Atom> guessedAtomlist;
+    private Boolean finishedRound = false;
+
     private VBox numberStack = new VBox(5);
 
     public HexBoard(){
@@ -31,7 +49,8 @@ public class HexBoard {
         hexList = new ArrayList<ArrayList<Hexagon>>();
         atomsOnBoard = new ArrayList<Atom>();
         raysOnBoard = new ArrayList<Ray>();
-        arrowList = new ArrayList<>();
+        arrowList = new ArrayList<Arrow>();
+        guessedAtomlist = new ArrayList<Atom>();
     }
     public void setHexboardPane(Pane display){
         parantPane = display;
@@ -66,6 +85,7 @@ public class HexBoard {
                 }
             }
         }
+        setArrowTouchoff();
     }
     private static double getPosition(int col, double offsetX) {
         double basePosition = col * HEXAGON_RADIUS; // Base x-coordinate for the hexagon in its row
@@ -180,8 +200,11 @@ public class HexBoard {
     public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
     public Pane getParantPane(){return parantPane;}
     public ArrayList<Atom> getAtomList(){return atomsOnBoard;}
+    private Text Round1;
+    private Text welcomeText;
+    private Button instructionText;
     public void createText(){
-        Text Round1 = new Text("Round 1");
+        Round1 = new Text("Round 1");
         Round1.setUnderline(true);
         Round1.setLayoutX(100);
         Round1.setLayoutY(150);
@@ -191,7 +214,7 @@ public class HexBoard {
 
         //Instructions Pane, can move all the boxes at once if needed
         Pane SetterInstructions = new Pane();
-        Text welcomeText = new Text("SETTER");
+        welcomeText = new Text("SETTER");
         welcomeText.setUnderline(true);
 
         welcomeText.setFont(Font.font("Impact", FontWeight.BOLD, 70)); //Set the font, font size and colour
@@ -199,7 +222,7 @@ public class HexBoard {
 
         SetterInstructions.getChildren().add(welcomeText);
         //create a button for setter instructions
-        Button instructionText = new Button("""
+         instructionText = new Button("""
                 Setter Instructions:
                 
                 set up atoms by clicking a hexagon
@@ -225,7 +248,7 @@ public class HexBoard {
         parantPane.getChildren().add(SetterInstructions);
 
         //button for advancing to next step
-        Button ToggleR1R2 = new Button("Next");
+        ToggleR1R2 = new Button("Next");
         //Changing style of Button
         ToggleR1R2.setStyle("-fx-background-color: linear-gradient(#4ECCFC, #09729A );"
                 +  "-fx-background-radius: 10;"
@@ -243,11 +266,22 @@ public class HexBoard {
         parantPane.getChildren().add(ShowAtomsButton);
         parantPane.getChildren().add(ToggleR1R2);
         ToggleR1R2.setOnAction(event -> {
-            if (ToggleR1R2.getText() == "Next"){
-                Round1.setText("Round 2");
-                ToggleR1R2.setText("Finish");
-                welcomeText.setText("EXPERIMENTER");
-                instructionText.setText("""
+            if (ToggleR1R2.getText() == "Finish"){
+                for(String str:  history){
+                    System.out.println(str);
+                }
+                createHexagonalBoard();
+            }
+        });
+
+        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
+    }
+
+    public void setRound2(){
+        Round1.setText("Round 2");
+        ToggleR1R2.setText("Finish");
+        welcomeText.setText("EXPERIMENTER");
+        instructionText.setText("""
                     Experimentor Instructions:
 
                     Shoot Rays by clicking the arrows/triangles
@@ -258,18 +292,8 @@ public class HexBoard {
 
                     Click Finish you are sure you have found all the atoms.
                     """);
-                hideAtomsOnBoard();
-                initializeHexagonsNearAtom();
-
-            }else if(ToggleR1R2.getText() == "Finish"){
-                for(String str:  history){
-                    System.out.println(str);
-                }
-                createHexagonalBoard();
-            }
-        });
-
-        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
+        hideAtomsOnBoard();
+        initializeHexagonsNearAtom();
     }
     public void hideAtomsOnBoard(){
         for(Atom x: atomsOnBoard){
@@ -305,7 +329,7 @@ public class HexBoard {
         return hexList;
     }
     public void createAtomAthexagon(int x, int y){
-        Atom atom = new Atom(this,0,0);
+        Atom atom = new Atom(this,0,0,finishedRound);
         getHexagon(x,y).setAtom(atom);
     }
     public Hexagon getHexagon(int x, int y){
@@ -330,5 +354,36 @@ public class HexBoard {
     }
     throw new NullPointerException("Arrow Id not in hexboard   (1-54)");
     }
+    public void checkAtoms(){
+        ToggleR1R2.setText("END");
+        for(ArrayList<Hexagon> hexRow: hexList){
+            for(Hexagon hex: hexRow){
+                hex.finishedRound = true;
+            }
+        }
+    }
+    private void setArrowTouchoff() {
+        for (Arrow arrr : arrowList) {
+            arrr.getArrow().setMouseTransparent(true);
+        }
+    }
+    public void setArrowTouchOnn() {
+        for (Arrow arrr : arrowList) {
+            arrr.getArrow().setMouseTransparent(false);
+        }
+    }
 
+    public void CheckGuessedAtoms() {
+        for (Atom p1 : guessedAtomlist) {
+            for (Atom p2 : atomsOnBoard) {
+                if (p1.equals(p2)) {
+                    p1.getHexOfAtom().getHexagon().setFill(Color.GREEN);
+                    break;
+                }else {
+                    p1.getHexOfAtom().getHexagon().setFill(Color.RED);
+                }
+            }
+        }
+        showAtomsOnBoard();
+    }
 }

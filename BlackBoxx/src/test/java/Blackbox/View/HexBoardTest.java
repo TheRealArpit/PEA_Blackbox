@@ -6,6 +6,7 @@ package Blackbox.View;
 import  static Blackbox.Constant.Constants.*;
 import static org.junit.Assert.assertEquals;
 
+import Blackbox.Model.HexBoard;
 import Blackbox.View.Shapes.Arrow;
 import Blackbox.View.Shapes.Atom;
 import Blackbox.View.Shapes.Hexagon;

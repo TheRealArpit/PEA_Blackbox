@@ -1,5 +1,6 @@
 package Blackbox.View;
 
+import Blackbox.Model.Atom;
 import Blackbox.Model.HexBoard;
 import Blackbox.Model.Hexagon;
 import Blackbox.Model.WelcomeScreen;
@@ -11,14 +12,22 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ViewBlackbox extends Application {
+    private Scene hexBoardScene; // Store the hex board scene
+    private Stage primaryStage; // Keep a reference to the primary stage
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage; // Initialize the primary stage reference
         Pane display = new Pane();
         startGameGUI(display);
         stageSettings(primaryStage);
-        primaryStage.setScene(new Scene(display, 500, 500));
+
+        hexBoardScene = new Scene(display, 500, 500); // Store the scene
+
+        primaryStage.setScene(hexBoardScene);
         primaryStage.setTitle("Blackbox Game");
         primaryStage.show();
+
     }
 
     private void startGameGUI(Pane display){
@@ -32,7 +41,33 @@ public class ViewBlackbox extends Application {
         HexBoard hexBoard = new HexBoard();
         hexBoard.setHexboardPane(display);
         hexBoard.createHexagonalBoard();
+        hexBoard.getToggleR1R2().setOnAction(actionEvent ->{
+            if ("Next".equals(hexBoard.getToggleR1R2().getText())) {
+                hexBoard.setRound2();
+                hexBoard.setArrowTouchOnn();
+            }
+            else if ("Finish".equals(hexBoard.getToggleR1R2().getText())) {
+                hexBoard.checkAtoms();
+            }
+            else if ("END".equals(hexBoard.getToggleR1R2().getText())) {
+                hexBoard.CheckGuessedAtoms();
+            }
+
+        });
     }
+
+    private void switchToNewScene() {
+        Pane newPane = new Pane();
+        // Add components to newPane as needed...
+
+        Scene newScene = new Scene(newPane, 500, 500); // Create a new scene
+        primaryStage.setScene(newScene); // Set the new scene on the primary stage
+    }
+
+    public void switchBackToHexBoard() {
+        primaryStage.setScene(hexBoardScene);
+    }
+
     private boolean isFullScreen = true; // Track full-screen state
     private void stageSettings(Stage stage) {
         stage.setFullScreen(true);

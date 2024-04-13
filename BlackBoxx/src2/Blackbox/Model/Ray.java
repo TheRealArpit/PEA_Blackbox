@@ -32,6 +32,7 @@ public class Ray {
 
     private RayType rayType = RayType.NO_ATOM;
 
+
     public Ray(HexBoard hexBoard, Arrow clickedArrow){
         this.hexBoard = hexBoard;
         hexList = hexBoard.gethexList();
@@ -384,6 +385,7 @@ public class Ray {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
             line.setStrokeWidth(1);
             line.setStroke(Color.YELLOW);
+            line.setStroke(Color.TRANSPARENT);
             parentpane.getChildren().add(line);
             xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
             yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
@@ -400,7 +402,7 @@ public class Ray {
                 if (!TESTING){
                     Line line = new Line(xLox, yLoc, leftArrow.getCentreX(), leftArrow.getCentreY());
                     line.setStrokeWidth(1);
-                    line.setStroke(Color.YELLOW);
+                    line.setStroke(Color.TRANSPARENT);
                     parentpane.getChildren().add(line);
                 }
             }
