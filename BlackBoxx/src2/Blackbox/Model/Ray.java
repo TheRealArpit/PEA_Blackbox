@@ -16,6 +16,7 @@ public class Ray {
     private Pane parentpane;
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;
+    private ArrayList<Line> rayPathList;
 
     private direction goingTo;
     private int rowIndex;
@@ -34,6 +35,7 @@ public class Ray {
 
 
     public Ray(HexBoard hexBoard, Arrow clickedArrow){
+        rayPathList = new ArrayList<Line>();
         this.hexBoard = hexBoard;
         hexList = hexBoard.gethexList();
         if(!TESTING){
@@ -386,6 +388,7 @@ public class Ray {
             line.setStrokeWidth(1);
             line.setStroke(Color.YELLOW);
             line.setStroke(Color.TRANSPARENT);
+            rayPathList.add(line);
             parentpane.getChildren().add(line);
             xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
             yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
@@ -403,6 +406,7 @@ public class Ray {
                     Line line = new Line(xLox, yLoc, leftArrow.getCentreX(), leftArrow.getCentreY());
                     line.setStrokeWidth(1);
                     line.setStroke(Color.TRANSPARENT);
+                    rayPathList.add(line);
                     parentpane.getChildren().add(line);
                 }
             }
@@ -445,8 +449,12 @@ public class Ray {
        hexBoard.getHistory().add(msg);
        hexBoard.updateNumberStack(message);
 
+
    }
 
+   public ArrayList<Line> getRayPathList(){
+        return rayPathList;
+   }
 
 
 

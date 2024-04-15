@@ -2,7 +2,7 @@ package Blackbox.View;
 
 import Blackbox.Model.Atom;
 import Blackbox.Model.HexBoard;
-import Blackbox.Model.Hexagon;
+import Blackbox.Constant.Constants.*;
 import Blackbox.Model.WelcomeScreen;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -47,10 +47,14 @@ public class ViewBlackbox extends Application {
                 hexBoard.setArrowTouchOnn();
             }
             else if ("Finish".equals(hexBoard.getToggleR1R2().getText())) {
+                hexBoard.setGuessingRound();
                 hexBoard.checkAtoms();
             }
-            else if ("END".equals(hexBoard.getToggleR1R2().getText())) {
+            else if (("Confirm").equals(hexBoard.getToggleR1R2().getText())) {
                 hexBoard.CheckGuessedAtoms();
+            }
+            else if (("Score").equals(hexBoard.getToggleR1R2().getText())) {
+                hexBoard.displayScore();
             }
 
         });

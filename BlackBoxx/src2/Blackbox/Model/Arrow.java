@@ -125,6 +125,7 @@ public class Arrow {
         });
         arrow.setOnMouseClicked(event -> {
             Ray ray = new Ray(hexBoard, this);
+            hexBoard.getRayList().add(ray);
         });
         addMarker();
     }
