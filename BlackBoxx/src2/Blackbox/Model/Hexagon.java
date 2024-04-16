@@ -32,7 +32,7 @@ public class Hexagon {
 
     private int rowList;
     private int colList;
-
+    //f
     public Boolean finishedRound = false;
 
     public Hexagon(HexBoard hexboard){
