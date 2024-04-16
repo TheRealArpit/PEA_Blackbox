@@ -187,7 +187,7 @@ public class HexBoard {
         return newRow >= 0 && newRow < hexList.size() &&
                 newCol >= 0 && newCol < hexList.get(newRow).size();
     }
-    //---End of Hexagonal Board Methods
+    //--- End of Hexagonal Board Methods
 
 
     public void createText(){
@@ -209,7 +209,7 @@ public class HexBoard {
 
         SetterInstructions.getChildren().add(welcomeText);
         //create a button for setter instructions
-         instructionText = new Button("""
+        instructionText = new Button("""
                 Setter Instructions:
                 
                 set up atoms by clicking a hexagon
@@ -252,18 +252,29 @@ public class HexBoard {
         Button ShowAtomsButton = new Button("Show Atoms");
         parantPane.getChildren().add(ShowAtomsButton);
         parantPane.getChildren().add(ToggleR1R2);
-        ToggleR1R2.setOnAction(event -> {
-            if (ToggleR1R2.getText() == "Finish") {
-                ToggleR1R2.setText("END");
-                for (String str : history) {
-                    System.out.println(str);
-                }
-            }
-        });
 
         ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
     }
+    private void buttonLogic() {
+        Button actionButton = getToggleR1R2(); // Assuming this is the button managing transitions
+        actionButton.setOnAction(event -> {
+            String action = actionButton.getText();
+            switch (action) {
+                case "Next":
+                    setRound2();
+                    break;
+                case "Finish":
 
+                    break;
+                case "Confirm":
+
+                    break;
+                case "Score":
+                    break;
+                default:
+            }
+        });
+    }
     public void setRound2(){
         Round.setText("Round 2");
         ToggleR1R2.setText("Finish");
@@ -273,7 +284,7 @@ public class HexBoard {
 
                     Shoot Rays by clicking the arrows/triangles
 
-                    Deduce Atom positions using the interactions 
+                    Deduce Atom positions using the interactions
 
                     between the ray and atoms
 
@@ -282,6 +293,9 @@ public class HexBoard {
         hideAtomsOnBoard();
         initializeHexagonsNearAtom();
     }
+
+
+
     public void hideAtomsOnBoard(){
         for(Atom x: atomsOnBoard){
             x.hideAtom();
@@ -292,32 +306,13 @@ public class HexBoard {
             x.showAtom();
         }
     }
-    public void checkNumberStack() {
-        // Check if the historyStack has more than 10 children
-        if (numberStack.getChildren().size() > 10) {
-            // Clear the VBox if it has more than 10 children
-            numberStack.getChildren().clear();
-        }
-    }
-    public void setNumberStack(Node o){
-        numberStack.getChildren().add(o);
-    }
-    public void updateNumberStack(Node oo){
-        numberStack.getChildren().add(oo);
-    }
-    public void setNumberStackXY(int x, int y) {
-        numberStack.setLayoutX(x);
-        numberStack.setLayoutY(y);
-    }
+
+
+    //testing
     public void createAtomAthexagon(int x, int y){
         Atom atom = new Atom(this,0,0,finishedRound);
         getHexagon(x,y).setAtom(atom);
     }
-    public Hexagon getHexagon(int x, int y){
-        Hexagon hex = hexList.get(x).get(y);
-        return hex;
-    }
-
     public void deleteAtomAthexagon(int x, int y){
         getHexagon(x,y).unsetAtom();
     }
@@ -328,14 +323,6 @@ public class HexBoard {
     }
 
 
-
-    public void checkAtoms(){
-        for(ArrayList<Hexagon> hexRow: hexList){
-            for(Hexagon hex: hexRow){
-                hex.finishedRound = true;
-            }
-        }
-    }
     private void setArrowTouchoff() {
         for (Arrow arrr : arrowList) {
             arrr.getArrow().setMouseTransparent(true);
@@ -346,25 +333,6 @@ public class HexBoard {
             arrr.getArrow().setMouseTransparent(false);
         }
     }
-
-    public void CheckGuessedAtoms() {
-        if(!TESTING){
-            getToggleR1R2().setText("Score");
-            for (Atom p1 : guessedAtomlist) {
-                for (Atom p2 : atomsOnBoard) {
-                    if (p1.equals(p2)) {
-                        p1.getHexOfAtom().getHexagon().setFill(Color.GREEN);
-                        break;
-                    }else {
-                        p1.getHexOfAtom().getHexagon().setFill(Color.RED);
-                    }
-                }
-            }
-            showAtomsOnBoard();
-        }
-    }
-
-
     public void setGuessingRound(){
         Round.setText("Guess Atoms");
         ToggleR1R2.setText("Confirm");
@@ -376,7 +344,7 @@ public class HexBoard {
 
                     Delete Guesses by Clicking on the same hexagon again
 
-                    Click Confirm Guesses when you are sure 
+                    Click Confirm Guesses when you are sure
                     
                     you have found all the atoms.
                     """);
@@ -384,35 +352,16 @@ public class HexBoard {
         initializeHexagonsNearAtom();
     }
 
-    public void displayScore(){
-        Round.setText("Score");
-        ToggleR1R2.setText("Player 2");
-        welcomeText.setText("Guess");
-        instructionText.setTextFill(Color.TRANSPARENT);
-        displayRayPaths();
-
-    }
-
-    public void displayRayPaths(){
-        for(Ray ray: raysOnBoard){
-            for(Line line: ray.getRayPathList()){
-                line.setStroke(Color.WHITE);
-            }
-        }
-
-    }
-
-
-
     public void setViewBlackbox(ViewBlackbox v){  // set from View
         viewBlackbox = v;                        // Needed to handle the progression of the game. from p1 to p2 then 3end
     }
 
-
     //------- Getters
     public Pane getParantPane(){return parantPane;}
     public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
-
+    public Hexagon getHexagon(int x, int y){
+        return hexList.get(x).get(y);
+    }
     public ArrayList<Atom> getGuessedAtomlist() { //for a lot of classes and methods need the atomlist
         return guessedAtomlist;
     }
@@ -443,7 +392,22 @@ public class HexBoard {
         parantPane.getChildren().add(numberStack);
         if(!TESTING){
             createText();
+            buttonLogic();
         }
+    }
+
+    //Number stack
+    public void updateNumberStack(Node oo){
+        numberStack.getChildren().add(oo);
+    }
+    public void checkNumberStack() {
+        if (numberStack.getChildren().size() > 10) {
+            numberStack.getChildren().clear();
+        }
+    }
+    public void setNumberStackXY(int x, int y) {
+        numberStack.setLayoutX(x);
+        numberStack.setLayoutY(y);
     }
 
 }
