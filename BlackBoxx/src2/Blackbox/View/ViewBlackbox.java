@@ -1,78 +1,60 @@
 package Blackbox.View;
 
-import Blackbox.Model.Atom;
 import Blackbox.Model.HexBoard;
-import Blackbox.Constant.Constants.*;
+import Blackbox.Model.Player;
 import Blackbox.Model.WelcomeScreen;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ViewBlackbox extends Application {
-    private Scene hexBoardScene; // Store the hex board scene
-    private Stage primaryStage; // Keep a reference to the primary stage
+    private Scene hexBoardScene;
+    private Stage primaryStage;
+    private HexBoard hexBoard;
+    private int turnCounter = 0;
+    private static final int TOTAL_TURNS = 2;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage; // Initialize the primary stage reference
+        this.primaryStage = primaryStage;
         Pane display = new Pane();
         startGameGUI(display);
         stageSettings(primaryStage);
-
-        hexBoardScene = new Scene(display, 500, 500); // Store the scene
-
+        hexBoardScene = new Scene(display, 500, 500);
         primaryStage.setScene(hexBoardScene);
         primaryStage.setTitle("Blackbox Game");
         primaryStage.show();
-
     }
 
-    private void startGameGUI(Pane display){
+    //Welcome screen then once button pressed game starts
+    private void startGameGUI(Pane display) {
         WelcomeScreen welcomeScreen = new WelcomeScreen(display);
         welcomeScreen.getSubmit().setOnMouseClicked(event -> {
-            startGame(display);
+            restartGame(display);  // Use restartGame to handle resetting completely
         });
     }
-    private void startGame(Pane display){
+
+    private void restartGame(Pane display) {
+        display.getChildren().clear();  // Clear the existing components
+        startGame(display);  // Reinitialize the game logic
+    }
+
+    private void startGame(Pane display) {
+        turnCounter = 0;
         display.getChildren().clear();
-        HexBoard hexBoard = new HexBoard();
+
+        hexBoard = new HexBoard();
+        hexBoard.setViewBlackbox(this);
         hexBoard.setHexboardPane(display);
         hexBoard.createHexagonalBoard();
-        hexBoard.getToggleR1R2().setOnAction(actionEvent ->{
-            if ("Next".equals(hexBoard.getToggleR1R2().getText())) {
-                hexBoard.setRound2();
-                hexBoard.setArrowTouchOnn();
-            }
-            else if ("Finish".equals(hexBoard.getToggleR1R2().getText())) {
-                hexBoard.setGuessingRound();
-                hexBoard.checkAtoms();
-            }
-            else if (("Confirm").equals(hexBoard.getToggleR1R2().getText())) {
-                hexBoard.CheckGuessedAtoms();
-            }
-            else if (("Score").equals(hexBoard.getToggleR1R2().getText())) {
-                hexBoard.displayScore();
-            }
-
-        });
     }
 
-    private void switchToNewScene() {
-        Pane newPane = new Pane();
-        // Add components to newPane as needed...
-
-        Scene newScene = new Scene(newPane, 500, 500); // Create a new scene
-        primaryStage.setScene(newScene); // Set the new scene on the primary stage
-    }
-
-    public void switchBackToHexBoard() {
-        primaryStage.setScene(hexBoardScene);
-    }
-
-    private boolean isFullScreen = true; // Track full-screen state
     private void stageSettings(Stage stage) {
         stage.setFullScreen(true);
         stage.addEventHandler(KeyEvent.KEY_RELEASED, event -> {
@@ -80,12 +62,7 @@ public class ViewBlackbox extends Application {
                 if (event.isShiftDown()) {
                     stage.close();
                 } else {
-                    if (isFullScreen) {
-                        stage.setFullScreen(false);
-                    } else {
-                        stage.setFullScreen(true);
-                    }
-                    isFullScreen = !isFullScreen;
+                    stage.setFullScreen(!stage.isFullScreen());
                 }
             }
         });

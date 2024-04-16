@@ -2,6 +2,7 @@ package Blackbox.Model;
 
 import static Blackbox.Constant.Constants.*;
 
+import Blackbox.View.ViewBlackbox;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -20,29 +21,29 @@ import java.util.Objects;
 
 
 public class HexBoard {
-    public Button getToggleR1R2() {
-        return ToggleR1R2;
-    }
 
-    private Button ToggleR1R2;
-
+    private ViewBlackbox viewBlackbox;
+    private Player player;
     private Pane parantPane;
-    private ArrayList<String> history;
 
+
+    //ArrayLists of the classes on the hexagonal board
+    //hexagons, arrows, atoms, guessed atoms, rays.
+    // all these classes have a reference to the hexboard
+    private ArrayList<String> history;
     private ArrayList<ArrayList<Hexagon>> hexList;
     private ArrayList<Arrow> arrowList;
     private ArrayList<Atom> atomsOnBoard;
     private ArrayList<Ray> raysOnBoard;
-
-
-    public ArrayList<Atom> getGuessedAtomlist() {
-        return guessedAtomlist;
-    }
-
     private ArrayList<Atom> guessedAtomlist;
-    private Boolean finishedRound = false;
 
+    private Boolean finishedRound = false;
+    //Buttons, Texts and others that are changed frequently during round changes or updated
+    private Button ToggleR1R2;
     private VBox numberStack = new VBox(5);
+    private Text Round;
+    private Text welcomeText;
+    private Button instructionText;
 
     public HexBoard(){
         history = new ArrayList<String>();
@@ -200,9 +201,7 @@ public class HexBoard {
     public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
     public Pane getParantPane(){return parantPane;}
     public ArrayList<Atom> getAtomList(){return atomsOnBoard;}
-    private Text Round;
-    private Text welcomeText;
-    private Button instructionText;
+
     public void createText(){
         Round = new Text("Round 1");
         Round.setUnderline(true);
@@ -429,5 +428,14 @@ public class HexBoard {
 
     public ArrayList<Ray> getRayList(){
         return raysOnBoard;
+    }
+
+
+    public void setViewBlackbox(ViewBlackbox v){  // set from View
+        viewBlackbox = v;                        // Needed to handle the progression of the game. from p1 to p2 then 3end
+    }
+
+    public Button getToggleR1R2() {   //for button logic
+        return ToggleR1R2;
     }
 }
