@@ -69,6 +69,7 @@ public class ViewBlackbox extends Application {
                     stage.setFullScreen(!stage.isFullScreen());
                 }
             }
+
         });
     }
 }
