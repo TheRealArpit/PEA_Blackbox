@@ -277,11 +277,41 @@ public class HexBoard {
                     CheckGuessedAtoms();
                     break;
                 case "Score":
+                    displayScore();
                     break;
                 default:
             }
         });
     }
+    public void displayScore(){
+        player.setNumOfWrongGuesses(player.getNumOfGuesses() - player.getNumofCorrectGuesses());
+        Round.setText("History");
+        welcomeText.setText("Score");
+
+        ToggleR1R2.setText("NextRound");
+        instructionText.setFont(Font.font("Impact", FontWeight.BOLD, 15));
+        instructionText.setText("Number of Ray:\t"+getRayList().size() +
+                "\n\n Number of correct guesses:\t"+ player.getNumofCorrectGuesses() +
+                "\n\n Number of wrong Guesses:\t" + player.getNumofWrongGuesses()+
+                "\n\n Number of Atoms:\t" + atomsOnBoard.size() +
+                "\n\n Number of Markers:\t" + player.getNumofMarkers() +
+                "\n\n Total Score:\t" + player.calculateScore()
+        );
+        displayRayPaths();
+    }
+    public void displayRayPaths(){  //For the full game view
+        for(Ray ray: raysOnBoard){
+            for(Line line: ray.getRayPathList()){
+                if(ray.getRayType() == RayType.HIT)
+                    line.setStroke(Color.GREEN);
+                if(ray.getRayType() == RayType.REFLECTED)
+                    line.setStroke(Color.WHITE);
+                if(ray.getRayType() == RayType.NO_ATOM)
+                    line.setStroke(Color.RED);
+            }
+        }
+    }
+
     public void setRound2(){
         Round.setText("Round 2");
         ToggleR1R2.setText("Finish");

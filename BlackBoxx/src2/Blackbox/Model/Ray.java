@@ -385,7 +385,7 @@ public class Ray {
     private void createLine() {
         if (isThereNextHex()) {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
-            line.setStrokeWidth(1);
+            line.setStrokeWidth(3);
             line.setStroke(Color.YELLOW);
             line.setStroke(Color.TRANSPARENT);
             rayPathList.add(line);
@@ -404,7 +404,7 @@ public class Ray {
                 getIdRayExited = leftArrow.getIdArrow();
                 if (!TESTING){
                     Line line = new Line(xLox, yLoc, leftArrow.getCentreX(), leftArrow.getCentreY());
-                    line.setStrokeWidth(1);
+                    line.setStrokeWidth(3);
                     line.setStroke(Color.TRANSPARENT);
                     rayPathList.add(line);
                     parentpane.getChildren().add(line);
@@ -412,10 +412,10 @@ public class Ray {
             }
         }
     }
-   public void displayEntryExitPoints() {
+    public void displayEntryExitPoints() {
 
-       Text message = new Text();
-       if(!TESTING){
+        Text message = new Text();
+        if(!TESTING){
             hexBoard.checkNumberStack();
             hexBoard.setNumberStackXY(10,170);
             message.setFill(Color.WHITE);
@@ -425,36 +425,43 @@ public class Ray {
             message.setFill(Color.WHITE);
             message.setFont(Font.font(18));
         }
-       String msg = "Entered at: " + idRayEntered;
+        String msg = "Entered at: " + idRayEntered;
 
-       if(rayType == RayType.HIT){
-           clickedArrow.setMarkerColor(Color.GREEN);
-           msg += "\tType:" + rayType.toString();
-       } else if (rayType == RayType.REFLECTED) {
-           msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
-           if(!TESTING){
-               clickedArrow.setMarkerColor(Color.WHITE);
-               leftArrow.setMarkerColor(Color.WHITE);
-           }
+        if(rayType == RayType.HIT){
+            clickedArrow.setMarkerColor(Color.GREEN);
+            hexBoard.getPlayer().addNumMarkers(1);
+            msg += "\tType:" + rayType.toString();
+        } else if (rayType == RayType.REFLECTED) {
+            msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
+            hexBoard.getPlayer().addNumMarkers(2);
+            if(!TESTING){
+                clickedArrow.setMarkerColor(Color.WHITE);
+                leftArrow.setMarkerColor(Color.WHITE);
+            }
 
-       }else if (rayType == RayType.NO_ATOM) {
-           msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
-           if(!TESTING){
-               clickedArrow.setMarkerColor(Color.RED);
-               leftArrow.setMarkerColor(Color.RED);
-           }
-       }
+        }else if (rayType == RayType.NO_ATOM) {
+            msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
+            hexBoard.getPlayer().addNumMarkers(2);
 
-       message.setText(msg);
-       hexBoard.getHistory().add(msg);
-       hexBoard.updateNumberStack(message);
+            if(!TESTING){
+                clickedArrow.setMarkerColor(Color.RED);
+                leftArrow.setMarkerColor(Color.RED);
+            }
+        }
+        hexBoard.getPlayer().getHistory().add(msg);
+        message.setText(msg);
+
+        hexBoard.updateNumberStack(message);
 
 
-   }
+    }
 
-   public ArrayList<Line> getRayPathList(){
+    public ArrayList<Line> getRayPathList(){
         return rayPathList;
-   }
+    }
+    public RayType getRayType(){
+        return rayType;
+    }
 
 
 
