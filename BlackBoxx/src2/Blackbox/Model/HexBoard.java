@@ -261,6 +261,8 @@ public class HexBoard {
             String action = actionButton.getText();
             switch (action) {
                 case "Next":
+                    setArrowTouchOnn();
+                    //set
                     setRound2();
                     break;
                 case "Finish":
@@ -307,7 +309,20 @@ public class HexBoard {
         }
     }
 
-
+    public void setHexagonTouchOff() {
+        for (ArrayList<Hexagon> row : hexList) {
+            for(Hexagon hex: row){
+                hex.getHexagon().setMouseTransparent(true);
+            }
+        }
+    }
+    public void setHexagonTouchOnn() {
+        for (ArrayList<Hexagon> row : hexList) {
+            for(Hexagon hex: row){
+                hex.getHexagon().setMouseTransparent(false);
+            }
+        }
+    }
     //testing
     public void createAtomAthexagon(int x, int y){
         Atom atom = new Atom(this,0,0,finishedRound);
