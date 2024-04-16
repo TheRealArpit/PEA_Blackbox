@@ -314,7 +314,7 @@ public class HexBoard {
                     }
                 }
             }
-
+            //when no atoms placed and atoms guessed, it does not light up green
             for (Atom p1 : guessedAtomlist) {
                 if (p1.getHexOfAtom().getHexagon().getFill() == Color.GREEN) {
 
