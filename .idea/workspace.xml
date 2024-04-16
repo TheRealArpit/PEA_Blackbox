@@ -9,12 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Remodelled viewBoard and organized code.">
-      <change beforePath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_13_09__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_13_09__Changes_.xml" afterDir="false" />
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Added a better way to switch through rounds. (buttonLogic)&#10;Added more stack methods. Rounds are ready to be created.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713270858718</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added a better way to switch through rounds. (buttonLogic)&#10;Added more stack methods. Rounds are ready to be created.">
+      <option name="closed" value="true" />
+      <created>1713273450872</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1713273450872</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,6 +414,7 @@
     <MESSAGE value="test werent added to git" />
     <MESSAGE value="Able to guess Where atoms are. Shows if guess is correct or not" />
     <MESSAGE value="Remodelled viewBoard and organized code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remodelled viewBoard and organized code." />
+    <MESSAGE value="Added a better way to switch through rounds. (buttonLogic)&#10;Added more stack methods. Rounds are ready to be created." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a better way to switch through rounds. (buttonLogic)&#10;Added more stack methods. Rounds are ready to be created." />
   </component>
 </project>
