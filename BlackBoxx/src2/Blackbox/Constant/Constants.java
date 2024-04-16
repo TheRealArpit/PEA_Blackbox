@@ -58,11 +58,7 @@ public class Constants {
         HIT,
         REFLECTED,
         NO_ATOM,
-        TOTAL_REFLECTION
     }
-
-
-
 
 
 }
