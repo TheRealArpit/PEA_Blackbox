@@ -272,7 +272,9 @@ public class HexBoard {
                     setGuessingRound();
                     break;
                 case "Confirm":
-
+                    setArrowTouchoff();
+                    setHexagonTouchOff();
+                    CheckGuessedAtoms();
                     break;
                 case "Score":
                     break;
@@ -297,6 +299,32 @@ public class HexBoard {
                     """);
         hideAtomsOnBoard();
         initializeHexagonsNearAtom();
+    }
+    public void CheckGuessedAtoms() {
+        if(!TESTING){
+            getToggleR1R2().setText("Score");
+            for (Atom p1 : guessedAtomlist) {
+                for (Atom p2 : atomsOnBoard) {
+                    if (p1.equals(p2)) {
+                        p1.getHexOfAtom().getHexagon().setFill(Color.GREEN);
+                        player.addNumofCorrectGuesses();
+                        break;
+                    }else {
+                        p1.getHexOfAtom().getHexagon().setFill(Color.RED);
+                    }
+                }
+            }
+
+            for (Atom p1 : guessedAtomlist) {
+                if (p1.getHexOfAtom().getHexagon().getFill() == Color.GREEN) {
+
+                    break;
+                }else{
+                    p1.getHexOfAtom().getHexagon().setFill(Color.RED);
+                }
+            }
+            showAtomsOnBoard();
+        }
     }
     public void setFinishedRound(){         //used for the hexagon class knows whether to put an atom or a guessed atom
         for(ArrayList<Hexagon> hexRow: hexList){
