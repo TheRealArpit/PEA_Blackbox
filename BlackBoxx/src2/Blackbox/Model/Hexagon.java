@@ -56,7 +56,20 @@ public class Hexagon {
                         System.out.println("Can't add more atoms. Maximum limit reached.");
                     }
                 }else{
-
+                    if ( !hasGuessedAtom&& hexboard.getGuessedAtomlist().size() < MAX_ATOMS) {
+                        GuessedAtom = new Atom(rowList,colList,this);
+                        hexBoard.getGuessedAtomlist().add(GuessedAtom);
+                        hexagon.setFill(Color.DARKGOLDENROD);
+                        hasGuessedAtom = true;
+                        hexBoard.getPlayer().addNumOfGuesses();
+                    } else if (hasGuessedAtom) {
+                        hexboard.getGuessedAtomlist().remove(GuessedAtom);
+                        hasGuessedAtom = false;
+                        hexagon.setFill(Color.BLACK);
+                        hexBoard.getPlayer().subNumofCorrectGuesses();
+                    } else {
+                        System.out.println("Can't add more atoms. Maximum limit reached.");
+                    }
                 }
             });
         }
@@ -172,6 +185,8 @@ public class Hexagon {
     public ArrayList<Arrow> getArrowList() {return arrowList;}
     public void setAtom(Atom atom11){atom = atom11;    hasAtom = true;}
     public void unsetAtom(){atom = null; hasAtom = false;}
-
+    public void setFinishedRound(Boolean finishedRound) {
+        this.finishedRound = finishedRound;
+    }
 
 }

@@ -9,5 +9,6 @@
     <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="junit1" level="project" />
     <orderEntry type="library" name="junit2" level="project" />
+    <orderEntry type="library" name="junit3" level="project" />
   </component>
 </module>
