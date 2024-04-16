@@ -21,11 +21,9 @@ import java.util.Objects;
 
 
 public class HexBoard {
-
     private ViewBlackbox viewBlackbox;
     private Player player;
     private Pane parantPane;
-
 
     //ArrayLists of the classes on the hexagonal board
     //hexagons, arrows, atoms, guessed atoms, rays.
@@ -45,7 +43,7 @@ public class HexBoard {
     private Text welcomeText;
     private Button instructionText;
 
-    public HexBoard(){
+    public HexBoard(){ //constructor
         history = new ArrayList<String>();
         hexList = new ArrayList<ArrayList<Hexagon>>();
         atomsOnBoard = new ArrayList<Atom>();
@@ -53,15 +51,8 @@ public class HexBoard {
         arrowList = new ArrayList<Arrow>();
         guessedAtomlist = new ArrayList<Atom>();
     }
-    public void setHexboardPane(Pane display){
-        parantPane = display;
-        parantPane.setStyle("-fx-background-color: black;"); // Set the background color to black
-        parantPane.getChildren().add(numberStack);
-        if(!TESTING){
-            createText();
-        }
-    }
 
+    //---Hexagonal Board Methods
     public void createHexagonalBoard(){
         int[] rowLength = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
         for (int row = 0; row < 9; row++) {
@@ -90,8 +81,7 @@ public class HexBoard {
     }
     private static double getPosition(int col, double offsetX) {
         double basePosition = col * HEXAGON_RADIUS; // Base x-coordinate for the hexagon in its row
-        double position = SCALING_FACTOR_X * (basePosition + offsetX + PADDING);// Calculate the final x-coordinate
-        return position;
+        return SCALING_FACTOR_X * (basePosition + offsetX + PADDING);// Calculate the final x-coordinate
     }
     private static double getOffsetX(int[] rows, int row) {
         int maxHexagons = rows.length; //Maximum number of hexagons in a row
@@ -100,7 +90,6 @@ public class HexBoard {
         int difference = maxHexagons - currentHexagons; //Difference between the maximum number of hexagons and the number in the current row
         return difference * hexagonWidth / 2;
     }
-
     public void initializeHexagonsNearAtom() {
         for(int row = 0; row < hexList.size(); row++) {
             for (int col = 0; col < hexList.get(row).size(); col++) {
@@ -169,7 +158,7 @@ public class HexBoard {
                     }
                     if(isHexThere(newRow,newCol) && !hexList.get(newRow).get(newCol).hasAtom()){
                         Hexagon hexUpRight = hexList.get(newRow).get(newCol);
-                        //hexUpRight.getHexagon().setFill(Color.PURPLE);
+                        //hexUpRight.getHexagon().setFill(Color.PURfPLE);
                         hexUpRight.setAtomPlacement(atomPlacement.UPRIGHT);
                         hexUpRight.setHasBorderingAtom(true);
                         hexUpRight.addBorderingAtoms();
@@ -198,9 +187,8 @@ public class HexBoard {
         return newRow >= 0 && newRow < hexList.size() &&
                 newCol >= 0 && newCol < hexList.get(newRow).size();
     }
-    public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
-    public Pane getParantPane(){return parantPane;}
-    public ArrayList<Atom> getAtomList(){return atomsOnBoard;}
+    //---End of Hexagonal Board Methods
+
 
     public void createText(){
         Round = new Text("Round 1");
@@ -311,9 +299,6 @@ public class HexBoard {
             numberStack.getChildren().clear();
         }
     }
-    public ArrayList<String> getHistory() {
-        return history;
-    }
     public void setNumberStack(Node o){
         numberStack.getChildren().add(o);
     }
@@ -323,9 +308,6 @@ public class HexBoard {
     public void setNumberStackXY(int x, int y) {
         numberStack.setLayoutX(x);
         numberStack.setLayoutY(y);
-    }
-    public ArrayList<ArrayList<Hexagon>> getHexList() {
-        return hexList;
     }
     public void createAtomAthexagon(int x, int y){
         Atom atom = new Atom(this,0,0,finishedRound);
@@ -345,14 +327,8 @@ public class HexBoard {
         return ray.createRay(arrowClicked);
     }
 
-    private Arrow getArrowClickedfromint(int rayNum) {
-        for(Arrow arrr: arrowList){
-            if(arrr.getIdArrow() == rayNum){
-                return arrr;
-            }
-        }
-        throw new NullPointerException("Arrow Id not in hexboard   (1-54)");
-    }
+
+
     public void checkAtoms(){
         for(ArrayList<Hexagon> hexRow: hexList){
             for(Hexagon hex: hexRow){
@@ -386,7 +362,7 @@ public class HexBoard {
             }
             showAtomsOnBoard();
         }
-        }
+    }
 
 
     public void setGuessingRound(){
@@ -426,16 +402,48 @@ public class HexBoard {
 
     }
 
-    public ArrayList<Ray> getRayList(){
-        return raysOnBoard;
-    }
 
 
     public void setViewBlackbox(ViewBlackbox v){  // set from View
         viewBlackbox = v;                        // Needed to handle the progression of the game. from p1 to p2 then 3end
     }
 
+
+    //------- Getters
+    public Pane getParantPane(){return parantPane;}
+    public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
+
+    public ArrayList<Atom> getGuessedAtomlist() { //for a lot of classes and methods need the atomlist
+        return guessedAtomlist;
+    }
+    public ArrayList<Atom> getAtomList(){return atomsOnBoard;}
+    public ArrayList<Ray> getRayList(){  //same
+        return raysOnBoard;
+    }
     public Button getToggleR1R2() {   //for button logic
         return ToggleR1R2;
     }
+    private Arrow getArrowClickedfromint(int rayNum) { //needed for the rayLogic in testing
+        for(Arrow arrr: arrowList){
+            if(arrr.getIdArrow() == rayNum){
+                return arrr;
+            }
+        }
+        throw new NullPointerException("Arrow Id not in hexboard   (1-54)");
+    }
+    public ArrayList<ArrayList<Hexagon>> getHexList() {
+        return hexList;
+    }
+    public ArrayList<String> getHistory() {
+        return history;
+    }
+    public void setHexboardPane(Pane display){
+        parantPane = display;
+        parantPane.setStyle("-fx-background-color: black;"); // Set the background color to black
+        parantPane.getChildren().add(numberStack);
+        if(!TESTING){
+            createText();
+        }
+    }
+
 }

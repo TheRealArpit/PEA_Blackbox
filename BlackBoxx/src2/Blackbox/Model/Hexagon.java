@@ -56,24 +56,11 @@ public class Hexagon {
                         System.out.println("Can't add more atoms. Maximum limit reached.");
                     }
                 }else{
-                    if ( !hasGuessedAtom&& hexboard.getGuessedAtomlist().size() < MAX_ATOMS) {
-                        GuessedAtom = new Atom(rowList,colList,this);
-                        hexBoard.getGuessedAtomlist().add(GuessedAtom);
-                        hexagon.setFill(Color.DARKGOLDENROD);
-                        hasGuessedAtom = true;
-                    } else if (hasGuessedAtom) {
-                        hexboard.getGuessedAtomlist().remove(GuessedAtom);
-                        hasGuessedAtom = false;
-                        hexagon.setFill(Color.BLACK);
-                    } else {
-                        System.out.println("Can't add more atoms. Maximum limit reached.");
-                    }
 
                 }
             });
         }
     }
-
     public void createHexagon(double xx, double yy, int row, int col) {
         rowList = row;
         colList = col;
