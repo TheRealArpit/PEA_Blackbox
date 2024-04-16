@@ -262,11 +262,14 @@ public class HexBoard {
             switch (action) {
                 case "Next":
                     setArrowTouchOnn();
-                    //set
+                    setHexagonTouchOff();
                     setRound2();
                     break;
                 case "Finish":
-
+                    setFinishedRound();
+                    setHexagonTouchOnn();
+                    setArrowTouchoff();
+                    setGuessingRound();
                     break;
                 case "Confirm":
 
@@ -295,7 +298,30 @@ public class HexBoard {
         hideAtomsOnBoard();
         initializeHexagonsNearAtom();
     }
+    public void setFinishedRound(){         //used for the hexagon class knows whether to put an atom or a guessed atom
+        for(ArrayList<Hexagon> hexRow: hexList){
+            for(Hexagon hex: hexRow){
+                hex.setFinishedRound(true);
+            }
+        }
+    }
+    public void setGuessingRound(){
+        Round.setText("Guess Atoms");
+        ToggleR1R2.setText("Confirm");
+        welcomeText.setText("Guess");
+        instructionText.setText("""
+                    Experimentor Instructions:
 
+                    Click the hexagons where you believe the Atoms Are
+
+                    Delete Guesses by Clicking on the same hexagon again
+
+                    Click Confirm Guesses when you are sure.
+                    
+                    you have found all the atoms.
+                    """);
+        hideAtomsOnBoard();
+    }
 
 
     public void hideAtomsOnBoard(){
@@ -348,24 +374,7 @@ public class HexBoard {
             arrr.getArrow().setMouseTransparent(false);
         }
     }
-    public void setGuessingRound(){
-        Round.setText("Guess Atoms");
-        ToggleR1R2.setText("Confirm");
-        welcomeText.setText("Guess");
-        instructionText.setText("""
-                    Experimentor Instructions:
 
-                    Click the hexagons where you believe the Atoms Are
-
-                    Delete Guesses by Clicking on the same hexagon again
-
-                    Click Confirm Guesses when you are sure
-                    
-                    you have found all the atoms.
-                    """);
-        hideAtomsOnBoard();
-        initializeHexagonsNearAtom();
-    }
 
     public void setViewBlackbox(ViewBlackbox v){  // set from View
         viewBlackbox = v;                        // Needed to handle the progression of the game. from p1 to p2 then 3end
@@ -401,6 +410,10 @@ public class HexBoard {
     public ArrayList<String> getHistory() {
         return history;
     }
+    public Player getPlayer() {
+        return player;
+    }
+
     public void setHexboardPane(Pane display){
         parantPane = display;
         parantPane.setStyle("-fx-background-color: black;"); // Set the background color to black
@@ -424,5 +437,7 @@ public class HexBoard {
         numberStack.setLayoutX(x);
         numberStack.setLayoutY(y);
     }
-
+    public void setPlayer(Player playar){
+        this.player = playar;
+    }
 }

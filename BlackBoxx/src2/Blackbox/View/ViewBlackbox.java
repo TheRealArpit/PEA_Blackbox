@@ -18,6 +18,7 @@ public class ViewBlackbox extends Application {
     private Stage primaryStage;
     private HexBoard hexBoard;
     private int turnCounter = 0;
+    private Player player1,player2;
     private static final int TOTAL_TURNS = 2;
 
     @Override
@@ -48,11 +49,14 @@ public class ViewBlackbox extends Application {
     private void startGame(Pane display) {
         turnCounter = 0;
         display.getChildren().clear();
+        player1 = new Player();
+        player2 = new Player();
 
         hexBoard = new HexBoard();
         hexBoard.setViewBlackbox(this);
         hexBoard.setHexboardPane(display);
         hexBoard.createHexagonalBoard();
+        hexBoard.setPlayer(player1);
     }
 
     private void stageSettings(Stage stage) {
