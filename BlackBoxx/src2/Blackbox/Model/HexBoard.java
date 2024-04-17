@@ -356,6 +356,17 @@ public class HexBoard {
             }
             showAtomsOnBoard();
         }
+        else{
+            for(Atom guessed: guessedAtomlist){
+                if(getHexagon(guessed.getRowList(),guessed.getColList()).hasAtom()){
+                    System.out.println("Guessed atom" + guessed.toString() );
+                    player.addNumofCorrectGuesses();
+                }
+                else{
+                    System.out.println("not guessd atom" + guessed.toString());
+                }
+            }
+        }
     }
     public void setFinishedRound(){         //used for the hexagon class knows whether to put an atom or a guessed atom
         for(ArrayList<Hexagon> hexRow: hexList){
@@ -422,6 +433,13 @@ public class HexBoard {
         return ray.createRay(arrowClicked);
     }
 
+    public void setGuessAtomAt(int row, int col){
+        Atom guessedAtom = new Atom(row,col,getHexagon(row,col));
+        getHexagon(row,col).createGuessAtom(row,col, guessedAtom);
+    }
+    public Boolean CheckGuessAtomAt(int row, int col){
+        return getHexagon(row,col).hasGuessedAtom();
+    }
 
     private void setArrowTouchoff() {
         for (Arrow arrr : arrowList) {

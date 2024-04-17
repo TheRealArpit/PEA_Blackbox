@@ -16,6 +16,7 @@ public class Hexagon {
     private ArrayList<atomPlacement> atomPlacements = new ArrayList<>();
 
     private boolean hasAtom = false;
+
     private boolean hasGuessedAtom = false;
     private Atom GuessedAtom;
     private boolean hasBorderingAtom = false;
@@ -42,22 +43,22 @@ public class Hexagon {
         arrowList = new ArrayList<Arrow>();
         rays = new ArrayList<Ray>();
         hexList = this.hexBoard.gethexList();
-        if(!TESTING){
-            parentPane = hexboard.getParantPane();
-            hexagon.setOnMouseEntered(event -> hexagon.setStroke(Color.RED));
-            hexagon.setOnMouseExited(event -> hexagon.setStroke(HEXAGON_STROKE));
-            hexagon.setOnMouseClicked(event -> {
-                if(!finishedRound){
+        parentPane = hexboard.getParantPane();
+        hexagon.setOnMouseEntered(event -> hexagon.setStroke(Color.RED));
+        hexagon.setOnMouseExited(event -> hexagon.setStroke(HEXAGON_STROKE));
+        hexagon.setOnMouseClicked(event -> {
+            if(!TESTING) {
+                if (!finishedRound) {
                     if (!hasAtom && hexboard.getAtomList().size() < MAX_ATOMS) {
-                        createAtom(rowList,colList);
+                        createAtom(rowList, colList);
                     } else if (hasAtom) {
-                        removeAtom(rowList,colList);
+                        removeAtom(rowList, colList);
                     } else {
                         System.out.println("Can't add more atoms. Maximum limit reached.");
                     }
-                }else{
-                    if ( !hasGuessedAtom&& hexboard.getGuessedAtomlist().size() < MAX_ATOMS) {
-                        GuessedAtom = new Atom(rowList,colList,this);
+                } else {
+                    if (!hasGuessedAtom && hexboard.getGuessedAtomlist().size() < MAX_ATOMS) {
+                        GuessedAtom = new Atom(rowList, colList, this);
                         hexBoard.getGuessedAtomlist().add(GuessedAtom);
                         hexagon.setFill(Color.DARKGOLDENROD);
                         hasGuessedAtom = true;
@@ -71,8 +72,9 @@ public class Hexagon {
                         System.out.println("Can't add more atoms. Maximum limit reached.");
                     }
                 }
-            });
-        }
+            }
+        });
+
     }
     public void createHexagon(double xx, double yy, int row, int col) {
         rowList = row;
@@ -152,7 +154,6 @@ public class Hexagon {
         }
 
     }
-
     public void removeAtom(int row,int col) {//method to create atom
         if(!TESTING){
             atom.removeAtom();
@@ -160,6 +161,11 @@ public class Hexagon {
         }
         hasAtom = false;
         atom = null;
+    }
+    public void createGuessAtom(int row, int col, Atom atom){
+        this.GuessedAtom = atom;
+        this.hasGuessedAtom = true;
+        hexBoard.getGuessedAtomlist().add(GuessedAtom);
     }
 
     public boolean hasAtom() {return hasAtom;}
@@ -182,11 +188,19 @@ public class Hexagon {
     public double getCentreY() {return centreY;}
     public Polygon getHexagon() {return hexagon;}
 
+    public boolean hasGuessedAtom() {
+        return hasGuessedAtom;
+    }
+
     public ArrayList<Arrow> getArrowList() {return arrowList;}
     public void setAtom(Atom atom11){atom = atom11;    hasAtom = true;}
     public void unsetAtom(){atom = null; hasAtom = false;}
     public void setFinishedRound(Boolean finishedRound) {
         this.finishedRound = finishedRound;
+    }
+    @Override
+    public String toString(){
+        return "("+rowList+", "+colList+")";
     }
 
 }

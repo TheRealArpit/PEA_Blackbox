@@ -1,14 +1,11 @@
 package BlackboxTest;
 import Blackbox.Constant.Constants;
 import Blackbox.Model.*;
-//import org.junit.jupiter.api.Test;
-//import static org.junit.jupiter.api.Assertions.*;
 
 import  static Blackbox.Constant.Constants.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-import javafx.scene.layout.Pane;
-import org.junit.Assert;
+
 import org.junit.Test;
 
 import java.util.List;
@@ -46,32 +43,30 @@ public class HexBoardTest {
     @Test
     public void createatomsOnBoard() {
         TESTING = true;
-        Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
         hexBoard.createAtomAthexagon(0,0);
         hexBoard.createAtomAthexagon(3,4);
         hexBoard.createAtomAthexagon(4,8);
-        assertEquals(true, hexBoard.getHexagon(0,0).hasAtom());
-        assertEquals(true, hexBoard.getHexagon(3,4).hasAtom());
-        assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
+        assertTrue(hexBoard.getHexagon(0, 0).hasAtom());
+        assertTrue(hexBoard.getHexagon(3, 4).hasAtom());
+        assertTrue(hexBoard.getHexagon(4, 8).hasAtom());
 
-        assertEquals(true, hexBoard.getHexagon(3,4).hasAtom());
-        assertEquals(true, hexBoard.getHexagon(4,8).hasAtom());
+        assertTrue(hexBoard.getHexagon(3, 4).hasAtom());
+        assertTrue(hexBoard.getHexagon(4, 8).hasAtom());
 
     }
     @Test
     public void deleteatomsOnBoard(){
         TESTING = true;
-        Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
         hexBoard.createAtomAthexagon(0,0);
         hexBoard.deleteAtomAthexagon(0,0);
-        assertEquals(false, hexBoard.getHexagon(0,0).hasAtom());
+        assertFalse(hexBoard.getHexagon(0, 0).hasAtom());
         hexBoard.createAtomAthexagon(1,5);
         hexBoard.deleteAtomAthexagon(1,5);
-        assertEquals(false, hexBoard.getHexagon(1,5).hasAtom());
+        assertFalse(hexBoard.getHexagon(1, 5).hasAtom());
     }
     @Test
     public void SixtyDegreeReflection() {
@@ -111,7 +106,6 @@ public class HexBoardTest {
     @Test
     public void OneTwentyDegreeReflection() {
         TESTING = true;
-        Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         Player player = new Player();
         hexBoard.setPlayer(player);
@@ -133,7 +127,6 @@ public class HexBoardTest {
     @Test
     public void EquallyDistantReflection() {
         TESTING = true;
-        Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
         Player player = new Player();
@@ -218,11 +211,15 @@ public class HexBoardTest {
     @Test
     public void setGuessAtoms() {
         TESTING = true;
-        HexBoard HexBoard = new HexBoard();
-        HexBoard.createHexagonalBoard();
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
         Player player1 = new Player();
-        HexBoard.setPlayer(player1);
-
+        hexBoard.setPlayer(player1);
+        hexBoard.setFinishedRound();
+        hexBoard.setGuessAtomAt(0,0);
+        assertEquals("(0, 0)",hexBoard.getGuessedAtomlist().get(0).toString());
+        hexBoard.setGuessAtomAt(2,5);
+        assertEquals("(2, 5)",hexBoard.getGuessedAtomlist().get(1).toString());
     }
 
     @Test

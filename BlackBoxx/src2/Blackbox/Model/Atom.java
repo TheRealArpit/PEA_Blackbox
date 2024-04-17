@@ -95,4 +95,9 @@ public class Atom {
         }
         return false;
     }
+
+    @Override
+    public String toString(){
+        return "("+rowList+", "+colList+")";
+    }
 }
