@@ -76,9 +76,10 @@ public class HexBoardTest {
     @Test
     public void SixtyDegreeReflection() {
         TESTING = true;
-        Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        hexBoard.setPlayer(player1);
         hexBoard.createAtomAthexagon(4,4);
         hexBoard.initializeHexagonsNearAtom();
 
@@ -112,6 +113,8 @@ public class HexBoardTest {
         TESTING = true;
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
+        Player player = new Player();
+        hexBoard.setPlayer(player);
         hexBoard.createHexagonalBoard();
         hexBoard.createAtomAthexagon(4, 4);
         hexBoard.createAtomAthexagon(4, 5);
@@ -133,6 +136,8 @@ public class HexBoardTest {
         Pane display = new Pane();
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
+        Player player = new Player();
+        hexBoard.setPlayer(player);
         hexBoard.createAtomAthexagon(2, 1);
         hexBoard.createAtomAthexagon(4, 2);
         hexBoard.createAtomAthexagon(6, 1);
@@ -160,7 +165,8 @@ public class HexBoardTest {
         TESTING = true;
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
-
+        Player player = new Player();
+        hexBoard.setPlayer(player);
         hexBoard.createAtomAthexagon(3, 1);
         hexBoard.createAtomAthexagon(6, 2);
         hexBoard.createAtomAthexagon(6, 5);
@@ -170,6 +176,8 @@ public class HexBoardTest {
         assertEquals("50->49", hexBoard.sendRayat(50));
 
         HexBoard HexBoard1 = new HexBoard();
+        Player player11 = new Player();
+        HexBoard1.setPlayer(player11);
         HexBoard1.createHexagonalBoard();
         HexBoard1.createAtomAthexagon(1, 3);
         HexBoard1.createAtomAthexagon(4, 6);
@@ -179,6 +187,8 @@ public class HexBoardTest {
         assertEquals("6->10", HexBoard1.sendRayat(6));
 
         HexBoard HexBoard_ = new HexBoard();
+        Player player1 = new Player();
+        HexBoard_.setPlayer(player1);
         HexBoard_.createHexagonalBoard();
         HexBoard_.initializeHexagonsNearAtom();
 
@@ -194,6 +204,8 @@ public class HexBoardTest {
         TESTING = true;
         HexBoard HexBoard = new HexBoard();
         HexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        HexBoard.setPlayer(player1);
         HexBoard.createAtomAthexagon(4, 8);
         HexBoard.createAtomAthexagon(7, 5);
         HexBoard.createAtomAthexagon(8, 1);
@@ -203,4 +215,58 @@ public class HexBoardTest {
         assertEquals("23->23", HexBoard.sendRayat(23));
     }
 
+    @Test
+    public void setGuessAtoms() {
+        TESTING = true;
+        HexBoard HexBoard = new HexBoard();
+        HexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        HexBoard.setPlayer(player1);
+
+    }
+
+    @Test
+    public void checkGuessAtoms() {
+
+
+    }
+
+    @Test
+    public void checkNumofRayMarkers() {
+
+
+    }
+
+    @Test
+    public void checkHistory() {
+
+
+    }
+
+    @Test
+    public void checkMissedGuesses() {
+
+
+    }
+
+    @Test
+    public void checkCorrectGuesses() {
+
+
+    }
+    @Test
+    public void checkEndingScoreforPlayer() {
+
+    }
+    @Test
+    public void checkWinner() {
+
+
+    }
+
+    @Test
+    public void checkPlayerHistory() {
+
+
+    }
 }

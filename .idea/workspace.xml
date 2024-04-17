@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Hexagon Gui Rules. Set touch on and off">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Display Full Game view with Rays, markers, atoms, guessed atoms. and score">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Arpit">
+  <component name="RunManager" selected="JUnit.HexBoardTest.setGuessAtoms">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -147,16 +148,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.OneTwentyDegreeReflection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.OneTwentyDegreeReflection (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="PATTERN" value="BlackboxTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Blackbox.View" />
-      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
+      <option name="PACKAGE_NAME" value="BlackboxTest" />
+      <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
       <option name="METHOD_NAME" value="OneTwentyDegreeReflection" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -179,17 +180,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.createHexagonalBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.setGuessAtoms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Blackbox.View.*" />
+          <option name="PATTERN" value="BlackboxTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Blackbox.View" />
-      <option name="MAIN_CLASS_NAME" value="Blackbox.View.HexBoardTest" />
-      <option name="METHOD_NAME" value="createHexagonalBoard" />
+      <option name="PACKAGE_NAME" value="BlackboxTest" />
+      <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
+      <option name="METHOD_NAME" value="setGuessAtoms" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -199,18 +200,18 @@
       <item itemvalue="Application.main" />
       <item itemvalue="Application.Arpit" />
       <item itemvalue="Application.ViewBlackbox" />
+      <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection (1)" />
+      <item itemvalue="JUnit.HexBoardTest.setGuessAtoms" />
       <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
-      <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
       <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
-      <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.setGuessAtoms" />
+        <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection (1)" />
         <item itemvalue="Application.ViewBlackbox" />
         <item itemvalue="JUnit.HexBoardTest.SixtyDegreeReflection" />
         <item itemvalue="JUnit.HexBoardTest.EquallyDistantReflection" />
-        <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection" />
-        <item itemvalue="JUnit.HexBoardTest.createHexagonalBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -402,7 +403,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713274700151</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Display Full Game view with Rays, markers, atoms, guessed atoms. and score">
+      <option name="closed" value="true" />
+      <created>1713277253289</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1713277253289</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,6 +450,7 @@
     <MESSAGE value="Able to guess Where atoms are. Shows if guess is correct or not" />
     <MESSAGE value="Remodelled viewBoard and organized code." />
     <MESSAGE value="Hexagon Gui Rules. Set touch on and off" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hexagon Gui Rules. Set touch on and off" />
+    <MESSAGE value="Display Full Game view with Rays, markers, atoms, guessed atoms. and score" />
+    <option name="LAST_COMMIT_MESSAGE" value="Display Full Game view with Rays, markers, atoms, guessed atoms. and score" />
   </component>
 </project>

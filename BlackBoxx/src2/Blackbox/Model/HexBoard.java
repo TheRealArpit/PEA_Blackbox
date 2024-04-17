@@ -77,7 +77,9 @@ public class HexBoard {
                 }
             }
         }
-        setArrowTouchoff();
+        if(!TESTING){
+            setArrowTouchoff();
+        }
     }
     private static double getPosition(int col, double offsetX) {
         double basePosition = col * HEXAGON_RADIUS; // Base x-coordinate for the hexagon in its row
@@ -188,7 +190,6 @@ public class HexBoard {
                 newCol >= 0 && newCol < hexList.get(newRow).size();
     }
     //--- End of Hexagonal Board Methods
-
 
     public void createText(){
         Round = new Text("Round 1");
