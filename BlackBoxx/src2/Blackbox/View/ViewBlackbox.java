@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -72,9 +73,10 @@ public class ViewBlackbox extends Application {
             setDisplay(display);
         }
     }
-    private void displayScore(Pane display) { //Elvis do this
+    /*private void displayScore(Pane display) { //Elvis do this
         display.getChildren().clear();  // Clear the board
         String scoreText = "Score: Player 1: " + player1.getScore() + ", Player 2: " + player2.getScore();
+
         Text scoreDisplay = new Text(scoreText);
         scoreDisplay.setFill(Color.RED);
         scoreDisplay.setX(10);
@@ -90,7 +92,52 @@ public class ViewBlackbox extends Application {
         // Add the button to the display
         display.getChildren().add(restartButton);
         display.getChildren().add(scoreDisplay);  // Display scores
+    }*/
+    private void displayScore(Pane display) {
+        display.getChildren().clear();  // Clear the board
+
+        // Determine the winner based on the lower score
+        String winnerText;
+        if (player1.getScore() < player2.getScore()) {
+            winnerText = "Winner: Player 1";
+        } else if (player2.getScore() < player1.getScore()) {
+            winnerText = "Winner: Player 2";
+        } else {
+            winnerText = "It's a tie!";
+        }
+
+        // Display the score and the winner
+        String scoreText = "Score - Player 1: " + player1.getScore() + ", Player 2: " + player2.getScore() + "\n" + winnerText;
+        Text scoreDisplay = new Text(scoreText);
+        scoreDisplay.setFill(Color.RED);
+        scoreDisplay.setFont(new Font(20)); // Increase text size
+
+        // Center the score display on the display pane
+        scoreDisplay.setX((display.getWidth() - scoreDisplay.getLayoutBounds().getWidth()) / 2);
+        scoreDisplay.setY(50);
+
+        // Restart button
+        Button restartButton = new Button("Restart Game");
+        restartButton.setLayoutX(10);
+        restartButton.setLayoutY(100);
+        restartButton.setOnAction(event -> startGame(display));  // Set the action to restart the game
+
+        // Exit button
+        Button exitButton = new Button("Exit");
+        exitButton.setLayoutX(10);
+        exitButton.setLayoutY(150);
+        exitButton.setOnAction(event -> {
+            // Close the window or the application
+            Stage stage = (Stage) display.getScene().getWindow();
+            stage.close();
+        });
+
+        // Add the buttons and the text to the display
+        display.getChildren().add(restartButton);
+        display.getChildren().add(exitButton);
+        display.getChildren().add(scoreDisplay);  // Display scores and winner
     }
+
     public void setDisplay(Pane display){
         displayScore(display);
     }

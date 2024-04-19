@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="made some functions for tests and made the setGuessAtoms test">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +96,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HexBoardTest.checkNumofRayMarkers">
+  <component name="RunManager" selected="Application.Arpit">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -432,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713347253171</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms">
+      <option name="closed" value="true" />
+      <created>1713528884131</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1713528884131</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,6 +478,7 @@
     <MESSAGE value="Display Full Game view with Rays, markers, atoms, guessed atoms. and score" />
     <MESSAGE value="Fixed tests as they were not working with new features." />
     <MESSAGE value="made some functions for tests and made the setGuessAtoms test" />
-    <option name="LAST_COMMIT_MESSAGE" value="made some functions for tests and made the setGuessAtoms test" />
+    <MESSAGE value="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms" />
   </component>
 </project>
