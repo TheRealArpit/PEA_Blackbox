@@ -46,7 +46,9 @@ public class Ray {
         if(!TESTING){
             parentpane = hexBoard.getParantPane();
         }
-        createRay(clickedArrow);
+        if(!TESTING){ //when clicked on gui it autimatically happens to create ray
+            createRay(clickedArrow); // in testing it needs to be called directly
+        }//So if this isn't in testing, the test calls it twice which messes up the data in player class
     }
 
     public String createRay(Arrow arrowclicked){
@@ -64,11 +66,10 @@ public class Ray {
                 currentHex = hexList.get(rowIndex).get(colIndex);
                 if(!TESTING) {
                     createLine();
-                    displayEntryExitPoints();
                 }
+                displayEntryExitPoints();
                 return idRayEntered + "->"+ "Hit";
             } else {
-
                 if(!TESTING) {
                     createLine();
                 }
@@ -413,7 +414,6 @@ public class Ray {
         }
     }
     public void displayEntryExitPoints() {
-
         Text message = new Text();
         if(!TESTING){
             hexBoard.checkNumberStack();
@@ -428,7 +428,9 @@ public class Ray {
         String msg = "Entered at: " + idRayEntered;
 
         if(rayType == RayType.HIT){
-            clickedArrow.setMarkerColor(Color.GREEN);
+            if(!TESTING){
+                clickedArrow.setMarkerColor(Color.GREEN);
+            }
             hexBoard.getPlayer().addNumMarkers(1);
             msg += "\tType:" + rayType.toString();
         } else if (rayType == RayType.REFLECTED) {
@@ -438,7 +440,6 @@ public class Ray {
                 clickedArrow.setMarkerColor(Color.WHITE);
                 leftArrow.setMarkerColor(Color.WHITE);
             }
-
         }else if (rayType == RayType.NO_ATOM) {
             msg += "\tLeft at: " + getIdRayExited + "\nType: " + rayType.toString();
             hexBoard.getPlayer().addNumMarkers(2);

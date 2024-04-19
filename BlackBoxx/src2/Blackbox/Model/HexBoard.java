@@ -275,12 +275,15 @@ public class HexBoard {
                 case "Confirm":
                     setArrowTouchoff();
                     setHexagonTouchOff();
-                    CheckGuessedAtoms();
+                    checkGuessedAtoms();
                     break;
                 case "Score":
                     displayScore();
                     break;
+                case "NextRound":
+                    viewBlackbox.Player2Turn(parantPane);
                 default:
+                    System.out.println("here");
             }
         });
     }
@@ -331,43 +334,35 @@ public class HexBoard {
         hideAtomsOnBoard();
         initializeHexagonsNearAtom();
     }
-    public void CheckGuessedAtoms() {
-        if(!TESTING){
+    public void checkGuessedAtoms() {
+        if(!TESTING)
             getToggleR1R2().setText("Score");
-            for (Atom p1 : guessedAtomlist) {
-                for (Atom p2 : atomsOnBoard) {
-                    if (p1.equals(p2)) {
-                        p1.getHexOfAtom().getHexagon().setFill(Color.GREEN);
-                        player.addNumofCorrectGuesses();
-                        break;
-                    }else {
-                        p1.getHexOfAtom().getHexagon().setFill(Color.RED);
-                    }
+        for(Atom guessedAtom: guessedAtomlist){
+            if(checkGuessedAtomAt(guessedAtom.getRowList(),guessedAtom.getColList())){
+                System.out.println("True for"+ guessedAtom.getRowList() + "," +guessedAtom.getColList());
+                if(!TESTING){
+                    guessedAtom.getHexOfAtom().getHexagon().setFill(Color.GREEN);
+                }
+                player.addNumofCorrectGuesses();
+            }
+            else{
+                if(!TESTING){
+                    guessedAtom.getHexOfAtom().getHexagon().setFill(Color.RED);
                 }
             }
-            //when no atoms placed and atoms guessed, it does not light up green
-            for (Atom p1 : guessedAtomlist) {
-                if (p1.getHexOfAtom().getHexagon().getFill() == Color.GREEN) {
-
-                    break;
-                }else{
-                    p1.getHexOfAtom().getHexagon().setFill(Color.RED);
-                }
-            }
+        }
+        if(!TESTING){
             showAtomsOnBoard();
         }
-        else{
-            for(Atom guessed: guessedAtomlist){
-                if(getHexagon(guessed.getRowList(),guessed.getColList()).hasAtom()){
-                    System.out.println("Guessed atom" + guessed.toString() );
-                    player.addNumofCorrectGuesses();
-                }
-                else{
-                    System.out.println("not guessd atom" + guessed.toString());
-                }
-            }
-        }
+
     }
+    public boolean checkGuessedAtomAt(int row, int col){
+        if(!isHexThere(row,col)){
+            throw  new IndexOutOfBoundsException("Row or col not in the coordinates");
+        }
+        return getHexagon(row,col).hasAtom();
+    }
+
     public void setFinishedRound(){         //used for the hexagon class knows whether to put an atom or a guessed atom
         for(ArrayList<Hexagon> hexRow: hexList){
             for(Hexagon hex: hexRow){

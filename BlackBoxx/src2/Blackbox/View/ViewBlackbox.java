@@ -59,6 +59,42 @@ public class ViewBlackbox extends Application {
         hexBoard.setPlayer(player1);
     }
 
+    //player 2
+    public void Player2Turn(Pane display){
+        display.getChildren().clear();
+        hexBoard = new HexBoard();
+        hexBoard.setViewBlackbox(this);
+        hexBoard.setHexboardPane(display);
+        hexBoard.createHexagonalBoard();
+        hexBoard.setPlayer(player2);
+        turnCounter++;
+        if(turnCounter >= TOTAL_TURNS){
+            setDisplay(display);
+        }
+    }
+    private void displayScore(Pane display) { //Elvis do this
+        display.getChildren().clear();  // Clear the board
+        String scoreText = "Score: Player 1: " + player1.getScore() + ", Player 2: " + player2.getScore();
+        Text scoreDisplay = new Text(scoreText);
+        scoreDisplay.setFill(Color.RED);
+        scoreDisplay.setX(10);
+        scoreDisplay.setY(50);
+        Button restartButton = new Button("Restart Game");
+        restartButton.setLayoutX(10);
+        restartButton.setLayoutY(100);
+        restartButton.setOnAction(event ->
+        {
+            startGame(display);// Set the action to restart the game
+        });
+
+        // Add the button to the display
+        display.getChildren().add(restartButton);
+        display.getChildren().add(scoreDisplay);  // Display scores
+    }
+    public void setDisplay(Pane display){
+        displayScore(display);
+    }
+
     private void stageSettings(Stage stage) {
         stage.setFullScreen(true);
         stage.addEventHandler(KeyEvent.KEY_RELEASED, event -> {

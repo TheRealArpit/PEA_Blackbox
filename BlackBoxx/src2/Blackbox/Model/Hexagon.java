@@ -27,6 +27,11 @@ public class Hexagon {
     private ArrayList<Ray> rays;
 
     private Polygon hexagon;
+
+    public Atom getAtom() {
+        return atom;
+    }
+
     private Atom atom;
     private double centreX;
     private double centreY;

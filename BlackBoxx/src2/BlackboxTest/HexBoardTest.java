@@ -223,13 +223,61 @@ public class HexBoardTest {
     }
 
     @Test
-    public void checkGuessAtoms() {
+    public void checkSpecificGuessAtoms() {
+        TESTING = true;
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        hexBoard.setPlayer(player1);
+        hexBoard.setFinishedRound();
+
+        hexBoard.setGuessAtomAt(0,0);
+        assertFalse(hexBoard.checkGuessedAtomAt(0,0));
+
+        hexBoard.createAtomAthexagon(4,5);
+        hexBoard.setGuessAtomAt(4,5);
+        assertTrue(hexBoard.checkGuessedAtomAt(4,5));
+
+        hexBoard.createAtomAthexagon(8,4);
+        hexBoard.setGuessAtomAt(8,4);
+        assertTrue(hexBoard.checkGuessedAtomAt(8,4));
+
+        assertFalse(hexBoard.checkGuessedAtomAt(4,4));
 
 
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+            hexBoard.checkGuessedAtomAt(9,5);
+        });
+
+        assertEquals("Row or col not in the coordinates",exception.getMessage());
+        //checking all atoms uses this but for every atom in the guessedatom list. there is no need to have a seperate test
     }
+
 
     @Test
     public void checkNumofRayMarkers() {
+        TESTING = true;
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        hexBoard.setPlayer(player1);
+       // hexBoard.setRound2();
+        hexBoard.sendRayat(1);
+        assertEquals(2, player1.getNumofMarkers());
+        hexBoard.sendRayat(2);
+        assertEquals(4, player1.getNumofMarkers());
+        hexBoard.createAtomAthexagon(4,4);
+        hexBoard.initializeHexagonsNearAtom();
+        hexBoard.sendRayat(10); //direct hit so markers is only 1 added
+        assertEquals(5, player1.getNumofMarkers());
+        hexBoard.sendRayat(53);//deflects
+        assertEquals(7,player1.getNumofMarkers());
+
+        //complex path
+        hexBoard.createAtomAthexagon(4,7);
+        hexBoard.initializeHexagonsNearAtom();
+        hexBoard.sendRayat(53);
+        assertEquals(9,player1.getNumofMarkers());
 
 
     }
