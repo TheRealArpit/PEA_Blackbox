@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="PEA_Blackbox:jar" />
+      <artifact name="Main:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Announces winner at the end and also give option to exit or restart game">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +78,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
@@ -436,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713528884131</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Announces winner at the end and also give option to exit or restart game">
+      <option name="closed" value="true" />
+      <created>1713530237564</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1713530237564</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,6 +488,7 @@
     <MESSAGE value="Fixed tests as they were not working with new features." />
     <MESSAGE value="made some functions for tests and made the setGuessAtoms test" />
     <MESSAGE value="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms" />
+    <MESSAGE value="Announces winner at the end and also give option to exit or restart game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Announces winner at the end and also give option to exit or restart game" />
   </component>
 </project>
