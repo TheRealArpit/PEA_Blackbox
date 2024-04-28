@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Feature: able to check if the guessed atom is in the correct place">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/WelcomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/WelcomeScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +96,13 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Arpit">
-    <configuration name="Arpit" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.Elvis">
+    <configuration name="Elvis" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.ViewBlackbox" />
       <module name="Main" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\elvis\JavaFX\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,7 +199,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.main" />
-      <item itemvalue="Application.Arpit" />
+      <item itemvalue="Application.Elvis" />
       <item itemvalue="JUnit.HexBoardTest.checkGuessAtoms" />
       <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
       <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />

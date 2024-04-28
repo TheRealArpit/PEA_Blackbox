@@ -5,10 +5,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+
 
 public class WelcomeScreen {
     Pane welcomePage;
@@ -106,6 +110,79 @@ public class WelcomeScreen {
 
         //Adding the button to the welcome screen pane
         welcomePage.getChildren().add(exitButton);
+
+        //Creating additional atoms for design
+        int spotx = 200;
+        int spoty = 150;
+        for (int i = 0; i < 6; i++) {
+
+            Circle circle = new Circle();
+            circle.setRadius(25);
+            circle.setFill(Color.BLUE);
+            circle.setCenterX(spotx);
+            circle.setCenterY(spoty);
+
+            Circle COI = new Circle();
+            COI.setRadius(50); // Same radius as the main circle
+            COI.setFill(Color.TRANSPARENT); // Transparent fill
+            COI.setStroke(Color.BLUE); // Red stroke color
+            COI.setStrokeWidth(3); // Stroke width
+            COI.setStrokeType(StrokeType.OUTSIDE); // Stroke type
+            COI.getStrokeDashArray().addAll(10d, 10d); // Dotted line
+            COI.setCenterX(spotx);
+            COI.setCenterY(spoty);
+
+            spoty += 250;
+
+            if (i == 2) {
+                spotx = 1310;
+                spoty = 150;
+            }
+
+
+            welcomePage.getChildren().add(circle);
+            welcomePage.getChildren().add(COI);
+
+        }
+
+
+        // Add rays around COI
+        for (int j = 0; j < 4; j++) {
+            Line ray = new Line();
+            ray.setStroke(Color.BLUE);
+            ray.setStrokeWidth(50);
+
+
+            switch(j) {
+                case 0:
+                    ray.setStartX(0);
+                    ray.setStartY(100);
+                    ray.setEndX(150);
+                    ray.setEndY(-10);
+                    break;
+                case 1:
+                    ray.setStartX(0);
+                    ray.setStartY(760);
+                    ray.setEndX(150);
+                    ray.setEndY(870);
+                    break;
+                case 2:
+                    ray.setStartX(1350);
+                    ray.setStartY(-10);
+                    ray.setEndX(1600);
+                    ray.setEndY(150);
+                    break;
+                case 3:
+                    ray.setStartX(1350);
+                    ray.setStartY(880);
+                    ray.setEndX(1600);
+                    ray.setEndY(720);
+                    break;
+            }
+
+            welcomePage.getChildren().add(ray);
+        }
+
 
     }
 
