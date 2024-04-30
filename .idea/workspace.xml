@@ -10,9 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Announces winner at the end and also give option to exit or restart game">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PEA_Blackbox_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_13_09__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +99,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Arpit">
+  <component name="RunManager" selected="JUnit.HexBoardTest.checkEndingScoreforPlayer">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -118,7 +120,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.OneTwentyDegreeReflection (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.checkEndingScoreforPlayer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -128,7 +130,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="BlackboxTest" />
       <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
-      <option name="METHOD_NAME" value="OneTwentyDegreeReflection" />
+      <option name="METHOD_NAME" value="checkEndingScoreforPlayer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -201,19 +203,19 @@
     <list>
       <item itemvalue="Application.main" />
       <item itemvalue="Application.Arpit" />
+      <item itemvalue="JUnit.HexBoardTest.checkEndingScoreforPlayer" />
       <item itemvalue="JUnit.HexBoardTest.checkGuessAtoms" />
       <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
       <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />
-      <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection (1)" />
       <item itemvalue="JUnit.HexBoardTest.setGuessAtoms" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.checkEndingScoreforPlayer" />
         <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
         <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />
         <item itemvalue="JUnit.HexBoardTest.checkGuessAtoms" />
         <item itemvalue="JUnit.HexBoardTest.setGuessAtoms" />
-        <item itemvalue="JUnit.HexBoardTest.OneTwentyDegreeReflection (1)" />
       </list>
     </recent_temporary>
   </component>

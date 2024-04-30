@@ -288,7 +288,7 @@ public class HexBoard {
         });
     }
     public void displayScore(){
-        player.setNumOfWrongGuesses(player.getNumOfGuesses() - player.getNumofCorrectGuesses());
+       // player.setNumOfWrongGuesses(player.getNumOfGuesses() - player.getNumofCorrectGuesses());
         Round.setText("History");
         welcomeText.setText("Score");
 
@@ -351,6 +351,7 @@ public class HexBoard {
                 }
             }
         }
+        player.setNumOfWrongGuesses(player.getNumOfGuesses() - player.getNumofCorrectGuesses());
         if(!TESTING){
             showAtomsOnBoard();
         }
@@ -431,6 +432,8 @@ public class HexBoard {
     public void setGuessAtomAt(int row, int col){
         Atom guessedAtom = new Atom(row,col,getHexagon(row,col));
         getHexagon(row,col).createGuessAtom(row,col, guessedAtom);
+        getHexagon(row,col).setHasGuessedAtom(true);
+        getPlayer().addNumOfGuesses();
     }
     public Boolean CheckGuessAtomAt(int row, int col){
         return getHexagon(row,col).hasGuessedAtom();

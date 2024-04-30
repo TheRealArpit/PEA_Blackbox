@@ -208,4 +208,7 @@ public class Hexagon {
         return "("+rowList+", "+colList+")";
     }
 
+    public void setHasGuessedAtom(boolean tf) {
+        hasGuessedAtom = tf;
+    }
 }

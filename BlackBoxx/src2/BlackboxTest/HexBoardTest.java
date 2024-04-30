@@ -285,23 +285,27 @@ public class HexBoardTest {
     @Test
     public void checkHistory() {
 
-
     }
 
-    @Test
-    public void checkMissedGuesses() {
-
-
-    }
-
-    @Test
-    public void checkCorrectGuesses() {
-
-
-    }
     @Test
     public void checkEndingScoreforPlayer() {
+        TESTING = true;
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        hexBoard.setPlayer(player1);
+        hexBoard.createAtomAthexagon(4,4);
+        hexBoard.initializeHexagonsNearAtom();
+        hexBoard.sendRayat(19);
+        hexBoard.sendRayat(17);
+        hexBoard.sendRayat(21);
+        hexBoard.setFinishedRound();
+        hexBoard.setGuessAtomAt(3,3);
+        hexBoard.checkGuessedAtoms();
 
+        //System.out.println(hexBoard.getPlayer().getNumofMarkers() + " " + hexBoard.getPlayer().getNumofCorrectGuesses()+" " + hexBoard.getPlayer().getNumofWrongGuesses());
+        //System.out.println(hexBoard.getPlayer().calculateScore());
+        assertEquals(10, hexBoard.getPlayer().calculateScore());
     }
     @Test
     public void checkWinner() {
