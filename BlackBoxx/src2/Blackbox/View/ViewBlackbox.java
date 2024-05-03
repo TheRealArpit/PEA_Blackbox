@@ -248,8 +248,8 @@ public class ViewBlackbox extends Application {
         });
     }
 
-    public String getWinner(Player playar1, Player player2){
-        if (playar1.getScore() < player2.getScore()) {
+    public String getWinner(Player player1, Player player2){
+        if (player1.getScore() < player2.getScore()) {
             return "Winner: Player 1";
         } else if (player2.getScore() < player1.getScore()) {
             return "Winner: Player 2";
