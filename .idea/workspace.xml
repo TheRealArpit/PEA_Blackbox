@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="before pulling">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Edited the ending game screen&#10;- Faces change based on score">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +77,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "inlay.hints",
@@ -98,7 +96,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.main">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -481,7 +479,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Internal Reflection at the edges of the board done." />
     <MESSAGE value="Working on Fixing printing out to diplay" />
     <MESSAGE value="Puts on display the entered and exited locations (the numbers)" />
     <MESSAGE value="The entry and exit points on the display update everytime an arrow is clicked now" />
@@ -506,6 +503,7 @@
     <MESSAGE value="Announces winner at the end and also give option to exit or restart game" />
     <MESSAGE value="Made a few tests" />
     <MESSAGE value="before pulling" />
-    <option name="LAST_COMMIT_MESSAGE" value="before pulling" />
+    <MESSAGE value="Edited the ending game screen&#10;- Faces change based on score" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited the ending game screen&#10;- Faces change based on score" />
   </component>
 </project>
