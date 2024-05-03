@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made a few tests">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="before pulling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,36 +56,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViewBlackbox.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.HexBoardTest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/phili/Documents/GitHub/PEA_Blackbox&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.ViewBlackbox.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.HexBoardTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/phili/Documents/GitHub/PEA_Blackbox",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\PEA_Blackbox\BlackBoxx\src2\Blackbox\View" />
@@ -95,7 +98,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Arpit">
+  <component name="RunManager">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -132,7 +135,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.checkGuessAtoms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.checkHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -142,7 +145,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="BlackboxTest" />
       <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
-      <option name="METHOD_NAME" value="checkGuessAtoms" />
+      <option name="METHOD_NAME" value="checkHistory" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -180,7 +183,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.setGuessAtoms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexBoardTest.checkWinner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
         <pattern>
@@ -190,7 +193,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="BlackboxTest" />
       <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
-      <option name="METHOD_NAME" value="setGuessAtoms" />
+      <option name="METHOD_NAME" value="checkWinner" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -199,19 +202,19 @@
     <list>
       <item itemvalue="Application.Arpit" />
       <item itemvalue="Application.main" />
+      <item itemvalue="JUnit.HexBoardTest.checkHistory" />
+      <item itemvalue="JUnit.HexBoardTest.checkWinner" />
       <item itemvalue="JUnit.HexBoardTest.checkEndingScoreforPlayer" />
-      <item itemvalue="JUnit.HexBoardTest.checkGuessAtoms" />
       <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
       <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />
-      <item itemvalue="JUnit.HexBoardTest.setGuessAtoms" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HexBoardTest.checkWinner" />
+        <item itemvalue="JUnit.HexBoardTest.checkHistory" />
         <item itemvalue="JUnit.HexBoardTest.checkEndingScoreforPlayer" />
         <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
         <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />
-        <item itemvalue="JUnit.HexBoardTest.checkGuessAtoms" />
-        <item itemvalue="JUnit.HexBoardTest.setGuessAtoms" />
       </list>
     </recent_temporary>
   </component>
@@ -451,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714479790722</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="before pulling">
+      <option name="closed" value="true" />
+      <created>1714740452493</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1714740452493</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +491,6 @@
     <MESSAGE value="CreateHexagonalBoard test created" />
     <MESSAGE value="CreateatomsOnBoard test created" />
     <MESSAGE value="Made hexlist local instead of static in constant class" />
-    <MESSAGE value="before pulling" />
     <MESSAGE value="Sprint 3 Finished&#10;Added some logic filling the ray class variables. Functionality is same as last sprint." />
     <MESSAGE value="made a different src folder. with the same functionality but more optimized." />
     <MESSAGE value="Ray Markers. Green for hit. White for Reflection. Red for Miss. (Need to change internal Reflection to Reflection)" />
@@ -495,6 +505,7 @@
     <MESSAGE value="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms" />
     <MESSAGE value="Announces winner at the end and also give option to exit or restart game" />
     <MESSAGE value="Made a few tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a few tests" />
+    <MESSAGE value="before pulling" />
+    <option name="LAST_COMMIT_MESSAGE" value="before pulling" />
   </component>
 </project>

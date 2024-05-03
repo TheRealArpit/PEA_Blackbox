@@ -97,15 +97,15 @@ public class ViewBlackbox extends Application {
         display.getChildren().clear();  // Clear the board
 
         // Determine the winner based on the lower score
-        String winnerText;
-        if (player1.getScore() < player2.getScore()) {
+        String winnerText = getWinner(player1, player2);
+        /*if (player1.getScore() < player2.getScore()) {
             winnerText = "Winner: Player 1";
         } else if (player2.getScore() < player1.getScore()) {
             winnerText = "Winner: Player 2";
         } else {
             winnerText = "It's a tie!";
         }
-
+*/
         // Display the score and the winner
         String scoreText = "Score - Player 1: " + player1.getScore() + ", Player 2: " + player2.getScore() + "\n" + winnerText;
         Text scoreDisplay = new Text(scoreText);
@@ -154,5 +154,15 @@ public class ViewBlackbox extends Application {
             }
 
         });
+    }
+
+    public String getWinner(Player playar1, Player player2){
+        if (playar1.getScore() < player2.getScore()) {
+            return "Winner: Player 1";
+        } else if (player2.getScore() < player1.getScore()) {
+            return "Winner: Player 2";
+        } else {
+            return "It's a tie!";
+        }
     }
 }

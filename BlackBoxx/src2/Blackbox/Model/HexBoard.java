@@ -515,4 +515,8 @@ public class HexBoard {
     public void setPlayer(Player playar){
         this.player = playar;
     }
+    public ViewBlackbox getViewBlackbox(){
+        return viewBlackbox;
+    }
+
 }
