@@ -6,6 +6,7 @@ import  static Blackbox.Constant.Constants.*;
 import static org.junit.Assert.*;
 
 
+import Blackbox.View.ViewBlackbox;
 import org.junit.Test;
 
 import java.util.List;
@@ -283,11 +284,6 @@ public class HexBoardTest {
     }
 
     @Test
-    public void checkHistory() {
-
-    }
-
-    @Test
     public void checkEndingScoreforPlayer() {
         TESTING = true;
         HexBoard hexBoard = new HexBoard();
@@ -309,13 +305,67 @@ public class HexBoardTest {
     }
     @Test
     public void checkWinner() {
+        TESTING = true;
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        hexBoard.setPlayer(player1);
+        hexBoard.createAtomAthexagon(4,4);
+        hexBoard.initializeHexagonsNearAtom();
+        hexBoard.sendRayat(19);
+        hexBoard.sendRayat(17);
+        hexBoard.sendRayat(21);
+        hexBoard.setFinishedRound();
+        hexBoard.setGuessAtomAt(3,3);
+        hexBoard.checkGuessedAtoms();
 
+
+        TESTING = true;
+        HexBoard hexb = new HexBoard();
+        ViewBlackbox view = new ViewBlackbox();
+        hexBoard.setViewBlackbox(view);
+        hexb.createHexagonalBoard();
+        Player player2 = new Player();
+        hexb.setPlayer(player2);
+        hexb.createAtomAthexagon(4,4);
+        hexb.initializeHexagonsNearAtom();
+        hexb.sendRayat(19);
+        hexb.sendRayat(17);
+        hexb.sendRayat(21);
+        hexb.sendRayat(23);
+        hexb.setFinishedRound();
+        hexb.setGuessAtomAt(3,3);
+        hexb.checkGuessedAtoms();
+
+        //System.out.println(hexBoard.getPlayer().getNumofMarkers() + " " + hexBoard.getPlayer().getNumofCorrectGuesses()+" " + hexBoard.getPlayer().getNumofWrongGuesses());
+        //System.out.println(hexBoard.getPlayer().calculateScore());
+        //assertEquals(10, hexb.getPlayer().calculateScore());
+        //System.out.println(hexb.getPlayer().calculateScore());
+        //System.out.println(hexBoard.getPlayer().calculateScore());
+        //System.out.println( hexBoard.getViewBlackbox().getWinner(player1,player2)); //get winner returns string of the winner
+        assertEquals("Winner: Player 1", hexBoard.getViewBlackbox().getWinner(player1,player2));
 
     }
 
     @Test
     public void checkPlayerHistory() {
+        TESTING = true;
+        HexBoard hexBoard = new HexBoard();
+        hexBoard.createHexagonalBoard();
+        Player player1 = new Player();
+        hexBoard.setPlayer(player1);
+        hexBoard.createAtomAthexagon(4,4);
+        hexBoard.initializeHexagonsNearAtom();
+        hexBoard.sendRayat(19);
+        hexBoard.sendRayat(17);
+        hexBoard.sendRayat(21);
+        hexBoard.setFinishedRound();
+        hexBoard.setGuessAtomAt(3,3);
+        hexBoard.checkGuessedAtoms();
 
+        //System.out.println(hexBoard.getPlayer().getNumofMarkers() + " " + hexBoard.getPlayer().getNumofCorrectGuesses()+" " + hexBoard.getPlayer().getNumofWrongGuesses());
+        //System.out.println(hexBoard.getPlayer().calculateScore());
+        assertEquals(10, hexBoard.getPlayer().calculateScore());
 
     }
 }
