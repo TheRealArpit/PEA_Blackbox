@@ -153,7 +153,7 @@ public class Hexagon {
             hexBoard.getAtomList().add(atom);
             hasAtom = true;
         }else{
-            atom = new Atom(hexBoard, row,col,finishedRound); //adds to parent pane here
+            atom = new Atom(hexBoard, row,col,finishedRound);
             hasAtom = true;
             hexBoard.getAtomList().add(atom);
         }

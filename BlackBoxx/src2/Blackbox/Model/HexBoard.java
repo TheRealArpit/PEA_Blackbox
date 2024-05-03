@@ -283,7 +283,6 @@ public class HexBoard {
                 case "NextRound":
                     viewBlackbox.Player2Turn(parantPane);
                 default:
-                    System.out.println("here");
             }
         });
     }
