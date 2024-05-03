@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="before pulling">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made more tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -462,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714740452493</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Made more tests">
+      <option name="closed" value="true" />
+      <created>1714747254950</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714747254950</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Internal Reflection at the edges of the board done." />
     <MESSAGE value="Working on Fixing printing out to diplay" />
     <MESSAGE value="Puts on display the entered and exited locations (the numbers)" />
     <MESSAGE value="The entry and exit points on the display update everytime an arrow is clicked now" />
@@ -506,6 +510,7 @@
     <MESSAGE value="Announces winner at the end and also give option to exit or restart game" />
     <MESSAGE value="Made a few tests" />
     <MESSAGE value="before pulling" />
-    <option name="LAST_COMMIT_MESSAGE" value="before pulling" />
+    <MESSAGE value="Made more tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made more tests" />
   </component>
 </project>
