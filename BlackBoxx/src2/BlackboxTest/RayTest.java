@@ -190,8 +190,6 @@ public class RayTest {
         hexBoard.sendRayat(15); //multiple deflections
         assertEquals(13, player1.getNumofMarkers());
 
-
-
     }
 
 }

@@ -91,6 +91,7 @@ public class EndGameTest {
         hexBoard.setFinishedRound();
         hexBoard.setGuessAtomAt(4, 3);
         hexBoard.checkGuessedAtoms();
+        hexBoard.getPlayer().calculateScore();
 
 
         HexBoard hexBoard2 = new HexBoard();
@@ -108,42 +109,38 @@ public class EndGameTest {
         hexBoard2.setFinishedRound();
         hexBoard2.setGuessAtomAt(3, 3);
         hexBoard2.checkGuessedAtoms();
+        hexBoard2.getPlayer().calculateScore();
 
-        //System.out.println(hexBoard.getPlayer().getNumofMarkers() + " " + hexBoard.getPlayer().getNumofCorrectGuesses()+" " + hexBoard.getPlayer().getNumofWrongGuesses());
-        //System.out.println(hexBoard.getPlayer().calculateScore());
-        //assertEquals(10, hexb.getPlayer().calculateScore());
-        //System.out.println(hexb.getPlayer().calculateScore());
-        //System.out.println(hexBoard.getPlayer().calculateScore());
-        //System.out.println( hexBoard.getViewBlackbox().getWinner(player1,player2)); //get winner returns string of the winner
-        assertEquals("It's a tie!", view.getWinner(player1, player2));
+        assertEquals("Winner: Player 1", view.getWinner(player1, player2));
 
-          /*  HexBoard HexBoard = new HexBoard();
-            HexBoard.createHexagonalBoard();
-            Player Player1 = new Player();
-        HexBoard.setPlayer(Player1);
-        HexBoard.createAtomAthexagon(2,2);
-        HexBoard.createAtomAthexagon(2,1);
-        HexBoard.createAtomAthexagon(3,4);
-        HexBoard.createAtomAthexagon(8,2);
-        HexBoard.initializeHexagonsNearAtom();
-        HexBoard.sendRayat(13);
-        HexBoard.sendRayat(42);
-        HexBoard.sendRayat(53);
-        HexBoard.sendRayat(46);
-        HexBoard.setFinishedRound();
-        HexBoard.setGuessAtomAt(2,2);
-        HexBoard.setGuessAtomAt(2,1);
-        HexBoard.setGuessAtomAt(1,2);
-        HexBoard.setGuessAtomAt(3,4);
-        HexBoard.checkGuessedAtoms();
+        HexBoard hexboard3 = new HexBoard();
+        hexboard3.createHexagonalBoard();
+        Player Player11 = new Player();
+        hexboard3.setPlayer(Player11);
+        hexboard3.createAtomAthexagon(2,2);
+        hexboard3.createAtomAthexagon(2,1);
+        hexboard3.createAtomAthexagon(3,4);
+        hexboard3.createAtomAthexagon(8,2);
+        hexboard3.initializeHexagonsNearAtom();
+        hexboard3.sendRayat(13);
+        hexboard3.sendRayat(42);
+        hexboard3.sendRayat(53);
+        hexboard3.sendRayat(46);
+        hexboard3.setFinishedRound();
+        hexboard3.setGuessAtomAt(2,2);
+        hexboard3.setGuessAtomAt(2,1);
+        hexboard3.setGuessAtomAt(1,2);
+        hexboard3.setGuessAtomAt(3,4);
+        hexboard3.checkGuessedAtoms();
+        hexboard3.getPlayer().calculateScore();
 
 
-            HexBoard HexBoard2 = new HexBoard();
-            ViewBlackbox View = new ViewBlackbox();
+        HexBoard HexBoard2 = new HexBoard();
+        ViewBlackbox View = new ViewBlackbox();
         HexBoard2.setViewBlackbox(View);
         HexBoard2.createHexagonalBoard();
-            Player Player2 = new Player();
-        HexBoard2.setPlayer(Player2);
+        Player Player22 = new Player();
+        HexBoard2.setPlayer(Player22);
         HexBoard2.createAtomAthexagon(5,5);
         HexBoard2.createAtomAthexagon(2,1);
         HexBoard2.createAtomAthexagon(3,4);
@@ -159,9 +156,9 @@ public class EndGameTest {
         HexBoard2.setGuessAtomAt(2,2);
         HexBoard2.setGuessAtomAt(3,4);
         HexBoard2.checkGuessedAtoms();
-        assertEquals("It's a tie!", View.getWinner(Player1,Player2));
+        HexBoard2.getPlayer().calculateScore();
 
-           */
+        assertEquals("Winner: Player 1", View.getWinner(hexboard3.getPlayer(),HexBoard2.getPlayer()));
     }
 
     @Test
@@ -176,37 +173,9 @@ public class EndGameTest {
         hexBoard.sendRayat(19);
         hexBoard.sendRayat(17);
         hexBoard.sendRayat(21);
-        hexBoard.setFinishedRound();
-        hexBoard.setGuessAtomAt(3, 3);
-        hexBoard.checkGuessedAtoms();
 
-        //System.out.println(hexBoard.getPlayer().getNumofMarkers() + " " + hexBoard.getPlayer().getNumofCorrectGuesses()+" " + hexBoard.getPlayer().getNumofWrongGuesses());
-        //System.out.println(hexBoard.getPlayer().calculateScore());
-        assertEquals(10, hexBoard.getPlayer().calculateScore());
-
-/*
-        HexBoard HexBoard = new HexBoard();
-        HexBoard.createHexagonalBoard();
-        Player player2 = new Player();
-        hexBoard.setPlayer(player2);
-        hexBoard.createAtomAthexagon(5,5);
-        hexBoard.createAtomAthexagon(2,1);
-        hexBoard.createAtomAthexagon(3,4);
-        hexBoard.createAtomAthexagon(8,2);
-        hexBoard.initializeHexagonsNearAtom();
-
-        hexBoard.sendRayat(22);
-        hexBoard.sendRayat(15);
-        hexBoard.sendRayat(25);
-        hexBoard.setFinishedRound();
-
-        //making guesses for player2
-        hexBoard.setGuessAtomAt(5, 5);
-        hexBoard.setGuessAtomAt(2, 1);
-        hexBoard.setGuessAtomAt(1, 2);
-        hexBoard.checkGuessedAtoms();
-        assertEquals(11, player2.calculateScore());
-    }*/
-
+        assertEquals("Entered at: 19\tType:HIT", hexBoard.getPlayer().getHistory().get(0));
+        assertEquals("Entered at: 17\tLeft at: 3\n" + "Type: REFLECTED", hexBoard.getPlayer().getHistory().get(1));
+        assertEquals("Entered at: 21\tLeft at: 35\n" + "Type: REFLECTED", hexBoard.getPlayer().getHistory().get(2));
     }
 }

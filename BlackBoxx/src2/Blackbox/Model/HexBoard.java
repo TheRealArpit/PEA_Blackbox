@@ -339,7 +339,7 @@ public class HexBoard {
             getToggleR1R2().setText("Score");
         for(Atom guessedAtom: guessedAtomlist){
             if(checkGuessedAtomAt(guessedAtom.getRowList(),guessedAtom.getColList())){
-                System.out.println("True for"+ guessedAtom.getRowList() + "," +guessedAtom.getColList());
+               // System.out.println("True for"+ guessedAtom.getRowList() + "," +guessedAtom.getColList());
                 if(!TESTING){
                     guessedAtom.getHexOfAtom().getHexagon().setFill(Color.GREEN);
                 }
