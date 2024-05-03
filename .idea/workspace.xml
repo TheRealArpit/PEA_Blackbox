@@ -9,8 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Made more tests">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="Edited the ending game screen&#10;- Faces change based on score">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/AtomTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/EndGameTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/RayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PEA_Blackbox.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/View/ViewBlackbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/HexBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +66,8 @@
     "Application.Main.executor": "Run",
     "Application.ViewBlackbox.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.BlackboxTest in Main.executor": "Run",
+    "JUnit.EndGameTest.checkWinner.executor": "Run",
     "JUnit.HexBoardTest.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -95,7 +104,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.BlackboxTest in Main">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -106,12 +115,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Philip" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Blackbox.View.ViewBlackbox" />
+      <module name="Main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\phili\Downloads\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Blackbox.View.ViewBlackbox" />
       <module name="Main" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\elvis\JavaFX\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlackboxTest in Main" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BlackboxTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BlackboxTest" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EndGameTest.checkWinner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BlackboxTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BlackboxTest" />
+      <option name="MAIN_CLASS_NAME" value="BlackboxTest.EndGameTest" />
+      <option name="METHOD_NAME" value="checkWinner" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,38 +197,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexBoardTest.checkNumofRayMarkers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="BlackboxTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="BlackboxTest" />
-      <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
-      <option name="METHOD_NAME" value="checkNumofRayMarkers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HexBoardTest.checkSpecificGuessAtoms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="BlackboxTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="BlackboxTest" />
-      <option name="MAIN_CLASS_NAME" value="BlackboxTest.HexBoardTest" />
-      <option name="METHOD_NAME" value="checkSpecificGuessAtoms" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HexBoardTest.checkWinner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Main" />
       <extension name="coverage">
@@ -198,20 +215,21 @@
     </configuration>
     <list>
       <item itemvalue="Application.Arpit" />
+      <item itemvalue="Application.Philip" />
       <item itemvalue="Application.main" />
+      <item itemvalue="JUnit.BlackboxTest in Main" />
+      <item itemvalue="JUnit.EndGameTest.checkWinner" />
       <item itemvalue="JUnit.HexBoardTest.checkHistory" />
       <item itemvalue="JUnit.HexBoardTest.checkWinner" />
       <item itemvalue="JUnit.HexBoardTest.checkEndingScoreforPlayer" />
-      <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
-      <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BlackboxTest in Main" />
+        <item itemvalue="JUnit.EndGameTest.checkWinner" />
         <item itemvalue="JUnit.HexBoardTest.checkWinner" />
         <item itemvalue="JUnit.HexBoardTest.checkHistory" />
         <item itemvalue="JUnit.HexBoardTest.checkEndingScoreforPlayer" />
-        <item itemvalue="JUnit.HexBoardTest.checkNumofRayMarkers" />
-        <item itemvalue="JUnit.HexBoardTest.checkSpecificGuessAtoms" />
       </list>
     </recent_temporary>
   </component>
@@ -459,15 +477,7 @@
       <option name="project" value="LOCAL" />
       <updated>1714740452493</updated>
     </task>
-    <task id="LOCAL-00029" summary="Made more tests">
-      <option name="closed" value="true" />
-      <created>1714747254950</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1714747254950</updated>
-    </task>
-    <option name="localTasksCounter" value="30" />
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +520,22 @@
     <MESSAGE value="Announces winner at the end and also give option to exit or restart game" />
     <MESSAGE value="Made a few tests" />
     <MESSAGE value="before pulling" />
-    <MESSAGE value="Made more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made more tests" />
+    <MESSAGE value="Edited the ending game screen&#10;- Faces change based on score" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited the ending game screen&#10;- Faces change based on score" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/EndGameTest.java</url>
+          <line>79</line>
+          <properties class="BlackboxTest.EndGameTest" method="checkWinner">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
