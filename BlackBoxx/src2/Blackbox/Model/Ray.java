@@ -11,7 +11,9 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.List;
-
+/**
+ * Represents a ray in the game managing its behavior and interactions with other game elements
+ */
 public class Ray {
     private Pane parentpane;
     private HexBoard hexBoard;
@@ -33,7 +35,11 @@ public class Ray {
 
     private RayType rayType = RayType.NO_ATOM;//intial ray
 
-
+    /**
+     * Constructor that initializes a Ray object with a specified HexBoard and Arrow
+     * @param hexBoard The HexBoard object associated with this Ray
+     * @param clickedArrow The Arrow from which the Ray originates
+     */
     public Ray(HexBoard hexBoard, Arrow clickedArrow){
         rayPathList = new ArrayList<Line>();
         this.hexBoard = hexBoard;
@@ -50,7 +56,12 @@ public class Ray {
             createRay(clickedArrow); // in testing it needs to be called directly
         }//So if this isn't in testing, the test calls it twice which messes up the data in player class
     }
-
+    /**
+     * Creates and calculates the path of the ray based on the given arrow
+     * Tracks the rayss interaction with hexagons and handles its visual representation
+     * @param arrowclicked The arrow from which the ray is being sent
+     * @return A string representing the outcome of the ray's path
+     */
     public String createRay(Arrow arrowclicked){
         hexBoard.checkNumberStack();
         idRayEntered = arrowclicked.getIdArrow();//set the entry point for the ray
@@ -84,6 +95,10 @@ public class Ray {
         return idRayEntered + "->" + getIdRayExited;
 
     }
+    /**
+     * Checks if there is a next hexagon in the current direction of the ray
+     * @return true if there is a next hexagon, false otherwise
+     */
     private boolean isThereNextHex() {
         //checks if the next hexagon exists in the grid
         if (rowIndex < 0 || rowIndex >= hexList.size()) {
@@ -97,6 +112,12 @@ public class Ray {
         }
         return true;
     }
+    /**
+     * Performs checks for the rays interaction with hexagons based on the current direction.
+     * Determines the rays behavior when it encounters atoms and how it reflects or stops
+     * @param goingto The current direction of the ray
+     * @return true if the ray continues, false if the ray hits an atom or edge
+     */
     private boolean checks(direction goingto){
         //logic to check the next hexagon based on direction
         if(isThereNextHex()){
@@ -282,6 +303,12 @@ public class Ray {
         return true;
     }
     //check if a rays direction shoul dbe changed based on the placement of atoms around the hexagons
+    /**
+     * Calculates if a rays direction should be changed based on the placement of atoms around a hexagon
+     * @param goingto The direction the ray is going
+     * @param hextocheck The hexagon to check for neighbouring atoms
+     * @return true if the ray's direction is altered false if it continues
+     */
     private boolean InsideAtomReflect(direction goingto, Hexagon hextocheck) {
         //Check placement of atom around the hexagon and refelct if condition meet
         if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
@@ -323,6 +350,10 @@ public class Ray {
         return false;//if no conditions are met do not reflect the ray
     }
     //return the opposite direction of the current one
+    /**
+     * Returns the opposite direction to the current direction of the ray
+     * @return The opposite direction
+     */
     private direction opposite() {
         switch (goingTo) {
             case EAST:
@@ -342,6 +373,10 @@ public class Ray {
         }
     }
     //endpoint of the rays current path based on its direction
+    /**
+     * Calculates the endpoint of the rays current path based on its direction.
+     * Updates the rowIndex and colIndex to the next hexagon the ray will travel to
+     */
     private void calculateEndPoint() {
         //adjust rowindex and column index based on the current direction to calculate the next hexagon the ray will travel to
         switch (goingTo) {
@@ -390,6 +425,10 @@ public class Ray {
         }
     }
     //create a visual line representing the rays travel
+    /**
+     * Creates a visual line representing the rays path
+     * Visually tracks the ray's journey through the hexagons
+     */
     private void createLine() {
         if (isThereNextHex()) {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
@@ -406,6 +445,11 @@ public class Ray {
         }
     }
     //draw last part of the ray when it exits the board or hits an atom
+    /**
+     * Draws the final part of the ray when it exits the board or hits an atom.
+     * Determines the final direction of the ray and draws to the corresponding arrow exit point
+     * @param currentHex The current hexagon from which the ray is exiting or where it has stopped
+     */
     private void drawLastLine(Hexagon currentHex){
         //determine the final direction of the ray and draw to the corresponding arrow exit point
         direction endArrowDir = opposite();
@@ -423,7 +467,9 @@ public class Ray {
             }
         }
     }
-
+    /**
+     * Displays the entry and exit points of the ray.
+     */
     public void displayEntryExitPoints() {
         Text message = new Text();
         if(!TESTING){
@@ -467,10 +513,17 @@ public class Ray {
 
 
     }
-
+    /**
+     * Gets the list of lines representing the rays path
+     * @return The list of line objects
+     */
     public ArrayList<Line> getRayPathList(){
         return rayPathList;
     }
+    /**
+     * Gets the type of the ray (HIT, REFLECTED, NO_ATOM).
+     * @return The RayType enum value representing the rays type
+     */
     public RayType getRayType(){
         return rayType;
     }
