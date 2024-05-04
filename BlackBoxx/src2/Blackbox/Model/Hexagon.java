@@ -20,7 +20,6 @@ public class Hexagon {
     private boolean hasGuessedAtom = false;
     private Atom GuessedAtom;
     private boolean hasBorderingAtom = false;
-    private int totalAtomsBoard = 0;
     private int borderingAtoms = 0;
 
     private ArrayList<Arrow> arrowList;

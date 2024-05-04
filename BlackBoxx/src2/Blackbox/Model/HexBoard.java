@@ -250,11 +250,11 @@ public class HexBoard {
         ToggleR1R2.setLayoutX(1200); //positions
         ToggleR1R2.setLayoutY(500);
         //button for showing atoms on the board
-        Button ShowAtomsButton = new Button("Show Atoms");
-        parantPane.getChildren().add(ShowAtomsButton);
+        //Button ShowAtomsButton = new Button("Show Atoms");
+        //parantPane.getChildren().add(ShowAtomsButton);
         parantPane.getChildren().add(ToggleR1R2);
 
-        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
+//        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
     }
     private void buttonLogic() {
         Button actionButton = getToggleR1R2(); // Assuming this is the button managing transitions

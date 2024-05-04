@@ -83,18 +83,7 @@ public class Atom {
         circle.setVisible(true);
         COI.setVisible(true);
     }
-    @Override
-    public boolean equals(Object o){
-        if (this == o) {
-            return true;
-        }
-        if (o == null)return false;
-        if(o instanceof Atom){
-            Atom atom = (Atom) o;
-            return colList == atom.getColList() && rowList == atom.getRowList();
-        }
-        return false;
-    }
+
 
     @Override
     public String toString(){
