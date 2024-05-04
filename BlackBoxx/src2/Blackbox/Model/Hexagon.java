@@ -40,6 +40,7 @@ public class Hexagon {
     //f
     public Boolean finishedRound = false;
     //constructor initialzing the hexagon with refernce to the HexBoard
+
     public Hexagon(HexBoard hexboard){
         hexagon = new Polygon();
         atomPlacements = new ArrayList<>();

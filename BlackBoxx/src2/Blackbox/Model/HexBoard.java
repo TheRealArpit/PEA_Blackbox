@@ -43,6 +43,10 @@ public class HexBoard {
     private Text welcomeText;
     private Button instructionText;
 
+    /**
+     * Represents the hexagonal game board used in Blackbox
+     * Manages all the game elements like hexagons, atoms, rays and GUI
+     */
     public HexBoard(){ //constructor
         history = new ArrayList<String>();
         hexList = new ArrayList<ArrayList<Hexagon>>();
@@ -53,6 +57,10 @@ public class HexBoard {
     }
 
     //---Hexagonal Board Methods
+
+    /**
+     * Creates the hexagonal layout for the board based on row lengths
+     */
     public void createHexagonalBoard(){
         int[] rowLength = {5, 6, 7, 8, 9, 8, 7, 6, 5}; // number of hexagons in each row
         for (int row = 0; row < 9; row++) {
@@ -81,10 +89,24 @@ public class HexBoard {
             setArrowTouchoff();
         }
     }
+
+    /**
+     *Calculates the X position for a hexagon within its row based on column and offset
+     * @param col Column index of the hexagon
+     * @param offsetX The calculated offset for the row
+     * @return The X position for the hexagon
+     */
     private static double getPosition(int col, double offsetX) {
         double basePosition = col * HEXAGON_RADIUS; // Base x-coordinate for the hexagon in its row
         return SCALING_FACTOR_X * (basePosition + offsetX + PADDING);// Calculate the final x-coordinate
     }
+
+    /**
+     * Calculates the initial X offset for hexagons in a row based on the maximum row length
+     * @param rows Array of row lengths
+     * @param row The current row index
+     * @return The offset X for the row
+     */
     private static double getOffsetX(int[] rows, int row) {
         int maxHexagons = rows.length; //Maximum number of hexagons in a row
         int currentHexagons = rows[row]; //Number of hexagons in the current row
@@ -92,6 +114,10 @@ public class HexBoard {
         int difference = maxHexagons - currentHexagons; //Difference between the maximum number of hexagons and the number in the current row
         return difference * hexagonWidth / 2;
     }
+
+    /**
+     * Initializes hexagons near an atom
+     */
     public void initializeHexagonsNearAtom() {
         for(int row = 0; row < hexList.size(); row++) {
             for (int col = 0; col < hexList.get(row).size(); col++) {
@@ -185,12 +211,22 @@ public class HexBoard {
             }
         }
     }
+
+    /**
+     * Checks if a hexagon exists at the specified row and column
+     * @param newRow The row index
+     * @param newCol The column index
+     * @return true if the hexagon exists, otherwise false
+     */
     public boolean isHexThere(int newRow, int newCol){
         return newRow >= 0 && newRow < hexList.size() &&
                 newCol >= 0 && newCol < hexList.get(newRow).size();
     }
     //--- End of Hexagonal Board Methods
     //UI interaction setup
+    /**
+     * Sets up UI components related to game text like round information and instructions
+     */
     public void createText(){
         Round = new Text("Round 1");
         Round.setUnderline(true);
@@ -256,6 +292,9 @@ public class HexBoard {
 
 //        ShowAtomsButton.setOnAction(event -> showAtomsOnBoard());
     }
+    /**
+     * Manages logic for the action button to transition game states
+     */
     private void buttonLogic() {
         Button actionButton = getToggleR1R2(); // Assuming this is the button managing transitions
         actionButton.setOnAction(event -> {
@@ -286,6 +325,9 @@ public class HexBoard {
             }
         });
     }
+    /**
+     * Displays the game score and updates UI components to reflect the game state
+     */
     public void displayScore(){
        // player.setNumOfWrongGuesses(player.getNumOfGuesses() - player.getNumofCorrectGuesses());
         Round.setText("History");
@@ -302,6 +344,9 @@ public class HexBoard {
         );
         displayRayPaths();
     }
+    /**
+     * Visualizes ray paths on the board and  coloring them based on their type
+     */
     public void displayRayPaths(){  //For the full game view
         for(Ray ray: raysOnBoard){
             for(Line line: ray.getRayPathList()){
@@ -314,7 +359,9 @@ public class HexBoard {
             }
         }
     }
-
+    /**
+     * Sets the game to Round 2 updating UI components and game state appropriately
+     */
     public void setRound2(){
         Round.setText("Round 2");
         ToggleR1R2.setText("Finish");
@@ -333,6 +380,9 @@ public class HexBoard {
         hideAtomsOnBoard();
         initializeHexagonsNearAtom();
     }
+    /**
+     * Checks the positions of guessed atoms against actual atom positions
+     */
     public void checkGuessedAtoms() {
         if(!TESTING)
             getToggleR1R2().setText("Score");
@@ -356,13 +406,21 @@ public class HexBoard {
         }
 
     }
+    /**
+     * Checks if the guessed atom is at the specified row and column
+     * @param row The row index
+     * @param col The column index
+     * @return true if an atom exists at the specified location, otherwise false
+     */
     public boolean checkGuessedAtomAt(int row, int col){
         if(!isHexThere(row,col)){
             throw  new IndexOutOfBoundsException("Row or col not in the coordinates");
         }
         return getHexagon(row,col).hasAtom();
     }
-
+    /**
+     * Sets the round as finished, updating the state of hexagons
+     */
     public void setFinishedRound(){         //used for the hexagon class knows whether to put an atom or a guessed atom
         for(ArrayList<Hexagon> hexRow: hexList){
             for(Hexagon hex: hexRow){
@@ -370,6 +428,9 @@ public class HexBoard {
             }
         }
     }
+    /**
+     * Sets the game to the guessing round updating UI components and instructions
+     */
     public void setGuessingRound(){
         Round.setText("Guess Atoms");
         ToggleR1R2.setText("Confirm");
@@ -388,18 +449,25 @@ public class HexBoard {
         hideAtomsOnBoard();
     }
 
-
+    /**
+     * Hides all atoms on the board from the player's view
+     */
     public void hideAtomsOnBoard(){
         for(Atom x: atomsOnBoard){
             x.hideAtom();
         }
     }
+    /**
+     * Reveals all atoms on the board to the player
+     */
     public void showAtomsOnBoard(){
         for(Atom x: atomsOnBoard){
             x.showAtom();
         }
     }
-
+    /**
+     * Disables interactions with hexagons on the board
+     */
     public void setHexagonTouchOff() {
         for (ArrayList<Hexagon> row : hexList) {
             for(Hexagon hex: row){
@@ -407,6 +475,9 @@ public class HexBoard {
             }
         }
     }
+    /**
+     * Enables interactions with hexagons on the board
+     */
     public void setHexagonTouchOnn() {
         for (ArrayList<Hexagon> row : hexList) {
             for(Hexagon hex: row){
@@ -415,58 +486,120 @@ public class HexBoard {
         }
     }
     //testing
+    /**
+     * Creates an atom at the specified hexagon coordinates on the board
+     * @param x The x-coordinate (row index) of the hexagon
+     * @param y The y-coordinate (column index) of the hexagon
+     */
     public void createAtomAthexagon(int x, int y){
         Atom atom = new Atom(this,0,0,finishedRound);
         getHexagon(x,y).setAtom(atom);
     }
+    /**
+     * Deletes an atom from the specified hexagon coordinates on the board
+     * @param x The x-coordinate (row index) of the hexagon
+     * @param y The y-coordinate (column index) of the hexagon
+     */
     public void deleteAtomAthexagon(int x, int y){
         getHexagon(x,y).unsetAtom();
     }
+    /**
+     * Sends a ray from the specified arrow on the board
+     * @param rayNum The identifier for the arrow from which the ray is sent
+     * @return A string describing the result of the ray interaction
+     */
     public String sendRayat(int rayNum){
         Arrow arrowClicked = getArrowClickedfromint(rayNum);
         Ray ray = new Ray(this,arrowClicked);
         return ray.createRay(arrowClicked);
     }
-
+    /**
+     * Sets a guessed atom at the specified row and column
+     * @param row The row index where the guess is made
+     * @param col The column index where the guess is made
+     */
     public void setGuessAtomAt(int row, int col){
         Atom guessedAtom = new Atom(row,col,getHexagon(row,col));
         getHexagon(row,col).createGuessAtom(row,col, guessedAtom);
         getHexagon(row,col).setHasGuessedAtom(true);
         getPlayer().addNumOfGuesses();
     }
+    /**
+     * Checks if there is a guessed atom at the specified hexagon
+     * @param row The row index to check
+     * @param col The column index to check
+     * @return true if there is a guessed atom, false otherwise
+     */
     public Boolean CheckGuessAtomAt(int row, int col){
         return getHexagon(row,col).hasGuessedAtom();
     }
-
+    /**
+     * Disables interaction with all arrows on the board making them non-responsive to mouse events
+     */
     private void setArrowTouchoff() {
         for (Arrow arrr : arrowList) {
             arrr.getArrow().setMouseTransparent(true);
         }
     }
+    /**
+     * Enables interaction with all arrows on the board allowing them to respond to mouse events
+     */
     public void setArrowTouchOnn() {
         for (Arrow arrr : arrowList) {
             arrr.getArrow().setMouseTransparent(false);
         }
     }
 
-
+    /**
+     * Sets the ViewBlackbox
+     * @param v The ViewBlackbox to set
+     */
     public void setViewBlackbox(ViewBlackbox v){  // set from View
         viewBlackbox = v;                        // Needed to handle the progression of the game. from p1 to p2 then 3end
     }
 
     //------- Getters
+    /**
+     * Returns the parent pane of the hexboard
+     * @return The parent pane
+     */
     public Pane getParantPane(){return parantPane;}
+    /**
+     * Returns a list of all hexagon rows on the board
+     * @return List of hexagon rows.
+     */
     public ArrayList<ArrayList<Hexagon>> gethexList(){return hexList;}
+    /**
+     * Returns the hexagon at the specified coordinate
+     * @param x Row index of the hexagon
+     * @param y Column index of the hexagon
+     * @return The hexagon at the specified coordinates
+     */
     public Hexagon getHexagon(int x, int y){
         return hexList.get(x).get(y);
     }
+    /**
+     * Returns the list of guessed atoms on the board
+     * @return The list of guessed atoms
+     */
     public ArrayList<Atom> getGuessedAtomlist() { //for a lot of classes and methods need the atomlist
         return guessedAtomlist;
-    }
+    }/**
+     * Returns the list of all atoms on the board
+     * @return The list of atoms
+     */
     public ArrayList<Atom> getAtomList(){return atomsOnBoard;}
+    /**
+     * Returns the list of rays on the board
+     * @return The list of rays
+     */
     public ArrayList<Ray> getRayList(){  //same
         return raysOnBoard;
     }
+    /**
+     * Returns the button used to toggle between rounds
+     * @return The toggle button
+     */
     public Button getToggleR1R2() {   //for button logic
         return ToggleR1R2;
     }
@@ -478,16 +611,31 @@ public class HexBoard {
         }
         throw new NullPointerException("Arrow Id not in hexboard   (1-54)");
     }
+    /**
+     * Returns the list of hexagons on the board
+     * @return List of hexagons
+     */
     public ArrayList<ArrayList<Hexagon>> getHexList() {
         return hexList;
     }
+    /**
+     * Returns the game history list
+     * @return The history list
+     */
     public ArrayList<String> getHistory() {
         return history;
     }
+    /**
+     * Returns the player associated with this board
+     * @return The player
+     */
     public Player getPlayer() {
         return player;
     }
-
+    /**
+     * Sets the display pane for the hexboard and initializes UI components if not testing
+     * @param display The pane to set as the display
+     */
     public void setHexboardPane(Pane display){
         parantPane = display;
         parantPane.setStyle("-fx-background-color: black;"); // Set the background color to black
@@ -499,21 +647,41 @@ public class HexBoard {
     }
 
     //Number stack
+    /**
+     * Adds a node to the number stack, managing the stack overflow by ensuring it does not exceed 10 items
+     * @param oo The node to add
+     */
     public void updateNumberStack(Node oo){
         numberStack.getChildren().add(oo);
     }
+    /**
+     * Clears the number stack if it contains more than 10 items
+     */
     public void checkNumberStack() {
         if (numberStack.getChildren().size() > 10) {
             numberStack.getChildren().clear();
         }
     }
+    /**
+     * Sets the position of the number stack on the display
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
     public void setNumberStackXY(int x, int y) {
         numberStack.setLayoutX(x);
         numberStack.setLayoutY(y);
     }
+    /**
+     * Sets the player for this hexboard
+     * @param playar The player to set
+     */
     public void setPlayer(Player playar){
         this.player = playar;
     }
+    /**
+     * Returns the ViewBlackbox of this hexboard
+     * @return The ViewBlackbox
+     */
     public ViewBlackbox getViewBlackbox(){
         return viewBlackbox;
     }
