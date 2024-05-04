@@ -190,7 +190,7 @@ public class HexBoard {
                 newCol >= 0 && newCol < hexList.get(newRow).size();
     }
     //--- End of Hexagonal Board Methods
-
+    //UI interaction setup
     public void createText(){
         Round = new Text("Round 1");
         Round.setUnderline(true);

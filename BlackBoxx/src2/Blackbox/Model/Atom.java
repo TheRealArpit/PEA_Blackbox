@@ -16,10 +16,10 @@ public class Atom {
         return hexOfAtom;
     }
 
-    private Hexagon hexOfAtom;
+    private Hexagon hexOfAtom;//hexagon representing atom
 
-    private Circle circle;
-    private Circle COI;
+    private Circle circle;//visual representation of atom
+    private Circle COI;//circle of influence
 
     public int getRowList() {
         return rowList;
@@ -28,22 +28,23 @@ public class Atom {
     public int getColList() {
         return colList;
     }
-
+//coordinates in hexlist
     private int rowList;
     private int colList;
-
+//constructor for an atom with row and column indeces and a specific hexagon
     public Atom(int row, int col, Hexagon hex){
         rowList = row;
         colList = col;
         hexOfAtom = hex;
     }
 
-
+//constructor for atom with its location on the hexboard
     public Atom(HexBoard hexb, int row, int col, Boolean Finished){
         hexBoard = hexb;
         rowList = row;
         colList = col;
         if(!TESTING) {
+            //create the atom only if no in testing mode
             createAtom(hexb.gethexList().get(row).get(col).getCentreX(), hexb.gethexList().get(row).get(col).getCentreY());
         }else{
             this.rowList =row;
@@ -51,12 +52,12 @@ public class Atom {
         }
     }
 
-
+//method to create the visual represnetation of atom
     public void createAtom(double x, double y){
         circle = new Circle();
-        circle.setRadius(ATOM_RADIUS);
-        circle.setFill(ATOM_COLOR);
-        circle.setCenterX(x);
+        circle.setRadius(ATOM_RADIUS);//set radius
+        circle.setFill(ATOM_COLOR);// set color
+        circle.setCenterX(x);//coordinates
         circle.setCenterY(y);
         circle.setMouseTransparent(true); // Make the circle transparent to mouse events
         COI = new Circle();

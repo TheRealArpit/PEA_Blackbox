@@ -12,23 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Arrow {
-    private ArrayList<ArrayList<Hexagon>> hexList;
-    private Pane parentPane;
-    private HexBoard hexBoard;
+    private ArrayList<ArrayList<Hexagon>> hexList;//Grid of hexagons
+    private Pane parentPane;//pane to which arrows are added
+    private HexBoard hexBoard;//instance of hexboard
 
-    private Hexagon hex;
-    private  double markerCentreX;
+    private Hexagon hex;//reference of origin of arrow
+    private  double markerCentreX;//centre coordinates
     private double markerCentreY;
-    private Circle marker;
-    private Color markerColor;
+    private Circle marker;//circle representing the marker
+    private Color markerColor;//color of the circle
 
-    private double centreX;
+    private double centreX;//center coordinates of arrow
     private double centreY;
     private direction goingTo;
-    private double rotation;
+    private double rotation;//angle of arrow
     private Path arrow;
     private int idArrow;
-
+//constructor
     public Arrow(Hexagon hexOfArrow, HexBoard hexBoard, double cX, double cY, int i){
         this.hexBoard = hexBoard;
         hexList = hexBoard.gethexList();
@@ -40,6 +40,7 @@ public class Arrow {
         }
         setArrDirection(i);
     }
+    //set the arrows direction based on the number
     private  void setArrDirection(int i){
         switch (i) {
             case 1:
@@ -129,7 +130,7 @@ public class Arrow {
         });
         addMarker();
     }
-
+//set the arrow ID based on the lecation
     public void setArrowId(int row, int col, int k, double midx, double midy) {
         idArrow = array[row][col][k];
         if(!TESTING) {
@@ -151,7 +152,7 @@ public class Arrow {
             marker.setFill(Color.TRANSPARENT);
         }
     }
-
+//Arrow IDs based on their positions
     public static int[][][] array = {
             { {2, 1, 54}, {53,52},{51,50},{49,48},{47,46,45}},// Top row
             {{4 ,3}, {-1},{-1},{-1},{-1},{44,43}},// Second row

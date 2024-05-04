@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class AtomTest {
     @Test
-    public void createatomsOnBoard() {
+    public void createatomsOnBoard() {//test the creation of atoms
         TESTING = true;
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
@@ -25,7 +25,7 @@ public class AtomTest {
 
     }
     @Test
-    public void deleteatomsOnBoard(){
+    public void deleteatomsOnBoard(){//test the deletion of atoms
         TESTING = true;
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();
@@ -37,7 +37,7 @@ public class AtomTest {
         assertFalse(hexBoard.getHexagon(1, 5).hasAtom());
     }
     @Test
-    public void setGuessAtoms() {
+    public void setGuessAtoms() {//test the functionality of setting guessed atoms
         TESTING = true;
         HexBoard hexBoard = new HexBoard();
         hexBoard.createHexagonalBoard();

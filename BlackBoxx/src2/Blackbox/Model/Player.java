@@ -69,6 +69,7 @@ public class Player {
     public void subNumofCorrectGuesses() {
         numofCorrectGuesses--;
     }
+    //calculate score based on game rules
     public int calculateScore() {
         Totalscore += numOfMarkers + 5*numofWrongGuesses;
         return Totalscore;

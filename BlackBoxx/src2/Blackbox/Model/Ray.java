@@ -16,7 +16,7 @@ public class Ray {
     private Pane parentpane;
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;
-    private ArrayList<Line> rayPathList;
+    private ArrayList<Line> rayPathList;//track the graphical represenation of the rays path
 
     private direction goingTo;
     private int rowIndex;
@@ -31,14 +31,14 @@ public class Ray {
     private Arrow clickedArrow;
     private Arrow leftArrow = null;
 
-    private RayType rayType = RayType.NO_ATOM;
+    private RayType rayType = RayType.NO_ATOM;//intial ray
 
 
     public Ray(HexBoard hexBoard, Arrow clickedArrow){
         rayPathList = new ArrayList<Line>();
         this.hexBoard = hexBoard;
         hexList = hexBoard.gethexList();
-        if(!TESTING){
+        if(!TESTING){//starting points
             xLox = clickedArrow.getCentreX();
             yLoc = clickedArrow.getCentreY();
         }
@@ -53,14 +53,14 @@ public class Ray {
 
     public String createRay(Arrow arrowclicked){
         hexBoard.checkNumberStack();
-        idRayEntered = arrowclicked.getIdArrow();
-        Hexagon startingHex = clickedArrow.getHex();
+        idRayEntered = arrowclicked.getIdArrow();//set the entry point for the ray
+        Hexagon startingHex = clickedArrow.getHex();// starting hexagon for the ray
         boolean continueRay = true;
         rowIndex = clickedArrow.getHex().getRowList();
         colIndex = clickedArrow.getHex().getColList();
         goingTo = arrowclicked.getGoingTo();
         Hexagon currentHex = hexList.get(rowIndex).get(colIndex);
-
+//loop to determine ray path until it leaves the board or hits an atom
         while (continueRay && isThereNextHex()) {
             if (!(continueRay = checks(goingTo))) {
                 currentHex = hexList.get(rowIndex).get(colIndex);
@@ -85,6 +85,7 @@ public class Ray {
 
     }
     private boolean isThereNextHex() {
+        //checks if the next hexagon exists in the grid
         if (rowIndex < 0 || rowIndex >= hexList.size()) {
             //System.out.println("Left the hexagonalboard");
             return false;
@@ -97,6 +98,7 @@ public class Ray {
         return true;
     }
     private boolean checks(direction goingto){
+        //logic to check the next hexagon based on direction
         if(isThereNextHex()){
             Hexagon hextocheck = hexList.get(rowIndex).get(colIndex);
             //Add if statements for the coi reflections
@@ -279,8 +281,9 @@ public class Ray {
         }
         return true;
     }
+    //check if a rays direction shoul dbe changed based on the placement of atoms around the hexagons
     private boolean InsideAtomReflect(direction goingto, Hexagon hextocheck) {
-        //bottom Hexagon
+        //Check placement of atom around the hexagon and refelct if condition meet
         if (hextocheck.getAtomPlacements().contains(atomPlacement.LEFT)) {
             if(goingto == direction.N_WEST||goingto == direction.S_WEST){
                 goingTo = opposite();
@@ -317,8 +320,9 @@ public class Ray {
             System.out.println("fal");
             return false;
         }
-        return false;
+        return false;//if no conditions are met do not reflect the ray
     }
+    //return the opposite direction of the current one
     private direction opposite() {
         switch (goingTo) {
             case EAST:
@@ -337,7 +341,9 @@ public class Ray {
                 return null;
         }
     }
+    //endpoint of the rays current path based on its direction
     private void calculateEndPoint() {
+        //adjust rowindex and column index based on the current direction to calculate the next hexagon the ray will travel to
         switch (goingTo) {
             case EAST:
                 colIndex += 1;
@@ -383,6 +389,7 @@ public class Ray {
                 break;
         }
     }
+    //create a visual line representing the rays travel
     private void createLine() {
         if (isThereNextHex()) {
             Line line = new Line(xLox, yLoc, hexList.get(rowIndex).get(colIndex).getCentreX(), hexList.get(rowIndex).get(colIndex).getCentreY());
@@ -391,13 +398,16 @@ public class Ray {
             line.setStroke(Color.TRANSPARENT);
             rayPathList.add(line);
             parentpane.getChildren().add(line);
+            //update the current location to the endpoint of the last drawn line
             xLox= hexList.get(rowIndex).get(colIndex).getCentreX();
             yLoc = hexList.get(rowIndex).get(colIndex).getCentreY();
         }else{
             return;
         }
     }
+    //draw last part of the ray when it exits the board or hits an atom
     private void drawLastLine(Hexagon currentHex){
+        //determine the final direction of the ray and draw to the corresponding arrow exit point
         direction endArrowDir = opposite();
         for (Arrow a: currentHex.getArrowList()){
             if(a.getDirection() == endArrowDir){
@@ -413,6 +423,7 @@ public class Ray {
             }
         }
     }
+
     public void displayEntryExitPoints() {
         Text message = new Text();
         if(!TESTING){

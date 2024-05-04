@@ -11,6 +11,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="deleted a comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Arrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Atom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/HexBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/AtomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/BlackboxTest/AtomTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,14 +41,12 @@
     &quot;assignee&quot;: &quot;Elvis-E&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="5ff8addf-e5f4-4dc3-8059-6dd1b1356f81" />
-        <option name="url" value="https://github.com/TheRealArpit/PEA_Blackbox.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TheRealArpit/PEA_Blackbox.git",
+    "accountId": "a62ed3d4-6b7b-47e6-bb9c-4d94ac4bc647"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -53,38 +58,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViewBlackbox.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.BlackboxTest in Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EndGameTest.checkWinner.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.HexBoardTest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/phili/Documents/GitHub/PEA_Blackbox&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Philip.executor": "Run",
+    "Application.ViewBlackbox.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.BlackboxTest in Main.executor": "Run",
+    "JUnit.EndGameTest.checkWinner.executor": "Run",
+    "JUnit.HexBoardTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/phili/Documents/GitHub/PEA_Blackbox",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mirdh\Desktop\Year2\Sem2\Software Engineering\PEA_Blackbox\BlackBoxx\src2\Blackbox\View" />
@@ -97,7 +103,7 @@
       <recent name="Blackbox.View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Arpit">
+  <component name="RunManager" selected="Application.Philip">
     <configuration name="Arpit" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -229,7 +235,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -245,6 +252,7 @@
       <workItem from="1711811461556" duration="11963000" />
       <workItem from="1713273865211" duration="41000" />
       <workItem from="1713274264119" duration="1125000" />
+      <workItem from="1714833058346" duration="4148000" />
     </task>
     <task id="LOCAL-00001" summary="Problems with intellij and Git. Fixed now">
       <option name="closed" value="true" />
