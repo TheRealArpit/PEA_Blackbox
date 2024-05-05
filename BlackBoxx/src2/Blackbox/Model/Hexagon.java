@@ -8,13 +8,13 @@ import javafx.scene.shape.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Hexagon represents the individual hexagons that make up the board
+ * made by an instance of the hexboard class
+ * creates arrow instances
+ */
 public class Hexagon {
-    /**
-     * Hexagon represents the individual hexagons that make up the board
-     * made by an instance of the hexboard class
-     * creates arrow instances
-     */
+
     private Pane parentPane;
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;

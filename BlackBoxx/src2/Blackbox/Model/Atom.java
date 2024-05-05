@@ -7,12 +7,12 @@ import javafx.scene.shape.StrokeType;
 import java.util.ArrayList;
 
 import static Blackbox.Constant.Constants.*;
-
+/**
+ * Class for the atom. user tries to guess the location of this
+ * created when a hexagon is clicked or during tests
+ */
 public class Atom {
-    /**
-     * Class for the atom. user tries to guess the location of this
-     * created when a hexagon is clicked or during tests
-     */
+
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;
 

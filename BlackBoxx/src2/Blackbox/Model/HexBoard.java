@@ -18,7 +18,9 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+/**
+ * Class that creates the hexagonal board that the user interacts with
+ */
 
 public class HexBoard {
     private ViewBlackbox viewBlackbox;

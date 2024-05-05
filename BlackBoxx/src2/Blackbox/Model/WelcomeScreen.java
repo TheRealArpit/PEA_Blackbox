@@ -13,11 +13,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-
+/**
+ * Welcome screen for player
+ */
 public class WelcomeScreen {
-    /**
-     * Welcom screen for player
-     */
+
     Pane welcomePage;
     public Button submit;
     public WelcomeScreen(Pane dispay){

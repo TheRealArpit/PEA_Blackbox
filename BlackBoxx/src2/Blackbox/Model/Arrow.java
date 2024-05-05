@@ -10,13 +10,13 @@ import javafx.scene.transform.Rotate;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Arrows Around the hexagons
+ * made when the hexagons are created
+ * creates rays when clicked on
+ */
 public class Arrow {
-    /**
-     * Arrows Around the hexagons
-     * made when the hexagons are created
-     * creates rays when clicked on
-     */
+
     private ArrayList<ArrayList<Hexagon>> hexList;//Grid of hexagons
     private Pane parentPane;//pane to which arrows are added
     private HexBoard hexBoard;//instance of hexboard

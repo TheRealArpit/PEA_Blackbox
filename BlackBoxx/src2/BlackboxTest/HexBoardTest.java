@@ -13,6 +13,9 @@ import java.util.List;
 
 
 public class HexBoardTest {
+    /**
+     * Test to check if the coordinates are set up properly by the hexboard class
+     */
 
     @Test
     public void createHexagonalBoard() {

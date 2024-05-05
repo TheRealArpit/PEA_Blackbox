@@ -6,8 +6,16 @@ import org.junit.Test;
 
 import static Blackbox.Constant.Constants.TESTING;
 import static org.junit.Assert.*;
-
+/**
+ * This class contains JUnit tests to verify the functionality of the Atom-related operations in the HexBoard class.
+ * These tests cover the creation, deletion, and manipulation of atoms on the hexagonal board, as well as checking
+ * the correctness of guessed atom locations.
+ */
 public class AtomTest {
+
+    /**
+     * Tests the creation of atoms on the hexagonal board and ensures that atoms are properly placed.
+     */
     @Test
     public void createatomsOnBoard() {//test the creation of atoms
         TESTING = true;
@@ -24,6 +32,9 @@ public class AtomTest {
         assertTrue(hexBoard.getHexagon(4, 8).hasAtom());
 
     }
+    /**
+     * Tests the deletion of atoms from the hexagonal board and ensures that atoms are properly removed.
+     */
     @Test
     public void deleteatomsOnBoard(){//test the deletion of atoms
         TESTING = true;
@@ -36,6 +47,10 @@ public class AtomTest {
         hexBoard.deleteAtomAthexagon(1,5);
         assertFalse(hexBoard.getHexagon(1, 5).hasAtom());
     }
+    /**
+     * Tests the functionality of setting guessed atoms on the board and ensures that guessed atoms are recorded
+     * correctly.
+     */
     @Test
     public void setGuessAtoms() {//test the functionality of setting guessed atoms
         TESTING = true;
@@ -56,6 +71,10 @@ public class AtomTest {
         assertEquals("(1, 1)",hexBoard.getGuessedAtomlist().get(4).toString());
     }
 
+    /**
+     * Tests the correctness of specific guessed atom locations and ensures that the board correctly identifies
+     * whether a guessed atom is present at a given location.
+     */
     @Test
     public void checkSpecificGuessAtoms() {
         TESTING = true;

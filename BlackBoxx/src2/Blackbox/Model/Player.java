@@ -2,11 +2,11 @@ package Blackbox.Model;
 import Blackbox.Model.HexBoard;
 
 import java.util.ArrayList;
-
+/**
+ * Class to keep track of the score
+ */
 public class Player {
-    /**
-     * Class to keep track of the score
-     */
+
     private int Totalscore;
 
     private int numOfRays;
