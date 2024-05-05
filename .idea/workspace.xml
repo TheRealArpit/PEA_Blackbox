@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="deleted a comment">
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="removed show atoms button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -486,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714762059053</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="removed show atoms button">
+      <option name="closed" value="true" />
+      <created>1714826179467</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714826179467</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="The entry and exit points on the display update everytime an arrow is clicked now" />
     <MESSAGE value="Added internal Reflection to the displaying on the board" />
     <MESSAGE value="Made 1 test to check if atom is placed properly. changed other classes to make this possible" />
     <MESSAGE value="Made functions for tests" />
@@ -530,6 +538,7 @@
     <MESSAGE value="Edited the ending game screen&#10;- Faces change based on score" />
     <MESSAGE value="Minor changes to tests" />
     <MESSAGE value="deleted a comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted a comment" />
+    <MESSAGE value="removed show atoms button" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed show atoms button" />
   </component>
 </project>

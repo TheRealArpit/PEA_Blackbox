@@ -80,7 +80,6 @@ public class Ray {
         drawLastLine(currentHex);
         displayEntryExitPoints();
 
-
         return idRayEntered + "->" + getIdRayExited;
 
     }
