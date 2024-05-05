@@ -15,6 +15,9 @@ import javafx.scene.text.TextAlignment;
 
 
 public class WelcomeScreen {
+    /**
+     * Welcom screen for player
+     */
     Pane welcomePage;
     public Button submit;
     public WelcomeScreen(Pane dispay){

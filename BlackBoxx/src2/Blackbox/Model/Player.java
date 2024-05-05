@@ -4,6 +4,9 @@ import Blackbox.Model.HexBoard;
 import java.util.ArrayList;
 
 public class Player {
+    /**
+     * Class to keep track of the score
+     */
     private int Totalscore;
 
     private int numOfRays;

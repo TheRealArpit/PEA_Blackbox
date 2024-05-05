@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="removed show atoms button">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Ray.java" afterDir="false" />
+    <list default="true" id="a8ebbcf1-0541-469a-8a5d-67fa42b95b0e" name="Changes" comment="before pulling">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/BlackBoxx/src2/Blackbox/Model/Hexagon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +35,12 @@
     &quot;assignee&quot;: &quot;Elvis-E&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/TheRealArpit/PEA_Blackbox.git",
-    "accountId": "a62ed3d4-6b7b-47e6-bb9c-4d94ac4bc647"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TheRealArpit/PEA_Blackbox.git&quot;,
+    &quot;accountId&quot;: &quot;a62ed3d4-6b7b-47e6-bb9c-4d94ac4bc647&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -81,6 +81,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "inlay.hints",
     "vue.rearranger.settings.migration": "true"
   }
@@ -535,11 +536,11 @@
     <MESSAGE value="Made Game logic work. both players play and they have an option to restart.&#10;Created some tests to test functionality for setting guessing atoms, and checking guessing atoms" />
     <MESSAGE value="Announces winner at the end and also give option to exit or restart game" />
     <MESSAGE value="Made a few tests" />
-    <MESSAGE value="before pulling" />
     <MESSAGE value="Edited the ending game screen&#10;- Faces change based on score" />
     <MESSAGE value="Minor changes to tests" />
     <MESSAGE value="deleted a comment" />
     <MESSAGE value="removed show atoms button" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed show atoms button" />
+    <MESSAGE value="before pulling" />
+    <option name="LAST_COMMIT_MESSAGE" value="before pulling" />
   </component>
 </project>

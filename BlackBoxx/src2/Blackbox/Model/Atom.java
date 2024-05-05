@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import static Blackbox.Constant.Constants.*;
 
 public class Atom {
+    /**
+     * Class for the atom. user tries to guess the location of this
+     * created when a hexagon is clicked or during tests
+     */
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;
 
@@ -31,14 +35,19 @@ public class Atom {
 //coordinates in hexlist
     private int rowList;
     private int colList;
-//constructor for an atom with row and column indeces and a specific hexagon
+    /**
+     * constructor for an atom with row and column indeces and a specific hexagon
+     * Used for testing
+     */
     public Atom(int row, int col, Hexagon hex){
         rowList = row;
         colList = col;
         hexOfAtom = hex;
     }
 
-//constructor for atom with its location on the hexboard
+    /**
+     * constructor for atom with its location on the hexboard
+     */
     public Atom(HexBoard hexb, int row, int col, Boolean Finished){
         hexBoard = hexb;
         rowList = row;
@@ -52,7 +61,10 @@ public class Atom {
         }
     }
 
-//method to create the visual represnetation of atom
+
+    /**
+     * method to create the visual represnetation of atom
+     */
     public void createAtom(double x, double y){
         circle = new Circle();
         circle.setRadius(ATOM_RADIUS);//set radius

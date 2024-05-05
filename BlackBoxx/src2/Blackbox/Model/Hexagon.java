@@ -10,6 +10,11 @@ import java.util.List;
 
 
 public class Hexagon {
+    /**
+     * Hexagon represents the individual hexagons that make up the board
+     * made by an instance of the hexboard class
+     * creates arrow instances
+     */
     private Pane parentPane;
     private HexBoard hexBoard;
     private ArrayList<ArrayList<Hexagon>> hexList;
@@ -41,6 +46,9 @@ public class Hexagon {
     public Boolean finishedRound = false;
     //constructor initialzing the hexagon with refernce to the HexBoard
 
+    /**
+     * Constructor that initialises information needed for ray interactions and makes the hexagon interactable
+     */
     public Hexagon(HexBoard hexboard){
         hexagon = new Polygon();
         atomPlacements = new ArrayList<>();
@@ -83,7 +91,10 @@ public class Hexagon {
         });
 
     }
-//method to creat hexagon based on its center coordinates and row and column
+    /**
+     * method to creat hexagon based on its center coordinates and row and column
+     */
+
     public void createHexagon(double xx, double yy, int row, int col) {
         rowList = row;
         colList = col;
@@ -140,7 +151,9 @@ public class Hexagon {
             arrowList.add((arrow));
         }
     }
-    //check if the arrow placement is valid based on board state
+    /**
+     * check if the arrow placement is valid based on board state
+     */
     public boolean arrowValidCheck(int i, int row, int column){
         return(  ((i == 3 || i == 4 || i == 2) && column == 0 && row == 0 )||( (i == 0 || i == 1 || i == 2 )&& column == 0 && row == 8) ||
                 ((i == 3 || i == 4 || i == 5 && column == 4 )&& row == 0 )||( (i == 5 || i == 0 || i == 1) && column == 4 && row == 8) ||
@@ -151,7 +164,10 @@ public class Hexagon {
                 ((i == 4 ||i==5 ) && row == 3 && column == 7)|| ((i == 0 ||i==5 ) && row == 5 && column == 7) ||
                 ( (i == 0 ||i==5 ) && row == 7 && column == 5)||( (i == 0 ||i==5 ) && row == 6 && column == 6 );
     }
-//create an atom in a certain hexagons location
+
+    /**
+     * create an atom in a certain hexagons location
+     */
     public  void createAtom(int row, int col) {
         if(!TESTING){
             atom = new Atom(hexBoard, row,col,finishedRound); //adds to parent pane here
