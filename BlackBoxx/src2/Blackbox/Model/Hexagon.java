@@ -39,6 +39,7 @@ public class Hexagon {
     private int colList;
     //f
     public Boolean finishedRound = false;
+    //constructor initialzing the hexagon with refernce to the HexBoard
 
     public Hexagon(HexBoard hexboard){
         hexagon = new Polygon();
@@ -48,10 +49,12 @@ public class Hexagon {
         rays = new ArrayList<Ray>();
         hexList = this.hexBoard.gethexList();
         parentPane = hexboard.getParantPane();
+
+        //Event handling for mouse interactions
         hexagon.setOnMouseEntered(event -> hexagon.setStroke(Color.RED));
         hexagon.setOnMouseExited(event -> hexagon.setStroke(HEXAGON_STROKE));
         hexagon.setOnMouseClicked(event -> {
-            if(!TESTING) {
+            if(!TESTING) {//Actions on mouse click, different behaviours based on game state
                 if (!finishedRound) {
                     if (!hasAtom && hexboard.getAtomList().size() < MAX_ATOMS) {
                         createAtom(rowList, colList);
@@ -80,6 +83,7 @@ public class Hexagon {
         });
 
     }
+//method to creat hexagon based on its center coordinates and row and column
     public void createHexagon(double xx, double yy, int row, int col) {
         rowList = row;
         colList = col;
@@ -107,6 +111,7 @@ public class Hexagon {
         }
     }
     private int arrowCounter = 0;
+    //generate the arrows around the hexagons
     private void createArr(int i, double angle, double xx, double yy, int row, int col, int k){
         double point1x = ARROW_DIS_FROM_CENTREHEX * Math.cos(angle) ;
         double point1y = ARROW_DIS_FROM_CENTREHEX * Math.sin(angle) ;
@@ -135,6 +140,7 @@ public class Hexagon {
             arrowList.add((arrow));
         }
     }
+    //check if the arrow placement is valid based on board state
     public boolean arrowValidCheck(int i, int row, int column){
         return(  ((i == 3 || i == 4 || i == 2) && column == 0 && row == 0 )||( (i == 0 || i == 1 || i == 2 )&& column == 0 && row == 8) ||
                 ((i == 3 || i == 4 || i == 5 && column == 4 )&& row == 0 )||( (i == 5 || i == 0 || i == 1) && column == 4 && row == 8) ||
@@ -145,7 +151,7 @@ public class Hexagon {
                 ((i == 4 ||i==5 ) && row == 3 && column == 7)|| ((i == 0 ||i==5 ) && row == 5 && column == 7) ||
                 ( (i == 0 ||i==5 ) && row == 7 && column == 5)||( (i == 0 ||i==5 ) && row == 6 && column == 6 );
     }
-
+//create an atom in a certain hexagons location
     public  void createAtom(int row, int col) {
         if(!TESTING){
             atom = new Atom(hexBoard, row,col,finishedRound); //adds to parent pane here
@@ -158,6 +164,7 @@ public class Hexagon {
         }
 
     }
+    //remove atom from hexagon
     public void removeAtom(int row,int col) {//method to create atom
         if(!TESTING){
             atom.removeAtom();
@@ -171,7 +178,7 @@ public class Hexagon {
         this.hasGuessedAtom = true;
         hexBoard.getGuessedAtomlist().add(GuessedAtom);
     }
-
+//getter and setter methods and utilities for the hexagon class
     public boolean hasAtom() {return hasAtom;}
     public ArrayList<atomPlacement> getAtomPlacements() {return atomPlacements;}
     public void setAtomPlacement(atomPlacement at) {atomPlacements.add(at);}
